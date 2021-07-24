@@ -1,8 +1,15 @@
 import { red } from "chalk";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import inbox from "./inbox";
+import today from "./today";
+import upcoming from "./upcoming";
 
 const Home = () => {
+  const [mainScreen, setMainScreen] = useState(inbox);
+  const handleScreen = (e) => {
+    setMainScreen(e);
+  };
   const Container = styled.div`
     height: 100vh;
     width: auto;
@@ -33,7 +40,7 @@ const Home = () => {
     width: 70%;
   `;
 
-  const SideSectionContainer = styled.div`
+  const SideSectionContainer = styled.button`
     height: 2rem;
     width: 80%;
     background-color: #fefefe;
@@ -54,6 +61,18 @@ const Home = () => {
     width: 90%;
   `;
 
+  const MainTitleContainer = styled.div`
+    height: 5%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 2rem;
+  `;
+
+  const MainBodyContainer = styled.div`
+    height: 95%;
+  `;
+
   return (
     <>
       <Container>
@@ -61,20 +80,23 @@ const Home = () => {
         <ScreenContainer>
           <SideScreenContainer>
             Side Nav
-            <SideSectionContainer>
+            <SideSectionContainer onClick={() => setMainScreen(inbox)}>
               <SectionIcon>X</SectionIcon>
               <SectionName>Inbox</SectionName>
             </SideSectionContainer>
-            <SideSectionContainer>
+            <SideSectionContainer onClick={() => setMainScreen(today)}>
               <SectionIcon>X</SectionIcon>
               <SectionName>Today</SectionName>
             </SideSectionContainer>
-            <SideSectionContainer>
+            <SideSectionContainer onClick={() => setMainScreen(upcoming)}>
               <SectionIcon>X</SectionIcon>
               <SectionName>Upcoming</SectionName>
             </SideSectionContainer>
           </SideScreenContainer>
-          <MainScreenContainer>Main</MainScreenContainer>
+          <MainScreenContainer>
+            <MainTitleContainer>Main</MainTitleContainer>
+            <MainBodyContainer>{mainScreen}</MainBodyContainer>
+          </MainScreenContainer>
         </ScreenContainer>
       </Container>
     </>
