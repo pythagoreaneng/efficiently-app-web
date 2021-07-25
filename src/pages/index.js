@@ -3,6 +3,7 @@ import styled from "styled-components";
 import inbox from "./inbox";
 import today from "./today";
 import upcoming from "./upcoming";
+import { RiCalendarCheckFill } from "react-icons/ri";
 
 const Container = styled.div`
   height: 100vh;
@@ -12,11 +13,46 @@ const Container = styled.div`
 const TopNavContainer = styled.div`
   height: 10%;
   width: 100wh;
-  background: #46bcff;
-  font-size: 2em;
+  background-color: #46bcff;
+  display: flex;
+
+  align-items: center;
+`;
+
+const TopLogoContainer = styled.div`
+  width: 5%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  alitgn-items: cetner;
+`;
+
+const TopTitleContainer = styled.div`
+  width: 25%;
+  display: flex-start;
+  justify-content: center;
+  alitgn-items: cetner;
+  font-size: 1.5em;
+`;
+const TopSearchContainer = styled.div`
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  alitgn-items: cetner;
+`;
+
+const TopSearchForm = styled.form`
+  width 90%;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 1rem;
+`;
+
+const TopSearchInput = styled.input`
+  width: 100%;
+  border-radius: 1rem;
+  height: 2.5rem;
+  text-align: center;
 `;
 
 const ScreenContainer = styled.div`
@@ -77,7 +113,17 @@ const Home = ({ screenTitle }) => {
   return (
     <>
       <Container>
-        <TopNavContainer>Efficiently App</TopNavContainer>
+        <TopNavContainer>
+          <TopLogoContainer>
+            <RiCalendarCheckFill />
+          </TopLogoContainer>
+          <TopTitleContainer>Efficiently App</TopTitleContainer>
+          <TopSearchContainer>
+            <TopSearchForm>
+              <TopSearchInput type="search" placeholder="Search Efficiently" />
+            </TopSearchForm>
+          </TopSearchContainer>
+        </TopNavContainer>
         <ScreenContainer>
           <SideScreenContainer>
             Side Screen
