@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import inbox from "./inbox";
-import today from "./today";
+import star from "./star";
 import upcoming from "./upcoming";
+import archive from "./archive";
 import { RiCalendarCheckFill } from "react-icons/ri";
 
 const Container = styled.div`
@@ -136,13 +137,17 @@ const Home = ({ screenTitle }) => {
               <SectionIcon>X</SectionIcon>
               <SectionName>Inbox</SectionName>
             </SideSectionWrapper>
-            <SideSectionWrapper onClick={() => setMainScreen(today)}>
+            <SideSectionWrapper onClick={() => setMainScreen(star)}>
               <SectionIcon>X</SectionIcon>
-              <SectionName>Today</SectionName>
+              <SectionName>Star</SectionName>
             </SideSectionWrapper>
             <SideSectionWrapper onClick={() => setMainScreen(upcoming)}>
               <SectionIcon>X</SectionIcon>
               <SectionName>Upcoming</SectionName>
+            </SideSectionWrapper>
+            <SideSectionWrapper onClick={() => setMainScreen(archive)}>
+              <SectionIcon>X</SectionIcon>
+              <SectionName>Archive</SectionName>
             </SideSectionWrapper>
           </SideScreenContainer>
           <MainScreenContainer>

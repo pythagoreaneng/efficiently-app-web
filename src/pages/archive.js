@@ -1,12 +1,12 @@
 import React from "react";
 import TaskList from "../components/TaskList";
 
-const today = () => {
+const archive = () => {
   return (
     <>
-      <TaskList today={today} />
+      <TaskList archive={archive} />
     </>
   );
 };
 
-export default today;
+export default archive;

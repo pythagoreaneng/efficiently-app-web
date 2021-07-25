@@ -23,22 +23,14 @@ const Checkbox = styled.input`
   margin: 0.5rem;
 `;
 
-const FilteredTasks = ({ tasks, completed }) => {
+const FilteredTasks = ({ tasks, inboxTasks, archiveTasks }) => {
   return (
     <>
       <TasksContainer>
-        {tasks.map((task) => {
-          return (
-            <div>
-              {!completed && (
-                <TaskContainer>
-                  <Checkbox type="checkbox" />
-                  {task.title}
-                </TaskContainer>
-              )}
-            </div>
-          );
-        })}
+        {inboxTasks &&
+          tasks.map((inboxTasks) => {
+            <div>{inboxTasks.title}</div>;
+          })}
       </TasksContainer>
     </>
   );

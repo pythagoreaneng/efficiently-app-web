@@ -40,7 +40,7 @@ const test = [
     key: 5,
     title: "sample title 5",
     completed: true,
-    star: true,
+    star: false,
     "created-date": "07-24-2021",
     "due-date": "07-24-2021",
   },
@@ -75,7 +75,9 @@ const TasksContainer = styled.div`
   position: relative;
 `;
 
-const TaskList = ({ inbox, today, upcoming }) => {
+const TaskTitleContainer = styled.div``;
+
+const TaskList = ({ inbox, archive, star, upcoming }) => {
   const [tasks, setTasks] = useState(test);
   const addTask = (task) => {
     const newTasks = [task, ...tasks];
@@ -84,18 +86,29 @@ const TaskList = ({ inbox, today, upcoming }) => {
     console.log(tasks);
   };
 
-  const TaskTitleContainer = styled.div``;
+  const inboxTasks = tasks.filter((task) => !task.completed);
+  const archiveTasks = tasks.filter((task) => task.completed);
+  const starTasks = tasks.filter((task) => task.star);
+  const upcomingTasks = tasks.filter((task) => task.upcoming);
 
   return (
     <>
       <TasksContainer>
-        {inbox && <FilteredTasks tasks={tasks} completed={false} />}
-        {today &&
-          tasks.map((task) => {
+        {inbox &&
+          inboxTasks.map((task) => {
+            return <div>{task.title}</div>;
+          })}
+        {archive &&
+          archiveTasks.map((task) => {
+            return <div>{task.title}</div>;
+          })}
+
+        {star &&
+          starTasks.map((task) => {
             return <div>{task.title}</div>;
           })}
         {upcoming &&
-          tasks.map((task) => {
+          upcomingTasks.map((task) => {
             return <div>{task.title}</div>;
           })}
         <TaskFormContainer>
