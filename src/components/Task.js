@@ -18,7 +18,6 @@ const Task = ({ tasks }) => {
     background-color: red;
   `;
 
-  const CompletedButton = styled.button``;
   return <div>{tasks.title}</div>;
 };
 
