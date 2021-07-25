@@ -4,7 +4,13 @@ import inbox from "./inbox";
 import star from "./star";
 import upcoming from "./upcoming";
 import archive from "./archive";
-import { RiCalendarCheckFill } from "react-icons/ri";
+import {
+  RiCalendarCheckFill,
+  RiInboxFill,
+  RiStarSFill,
+  RiCalendarTodoFill,
+  RiArchiveFill,
+} from "react-icons/ri";
 
 const Container = styled.div`
   height: 100vh;
@@ -113,7 +119,7 @@ const Home = ({ screenTitle }) => {
     setSideScreen(!sideScreen);
   };
 
-  const [sideScreenName, setSideScreenName] = useState("Default Side Screen");
+  const [sideScreenName, setSideScreenName] = useState("");
   const [mainScreenName, setMainScreenName] = useState("INBOX");
 
   const handleMainScreen = (e) => {
@@ -139,19 +145,27 @@ const Home = ({ screenTitle }) => {
           <SideScreenContainer>
             {sideScreenName}
             <SideSectionWrapper onClick={() => handleMainScreen(inbox)}>
-              <SectionIcon>X</SectionIcon>
+              <SectionIcon>
+                <RiInboxFill />
+              </SectionIcon>
               <SectionName>Inbox</SectionName>
             </SideSectionWrapper>
             <SideSectionWrapper onClick={() => handleMainScreen(star)}>
-              <SectionIcon>X</SectionIcon>
+              <SectionIcon>
+                <RiStarSFill />
+              </SectionIcon>
               <SectionName>Star</SectionName>
             </SideSectionWrapper>
             <SideSectionWrapper onClick={() => handleMainScreen(upcoming)}>
-              <SectionIcon>X</SectionIcon>
+              <SectionIcon>
+                <RiCalendarTodoFill />
+              </SectionIcon>
               <SectionName>Upcoming</SectionName>
             </SideSectionWrapper>
             <SideSectionWrapper onClick={() => handleMainScreen(archive)}>
-              <SectionIcon>X</SectionIcon>
+              <SectionIcon>
+                <RiArchiveFill />
+              </SectionIcon>
               <SectionName>Archive</SectionName>
             </SideSectionWrapper>
           </SideScreenContainer>
