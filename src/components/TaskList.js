@@ -9,7 +9,7 @@ const TaskList = () => {
     flex-direction: column;
   `;
 
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(["sample"]);
 
   const addTask = (task) => {
     const newTasks = [task, ...tasks];
