@@ -22,7 +22,9 @@ const TaskList = () => {
       TaskList
       <TasksContainer>
         <TaskForm onSubmit={addTask} />
-        <Task tasks={tasks} />
+        {tasks.map((task) => {
+          return <div>{task.title}</div>;
+        })}
       </TasksContainer>
     </>
   );
