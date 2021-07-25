@@ -18,7 +18,12 @@ const Task = ({ tasks }) => {
     background-color: red;
   `;
 
-  return <div>{tasks.title}</div>;
+  // return (
+  //   <div>
+  //     {tasks.title}
+  //     {tasks.completed}
+  //   </div>
+  // );
 };
 
 export default Task;

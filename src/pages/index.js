@@ -4,75 +4,75 @@ import inbox from "./inbox";
 import today from "./today";
 import upcoming from "./upcoming";
 
-const Home = () => {
+const Container = styled.div`
+  height: 100vh;
+  width: auto;
+`;
+
+const TopNavContainer = styled.div`
+  height: 10%;
+  width: 100wh;
+  background: #46bcff;
+  font-size: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const ScreenContainer = styled.div`
+  display: flex;
+  height: 90%;
+`;
+
+const SideScreenContainer = styled.div`
+  height: 100%;
+  width: 30%;
+  background-color: #fafafa;
+`;
+
+const MainScreenContainer = styled.div`
+  height: 100%;
+  width: 70%;
+`;
+
+const SideSectionWrapper = styled.button`
+  height: 2rem;
+  width: 80%;
+  background-color: #fefefe;
+  margin: 2rem;
+  display: flex;
+  align-items: center;
+`;
+
+const SectionIcon = styled.div`
+  width: 10%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+`;
+const SectionName = styled.div`
+  display: flex;
+  width: 90%;
+`;
+
+const MainTitleContainer = styled.div`
+  height: 5%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+`;
+
+const MainBodyContainer = styled.div`
+  height: 95%;
+  padding: 1rem 2rem;
+`;
+
+const Home = ({ screenTitle }) => {
   const [mainScreen, setMainScreen] = useState(inbox);
   const handleScreen = (e) => {
     setMainScreen(e);
   };
-
-  const Container = styled.div`
-    height: 100vh;
-    width: auto;
-  `;
-
-  const TopNavContainer = styled.div`
-    height: 4rem;
-    width: 100wh;
-    background: #46bcff;
-    font-size: 2em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  `;
-
-  const ScreenContainer = styled.div`
-    display: flex;
-    height: 100%;
-  `;
-
-  const SideScreenContainer = styled.div`
-    height: 100%;
-    width: 30%;
-    background-color: #fafafa;
-  `;
-
-  const MainScreenContainer = styled.div`
-    height: 100%;
-    width: 70%;
-  `;
-
-  const SideSectionWrapper = styled.button`
-    height: 2rem;
-    width: 80%;
-    background-color: #fefefe;
-    margin: 2rem;
-    display: flex;
-    align-items: center;
-  `;
-
-  const SectionIcon = styled.div`
-    width: 10%;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  `;
-  const SectionName = styled.div`
-    display: flex;
-
-    width: 90%;
-  `;
-
-  const MainTitleContainer = styled.div`
-    height: 5%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    padding-left: 2rem;
-  `;
-
-  const MainBodyContainer = styled.div`
-    height: 95%;
-  `;
 
   return (
     <>
@@ -95,7 +95,7 @@ const Home = () => {
             </SideSectionWrapper>
           </SideScreenContainer>
           <MainScreenContainer>
-            <MainTitleContainer>Main</MainTitleContainer>
+            <MainTitleContainer>Screen Name</MainTitleContainer>
             <MainBodyContainer>{mainScreen}</MainBodyContainer>
           </MainScreenContainer>
         </ScreenContainer>
