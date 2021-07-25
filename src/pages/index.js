@@ -107,13 +107,18 @@ const MainBodyContainer = styled.div`
 
 const Home = ({ screenTitle }) => {
   const [mainScreen, setMainScreen] = useState(inbox);
-  const handleScreen = (e) => {
-    setMainScreen(e);
-  };
   const [sideScreen, setSideScreen] = useState(true);
 
   const showSideScreen = () => {
     setSideScreen(!sideScreen);
+  };
+
+  const [sideScreenName, setSideScreenName] = useState("Default Side Screen");
+  const [mainScreenName, setMainScreenName] = useState("INBOX");
+
+  const handleMainScreen = (e) => {
+    setMainScreen(e);
+    setMainScreenName(e.name.toUpperCase());
   };
 
   return (
@@ -132,26 +137,26 @@ const Home = ({ screenTitle }) => {
         </TopNavContainer>
         <ScreenContainer>
           <SideScreenContainer>
-            Side Screen
-            <SideSectionWrapper onClick={() => setMainScreen(inbox)}>
+            {sideScreenName}
+            <SideSectionWrapper onClick={() => handleMainScreen(inbox)}>
               <SectionIcon>X</SectionIcon>
               <SectionName>Inbox</SectionName>
             </SideSectionWrapper>
-            <SideSectionWrapper onClick={() => setMainScreen(star)}>
+            <SideSectionWrapper onClick={() => handleMainScreen(star)}>
               <SectionIcon>X</SectionIcon>
               <SectionName>Star</SectionName>
             </SideSectionWrapper>
-            <SideSectionWrapper onClick={() => setMainScreen(upcoming)}>
+            <SideSectionWrapper onClick={() => handleMainScreen(upcoming)}>
               <SectionIcon>X</SectionIcon>
               <SectionName>Upcoming</SectionName>
             </SideSectionWrapper>
-            <SideSectionWrapper onClick={() => setMainScreen(archive)}>
+            <SideSectionWrapper onClick={() => handleMainScreen(archive)}>
               <SectionIcon>X</SectionIcon>
               <SectionName>Archive</SectionName>
             </SideSectionWrapper>
           </SideScreenContainer>
           <MainScreenContainer>
-            <MainTitleContainer>Screen Name</MainTitleContainer>
+            <MainTitleContainer>{mainScreenName}</MainTitleContainer>
             <MainBodyContainer>{mainScreen}</MainBodyContainer>
           </MainScreenContainer>
         </ScreenContainer>
