@@ -29,10 +29,14 @@ const FilteredTasks = ({ tasks, completed }) => {
       <TasksContainer>
         {tasks.map((task) => {
           return (
-            <TaskContainer>
-              <Checkbox type="checkbox" />
-              {task.title}
-            </TaskContainer>
+            <div>
+              {!completed && (
+                <TaskContainer>
+                  <Checkbox type="checkbox" />
+                  {task.title}
+                </TaskContainer>
+              )}
+            </div>
           );
         })}
       </TasksContainer>
