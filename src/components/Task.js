@@ -20,9 +20,7 @@ const Task = ({ tasks }) => {
 
   const CompletedButton = styled.button``;
 
-  return tasks.map((task) => {
-    <div>{task.title}</div>;
-  });
+  return(<div>{tasks}</div>)
 };
 
 export default Task;
