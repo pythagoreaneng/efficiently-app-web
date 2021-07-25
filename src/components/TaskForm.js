@@ -10,7 +10,7 @@ const TaskForm = ({ addTask, onSubmit }) => {
     e.preventDefault();
     onSubmit({
       key: Math.floor(Math.random() * 10000),
-      text: input,
+      title: input,
     });
     setInput("");
   };
