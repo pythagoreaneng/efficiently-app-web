@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const TaskForm = ({ addTask }) => {
+const TaskForm = ({ addTask, onSubmit }) => {
   const [input, setInput] = useState("");
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -8,6 +8,10 @@ const TaskForm = ({ addTask }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    onSubmit({
+      key: Math.floor(Math.random() * 10000),
+      text: input,
+    });
     setInput("");
   };
 
