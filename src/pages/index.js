@@ -4,7 +4,13 @@ import inbox from "./inbox";
 import star from "./star";
 import upcoming from "./upcoming";
 import archive from "./archive";
-import { RiCalendarCheckFill } from "react-icons/ri";
+import {
+  RiCalendarCheckFill,
+  RiInboxFill,
+  RiStarSFill,
+  RiCalendarTodoFill,
+  RiArchiveFill,
+} from "react-icons/ri";
 
 const Container = styled.div`
   height: 100vh;
@@ -107,13 +113,18 @@ const MainBodyContainer = styled.div`
 
 const Home = ({ screenTitle }) => {
   const [mainScreen, setMainScreen] = useState(inbox);
-  const handleScreen = (e) => {
-    setMainScreen(e);
-  };
   const [sideScreen, setSideScreen] = useState(true);
 
   const showSideScreen = () => {
     setSideScreen(!sideScreen);
+  };
+
+  const [sideScreenName, setSideScreenName] = useState("");
+  const [mainScreenName, setMainScreenName] = useState("INBOX");
+
+  const handleMainScreen = (e) => {
+    setMainScreen(e);
+    setMainScreenName(e.name.toUpperCase());
   };
 
   return (
@@ -132,26 +143,34 @@ const Home = ({ screenTitle }) => {
         </TopNavContainer>
         <ScreenContainer>
           <SideScreenContainer>
-            Side Screen
-            <SideSectionWrapper onClick={() => setMainScreen(inbox)}>
-              <SectionIcon>X</SectionIcon>
+            {sideScreenName}
+            <SideSectionWrapper onClick={() => handleMainScreen(inbox)}>
+              <SectionIcon>
+                <RiInboxFill />
+              </SectionIcon>
               <SectionName>Inbox</SectionName>
             </SideSectionWrapper>
-            <SideSectionWrapper onClick={() => setMainScreen(star)}>
-              <SectionIcon>X</SectionIcon>
+            <SideSectionWrapper onClick={() => handleMainScreen(star)}>
+              <SectionIcon>
+                <RiStarSFill />
+              </SectionIcon>
               <SectionName>Star</SectionName>
             </SideSectionWrapper>
-            <SideSectionWrapper onClick={() => setMainScreen(upcoming)}>
-              <SectionIcon>X</SectionIcon>
+            <SideSectionWrapper onClick={() => handleMainScreen(upcoming)}>
+              <SectionIcon>
+                <RiCalendarTodoFill />
+              </SectionIcon>
               <SectionName>Upcoming</SectionName>
             </SideSectionWrapper>
-            <SideSectionWrapper onClick={() => setMainScreen(archive)}>
-              <SectionIcon>X</SectionIcon>
+            <SideSectionWrapper onClick={() => handleMainScreen(archive)}>
+              <SectionIcon>
+                <RiArchiveFill />
+              </SectionIcon>
               <SectionName>Archive</SectionName>
             </SideSectionWrapper>
           </SideScreenContainer>
           <MainScreenContainer>
-            <MainTitleContainer>Screen Name</MainTitleContainer>
+            <MainTitleContainer>{mainScreenName}</MainTitleContainer>
             <MainBodyContainer>{mainScreen}</MainBodyContainer>
           </MainScreenContainer>
         </ScreenContainer>
