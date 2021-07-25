@@ -1,12 +1,28 @@
 import React from "react";
+import styled from "styled-components";
 
-const Task = ({text,date}) => {
-  return (
-  <div className="border-2">
-    <p>{text}</p>
-    <p>{date}</p>
-  </div>
-  );
+const Task = ({ tasks }) => {
+  const TaskContainer = styled.div`
+    width: 100%;
+    margin: 2rem;
+    display: flex;
+  `;
+
+  const CompletedContainer = styled.div`
+    width: 10%;
+    padding-left: 1rem;
+    background-color: red;
+  `;
+  const TaskTitleContainer = styled.div`
+    width: 90%;
+    background-color: red;
+  `;
+
+  const CompletedButton = styled.button``;
+
+  return tasks.map((task) => {
+    <div>{task.title}</div>;
+  });
 };
 
 export default Task;

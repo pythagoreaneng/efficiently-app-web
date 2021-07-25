@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.css";
 import Home from "./pages/index";
-import Task from "./components/Task"
+import Inbox from "./pages/inbox";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {

@@ -1,8 +1,9 @@
-import React from "react";
-import TaskList from "../components/TaskList";
+import React, { useState } from "react";
+import Task from "./Task";
+import styled from "styled-components";
+import TaskForm from "./TaskForm";
 
-const test = {
-  "taskList":
+const test = 
   [{
       "key": 1,
       "title" : "sample title 1",
@@ -49,13 +50,29 @@ const test = {
       "due-date": "07-24-2021" 
   }     
   ]
-}
-const inbox = () => {
+const TaskList = () => {
+  const TasksContainer = styled.div`
+    diplay: flex;
+    flex-direction: column;
+  `;
+
+  const [tasks, setTasks] = useState(test);
+
+  const addTask = (task) => {
+    const newTasks = [task, ...tasks];
+
+    setTasks(newTasks);
+    console.log(tasks);
+  };
   return (
     <>
-      <TaskList />
+      TaskList
+      <TasksContainer>
+        <TaskForm onSubmit={addTask} />
+        <Task tasks={tasks} />
+      </TasksContainer>
     </>
   );
 };
 
-export default inbox;
+export default TaskList;
