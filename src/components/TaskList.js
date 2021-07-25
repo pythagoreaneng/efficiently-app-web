@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Task from "./Task";
 import styled from "styled-components";
 import TaskForm from "./TaskForm";
+import FilteredTasks from "./FilteredTasks";
 
 const test = [
   {
@@ -89,13 +89,15 @@ const TaskList = ({ inbox, today, upcoming }) => {
   return (
     <>
       <TasksContainer>
-        {inbox &&
+        {inbox && <FilteredTasks tasks={tasks} completed={false} />}
+        {today &&
           tasks.map((task) => {
             return <div>{task.title}</div>;
           })}
-        {today && <div>This is today rendered inside tasklist</div>}
-        {upcoming && <div>This is upcoming rendered inside tasklist</div>}
-
+        {upcoming &&
+          tasks.map((task) => {
+            return <div>{task.title}</div>;
+          })}
         <TaskFormContainer>
           <TaskForm onSubmit={addTask} />
         </TaskFormContainer>
