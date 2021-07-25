@@ -46,7 +46,7 @@ const test = [
   },
 ];
 
-const FormContainer = styled.div`
+const TaskFormContainer = styled.div`
   width: 100%;
   padding 1rem;
   display: flex;
@@ -102,9 +102,9 @@ const TaskList = () => {
           );
         })}
 
-        <FormContainer>
+        <TaskFormContainer>
           <TaskForm onSubmit={addTask} />
-        </FormContainer>
+        </TaskFormContainer>
       </TasksContainer>
     </>
   );
