@@ -115,7 +115,7 @@ const Home = ({ screenTitle }) => {
       <Container>
         <TopNavContainer>
           <TopLogoContainer>
-            <RiCalendarCheckFill />
+            <RiCalendarCheckFill className="h-8 w-8" />
           </TopLogoContainer>
           <TopTitleContainer>Efficiently App</TopTitleContainer>
           <TopSearchContainer>
