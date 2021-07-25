@@ -1,4 +1,3 @@
-import { red } from "chalk";
 import React, { useState } from "react";
 import styled from "styled-components";
 import inbox from "./inbox";
@@ -10,10 +9,12 @@ const Home = () => {
   const handleScreen = (e) => {
     setMainScreen(e);
   };
+
   const Container = styled.div`
     height: 100vh;
     width: auto;
   `;
+
   const TopNavContainer = styled.div`
     height: 4rem;
     width: 100wh;
@@ -40,7 +41,7 @@ const Home = () => {
     width: 70%;
   `;
 
-  const SideSectionContainer = styled.button`
+  const SideSectionWrapper = styled.button`
     height: 2rem;
     width: 80%;
     background-color: #fefefe;
@@ -79,19 +80,19 @@ const Home = () => {
         <TopNavContainer>Efficiently App</TopNavContainer>
         <ScreenContainer>
           <SideScreenContainer>
-            Side Nav
-            <SideSectionContainer onClick={() => setMainScreen(inbox)}>
+            Side Screen
+            <SideSectionWrapper onClick={() => setMainScreen(inbox)}>
               <SectionIcon>X</SectionIcon>
               <SectionName>Inbox</SectionName>
-            </SideSectionContainer>
-            <SideSectionContainer onClick={() => setMainScreen(today)}>
+            </SideSectionWrapper>
+            <SideSectionWrapper onClick={() => setMainScreen(today)}>
               <SectionIcon>X</SectionIcon>
               <SectionName>Today</SectionName>
-            </SideSectionContainer>
-            <SideSectionContainer onClick={() => setMainScreen(upcoming)}>
+            </SideSectionWrapper>
+            <SideSectionWrapper onClick={() => setMainScreen(upcoming)}>
               <SectionIcon>X</SectionIcon>
               <SectionName>Upcoming</SectionName>
-            </SideSectionContainer>
+            </SideSectionWrapper>
           </SideScreenContainer>
           <MainScreenContainer>
             <MainTitleContainer>Main</MainTitleContainer>

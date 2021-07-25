@@ -1,7 +1,12 @@
 import React from "react";
+import TaskList from "../components/TaskList";
 
 const inbox = () => {
-  return <>This is inbox</>;
+  return (
+    <>
+      <TaskList />
+    </>
+  );
 };
 
 export default inbox;
