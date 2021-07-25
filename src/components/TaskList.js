@@ -65,9 +65,8 @@ const TaskList = () => {
       <TasksContainer>
         <TaskForm onSubmit={addTask} />
         {tasks.map((task) => {
-          return (<Task task={task} />)
+          return <div>{task.title}</div>;
         })}
-        
       </TasksContainer>
     </>
   );
