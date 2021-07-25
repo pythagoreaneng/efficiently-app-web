@@ -1,0 +1,13 @@
+tasks.map((task) => {
+          //return (
+          // <TaskContainer>
+          //   {/* this should be handled in inbox.js */}
+          //   {task.completed ? (
+          //     <Checkbox type="checkbox" />
+          //   ) : (
+          //     <Checkbox type="checkbox" checked />
+          //   )}
+          //   <TaskTitleContainer>{task.title}</TaskTitleContainer>
+          // </TaskContainer>
+          //);
+          //})

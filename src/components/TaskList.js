@@ -46,7 +46,7 @@ const test = [
   },
 ];
 
-const FormContainer = styled.div`
+const TaskFormContainer = styled.div`
   width: 100%;
   padding 1rem;
   display: flex;
@@ -75,7 +75,7 @@ const TasksContainer = styled.div`
   position: relative;
 `;
 
-const TaskList = () => {
+const TaskList = ({ inbox, today, upcoming }) => {
   const [tasks, setTasks] = useState(test);
   const addTask = (task) => {
     const newTasks = [task, ...tasks];
@@ -89,22 +89,16 @@ const TaskList = () => {
   return (
     <>
       <TasksContainer>
-        {tasks.map((task) => {
-          return (
-            <TaskContainer>
-              {task.completed ? (
-                <Checkbox type="checkbox" />
-              ) : (
-                <Checkbox type="checkbox" checked />
-              )}
-              <TaskTitleContainer>{task.title}</TaskTitleContainer>
-            </TaskContainer>
-          );
-        })}
+        {inbox &&
+          tasks.map((task) => {
+            return <div>{task.title}</div>;
+          })}
+        {today && <div>This is today rendered inside tasklist</div>}
+        {upcoming && <div>This is upcoming rendered inside tasklist</div>}
 
-        <FormContainer>
+        <TaskFormContainer>
           <TaskForm onSubmit={addTask} />
-        </FormContainer>
+        </TaskFormContainer>
       </TasksContainer>
     </>
   );

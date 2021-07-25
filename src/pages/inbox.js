@@ -53,7 +53,7 @@ const test = {
 const inbox = () => {
   return (
     <>
-      <TaskList />
+      <TaskList inbox={inbox} />
     </>
   );
 };
