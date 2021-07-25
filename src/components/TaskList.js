@@ -38,14 +38,14 @@ const test =
   },
   {
       "key": 5,
-      "title" : "sample title 5",
-      "completed": false,
+      "title" : "sample title 5D",
+      "completed": true,
       "star": true,
       "created-date":  "07-24-2021",
       "due-date": "07-24-2021" 
   }     
   ]
-  
+
 const TaskList = () => {
   const TasksContainer = styled.div`
     display: flex;
