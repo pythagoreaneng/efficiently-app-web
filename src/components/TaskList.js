@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Task from "./Task";
 import styled from "styled-components";
 import TaskForm from "./TaskForm";
+import FilteredTasks from "./FilteredTasks";
 
 const test = [
   {
@@ -40,7 +40,7 @@ const test = [
     key: 5,
     title: "sample title 5",
     completed: true,
-    star: true,
+    star: false,
     "created-date": "07-24-2021",
     "due-date": "07-24-2021",
   },
@@ -75,7 +75,9 @@ const TasksContainer = styled.div`
   position: relative;
 `;
 
-const TaskList = ({ inbox, today, upcoming }) => {
+const TaskTitleContainer = styled.div``;
+
+const TaskList = ({ inbox, archive, star, upcoming }) => {
   const [tasks, setTasks] = useState(test);
   const addTask = (task) => {
     const newTasks = [task, ...tasks];
@@ -84,18 +86,31 @@ const TaskList = ({ inbox, today, upcoming }) => {
     console.log(tasks);
   };
 
-  const TaskTitleContainer = styled.div``;
+  const inboxTasks = tasks.filter((task) => !task.completed);
+  const archiveTasks = tasks.filter((task) => task.completed);
+  const starTasks = tasks.filter((task) => task.star);
+  const upcomingTasks = tasks.filter((task) => task.upcoming);
 
   return (
     <>
       <TasksContainer>
         {inbox &&
-          tasks.map((task) => {
+          inboxTasks.map((task) => {
             return <div>{task.title}</div>;
           })}
-        {today && <div>This is today rendered inside tasklist</div>}
-        {upcoming && <div>This is upcoming rendered inside tasklist</div>}
+        {archive &&
+          archiveTasks.map((task) => {
+            return <div>{task.title}</div>;
+          })}
 
+        {star &&
+          starTasks.map((task) => {
+            return <div>{task.title}</div>;
+          })}
+        {upcoming &&
+          upcomingTasks.map((task) => {
+            return <div>{task.title}</div>;
+          })}
         <TaskFormContainer>
           <TaskForm onSubmit={addTask} />
         </TaskFormContainer>
