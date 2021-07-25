@@ -1,4 +1,24 @@
 import React, { useState } from "react";
+import styled from "styled-components";
+
+const AddTaskContainer = styled.form`
+  width: 100%;
+  height: auto;
+  display: flex;
+`;
+
+const WriteTaskContainer = styled.input`
+  width: 100%;
+  height: 3rem;
+  border: 0.1rem solid #efefef;
+`;
+
+const TaskButtonContainer = styled.button`
+  height: auto;
+  width: 2rem;
+  margin-left: 1rem;
+  border: 0.1rem solid #efefef;
+`;
 
 const TaskForm = ({ addTask, onSubmit }) => {
   const [input, setInput] = useState("");
@@ -17,15 +37,15 @@ const TaskForm = ({ addTask, onSubmit }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input
+      <AddTaskContainer onSubmit={handleSubmit}>
+        <WriteTaskContainer
           id="input"
           placeholder="#DoEfficiently"
           onChange={handleChange}
           value={input}
         />
-        <button onClick={handleSubmit}>+</button>
-      </form>
+        <TaskButtonContainer onClick={handleSubmit}>+</TaskButtonContainer>
+      </AddTaskContainer>
     </>
   );
 };
