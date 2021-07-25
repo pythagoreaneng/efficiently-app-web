@@ -3,7 +3,7 @@ import styled from "styled-components";
 import TaskForm from "./TaskForm";
 import FilteredTasks from "./FilteredTasks";
 
-const test = [
+var test = [
   {
     key: 1,
     title: "sample title 1",
@@ -91,25 +91,49 @@ const TaskList = ({ inbox, archive, star, upcoming }) => {
   const starTasks = tasks.filter((task) => task.star);
   const upcomingTasks = tasks.filter((task) => task.upcoming);
 
+  const completeTask = () => {
+    alert("Completing Task");
+  };
+
   return (
     <>
       <TasksContainer>
         {inbox &&
           inboxTasks.map((task) => {
-            return <div>{task.title}</div>;
+            return (
+              <TaskContainer>
+                <Checkbox type="checkbox" onClick={() => completeTask()} />
+                {task.title}
+              </TaskContainer>
+            );
           })}
         {archive &&
           archiveTasks.map((task) => {
-            return <div>{task.title}</div>;
+            return (
+              <TaskContainer>
+                <Checkbox type="checkbox" onClick={() => completeTask()} />
+                {task.title}
+              </TaskContainer>
+            );
           })}
 
         {star &&
           starTasks.map((task) => {
-            return <div>{task.title}</div>;
+            return (
+              <TaskContainer>
+                <Checkbox type="checkbox" onClick={() => completeTask()} />
+                {task.title}
+              </TaskContainer>
+            );
           })}
         {upcoming &&
           upcomingTasks.map((task) => {
-            return <div>{task.title}</div>;
+            return (
+              <TaskContainer>
+                <Checkbox type="checkbox" onClick={() => completeTask()} />
+                {task.title}
+              </TaskContainer>
+            );
           })}
         <TaskFormContainer>
           <TaskForm onSubmit={addTask} />
