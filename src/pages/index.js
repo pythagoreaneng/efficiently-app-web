@@ -109,6 +109,11 @@ const Home = ({ screenTitle }) => {
   const handleScreen = (e) => {
     setMainScreen(e);
   };
+  const [sideScreen, setSideScreen] = useState(true);
+
+  const showSideScreen = () => {
+    setSideScreen(!sideScreen);
+  };
 
   return (
     <>
