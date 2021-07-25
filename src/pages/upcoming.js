@@ -1,7 +1,12 @@
 import React from "react";
+import TaskList from "../components/TaskList";
 
 const upcoming = () => {
-  return <div>This is upcoming</div>;
+  return (
+    <>
+      <TaskList upcoming={upcoming} />
+    </>
+  );
 };
 
 export default upcoming;

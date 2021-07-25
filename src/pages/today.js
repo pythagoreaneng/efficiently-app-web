@@ -1,7 +1,12 @@
 import React from "react";
+import TaskList from "../components/TaskList";
 
 const today = () => {
-  return <div>This is today</div>;
+  return (
+    <>
+      <TaskList today={today} />
+    </>
+  );
 };
 
 export default today;
