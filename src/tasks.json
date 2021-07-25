@@ -7,7 +7,7 @@
         "completed": true,
         "star": true,
         "created-date":  "07-11-2021",
-        "due-date": "07-11-2021",
+        "due-date": "07-11-2021"
     },
     {
         "key": 2,
@@ -16,7 +16,7 @@
         "completed": false,
         "star": true,
         "created-date":  "07-11-2021",
-        "due-date": "07-11-2021",
+        "due-date": "07-11-2021"
     },
     {
         "key": 3,
@@ -34,7 +34,7 @@
         "completed": false,
         "star": true,
         "created-date":  "07-11-2021",
-        "due-date": "07-11-2021", 
+        "due-date": "07-11-2021"
     },
     {
         "key": 5,
@@ -43,7 +43,7 @@
         "completed": false,
         "star": true,
         "created-date":  "07-24-2021",
-        "due-date": "07-24-2021",  
-    },      
+        "due-date": "07-24-2021" 
+    }     
     ]
 }

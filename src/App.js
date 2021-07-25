@@ -1,6 +1,7 @@
 import React from "react";
 import "./index.css";
 import Home from "./pages/index";
+import Task from "./components/Task"
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
@@ -11,6 +12,8 @@ function App() {
           <Home />
         </Route>
       </Router>
+
+
     </>
   );
 }
