@@ -134,7 +134,7 @@ const Home = ({ screenTitle }) => {
 
   // screen name hooks
   const [sideScreenName, setSideScreenName] = useState("");
-  const [mainScreenName, setMainScreenName] = useState("inbox");
+  const [mainScreenName, setMainScreenName] = useState("INBOX");
 
   const addTask = (task) => {
     const newTasks = [task, ...tasks];
@@ -144,7 +144,9 @@ const Home = ({ screenTitle }) => {
 
   const handleMainScreen = (e) => {
     setMainScreen(e);
+    // has to be lowercase
     setMainScreenName(e.name.toLowerCase());
+    setSearch("");
   };
 
   // search functionality
@@ -171,6 +173,7 @@ const Home = ({ screenTitle }) => {
                 type="search"
                 placeholder="Search Efficiently"
                 onChange={handleSearch}
+                value={search}
               />
             </TopSearchForm>
           </TopSearchContainer>
