@@ -137,9 +137,15 @@ const Home = ({ screenTitle }) => {
   const [mainScreenName, setMainScreenName] = useState("INBOX");
 
   const addTask = (task) => {
+    if (task.title === "" || /^\s*$/.test(task.title)) {
+      console.log("Invalid task");
+      return;
+    }
+
     const newTasks = [task, ...tasks];
     setTasks(newTasks);
     console.log(tasks);
+    return;
   };
 
   const handleMainScreen = (e) => {
