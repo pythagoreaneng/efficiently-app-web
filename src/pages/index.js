@@ -10,7 +10,11 @@ import {
   RiStarSFill,
   RiCalendarTodoFill,
   RiArchiveFill,
+  RiAddCircleFill,
 } from "react-icons/ri";
+import MainScreenComponent from "../components/MainScreenComponent";
+import TaskForm from "../components/TaskForm";
+import test_tasks_1 from "./data/test_tasks_1";
 
 const Container = styled.div`
   height: 100vh;
@@ -107,25 +111,51 @@ const MainTitleContainer = styled.div`
 `;
 
 const MainBodyContainer = styled.div`
-  height: 95%;
+  height: 85%;
   padding: 1rem 2rem;
+  overflow-y: scroll;
+`;
+
+const AddTaskContainer = styled.form`
+  width: 50%;
+  padding 1rem;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  display: flex;
 `;
 
 const Home = ({ screenTitle }) => {
+  // unfiltered tasks
+  const [tasks, setTasks] = useState(test_tasks_1);
+  // shows inbox by default
   const [mainScreen, setMainScreen] = useState(inbox);
-  const [sideScreen, setSideScreen] = useState(true);
 
-  const showSideScreen = () => {
-    setSideScreen(!sideScreen);
-  };
-
+  // screen name hooks
   const [sideScreenName, setSideScreenName] = useState("");
-  const [mainScreenName, setMainScreenName] = useState("INBOX");
+  const [mainScreenName, setMainScreenName] = useState("inbox");
+
+  const addTask = (task) => {
+    const newTasks = [task, ...tasks];
+    setTasks(newTasks);
+    console.log(tasks);
+  };
 
   const handleMainScreen = (e) => {
     setMainScreen(e);
-    setMainScreenName(e.name.toUpperCase());
+    setMainScreenName(e.name.toLowerCase());
   };
+
+  // search functionality
+  const [search, setSearch] = useState("");
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+    console.log(e.target.value);
+  };
+  const filteredTasks = tasks.filter((task) =>
+    task.title.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <>
@@ -137,7 +167,11 @@ const Home = ({ screenTitle }) => {
           <TopTitleContainer>Efficiently App</TopTitleContainer>
           <TopSearchContainer>
             <TopSearchForm>
-              <TopSearchInput type="search" placeholder="Search Efficiently" />
+              <TopSearchInput
+                type="search"
+                placeholder="Search Efficiently"
+                onChange={handleSearch}
+              />
             </TopSearchForm>
           </TopSearchContainer>
         </TopNavContainer>
@@ -171,7 +205,17 @@ const Home = ({ screenTitle }) => {
           </SideScreenContainer>
           <MainScreenContainer>
             <MainTitleContainer>{mainScreenName}</MainTitleContainer>
-            <MainBodyContainer>{mainScreen}</MainBodyContainer>
+            <MainBodyContainer>
+              <MainScreenComponent
+                tasks={filteredTasks}
+                setTasks={setTasks}
+                mainScreen={mainScreen}
+                mainScreenName={mainScreenName}
+              />
+            </MainBodyContainer>
+            <AddTaskContainer>
+              <TaskForm onSubmit={addTask} />
+            </AddTaskContainer>
           </MainScreenContainer>
         </ScreenContainer>
       </Container>

@@ -46,15 +46,6 @@ var test = [
   },
 ];
 
-const TaskFormContainer = styled.div`
-  width: 100%;
-  padding 1rem;
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  bottom: 0;
-`;
-
 const TaskContainer = styled.div`
   height: auto;
   width: 100%;
@@ -77,15 +68,7 @@ const TasksContainer = styled.div`
 
 const TaskTitleContainer = styled.div``;
 
-const TaskList = ({ inbox, archive, star, upcoming }) => {
-  const [tasks, setTasks] = useState(test);
-  const addTask = (task) => {
-    const newTasks = [task, ...tasks];
-
-    setTasks(newTasks);
-    console.log(tasks);
-  };
-
+const TaskList = ({ inbox, archive, star, upcoming, tasks }) => {
   const inboxTasks = tasks.filter((task) => !task.completed);
   const archiveTasks = tasks.filter((task) => task.completed);
   const starTasks = tasks.filter((task) => task.star);
@@ -135,9 +118,6 @@ const TaskList = ({ inbox, archive, star, upcoming }) => {
               </TaskContainer>
             );
           })}
-        <TaskFormContainer>
-          <TaskForm onSubmit={addTask} />
-        </TaskFormContainer>
       </TasksContainer>
     </>
   );
