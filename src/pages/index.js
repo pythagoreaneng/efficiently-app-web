@@ -129,7 +129,7 @@ const Home = ({ screenTitle }) => {
 
   // screen name hooks
   const [sideScreenName, setSideScreenName] = useState("");
-  const [mainScreenName, setMainScreenName] = useState("Inbox");
+  const [taskType, setTaskType] = useState("Inbox");
 
   //this has to add date
   const addTask = (task) => {
@@ -147,7 +147,7 @@ const Home = ({ screenTitle }) => {
   const handleMainScreen = (e) => {
     setMainScreen(e);
     // has to be lowercase
-    setMainScreenName(e.name.toLowerCase());
+    setTaskType(e.name.toLowerCase());
     setSearch("");
   };
 
@@ -209,13 +209,9 @@ const Home = ({ screenTitle }) => {
             </SideSectionWrapper>
           </SideScreenContainer>
           <MainScreenContainer>
-            <MainTitleContainer>{mainScreenName}</MainTitleContainer>
+            <MainTitleContainer>{taskType}</MainTitleContainer>
 
-            <TaskList
-              tasks={filteredTasks}
-              setTasks={setTasks}
-              mainScreenName={mainScreenName}
-            />
+            <TaskList tasks={filteredTasks} taskType={taskType} />
             <AddTaskContainer>
               <TaskForm onSubmit={addTask} />
             </AddTaskContainer>
