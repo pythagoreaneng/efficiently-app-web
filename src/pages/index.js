@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import {
   RiCalendarCheckFill,
@@ -161,9 +161,6 @@ const Home = ({ screenTitle }) => {
     task.title.toLowerCase().includes(search.toLowerCase())
   );
 
-  const inputRef = useRef(null);
-  const submitRef = useRef(null);
-
   return (
     <>
       <Container>
@@ -221,7 +218,7 @@ const Home = ({ screenTitle }) => {
             />
 
             <AddTaskContainer>
-              <TaskInput onSubmit={addTask} ref={inputRef} ref={submitRef} />
+              <TaskInput onSubmit={addTask} />
             </AddTaskContainer>
           </MainScreenContainer>
         </ScreenContainer>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { RiAddCircleFill } from "react-icons/ri";
 import styled from "styled-components";
 
@@ -23,7 +23,7 @@ const TaskButtonContainer = styled.button`
   align-items: center;
 `;
 
-const TaskInput = ({ onSubmit, inputRef, submitRef }) => {
+const TaskInput = ({ onSubmit }) => {
   const [input, setInput] = useState("");
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -37,6 +37,13 @@ const TaskInput = ({ onSubmit, inputRef, submitRef }) => {
     });
     setInput("");
   };
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
+
+  const inputRef = useRef(null);
+  const submitRef = useRef(null);
 
   return (
     <>
