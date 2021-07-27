@@ -65,11 +65,11 @@ export const MainScreenContainer = styled.div`
   width: 70%;
 `;
 
-export const SideSectionWrapper = styled.button`
+export const SideSectionWrapper = styled.div`
   height: 2rem;
   width: 80%;
   background-color: #fefefe;
-  margin: 2rem;
+  margin: 1rem;
   display: flex;
   align-items: center;
 `;
