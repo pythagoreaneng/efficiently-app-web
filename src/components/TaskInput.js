@@ -40,7 +40,7 @@ const TaskInput = ({ onSubmit }) => {
 
   useEffect(() => {
     inputRef.current.focus();
-  }, []);
+  });
 
   const inputRef = useRef(null);
   const submitRef = useRef(null);
