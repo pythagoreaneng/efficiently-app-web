@@ -13,9 +13,9 @@ import {
   RiAddCircleFill,
 } from "react-icons/ri";
 
-import TaskForm from "../components/TaskForm";
 import test_tasks_1 from "./data/test_tasks_1";
 import TaskList from "../components/TaskList";
+import TaskInput from "../components/TaskInput";
 
 const Container = styled.div`
   height: 100vh;
@@ -213,7 +213,7 @@ const Home = ({ screenTitle }) => {
 
             <TaskList tasks={filteredTasks} taskType={taskType} />
             <AddTaskContainer>
-              <TaskForm onSubmit={addTask} />
+              <TaskInput onSubmit={addTask} />
             </AddTaskContainer>
           </MainScreenContainer>
         </ScreenContainer>
