@@ -9,7 +9,6 @@ export const TopNavContainer = styled.div`
   width: 100wh;
   background-color: #46bcff;
   display: flex;
-
   align-items: center;
 `;
 
@@ -21,32 +20,41 @@ export const TopLogoContainer = styled.div`
 `;
 
 export const TopTitleContainer = styled.div`
-  width: 25%;
-  display: flex-start;
+  width: 30%;
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   alitgn-items: cetner;
   font-size: 1.5em;
 `;
+
+export const TopTitleWrapper = styled.div`
+  display: flex;
+`;
 export const TopSearchContainer = styled.div`
   width: 70%;
   display: flex;
-  justify-content: center;
-  alitgn-items: cetner;
 `;
 
-export const TopSearchForm = styled.form`
-  width 90%;
+export const TopSearchForm = styled.div`
+  width 100%;
+  height: auto;
   display: flex;
-  justify-content: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 1rem;
+  margin: 0 3rem;
 `;
 
 export const TopSearchInput = styled.input`
   width: 100%;
+  height: 3rem;
+  border: 0.1rem solid #efefef;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 1rem;
-  height: 2.5rem;
+  margin: 0 1rem 0 1rem;
   text-align: center;
+  &:focus {
+    outline: none;
+    box-shadow: 0px 0px 2rem #94d9ff;
+  }
 `;
 
 export const ScreenContainer = styled.div`
@@ -54,21 +62,23 @@ export const ScreenContainer = styled.div`
   height: 90%;
 `;
 
-export const SideScreenContainer = styled.div`
+export const MainScreenContainer = styled.div`
+  width: 70%;
   height: 100%;
-  width: 30%;
-  background-color: #fafafa;
+  position: relative;
 `;
 
-export const MainScreenContainer = styled.div`
+export const SideScreenContainer = styled.div`
+  width: 30%;
   height: 100%;
-  width: 70%;
+  background-color: #fafafa;
+  padding: 0.5rem 0;
 `;
 
 export const SideSectionWrapper = styled.div`
   height: 2rem;
-  width: 80%;
-  background-color: #fefefe;
+  width: auto;
+  background-color: #fff;
   margin: 1rem;
   display: flex;
   align-items: center;
@@ -79,10 +89,12 @@ export const SectionIcon = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 1rem;
 `;
 export const SectionName = styled.div`
   display: flex;
   width: 90%;
+  padding: 1rem;
 `;
 
 export const MainTitleContainer = styled.div`
@@ -91,14 +103,20 @@ export const MainTitleContainer = styled.div`
   display: flex;
   align-items: center;
   padding-left: 2rem;
+  background-color: blue;
 `;
 
-export const AddTaskContainer = styled.form`
-  width: 50%;
-  padding 1rem;
+export const SectionTasksContainer = styled.div`
+  height: 85%;
+  overflow-y: auto;
+`;
+
+export const TaskInputContainer = styled.form`
+  width: 100%;
+  height: 20%
   display: flex;
   justify-content: center;
   position: absolute;
   bottom: 0;
-  display: flex;
+  padding: 1rem 2rem;
 `;

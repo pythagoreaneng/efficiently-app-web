@@ -7,15 +7,15 @@ const Checkbox = styled.input`
 
 const TaskContainer = styled.div`
   height: auto;
-  width: 80%;
+  width: auto;
   display: flex;
   flex-direction: row;
   align-items: center;
   border: 0.1rem solid #f1f1f1;
   border-radius: 0.5rem;
   background-color: #efefef;
-  margin: 1rem;
-  padding: 1rem;
+  margin: 1.5rem 3rem;
+  padding: 0.1rem;
 `;
 
 // single task card component

@@ -11,19 +11,19 @@ import TaskInput from "../components/TaskInput";
 import {
   Container,
   TopNavContainer,
-  TopLogoContainer,
+  TaskInputContainer,
+  TopTitleWrapper,
   TopTitleContainer,
   TopSearchContainer,
   TopSearchForm,
   TopSearchInput,
   ScreenContainer,
-  SideScreenContainer,
-  MainScreenContainer,
-  SideSectionWrapper,
+  SectionTasksContainer,
   SectionIcon,
   SectionName,
-  MainTitleContainer,
-  AddTaskContainer,
+  SideScreenContainer,
+  SideSectionWrapper,
+  MainScreenContainer,
 } from "../pages/styles";
 import { NavLink } from "react-router-dom";
 
@@ -89,15 +89,19 @@ const TaskScreen = ({
     <>
       <Container>
         <TopNavContainer>
-          <TopLogoContainer>
-            <RiCalendarCheckFill className="h-8 w-8" />
-          </TopLogoContainer>
-          <TopTitleContainer>Efficiently App</TopTitleContainer>
+          <TopTitleContainer>
+            <NavLink exact to="/">
+              <TopTitleWrapper>
+                <RiCalendarCheckFill className="h-8 w-8" />
+                <div>Efficiently App</div>
+              </TopTitleWrapper>
+            </NavLink>
+          </TopTitleContainer>
           <TopSearchContainer>
             <TopSearchForm>
               <TopSearchInput
                 type="search"
-                placeholder="Search Efficiently"
+                placeholder="Search(Press alt or  ⌥)"
                 onChange={handleSearch}
                 value={search}
                 ref={searchRef}
@@ -169,21 +173,21 @@ const TaskScreen = ({
             </SideSectionWrapper>
           </SideScreenContainer>
           <MainScreenContainer>
-            <MainTitleContainer>{sectionType.toUpperCase()}</MainTitleContainer>
+            <SectionTasksContainer>
+              <SectionTasks
+                tasks={filteredTasks}
+                sectionType={sectionType}
+                completeTask={completeTask}
+              />
+            </SectionTasksContainer>
 
-            <SectionTasks
-              tasks={filteredTasks}
-              sectionType={sectionType}
-              completeTask={completeTask}
-            />
-
-            <AddTaskContainer>
+            <TaskInputContainer>
               <TaskInput
                 onSubmit={addTask}
                 searchRef={searchRef}
                 inputRef={inputRef}
               />
-            </AddTaskContainer>
+            </TaskInputContainer>
           </MainScreenContainer>
         </ScreenContainer>
       </Container>
