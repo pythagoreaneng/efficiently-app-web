@@ -1,9 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import inbox from "./inbox";
-import star from "./star";
-import upcoming from "./upcoming";
-import archive from "./archive";
 import {
   RiCalendarCheckFill,
   RiInboxFill,
@@ -125,11 +121,10 @@ const Home = ({ screenTitle }) => {
   // unfiltered tasks
   const [tasks, setTasks] = useState(test_tasks_1);
   // shows inbox by default
-  const [mainScreen, setMainScreen] = useState(inbox);
 
   // screen name hooks
   const [sideScreenName, setSideScreenName] = useState("");
-  const [taskType, setTaskType] = useState("Inbox");
+  const [taskType, setTaskType] = useState("inbox");
 
   //this has to add date
   const addTask = (task) => {
@@ -145,13 +140,12 @@ const Home = ({ screenTitle }) => {
   };
 
   const handleMainScreen = (e) => {
-    setMainScreen(e);
     // has to be lowercase
     setTaskType(e.name.toLowerCase());
     setSearch("");
   };
 
-  // search functionality
+  // search func
   const [search, setSearch] = useState("");
   const handleSearch = (e) => {
     setSearch(e.target.value);
@@ -183,25 +177,25 @@ const Home = ({ screenTitle }) => {
         <ScreenContainer>
           <SideScreenContainer>
             {sideScreenName}
-            <SideSectionWrapper onClick={() => handleMainScreen(inbox)}>
+            <SideSectionWrapper onClick={() => setTaskType("inbox")}>
               <SectionIcon>
                 <RiInboxFill />
               </SectionIcon>
               <SectionName>Inbox</SectionName>
             </SideSectionWrapper>
-            <SideSectionWrapper onClick={() => handleMainScreen(star)}>
+            <SideSectionWrapper onClick={() => setTaskType("star")}>
               <SectionIcon>
                 <RiStarSFill />
               </SectionIcon>
               <SectionName>Star</SectionName>
             </SideSectionWrapper>
-            <SideSectionWrapper onClick={() => handleMainScreen(upcoming)}>
+            <SideSectionWrapper onClick={() => setTaskType("upcoming")}>
               <SectionIcon>
                 <RiCalendarTodoFill />
               </SectionIcon>
               <SectionName>Upcoming</SectionName>
             </SideSectionWrapper>
-            <SideSectionWrapper onClick={() => handleMainScreen(archive)}>
+            <SideSectionWrapper onClick={() => setTaskType("archive")}>
               <SectionIcon>
                 <RiArchiveFill />
               </SectionIcon>
@@ -212,6 +206,7 @@ const Home = ({ screenTitle }) => {
             <MainTitleContainer>{taskType}</MainTitleContainer>
 
             <TaskList tasks={filteredTasks} taskType={taskType} />
+
             <AddTaskContainer>
               <TaskInput onSubmit={addTask} />
             </AddTaskContainer>
