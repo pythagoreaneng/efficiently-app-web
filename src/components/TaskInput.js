@@ -33,7 +33,7 @@ const AddTaskButton = styled.button`
 `;
 
 // input component to add tasks
-const TaskInput = ({ onSubmit, searchRef, inputRef, today }) => {
+const TaskInput = ({ onSubmit, searchRef, inputRef, todayDate }) => {
   const [input, setInput] = useState("");
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -46,7 +46,7 @@ const TaskInput = ({ onSubmit, searchRef, inputRef, today }) => {
       title: input,
       completed: false,
       star: false,
-      created_date: today,
+      created_date: todayDate,
       due_date: "07/28/2021",
     });
     setInput("");

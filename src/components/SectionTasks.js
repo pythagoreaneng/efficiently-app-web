@@ -3,7 +3,13 @@ import Task from "./Task";
 
 // SectionTasks displays a filtered list of tasks depending on a sectionType props passed into it
 // Embeded insided TaskScreen
-const SectionTasks = ({ tasks, sectionType, completeTask, today }) => {
+const SectionTasks = ({
+  tasks,
+  sectionType,
+  completeTask,
+  today,
+  todayDate,
+}) => {
   if (sectionType === "inbox") {
     // diplays inbox, which is task.completed = false
     return tasks
@@ -60,7 +66,7 @@ const SectionTasks = ({ tasks, sectionType, completeTask, today }) => {
       });
   } else if (sectionType === "today") {
     return tasks
-      .filter((task) => task.due_date === today)
+      .filter((task) => task.due_date === todayDate)
       .map((task) => {
         return (
           <Task

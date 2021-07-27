@@ -30,13 +30,19 @@ import { NavLink } from "react-router-dom";
 
 // TaskScreen is an interface which serves all the ToDo functionality
 
+var todayDate = new Date();
+var dd = String(todayDate.getDate()).padStart(2, "0");
+var mm = String(todayDate.getMonth() + 1).padStart(2, "0"); //January is 0!
+var yyyy = todayDate.getFullYear();
+
+todayDate = mm + "/" + dd + "/" + yyyy;
+
 const TaskScreen = ({
   tasks,
   setTasks,
   sideScreenName,
   sectionType,
   setSectionType,
-  today,
 }) => {
   // clears search box upon click
   const sectionTypeHandler = (e) => {
@@ -194,7 +200,7 @@ const TaskScreen = ({
                 tasks={filteredTasks}
                 sectionType={sectionType}
                 completeTask={completeTask}
-                today={today}
+                todayDate={todayDate}
               />
             </SectionTasksContainer>
 
@@ -203,7 +209,7 @@ const TaskScreen = ({
                 onSubmit={addTask}
                 searchRef={searchRef}
                 inputRef={inputRef}
-                today={today}
+                todayDate={todayDate}
               />
             </TaskInputContainer>
           </MainScreenContainer>
