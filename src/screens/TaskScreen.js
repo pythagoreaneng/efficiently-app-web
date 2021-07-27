@@ -60,7 +60,7 @@ const TaskScreen = ({
     console.log(tasks);
     const newTasks = tasks.map((task) => task.key !== key);
     console.log(newTasks);
-    // setTasks(newTasks);
+    //setTasks(newTasks);
   };
 
   // search related
@@ -78,7 +78,6 @@ const TaskScreen = ({
   const inputKeyDown = (e) => {
     console.log(e);
     if (e.key === "Alt") {
-      console.log("focus on input");
       inputRef.current.focus();
     }
   };
