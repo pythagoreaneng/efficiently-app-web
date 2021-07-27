@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { RiAddCircleFill } from "react-icons/ri";
 import styled from "styled-components";
 
 const AddTaskContainer = styled.form`
@@ -15,12 +16,14 @@ const WriteTaskContainer = styled.input`
 
 const TaskButtonContainer = styled.button`
   height: auto;
-  width: 2rem;
+  width: 3rem;
   margin-left: 1rem;
-  border: 0.1rem solid #efefef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
-const TaskInput = ({ onSubmit }) => {
+const TaskInput = ({ onSubmit, inputRef, submitRef }) => {
   const [input, setInput] = useState("");
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -43,8 +46,11 @@ const TaskInput = ({ onSubmit }) => {
           placeholder="#DoEfficiently"
           onChange={handleChange}
           value={input}
+          ref={inputRef}
         />
-        <TaskButtonContainer onClick={handleSubmit}>+</TaskButtonContainer>
+        <TaskButtonContainer onClick={handleSubmit} ref={submitRef}>
+          <RiAddCircleFill size={35} color={"#44BCFF"} />
+        </TaskButtonContainer>
       </AddTaskContainer>
     </>
   );

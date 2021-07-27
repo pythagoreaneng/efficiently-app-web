@@ -18,10 +18,10 @@ const TaskContainer = styled.div`
   padding: 1rem;
 `;
 
-const Task = ({ completed, title }) => {
+const Task = ({ completed, title, completeTask }) => {
   return (
     <TaskContainer>
-      <Checkbox type="Checkbox" checked={completed} />
+      <Checkbox type="Checkbox" onClick={(key) => completeTask(key)} />
       {title}
     </TaskContainer>
   );

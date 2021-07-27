@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import {
   RiCalendarCheckFill,
@@ -6,7 +6,6 @@ import {
   RiStarSFill,
   RiCalendarTodoFill,
   RiArchiveFill,
-  RiAddCircleFill,
 } from "react-icons/ri";
 
 import test_tasks_1 from "./data/test_tasks_1";
@@ -120,11 +119,17 @@ const AddTaskContainer = styled.form`
 const Home = ({ screenTitle }) => {
   // unfiltered tasks
   const [tasks, setTasks] = useState(test_tasks_1);
-  // shows inbox by default
 
   // screen name hooks
   const [sideScreenName, setSideScreenName] = useState("");
+
+  // list type (inbox, star, ...) hook
   const [listType, setListType] = useState("inbox");
+  // clears search box upon click
+  const listTypeHandler = (e) => {
+    setListType(e);
+    setSearch("");
+  };
 
   //this has to add date
   const addTask = (task) => {
@@ -139,20 +144,25 @@ const Home = ({ screenTitle }) => {
     return;
   };
 
-  const listTypeHandler = (e) => {
-    setListType(e);
-    setSearch("");
+  const completeTask = (key) => {
+    alert("Completing Task");
+    console.log(tasks);
+    const newTasks = tasks.map((task) => task.key !== key);
+    console.log(newTasks);
+    // setTasks(newTasks);
   };
 
-  // search func
+  // search related
   const [search, setSearch] = useState("");
   const handleSearch = (e) => {
     setSearch(e.target.value);
-    console.log(e.target.value);
   };
   const filteredTasks = tasks.filter((task) =>
     task.title.toLowerCase().includes(search.toLowerCase())
   );
+
+  const inputRef = useRef(null);
+  const submitRef = useRef(null);
 
   return (
     <>
@@ -202,12 +212,16 @@ const Home = ({ screenTitle }) => {
             </SideSectionWrapper>
           </SideScreenContainer>
           <MainScreenContainer>
-            <MainTitleContainer>{listType}</MainTitleContainer>
+            <MainTitleContainer>{listType.toUpperCase()}</MainTitleContainer>
 
-            <TaskList tasks={filteredTasks} listType={listType} />
+            <TaskList
+              tasks={filteredTasks}
+              listType={listType}
+              completeTask={completeTask}
+            />
 
             <AddTaskContainer>
-              <TaskInput onSubmit={addTask} />
+              <TaskInput onSubmit={addTask} ref={inputRef} ref={submitRef} />
             </AddTaskContainer>
           </MainScreenContainer>
         </ScreenContainer>
