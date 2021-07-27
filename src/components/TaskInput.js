@@ -23,7 +23,7 @@ const TaskButtonContainer = styled.button`
   align-items: center;
 `;
 
-const TaskInput = ({ onSubmit }) => {
+const TaskInput = ({ onSubmit, searchRef, inputRef }) => {
   const [input, setInput] = useState("");
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -40,10 +40,17 @@ const TaskInput = ({ onSubmit }) => {
 
   useEffect(() => {
     inputRef.current.focus();
-  });
+  }, []);
 
-  const inputRef = useRef(null);
   const submitRef = useRef(null);
+
+  const searchKeyDown = (e) => {
+    console.log(e);
+    if (e.key === "Alt") {
+      console.log("focus on search");
+      searchRef.current.focus();
+    }
+  };
 
   return (
     <>
@@ -54,6 +61,7 @@ const TaskInput = ({ onSubmit }) => {
           onChange={handleChange}
           value={input}
           ref={inputRef}
+          onKeyDown={searchKeyDown}
         />
         <TaskButtonContainer onClick={handleSubmit} ref={submitRef}>
           <RiAddCircleFill size={35} color={"#44BCFF"} />

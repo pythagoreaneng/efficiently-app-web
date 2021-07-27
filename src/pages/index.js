@@ -161,6 +161,18 @@ const Home = ({ screenTitle }) => {
     task.title.toLowerCase().includes(search.toLowerCase())
   );
 
+  const searchRef = useRef(null);
+
+  const inputKeyDown = (e) => {
+    console.log(e);
+    if (e.key === "Alt") {
+      console.log("focus on input");
+      inputRef.current.focus();
+    }
+  };
+
+  const inputRef = useRef(null);
+
   return (
     <>
       <Container>
@@ -176,6 +188,8 @@ const Home = ({ screenTitle }) => {
                 placeholder="Search Efficiently"
                 onChange={handleSearch}
                 value={search}
+                ref={searchRef}
+                onKeyDown={inputKeyDown}
               />
             </TopSearchForm>
           </TopSearchContainer>
@@ -218,7 +232,11 @@ const Home = ({ screenTitle }) => {
             />
 
             <AddTaskContainer>
-              <TaskInput onSubmit={addTask} />
+              <TaskInput
+                onSubmit={addTask}
+                searchRef={searchRef}
+                inputRef={inputRef}
+              />
             </AddTaskContainer>
           </MainScreenContainer>
         </ScreenContainer>
