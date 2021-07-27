@@ -139,9 +139,8 @@ const Home = ({ screenTitle }) => {
     return;
   };
 
-  const handleMainScreen = (e) => {
-    // has to be lowercase
-    setListType(e.name.toLowerCase());
+  const listTypeHandler = (e) => {
+    setListType(e);
     setSearch("");
   };
 
@@ -177,25 +176,25 @@ const Home = ({ screenTitle }) => {
         <ScreenContainer>
           <SideScreenContainer>
             {sideScreenName}
-            <SideSectionWrapper onClick={() => setListType("inbox")}>
+            <SideSectionWrapper onClick={() => listTypeHandler("inbox")}>
               <SectionIcon>
                 <RiInboxFill />
               </SectionIcon>
               <SectionName>Inbox</SectionName>
             </SideSectionWrapper>
-            <SideSectionWrapper onClick={() => setListType("star")}>
+            <SideSectionWrapper onClick={() => listTypeHandler("star")}>
               <SectionIcon>
                 <RiStarSFill />
               </SectionIcon>
               <SectionName>Star</SectionName>
             </SideSectionWrapper>
-            <SideSectionWrapper onClick={() => setListType("upcoming")}>
+            <SideSectionWrapper onClick={() => listTypeHandler("upcoming")}>
               <SectionIcon>
                 <RiCalendarTodoFill />
               </SectionIcon>
               <SectionName>Upcoming</SectionName>
             </SideSectionWrapper>
-            <SideSectionWrapper onClick={() => setListType("archive")}>
+            <SideSectionWrapper onClick={() => listTypeHandler("archive")}>
               <SectionIcon>
                 <RiArchiveFill />
               </SectionIcon>
