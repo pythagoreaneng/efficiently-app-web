@@ -15,6 +15,7 @@ import {
 import MainScreenComponent from "../components/MainScreenComponent";
 import TaskForm from "../components/TaskForm";
 import test_tasks_1 from "./data/test_tasks_1";
+import TaskList from "../components/TaskList";
 
 const Container = styled.div`
   height: 100vh;
@@ -210,7 +211,7 @@ const Home = ({ screenTitle }) => {
           <MainScreenContainer>
             <MainTitleContainer>{mainScreenName}</MainTitleContainer>
 
-            <MainScreenComponent
+            <TaskList
               tasks={filteredTasks}
               setTasks={setTasks}
               mainScreenName={mainScreenName}
