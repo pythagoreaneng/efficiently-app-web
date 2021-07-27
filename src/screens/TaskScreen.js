@@ -109,43 +109,60 @@ const TaskScreen = ({
         <ScreenContainer>
           <SideScreenContainer>
             {sideScreenName}
-            <SideSectionWrapper onClick={() => sectionTypeHandler("inbox")}>
+            <SideSectionWrapper>
               <SectionIcon>
                 <RiInboxFill />
               </SectionIcon>
               <SectionName>
-                <NavLink exact to="/" activeStyle={{ fontWeight: "bold" }}>
+                <NavLink
+                  exact
+                  to="/"
+                  activeStyle={{ fontWeight: "bold" }}
+                  onClick={() => sectionTypeHandler("inbox")}
+                >
                   Inbox
                 </NavLink>
               </SectionName>
             </SideSectionWrapper>
-            <SideSectionWrapper onClick={() => sectionTypeHandler("star")}>
+            <SideSectionWrapper>
               <SectionIcon>
                 <RiStarSFill />
               </SectionIcon>
 
               <SectionName>
-                <NavLink to="/star" activeStyle={{ fontWeight: "bold" }}>
+                <NavLink
+                  to="/star"
+                  activeStyle={{ fontWeight: "bold" }}
+                  onClick={() => sectionTypeHandler("star")}
+                >
                   Star
                 </NavLink>
               </SectionName>
             </SideSectionWrapper>
-            <SideSectionWrapper onClick={() => sectionTypeHandler("upcoming")}>
+            <SideSectionWrapper>
               <SectionIcon>
                 <RiCalendarTodoFill />
               </SectionIcon>
               <SectionName>
-                <NavLink to="/upcoming" activeStyle={{ fontWeight: "bold" }}>
+                <NavLink
+                  to="/upcoming"
+                  activeStyle={{ fontWeight: "bold" }}
+                  onClick={() => sectionTypeHandler("upcoming")}
+                >
                   Upcoming
                 </NavLink>
               </SectionName>
             </SideSectionWrapper>
-            <SideSectionWrapper onClick={() => sectionTypeHandler("archive")}>
+            <SideSectionWrapper>
               <SectionIcon>
                 <RiArchiveFill />
               </SectionIcon>
               <SectionName>
-                <NavLink to="/archive" activeStyle={{ fontWeight: "bold" }}>
+                <NavLink
+                  to="/archive"
+                  activeStyle={{ fontWeight: "bold" }}
+                  onClick={() => sectionTypeHandler("archive")}
+                >
                   Archive
                 </NavLink>
               </SectionName>
