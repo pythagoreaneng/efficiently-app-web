@@ -1,17 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-// const TaskContainer = styled.div`
-//   height: auto;
-//   width: 100%;
-//   display: flex;
-//   align-items: center;
-//   border: 0.1rem solid #f1f1f1;
-//   margin: 1rem;
-//   border-radius: 0.5rem;
-//   background-color: #efefef;
-// `;
-
 const Checkbox = styled.input`
   margin: 1rem;
 `;
@@ -37,25 +26,30 @@ const TaskContainer = styled.div`
 `;
 
 const TaskList = ({ tasks, mainScreenName }) => {
-  const inboxTasks = tasks.filter((task) => !task.completed);
-  const archiveTasks = tasks.filter((task) => task.completed);
-  const starTasks = tasks.filter((task) => task.star);
-  const upcomingTasks = tasks.filter((task) => task.upcoming);
-
   const completeTask = () => {
     alert("Completing Task");
   };
 
   if (mainScreenName === "inbox") {
-    return inboxTasks.map((task) => <div>{task.title}</div>);
-  } else if (mainScreenName === "star") {
-    return starTasks.map((task) => <div>{task.title}</div>);
+    return tasks
+      .filter((task) => !task.completed)
+      .map((task) => <div>{task.title}</div>);
+  } else if (mainScreenName === "archived") {
+    return tasks
+      .filter((task) => task.completed)
+      .map((task) => <div>{task.title}</div>);
   } else if (mainScreenName === "upcoming") {
-    return upcomingTasks.map((task) => <div>{task.title}</div>);
-  } else if (mainScreenName === "archive") {
-    return archiveTasks.map((task) => <div>{task.title}</div>);
+    return tasks
+      .filter((task) => task.upcoming)
+      .map((task) => <div>{task.title}</div>);
+  } else if (mainScreenName === "star") {
+    return tasks
+      .filter((task) => task.star)
+      .map((task) => <div>{task.title}</div>);
   } else {
-    return inboxTasks.map((task) => <div>{task.title}</div>);
+    return tasks
+      .filter((task) => !task.completed)
+      .map((task) => <div>{task.title}</div>);
   }
 };
 
