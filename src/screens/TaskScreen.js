@@ -11,20 +11,19 @@ import TaskInput from "../components/TaskInput";
 import {
   Container,
   TopNavContainer,
-  TopLogoContainer,
+  TaskInputContainer,
   TopTitleWrapper,
   TopTitleContainer,
   TopSearchContainer,
   TopSearchForm,
   TopSearchInput,
   ScreenContainer,
-  SideScreenContainer,
-  MainScreenContainer,
-  SideSectionWrapper,
+  SectionTasksContainer,
   SectionIcon,
   SectionName,
-  MainTitleContainer,
-  TaskInputContainer,
+  SideScreenContainer,
+  SideSectionWrapper,
+  MainScreenContainer,
 } from "../pages/styles";
 import { NavLink } from "react-router-dom";
 
@@ -174,11 +173,13 @@ const TaskScreen = ({
             </SideSectionWrapper>
           </SideScreenContainer>
           <MainScreenContainer>
-            <SectionTasks
-              tasks={filteredTasks}
-              sectionType={sectionType}
-              completeTask={completeTask}
-            />
+            <SectionTasksContainer>
+              <SectionTasks
+                tasks={filteredTasks}
+                sectionType={sectionType}
+                completeTask={completeTask}
+              />
+            </SectionTasksContainer>
 
             <TaskInputContainer>
               <TaskInput

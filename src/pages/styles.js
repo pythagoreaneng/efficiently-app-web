@@ -103,8 +103,14 @@ export const MainScreenContainer = styled.div`
   position: relative;
 `;
 
+export const SectionTasksContainer = styled.div`
+  height: 85%;
+  overflow-y: auto;
+`;
+
 export const TaskInputContainer = styled.form`
   width: 100%;
+  height: 20%
   display: flex;
   justify-content: center;
   position: absolute;
