@@ -21,7 +21,7 @@ const TaskContainer = styled.div`
 const Task = ({ completed, title }) => {
   return (
     <TaskContainer>
-      <Checkbox />
+      <Checkbox type="Checkbox" checked={completed} />
       {title}
     </TaskContainer>
   );
