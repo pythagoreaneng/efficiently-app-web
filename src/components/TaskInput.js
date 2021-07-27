@@ -17,6 +17,10 @@ const WriteTaskInput = styled.input`
   border-radius: 1rem;
   margin: 0 1rem 0 1rem;
   text-align: center;
+  &:focus {
+    outline: none;
+    box-shadow: 0px 0px 0.5rem #46bcff;
+  }
 `;
 
 const AddTaskButton = styled.button`

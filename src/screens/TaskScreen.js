@@ -102,7 +102,7 @@ const TaskScreen = ({
             <TopSearchForm>
               <TopSearchInput
                 type="search"
-                placeholder="Search Efficiently"
+                placeholder="Search(Press alt)"
                 onChange={handleSearch}
                 value={search}
                 ref={searchRef}

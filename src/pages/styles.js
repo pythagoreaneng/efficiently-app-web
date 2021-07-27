@@ -36,21 +36,25 @@ export const TopSearchContainer = styled.div`
   display: flex;
 `;
 
-export const TopSearchForm = styled.form`
+export const TopSearchForm = styled.div`
   width 100%;
+  height: auto;
   display: flex;
   margin: 0 3rem;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 1rem;
 `;
 
 export const TopSearchInput = styled.input`
   width: 100%;
+  height: 3rem;
+  border: 0.1rem solid #efefef;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 1rem;
-  height: 2.5rem;
+  margin: 0 1rem 0 1rem;
   text-align: center;
+  &:focus {
+    outline: none;
+    box-shadow: 0px 0px 2rem #94d9ff;
+  }
 `;
 
 export const ScreenContainer = styled.div`
