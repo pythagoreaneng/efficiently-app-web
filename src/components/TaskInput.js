@@ -54,6 +54,7 @@ const TaskInput = ({ onSubmit, searchRef, inputRef }) => {
       completed: false,
       star: false,
       created_date: today,
+      due_date: "",
     });
     setInput("");
   };
