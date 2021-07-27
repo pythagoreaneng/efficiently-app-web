@@ -6,15 +6,20 @@ const AddTaskContainer = styled.div`
   width: 100%;
   height: auto;
   display: flex;
+  border-radius: 1rem;
 `;
 
-const WriteTaskContainer = styled.input`
+const WriteTaskInput = styled.input`
   width: 100%;
   height: 3rem;
   border: 0.1rem solid #efefef;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 1rem;
+  margin: 0 1rem 0 1rem;
+  text-align: center;
 `;
 
-const TaskButtonContainer = styled.button`
+const AddTaskButton = styled.button`
   height: auto;
   width: 3rem;
   margin-left: 1rem;
@@ -56,17 +61,17 @@ const TaskInput = ({ onSubmit, searchRef, inputRef }) => {
   return (
     <>
       <AddTaskContainer onSubmit={handleSubmit}>
-        <WriteTaskContainer
+        <WriteTaskInput
           id="input"
-          placeholder="#DoEfficiently"
+          placeholder="Start from here"
           onChange={handleChange}
           value={input}
           ref={inputRef}
           onKeyDown={searchKeyDown}
         />
-        <TaskButtonContainer onClick={handleSubmit} ref={submitRef}>
-          <RiAddCircleFill size={35} color={"#44BCFF"} />
-        </TaskButtonContainer>
+        <AddTaskButton onClick={handleSubmit} ref={submitRef}>
+          <RiAddCircleFill size={50} color={"#44BCFF"} />
+        </AddTaskButton>
       </AddTaskContainer>
     </>
   );

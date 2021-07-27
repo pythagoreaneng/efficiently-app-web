@@ -12,6 +12,7 @@ import {
   Container,
   TopNavContainer,
   TopLogoContainer,
+  TopTitleWrapper,
   TopTitleContainer,
   TopSearchContainer,
   TopSearchForm,
@@ -23,7 +24,7 @@ import {
   SectionIcon,
   SectionName,
   MainTitleContainer,
-  AddTaskContainer,
+  TaskInputContainer,
 } from "../pages/styles";
 import { NavLink } from "react-router-dom";
 
@@ -89,10 +90,14 @@ const TaskScreen = ({
     <>
       <Container>
         <TopNavContainer>
-          <TopLogoContainer>
-            <RiCalendarCheckFill className="h-8 w-8" />
-          </TopLogoContainer>
-          <TopTitleContainer>Efficiently App</TopTitleContainer>
+          <TopTitleContainer>
+            <NavLink exact to="/">
+              <TopTitleWrapper>
+                <RiCalendarCheckFill className="h-8 w-8" />
+                <div>Efficiently App</div>
+              </TopTitleWrapper>
+            </NavLink>
+          </TopTitleContainer>
           <TopSearchContainer>
             <TopSearchForm>
               <TopSearchInput
@@ -169,21 +174,19 @@ const TaskScreen = ({
             </SideSectionWrapper>
           </SideScreenContainer>
           <MainScreenContainer>
-            <MainTitleContainer>{sectionType.toUpperCase()}</MainTitleContainer>
-
             <SectionTasks
               tasks={filteredTasks}
               sectionType={sectionType}
               completeTask={completeTask}
             />
 
-            <AddTaskContainer>
+            <TaskInputContainer>
               <TaskInput
                 onSubmit={addTask}
                 searchRef={searchRef}
                 inputRef={inputRef}
               />
-            </AddTaskContainer>
+            </TaskInputContainer>
           </MainScreenContainer>
         </ScreenContainer>
       </Container>

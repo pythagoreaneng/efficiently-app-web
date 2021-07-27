@@ -9,7 +9,6 @@ export const TopNavContainer = styled.div`
   width: 100wh;
   background-color: #46bcff;
   display: flex;
-
   align-items: center;
 `;
 
@@ -21,23 +20,28 @@ export const TopLogoContainer = styled.div`
 `;
 
 export const TopTitleContainer = styled.div`
-  width: 25%;
-  display: flex-start;
+  width: 30%;
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   alitgn-items: cetner;
   font-size: 1.5em;
 `;
+
+export const TopTitleWrapper = styled.div`
+  display: flex;
+`;
 export const TopSearchContainer = styled.div`
   width: 70%;
   display: flex;
-  justify-content: center;
-  alitgn-items: cetner;
 `;
 
 export const TopSearchForm = styled.form`
-  width 90%;
+  width 100%;
   display: flex;
+  margin: 0 3rem;
   justify-content: center;
+  align-items: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 1rem;
 `;
@@ -60,14 +64,9 @@ export const SideScreenContainer = styled.div`
   background-color: #fafafa;
 `;
 
-export const MainScreenContainer = styled.div`
-  height: 100%;
-  width: 70%;
-`;
-
 export const SideSectionWrapper = styled.div`
   height: 2rem;
-  width: 80%;
+  width: auto;
   background-color: #fefefe;
   margin: 1rem;
   display: flex;
@@ -91,14 +90,20 @@ export const MainTitleContainer = styled.div`
   display: flex;
   align-items: center;
   padding-left: 2rem;
+  background-color: blue;
 `;
 
-export const AddTaskContainer = styled.form`
-  width: 50%;
-  padding 1rem;
+export const MainScreenContainer = styled.div`
+  height: 100%;
+  width: 70%;
+  position: relative;
+`;
+
+export const TaskInputContainer = styled.form`
+  width: 100%;
   display: flex;
   justify-content: center;
   position: absolute;
   bottom: 0;
-  display: flex;
+  padding: 1rem 2rem;
 `;
