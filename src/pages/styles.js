@@ -62,16 +62,23 @@ export const ScreenContainer = styled.div`
   height: 90%;
 `;
 
-export const SideScreenContainer = styled.div`
+export const MainScreenContainer = styled.div`
+  width: 70%;
   height: 100%;
+  position: relative;
+`;
+
+export const SideScreenContainer = styled.div`
   width: 30%;
+  height: 100%;
   background-color: #fafafa;
+  padding: 0.5rem 0;
 `;
 
 export const SideSectionWrapper = styled.div`
   height: 2rem;
   width: auto;
-  background-color: #fefefe;
+  background-color: #fff;
   margin: 1rem;
   display: flex;
   align-items: center;
@@ -82,10 +89,12 @@ export const SectionIcon = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 1rem;
 `;
 export const SectionName = styled.div`
   display: flex;
   width: 90%;
+  padding: 1rem;
 `;
 
 export const MainTitleContainer = styled.div`
@@ -95,12 +104,6 @@ export const MainTitleContainer = styled.div`
   align-items: center;
   padding-left: 2rem;
   background-color: blue;
-`;
-
-export const MainScreenContainer = styled.div`
-  height: 100%;
-  width: 70%;
-  position: relative;
 `;
 
 export const SectionTasksContainer = styled.div`
