@@ -1,30 +1,40 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import TaskForm from "./TaskForm";
-import FilteredTasks from "./FilteredTasks";
-import Task from "./Task";
 
-const TaskContainer = styled.div`
-  height: auto;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  border: 0.1rem solid #f1f1f1;
-  margin: 1rem;
-  border-radius: 0.5rem;
-  background-color: #efefef;
-`;
+// const TaskContainer = styled.div`
+//   height: auto;
+//   width: 100%;
+//   display: flex;
+//   align-items: center;
+//   border: 0.1rem solid #f1f1f1;
+//   margin: 1rem;
+//   border-radius: 0.5rem;
+//   background-color: #efefef;
+// `;
 
 const Checkbox = styled.input`
   margin: 1rem;
 `;
+
+const TaskTitleContainer = styled.div``;
 
 const TasksContainer = styled.div`
   height: 100%;
   position: relative;
 `;
 
-const TaskTitleContainer = styled.div``;
+const TaskContainer = styled.div`
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 0.1rem solid #f1f1f1;
+  border-radius: 0.5rem;
+  background-color: #efefef;
+  margin: 1rem;
+  padding: 1rem;
+`;
 
 const TaskList = ({ tasks, mainScreenName }) => {
   const inboxTasks = tasks.filter((task) => !task.completed);
@@ -36,69 +46,17 @@ const TaskList = ({ tasks, mainScreenName }) => {
     alert("Completing Task");
   };
 
-  console.log(inboxTasks.map);
   if (mainScreenName === "inbox") {
-    inboxTasks.map((task) => {
-      return <div>Hey</div>;
-    });
+    return inboxTasks.map((task) => <div>{task.title}</div>);
   } else if (mainScreenName === "star") {
-    // starTasks.map((task) => {
-    //   return (
-    //     <TaskContainer>
-    //       <Checkbox type="checkbox" onClick={() => completeTask()} />
-    //       {task.title}
-    //     </TaskContainer>
-    //   );
-    // });
-    return <div>star</div>;
+    return starTasks.map((task) => <div>{task.title}</div>);
+  } else if (mainScreenName === "upcoming") {
+    return upcomingTasks.map((task) => <div>{task.title}</div>);
+  } else if (mainScreenName === "archive") {
+    return archiveTasks.map((task) => <div>{task.title}</div>);
   } else {
-    // return <TaskList tasks={tasks} inbox={true} />
-    return <div>Else</div>;
+    return inboxTasks.map((task) => <div>{task.title}</div>);
   }
-
-  // return (
-  //   <>
-  //     <TasksContainer>
-  //       {inbox &&
-  //         inboxTasks.map((task) => {
-  //           return (
-  //             <TaskContainer>
-  //               <Checkbox type="checkbox" onClick={() => completeTask()} />
-  //               {task.title}
-  //             </TaskContainer>
-  //           );
-  //         })}
-  //       {archive &&
-  //         archiveTasks.map((task) => {
-  //           return (
-  //             <TaskContainer>
-  //               <Checkbox type="checkbox" onClick={() => completeTask()} />
-  //               {task.title}
-  //             </TaskContainer>
-  //           );
-  //         })}
-
-  //       {star &&
-  //         starTasks.map((task) => {
-  //           return (
-  //             <TaskContainer>
-  //               <Checkbox type="checkbox" onClick={() => completeTask()} />
-  //               {task.title}
-  //             </TaskContainer>
-  //           );
-  //         })}
-  //       {upcoming &&
-  //         upcomingTasks.map((task) => {
-  //           return (
-  //             <TaskContainer>
-  //               <Checkbox type="checkbox" onClick={() => completeTask()} />
-  //               {task.title}
-  //             </TaskContainer>
-  //           );
-  //         })}
-  //     </TasksContainer>
-  //   </>
-  // );
 };
 
 export default TaskList;
