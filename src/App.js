@@ -15,8 +15,8 @@ function App() {
   // screen name hook,
   const [sideScreenName, setSideScreenName] = useState("");
 
-  // list type (inbox, star, ...) hook, required for filtering tasks in TaskList
-  const [listType, setListType] = useState("inbox");
+  // list type (inbox, star, ...) hook, required for filtering tasks in SectionTasks
+  const [sectionType, setSectionType] = useState("inbox");
   return (
     <>
       <Router>
@@ -26,8 +26,8 @@ function App() {
               tasks={tasks}
               setTasks={setTasks}
               sideScreenName={sideScreenName}
-              listType={listType}
-              setListType={setListType}
+              sectionType={sectionType}
+              setSectionType={setSectionType}
             />
           </Route>
           <Route path="/archive">
@@ -35,8 +35,8 @@ function App() {
               tasks={tasks}
               setTasks={setTasks}
               sideScreenName={sideScreenName}
-              listType={listType}
-              setListType={setListType}
+              sectionType={sectionType}
+              setSectionType={setSectionType}
             />
           </Route>
           <Route path="/upcoming">
@@ -44,8 +44,8 @@ function App() {
               tasks={tasks}
               setTasks={setTasks}
               sideScreenName={sideScreenName}
-              listType={listType}
-              setListType={setListType}
+              sectionType={sectionType}
+              setSectionType={setSectionType}
             />
           </Route>
           <Route exact path="/">
@@ -53,8 +53,8 @@ function App() {
               tasks={tasks}
               setTasks={setTasks}
               sideScreenName={sideScreenName}
-              listType={listType}
-              setListType={setListType}
+              sectionType={sectionType}
+              setSectionType={setSectionType}
             />
           </Route>
         </Switch>

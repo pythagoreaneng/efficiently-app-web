@@ -23,6 +23,7 @@ const TaskButtonContainer = styled.button`
   align-items: center;
 `;
 
+// input component to add tasks
 const TaskInput = ({ onSubmit, searchRef, inputRef }) => {
   const [input, setInput] = useState("");
   const handleChange = (e) => {

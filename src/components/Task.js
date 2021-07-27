@@ -18,6 +18,7 @@ const TaskContainer = styled.div`
   padding: 1rem;
 `;
 
+// single task card component
 const Task = ({ completed, title, completeTask }) => {
   return (
     <TaskContainer>

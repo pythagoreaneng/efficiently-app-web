@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import {
   RiCalendarCheckFill,
   RiInboxFill,
@@ -6,7 +6,7 @@ import {
   RiCalendarTodoFill,
   RiArchiveFill,
 } from "react-icons/ri";
-import TaskList from "../components/TaskList";
+import SectionTasks from "../components/SectionTasks";
 import TaskInput from "../components/TaskInput";
 import {
   Container,
@@ -27,16 +27,18 @@ import {
 } from "../pages/styles";
 import { NavLink } from "react-router-dom";
 
+// TaskScreen is an interface which serves all the ToDo functionality
+
 const TaskScreen = ({
   tasks,
   setTasks,
   sideScreenName,
-  listType,
-  setListType,
+  sectionType,
+  setSectionType,
 }) => {
   // clears search box upon click
-  const listTypeHandler = (e) => {
-    setListType(e);
+  const sectionTypeHandler = (e) => {
+    setSectionType(e);
     setSearch("");
   };
 
@@ -107,7 +109,7 @@ const TaskScreen = ({
         <ScreenContainer>
           <SideScreenContainer>
             {sideScreenName}
-            <SideSectionWrapper onClick={() => listTypeHandler("inbox")}>
+            <SideSectionWrapper onClick={() => sectionTypeHandler("inbox")}>
               <SectionIcon>
                 <RiInboxFill />
               </SectionIcon>
@@ -117,7 +119,7 @@ const TaskScreen = ({
                 </NavLink>
               </SectionName>
             </SideSectionWrapper>
-            <SideSectionWrapper onClick={() => listTypeHandler("star")}>
+            <SideSectionWrapper onClick={() => sectionTypeHandler("star")}>
               <SectionIcon>
                 <RiStarSFill />
               </SectionIcon>
@@ -128,7 +130,7 @@ const TaskScreen = ({
                 </NavLink>
               </SectionName>
             </SideSectionWrapper>
-            <SideSectionWrapper onClick={() => listTypeHandler("upcoming")}>
+            <SideSectionWrapper onClick={() => sectionTypeHandler("upcoming")}>
               <SectionIcon>
                 <RiCalendarTodoFill />
               </SectionIcon>
@@ -138,7 +140,7 @@ const TaskScreen = ({
                 </NavLink>
               </SectionName>
             </SideSectionWrapper>
-            <SideSectionWrapper onClick={() => listTypeHandler("archive")}>
+            <SideSectionWrapper onClick={() => sectionTypeHandler("archive")}>
               <SectionIcon>
                 <RiArchiveFill />
               </SectionIcon>
@@ -150,11 +152,11 @@ const TaskScreen = ({
             </SideSectionWrapper>
           </SideScreenContainer>
           <MainScreenContainer>
-            <MainTitleContainer>{listType.toUpperCase()}</MainTitleContainer>
+            <MainTitleContainer>{sectionType.toUpperCase()}</MainTitleContainer>
 
-            <TaskList
+            <SectionTasks
               tasks={filteredTasks}
-              listType={listType}
+              sectionType={sectionType}
               completeTask={completeTask}
             />
 
