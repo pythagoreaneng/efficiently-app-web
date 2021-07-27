@@ -124,7 +124,7 @@ const Home = ({ screenTitle }) => {
 
   // screen name hooks
   const [sideScreenName, setSideScreenName] = useState("");
-  const [taskType, setTaskType] = useState("inbox");
+  const [listType, setListType] = useState("inbox");
 
   //this has to add date
   const addTask = (task) => {
@@ -141,7 +141,7 @@ const Home = ({ screenTitle }) => {
 
   const handleMainScreen = (e) => {
     // has to be lowercase
-    setTaskType(e.name.toLowerCase());
+    setListType(e.name.toLowerCase());
     setSearch("");
   };
 
@@ -177,25 +177,25 @@ const Home = ({ screenTitle }) => {
         <ScreenContainer>
           <SideScreenContainer>
             {sideScreenName}
-            <SideSectionWrapper onClick={() => setTaskType("inbox")}>
+            <SideSectionWrapper onClick={() => setListType("inbox")}>
               <SectionIcon>
                 <RiInboxFill />
               </SectionIcon>
               <SectionName>Inbox</SectionName>
             </SideSectionWrapper>
-            <SideSectionWrapper onClick={() => setTaskType("star")}>
+            <SideSectionWrapper onClick={() => setListType("star")}>
               <SectionIcon>
                 <RiStarSFill />
               </SectionIcon>
               <SectionName>Star</SectionName>
             </SideSectionWrapper>
-            <SideSectionWrapper onClick={() => setTaskType("upcoming")}>
+            <SideSectionWrapper onClick={() => setListType("upcoming")}>
               <SectionIcon>
                 <RiCalendarTodoFill />
               </SectionIcon>
               <SectionName>Upcoming</SectionName>
             </SideSectionWrapper>
-            <SideSectionWrapper onClick={() => setTaskType("archive")}>
+            <SideSectionWrapper onClick={() => setListType("archive")}>
               <SectionIcon>
                 <RiArchiveFill />
               </SectionIcon>
@@ -203,9 +203,9 @@ const Home = ({ screenTitle }) => {
             </SideSectionWrapper>
           </SideScreenContainer>
           <MainScreenContainer>
-            <MainTitleContainer>{taskType}</MainTitleContainer>
+            <MainTitleContainer>{listType}</MainTitleContainer>
 
-            <TaskList tasks={filteredTasks} taskType={taskType} />
+            <TaskList tasks={filteredTasks} listType={listType} />
 
             <AddTaskContainer>
               <TaskInput onSubmit={addTask} />

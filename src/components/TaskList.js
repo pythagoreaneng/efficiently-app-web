@@ -7,14 +7,14 @@ const TasksContainer = styled.div`
   position: relative;
 `;
 
-const TaskList = ({ tasks, taskType }) => {
+const TaskList = ({ tasks, listType }) => {
   const completeTask = () => {
     alert("Completing Task");
   };
 
   // TaskList shows a filtered list of tasks depending on a props passed
 
-  if (taskType === "inbox") {
+  if (listType === "inbox") {
     return tasks
       .filter((task) => !task.completed)
       .map((task) => {
@@ -27,7 +27,7 @@ const TaskList = ({ tasks, taskType }) => {
           />
         );
       });
-  } else if (taskType === "archive") {
+  } else if (listType === "archive") {
     return tasks
       .filter((task) => task.completed)
       .map((task) => {
@@ -40,7 +40,7 @@ const TaskList = ({ tasks, taskType }) => {
           />
         );
       });
-  } else if (taskType === "upcoming") {
+  } else if (listType === "upcoming") {
     return tasks
       .filter((task) => task.upcoming)
       .map((task) => {
@@ -53,7 +53,7 @@ const TaskList = ({ tasks, taskType }) => {
           />
         );
       });
-  } else if (taskType === "star") {
+  } else if (listType === "star") {
     return tasks
       .filter((task) => task.star)
       .map((task) => {
