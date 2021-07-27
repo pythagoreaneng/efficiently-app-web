@@ -40,7 +40,7 @@ const SectionTasks = ({
       });
   } else if (sectionType === "upcoming") {
     return tasks
-      .filter((task) => task.upcoming)
+      .filter((task) => task.schedule_date > todayDate)
       .map((task) => {
         return (
           <Task

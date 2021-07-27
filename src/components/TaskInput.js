@@ -48,6 +48,7 @@ const TaskInput = ({ onSubmit, searchRef, inputRef, todayDate }) => {
       star: false,
       created_date: todayDate,
       due_date: "07/28/2021",
+      schedule_date: "08/28/2021",
     });
     setInput("");
   };
