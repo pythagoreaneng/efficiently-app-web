@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { RiAddCircleFill } from "react-icons/ri";
 import styled from "styled-components";
 
-const AddTaskContainer = styled.form`
+const AddTaskContainer = styled.div`
   width: 100%;
   height: auto;
   display: flex;
