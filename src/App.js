@@ -12,10 +12,10 @@ function App() {
   // unfiltered tasks
   const [tasks, setTasks] = useState(test_tasks_1);
 
-  // screen name hooks
+  // screen name hook,
   const [sideScreenName, setSideScreenName] = useState("");
 
-  // list type (inbox, star, ...) hook
+  // list type (inbox, star, ...) hook, required for filtering tasks in TaskList
   const [listType, setListType] = useState("inbox");
   return (
     <>

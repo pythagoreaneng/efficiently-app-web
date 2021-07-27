@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import Task from "./Task";
 
 const TaskList = ({ tasks, listType, completeTask }) => {
