@@ -7,11 +7,7 @@ const TasksContainer = styled.div`
   position: relative;
 `;
 
-const TaskList = ({ tasks, listType }) => {
-  const completeTask = () => {
-    alert("Completing Task");
-  };
-
+const TaskList = ({ tasks, listType, completeTask }) => {
   // TaskList shows a filtered list of tasks depending on a props passed
 
   if (listType === "inbox") {
@@ -24,6 +20,7 @@ const TaskList = ({ tasks, listType }) => {
             completed={task.completed}
             title={task.title}
             star={task.star}
+            completeTask={completeTask}
           />
         );
       });

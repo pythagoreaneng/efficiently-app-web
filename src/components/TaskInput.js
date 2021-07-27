@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { RiAddCircleFill } from "react-icons/ri";
 import styled from "styled-components";
 
 const AddTaskContainer = styled.form`
@@ -15,12 +16,14 @@ const WriteTaskContainer = styled.input`
 
 const TaskButtonContainer = styled.button`
   height: auto;
-  width: 2rem;
+  width: 3rem;
   margin-left: 1rem;
-  border: 0.1rem solid #efefef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
-const TaskInput = ({ onSubmit }) => {
+const TaskInput = ({ onSubmit, searchRef, inputRef }) => {
   const [input, setInput] = useState("");
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -35,6 +38,20 @@ const TaskInput = ({ onSubmit }) => {
     setInput("");
   };
 
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
+
+  const submitRef = useRef(null);
+
+  const searchKeyDown = (e) => {
+    console.log(e);
+    if (e.key === "Alt") {
+      console.log("focus on search");
+      searchRef.current.focus();
+    }
+  };
+
   return (
     <>
       <AddTaskContainer onSubmit={handleSubmit}>
@@ -43,8 +60,12 @@ const TaskInput = ({ onSubmit }) => {
           placeholder="#DoEfficiently"
           onChange={handleChange}
           value={input}
+          ref={inputRef}
+          onKeyDown={searchKeyDown}
         />
-        <TaskButtonContainer onClick={handleSubmit}>+</TaskButtonContainer>
+        <TaskButtonContainer onClick={handleSubmit} ref={submitRef}>
+          <RiAddCircleFill size={35} color={"#44BCFF"} />
+        </TaskButtonContainer>
       </AddTaskContainer>
     </>
   );
