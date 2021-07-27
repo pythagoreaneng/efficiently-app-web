@@ -1,7 +1,7 @@
 import React from "react";
 import TaskScreen from "../components/TaskScreen";
 
-const Inbox = ({ tasks, setTasks, sideScreenName, listType, setListType }) => {
+const Star = ({ tasks, setTasks, sideScreenName, listType, setListType }) => {
   return (
     <>
       <TaskScreen
@@ -15,4 +15,4 @@ const Inbox = ({ tasks, setTasks, sideScreenName, listType, setListType }) => {
   );
 };
 
-export default Inbox;
+export default Star;
