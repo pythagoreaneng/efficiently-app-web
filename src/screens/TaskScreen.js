@@ -5,6 +5,7 @@ import {
   RiStarSFill,
   RiCalendarTodoFill,
   RiArchiveFill,
+  RiLightbulbFlashFill,
 } from "react-icons/ri";
 import SectionTasks from "../components/SectionTasks";
 import TaskInput from "../components/TaskInput";
@@ -35,6 +36,7 @@ const TaskScreen = ({
   sideScreenName,
   sectionType,
   setSectionType,
+  today,
 }) => {
   // clears search box upon click
   const sectionTypeHandler = (e) => {
@@ -129,6 +131,21 @@ const TaskScreen = ({
             </SideSectionWrapper>
             <SideSectionWrapper>
               <SectionIcon>
+                <RiLightbulbFlashFill />
+              </SectionIcon>
+
+              <SectionName>
+                <NavLink
+                  to="/today"
+                  activeStyle={{ fontWeight: "bold" }}
+                  onClick={() => sectionTypeHandler("today")}
+                >
+                  Today
+                </NavLink>
+              </SectionName>
+            </SideSectionWrapper>
+            <SideSectionWrapper>
+              <SectionIcon>
                 <RiStarSFill />
               </SectionIcon>
 
@@ -177,6 +194,7 @@ const TaskScreen = ({
                 tasks={filteredTasks}
                 sectionType={sectionType}
                 completeTask={completeTask}
+                today={today}
               />
             </SectionTasksContainer>
 
@@ -185,6 +203,7 @@ const TaskScreen = ({
                 onSubmit={addTask}
                 searchRef={searchRef}
                 inputRef={inputRef}
+                today={today}
               />
             </TaskInputContainer>
           </MainScreenContainer>

@@ -7,6 +7,7 @@ const Star = ({
   sideScreenName,
   sectionType,
   setSectionType,
+  today,
 }) => {
   return (
     <>
@@ -16,6 +17,7 @@ const Star = ({
         sideScreenName={sideScreenName}
         sectionType={sectionType}
         setSectionType={setSectionType}
+        today={today}
       />
     </>
   );

@@ -4,9 +4,17 @@ import Inbox from "./pages/index";
 import Star from "./pages/star";
 import Archive from "./pages/archive";
 import Upcoming from "./pages/upcoming";
+import Today from "./pages/today";
 import test_tasks_1 from "./pages/data/test_tasks_1";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, "0");
+var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+var yyyy = today.getFullYear();
+
+today = mm + "/" + dd + "/" + yyyy;
 
 function App() {
   // unfiltered tasks
@@ -28,6 +36,7 @@ function App() {
               sideScreenName={sideScreenName}
               sectionType={sectionType}
               setSectionType={setSectionType}
+              today={today}
             />
           </Route>
           <Route path="/archive">
@@ -37,6 +46,7 @@ function App() {
               sideScreenName={sideScreenName}
               sectionType={sectionType}
               setSectionType={setSectionType}
+              today={today}
             />
           </Route>
           <Route path="/upcoming">
@@ -46,6 +56,17 @@ function App() {
               sideScreenName={sideScreenName}
               sectionType={sectionType}
               setSectionType={setSectionType}
+              today={today}
+            />
+          </Route>
+          <Route path="/today">
+            <Today
+              tasks={tasks}
+              setTasks={setTasks}
+              sideScreenName={sideScreenName}
+              sectionType={sectionType}
+              setSectionType={setSectionType}
+              today={today}
             />
           </Route>
           <Route exact path="/">
@@ -55,6 +76,7 @@ function App() {
               sideScreenName={sideScreenName}
               sectionType={sectionType}
               setSectionType={setSectionType}
+              today={today}
             />
           </Route>
         </Switch>

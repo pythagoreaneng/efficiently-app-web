@@ -32,15 +32,8 @@ const AddTaskButton = styled.button`
   align-items: center;
 `;
 
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, "0");
-var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-var yyyy = today.getFullYear();
-
-today = mm + "/" + dd + "/" + yyyy;
-
 // input component to add tasks
-const TaskInput = ({ onSubmit, searchRef, inputRef }) => {
+const TaskInput = ({ onSubmit, searchRef, inputRef, today }) => {
   const [input, setInput] = useState("");
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -54,7 +47,7 @@ const TaskInput = ({ onSubmit, searchRef, inputRef }) => {
       completed: false,
       star: false,
       created_date: today,
-      due_date: "",
+      due_date: "07/28/2021",
     });
     setInput("");
   };
