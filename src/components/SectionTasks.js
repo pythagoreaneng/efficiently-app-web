@@ -1,16 +1,11 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React from "react";
 import Task from "./Task";
 
-const TasksContainer = styled.div`
-  height: 100%;
-  position: relative;
-`;
-
-const TaskList = ({ tasks, listType, completeTask }) => {
-  // TaskList shows a filtered list of tasks depending on a props passed
-
-  if (listType === "inbox") {
+// SectionTasks displays a filtered list of tasks depending on a sectionType props passed into it
+// Embeded insided TaskScreen
+const SectionTasks = ({ tasks, sectionType, completeTask }) => {
+  if (sectionType === "inbox") {
+    // diplays inbox, which is task.completed = false
     return tasks
       .filter((task) => !task.completed)
       .map((task) => {
@@ -24,7 +19,7 @@ const TaskList = ({ tasks, listType, completeTask }) => {
           />
         );
       });
-  } else if (listType === "archive") {
+  } else if (sectionType === "archive") {
     return tasks
       .filter((task) => task.completed)
       .map((task) => {
@@ -37,7 +32,7 @@ const TaskList = ({ tasks, listType, completeTask }) => {
           />
         );
       });
-  } else if (listType === "upcoming") {
+  } else if (sectionType === "upcoming") {
     return tasks
       .filter((task) => task.upcoming)
       .map((task) => {
@@ -50,7 +45,7 @@ const TaskList = ({ tasks, listType, completeTask }) => {
           />
         );
       });
-  } else if (listType === "star") {
+  } else if (sectionType === "star") {
     return tasks
       .filter((task) => task.star)
       .map((task) => {
@@ -64,6 +59,7 @@ const TaskList = ({ tasks, listType, completeTask }) => {
         );
       });
   } else {
+    // any other cases displays inbox
     return tasks
       .filter((task) => !task.completed)
       .map((task) => {
@@ -79,4 +75,4 @@ const TaskList = ({ tasks, listType, completeTask }) => {
   }
 };
 
-export default TaskList;
+export default SectionTasks;

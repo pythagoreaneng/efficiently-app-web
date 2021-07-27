@@ -1,18 +1,24 @@
 import React from "react";
-import TaskScreen from "../components/TaskScreen";
+import TaskScreen from "../screens/TaskScreen";
 
-const Star = ({ tasks, setTasks, sideScreenName, listType, setListType }) => {
+const Archive = ({
+  tasks,
+  setTasks,
+  sideScreenName,
+  sectionType,
+  setSectionType,
+}) => {
   return (
     <>
       <TaskScreen
         tasks={tasks}
         setTasks={setTasks}
         sideScreenName={sideScreenName}
-        listType={listType}
-        setListType={setListType}
+        sectionType={sectionType}
+        setSectionType={setSectionType}
       />
     </>
   );
 };
 
-export default Star;
+export default Archive;

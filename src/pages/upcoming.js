@@ -1,12 +1,12 @@
 import React from "react";
-import TaskScreen from "../components/TaskScreen";
+import TaskScreen from "../screens/TaskScreen";
 
 const Upcoming = ({
   tasks,
   setTasks,
   sideScreenName,
-  listType,
-  setListType,
+  sectionType,
+  setSectionType,
 }) => {
   return (
     <>
@@ -14,8 +14,8 @@ const Upcoming = ({
         tasks={tasks}
         setTasks={setTasks}
         sideScreenName={sideScreenName}
-        listType={listType}
-        setListType={setListType}
+        sectionType={sectionType}
+        setSectionType={setSectionType}
       />
     </>
   );

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import {
   RiCalendarCheckFill,
   RiInboxFill,
@@ -6,7 +6,7 @@ import {
   RiCalendarTodoFill,
   RiArchiveFill,
 } from "react-icons/ri";
-import TaskList from "../components/TaskList";
+import SectionTasks from "../components/SectionTasks";
 import TaskInput from "../components/TaskInput";
 import {
   Container,
@@ -27,16 +27,18 @@ import {
 } from "../pages/styles";
 import { NavLink } from "react-router-dom";
 
+// TaskScreen is an interface which serves all the ToDo functionality
+
 const TaskScreen = ({
   tasks,
   setTasks,
   sideScreenName,
-  listType,
-  setListType,
+  sectionType,
+  setSectionType,
 }) => {
   // clears search box upon click
-  const listTypeHandler = (e) => {
-    setListType(e);
+  const sectionTypeHandler = (e) => {
+    setSectionType(e);
     setSearch("");
   };
 
@@ -107,54 +109,71 @@ const TaskScreen = ({
         <ScreenContainer>
           <SideScreenContainer>
             {sideScreenName}
-            <SideSectionWrapper onClick={() => listTypeHandler("inbox")}>
+            <SideSectionWrapper>
               <SectionIcon>
                 <RiInboxFill />
               </SectionIcon>
               <SectionName>
-                <NavLink exact to="/" activeStyle={{ fontWeight: "bold" }}>
+                <NavLink
+                  exact
+                  to="/"
+                  activeStyle={{ fontWeight: "bold" }}
+                  onClick={() => sectionTypeHandler("inbox")}
+                >
                   Inbox
                 </NavLink>
               </SectionName>
             </SideSectionWrapper>
-            <SideSectionWrapper onClick={() => listTypeHandler("star")}>
+            <SideSectionWrapper>
               <SectionIcon>
                 <RiStarSFill />
               </SectionIcon>
 
               <SectionName>
-                <NavLink to="/star" activeStyle={{ fontWeight: "bold" }}>
+                <NavLink
+                  to="/star"
+                  activeStyle={{ fontWeight: "bold" }}
+                  onClick={() => sectionTypeHandler("star")}
+                >
                   Star
                 </NavLink>
               </SectionName>
             </SideSectionWrapper>
-            <SideSectionWrapper onClick={() => listTypeHandler("upcoming")}>
+            <SideSectionWrapper>
               <SectionIcon>
                 <RiCalendarTodoFill />
               </SectionIcon>
               <SectionName>
-                <NavLink to="/upcoming" activeStyle={{ fontWeight: "bold" }}>
+                <NavLink
+                  to="/upcoming"
+                  activeStyle={{ fontWeight: "bold" }}
+                  onClick={() => sectionTypeHandler("upcoming")}
+                >
                   Upcoming
                 </NavLink>
               </SectionName>
             </SideSectionWrapper>
-            <SideSectionWrapper onClick={() => listTypeHandler("archive")}>
+            <SideSectionWrapper>
               <SectionIcon>
                 <RiArchiveFill />
               </SectionIcon>
               <SectionName>
-                <NavLink to="/archive" activeStyle={{ fontWeight: "bold" }}>
+                <NavLink
+                  to="/archive"
+                  activeStyle={{ fontWeight: "bold" }}
+                  onClick={() => sectionTypeHandler("archive")}
+                >
                   Archive
                 </NavLink>
               </SectionName>
             </SideSectionWrapper>
           </SideScreenContainer>
           <MainScreenContainer>
-            <MainTitleContainer>{listType.toUpperCase()}</MainTitleContainer>
+            <MainTitleContainer>{sectionType.toUpperCase()}</MainTitleContainer>
 
-            <TaskList
+            <SectionTasks
               tasks={filteredTasks}
-              listType={listType}
+              sectionType={sectionType}
               completeTask={completeTask}
             />
 
