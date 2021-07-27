@@ -110,12 +110,6 @@ const MainTitleContainer = styled.div`
   padding-left: 2rem;
 `;
 
-const MainBodyContainer = styled.div`
-  height: 85%;
-  padding: 1rem 2rem;
-  overflow-y: scroll;
-`;
-
 const AddTaskContainer = styled.form`
   width: 50%;
   padding 1rem;
@@ -134,8 +128,9 @@ const Home = ({ screenTitle }) => {
 
   // screen name hooks
   const [sideScreenName, setSideScreenName] = useState("");
-  const [mainScreenName, setMainScreenName] = useState("INBOX");
+  const [mainScreenName, setMainScreenName] = useState("Inbox");
 
+  //this has to add date
   const addTask = (task) => {
     if (task.title === "" || /^\s*$/.test(task.title)) {
       console.log("Invalid task");
@@ -214,14 +209,12 @@ const Home = ({ screenTitle }) => {
           </SideScreenContainer>
           <MainScreenContainer>
             <MainTitleContainer>{mainScreenName}</MainTitleContainer>
-            <MainBodyContainer>
-              <MainScreenComponent
-                tasks={filteredTasks}
-                setTasks={setTasks}
-                mainScreen={mainScreen}
-                mainScreenName={mainScreenName}
-              />
-            </MainBodyContainer>
+
+            <MainScreenComponent
+              tasks={filteredTasks}
+              setTasks={setTasks}
+              mainScreenName={mainScreenName}
+            />
             <AddTaskContainer>
               <TaskForm onSubmit={addTask} />
             </AddTaskContainer>

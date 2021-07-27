@@ -20,7 +20,7 @@ const TaskButtonContainer = styled.button`
   border: 0.1rem solid #efefef;
 `;
 
-const TaskForm = ({ addTask, onSubmit }) => {
+const TaskForm = ({ onSubmit }) => {
   const [input, setInput] = useState("");
   const handleChange = (e) => {
     setInput(e.target.value);

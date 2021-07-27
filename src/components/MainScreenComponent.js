@@ -10,8 +10,10 @@ const MainScreenComponent = ({ tasks, mainScreenName }) => {
     return <TaskList tasks={tasks} upcoming={true} />;
   } else if (mainScreenName === "archive") {
     return <TaskList tasks={tasks} archive={true} />;
-  } else {
-    return <TaskList tasks={tasks} star={true} />;
+  }
+  // default = inbox
+  else {
+    return <TaskList tasks={tasks} inbox={true} />;
   }
 };
 

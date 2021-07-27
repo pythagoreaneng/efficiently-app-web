@@ -3,49 +3,6 @@ import styled from "styled-components";
 import TaskForm from "./TaskForm";
 import FilteredTasks from "./FilteredTasks";
 
-var test = [
-  {
-    key: 1,
-    title: "sample title 1",
-    completed: true,
-    star: true,
-    "created-date": "07-11-2021",
-    "due-date": "07-11-2021",
-  },
-  {
-    key: 2,
-    title: "sample title 2",
-    completed: false,
-    star: true,
-    "created-date": "07-11-2021",
-    "due-date": "07-11-2021",
-  },
-  {
-    key: 3,
-    title: "sample title 3",
-    completed: false,
-    star: true,
-    "created-date": "07-11-2021",
-    "due-date": "07-11-2021",
-  },
-  {
-    key: 4,
-    title: "sample title 4",
-    completed: false,
-    star: true,
-    "created-date": "07-11-2021",
-    "due-date": "07-11-2021",
-  },
-  {
-    key: 5,
-    title: "sample title 5",
-    completed: true,
-    star: false,
-    "created-date": "07-24-2021",
-    "due-date": "07-24-2021",
-  },
-];
-
 const TaskContainer = styled.div`
   height: auto;
   width: 100%;
@@ -100,7 +57,7 @@ const TaskList = ({ inbox, archive, star, upcoming, tasks }) => {
             );
           })}
 
-        {star &&
+        {/* {star &&
           starTasks.map((task) => {
             return (
               <TaskContainer>
@@ -117,7 +74,7 @@ const TaskList = ({ inbox, archive, star, upcoming, tasks }) => {
                 {task.title}
               </TaskContainer>
             );
-          })}
+          })} */}
       </TasksContainer>
     </>
   );
