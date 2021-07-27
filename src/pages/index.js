@@ -1,9 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import inbox from "./inbox";
-import star from "./star";
-import upcoming from "./upcoming";
-import archive from "./archive";
 import {
   RiCalendarCheckFill,
   RiInboxFill,
@@ -12,9 +8,10 @@ import {
   RiArchiveFill,
   RiAddCircleFill,
 } from "react-icons/ri";
-import MainScreenComponent from "../components/MainScreenComponent";
-import TaskForm from "../components/TaskForm";
+
 import test_tasks_1 from "./data/test_tasks_1";
+import TaskList from "../components/TaskList";
+import TaskInput from "../components/TaskInput";
 
 const Container = styled.div`
   height: 100vh;
@@ -110,12 +107,6 @@ const MainTitleContainer = styled.div`
   padding-left: 2rem;
 `;
 
-const MainBodyContainer = styled.div`
-  height: 85%;
-  padding: 1rem 2rem;
-  overflow-y: scroll;
-`;
-
 const AddTaskContainer = styled.form`
   width: 50%;
   padding 1rem;
@@ -130,24 +121,31 @@ const Home = ({ screenTitle }) => {
   // unfiltered tasks
   const [tasks, setTasks] = useState(test_tasks_1);
   // shows inbox by default
-  const [mainScreen, setMainScreen] = useState(inbox);
 
   // screen name hooks
   const [sideScreenName, setSideScreenName] = useState("");
-  const [mainScreenName, setMainScreenName] = useState("inbox");
+  const [listType, setListType] = useState("inbox");
 
+  //this has to add date
   const addTask = (task) => {
+    if (task.title === "" || /^\s*$/.test(task.title)) {
+      console.log("Invalid task");
+      return;
+    }
+
     const newTasks = [task, ...tasks];
     setTasks(newTasks);
     console.log(tasks);
+    return;
   };
 
   const handleMainScreen = (e) => {
-    setMainScreen(e);
-    setMainScreenName(e.name.toLowerCase());
+    // has to be lowercase
+    setListType(e.name.toLowerCase());
+    setSearch("");
   };
 
-  // search functionality
+  // search func
   const [search, setSearch] = useState("");
   const handleSearch = (e) => {
     setSearch(e.target.value);
@@ -171,6 +169,7 @@ const Home = ({ screenTitle }) => {
                 type="search"
                 placeholder="Search Efficiently"
                 onChange={handleSearch}
+                value={search}
               />
             </TopSearchForm>
           </TopSearchContainer>
@@ -178,25 +177,25 @@ const Home = ({ screenTitle }) => {
         <ScreenContainer>
           <SideScreenContainer>
             {sideScreenName}
-            <SideSectionWrapper onClick={() => handleMainScreen(inbox)}>
+            <SideSectionWrapper onClick={() => setListType("inbox")}>
               <SectionIcon>
                 <RiInboxFill />
               </SectionIcon>
               <SectionName>Inbox</SectionName>
             </SideSectionWrapper>
-            <SideSectionWrapper onClick={() => handleMainScreen(star)}>
+            <SideSectionWrapper onClick={() => setListType("star")}>
               <SectionIcon>
                 <RiStarSFill />
               </SectionIcon>
               <SectionName>Star</SectionName>
             </SideSectionWrapper>
-            <SideSectionWrapper onClick={() => handleMainScreen(upcoming)}>
+            <SideSectionWrapper onClick={() => setListType("upcoming")}>
               <SectionIcon>
                 <RiCalendarTodoFill />
               </SectionIcon>
               <SectionName>Upcoming</SectionName>
             </SideSectionWrapper>
-            <SideSectionWrapper onClick={() => handleMainScreen(archive)}>
+            <SideSectionWrapper onClick={() => setListType("archive")}>
               <SectionIcon>
                 <RiArchiveFill />
               </SectionIcon>
@@ -204,17 +203,12 @@ const Home = ({ screenTitle }) => {
             </SideSectionWrapper>
           </SideScreenContainer>
           <MainScreenContainer>
-            <MainTitleContainer>{mainScreenName}</MainTitleContainer>
-            <MainBodyContainer>
-              <MainScreenComponent
-                tasks={filteredTasks}
-                setTasks={setTasks}
-                mainScreen={mainScreen}
-                mainScreenName={mainScreenName}
-              />
-            </MainBodyContainer>
+            <MainTitleContainer>{listType}</MainTitleContainer>
+
+            <TaskList tasks={filteredTasks} listType={listType} />
+
             <AddTaskContainer>
-              <TaskForm onSubmit={addTask} />
+              <TaskInput onSubmit={addTask} />
             </AddTaskContainer>
           </MainScreenContainer>
         </ScreenContainer>

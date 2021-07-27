@@ -1,126 +1,85 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import TaskForm from "./TaskForm";
-import FilteredTasks from "./FilteredTasks";
-
-var test = [
-  {
-    key: 1,
-    title: "sample title 1",
-    completed: true,
-    star: true,
-    "created-date": "07-11-2021",
-    "due-date": "07-11-2021",
-  },
-  {
-    key: 2,
-    title: "sample title 2",
-    completed: false,
-    star: true,
-    "created-date": "07-11-2021",
-    "due-date": "07-11-2021",
-  },
-  {
-    key: 3,
-    title: "sample title 3",
-    completed: false,
-    star: true,
-    "created-date": "07-11-2021",
-    "due-date": "07-11-2021",
-  },
-  {
-    key: 4,
-    title: "sample title 4",
-    completed: false,
-    star: true,
-    "created-date": "07-11-2021",
-    "due-date": "07-11-2021",
-  },
-  {
-    key: 5,
-    title: "sample title 5",
-    completed: true,
-    star: false,
-    "created-date": "07-24-2021",
-    "due-date": "07-24-2021",
-  },
-];
-
-const TaskContainer = styled.div`
-  height: auto;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  border: 0.1rem solid #f1f1f1;
-  margin: 1rem;
-  border-radius: 0.5rem;
-  background-color: #efefef;
-`;
-
-const Checkbox = styled.input`
-  margin: 1rem;
-`;
+import Task from "./Task";
 
 const TasksContainer = styled.div`
   height: 100%;
   position: relative;
 `;
 
-const TaskTitleContainer = styled.div``;
-
-const TaskList = ({ inbox, archive, star, upcoming, tasks }) => {
-  const inboxTasks = tasks.filter((task) => !task.completed);
-  const archiveTasks = tasks.filter((task) => task.completed);
-  const starTasks = tasks.filter((task) => task.star);
-  const upcomingTasks = tasks.filter((task) => task.upcoming);
-
+const TaskList = ({ tasks, listType }) => {
   const completeTask = () => {
     alert("Completing Task");
   };
 
-  return (
-    <>
-      <TasksContainer>
-        {inbox &&
-          inboxTasks.map((task) => {
-            return (
-              <TaskContainer>
-                <Checkbox type="checkbox" onClick={() => completeTask()} />
-                {task.title}
-              </TaskContainer>
-            );
-          })}
-        {archive &&
-          archiveTasks.map((task) => {
-            return (
-              <TaskContainer>
-                <Checkbox type="checkbox" onClick={() => completeTask()} />
-                {task.title}
-              </TaskContainer>
-            );
-          })}
+  // TaskList shows a filtered list of tasks depending on a props passed
 
-        {star &&
-          starTasks.map((task) => {
-            return (
-              <TaskContainer>
-                <Checkbox type="checkbox" onClick={() => completeTask()} />
-                {task.title}
-              </TaskContainer>
-            );
-          })}
-        {upcoming &&
-          upcomingTasks.map((task) => {
-            return (
-              <TaskContainer>
-                <Checkbox type="checkbox" onClick={() => completeTask()} />
-                {task.title}
-              </TaskContainer>
-            );
-          })}
-      </TasksContainer>
-    </>
-  );
+  if (listType === "inbox") {
+    return tasks
+      .filter((task) => !task.completed)
+      .map((task) => {
+        return (
+          <Task
+            key={task.key}
+            completed={task.completed}
+            title={task.title}
+            star={task.star}
+          />
+        );
+      });
+  } else if (listType === "archive") {
+    return tasks
+      .filter((task) => task.completed)
+      .map((task) => {
+        return (
+          <Task
+            key={task.key}
+            completed={task.completed}
+            title={task.title}
+            star={task.star}
+          />
+        );
+      });
+  } else if (listType === "upcoming") {
+    return tasks
+      .filter((task) => task.upcoming)
+      .map((task) => {
+        return (
+          <Task
+            key={task.key}
+            completed={task.completed}
+            title={task.title}
+            star={task.star}
+          />
+        );
+      });
+  } else if (listType === "star") {
+    return tasks
+      .filter((task) => task.star)
+      .map((task) => {
+        return (
+          <Task
+            key={task.key}
+            completed={task.completed}
+            title={task.title}
+            star={task.star}
+          />
+        );
+      });
+  } else {
+    return tasks
+      .filter((task) => !task.completed)
+      .map((task) => {
+        return (
+          <Task
+            key={task.key}
+            completed={task.completed}
+            title={task.title}
+            star={task.star}
+          />
+        );
+      });
+  }
 };
 
 export default TaskList;
