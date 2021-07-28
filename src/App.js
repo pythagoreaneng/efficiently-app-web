@@ -5,6 +5,7 @@ import Star from "./pages/star";
 import Archive from "./pages/archive";
 import Upcoming from "./pages/upcoming";
 import Today from "./pages/today";
+import Search from "./pages/search";
 import test_tasks_1 from "./pages/data/test_tasks_1";
 
 import {
@@ -56,6 +57,15 @@ function App() {
           </Route>
           <Route path="/today">
             <Today
+              tasks={tasks}
+              setTasks={setTasks}
+              sideScreenName={sideScreenName}
+              sectionType={sectionType}
+              setSectionType={setSectionType}
+            />
+          </Route>
+          <Route path="/search">
+            <Search
               tasks={tasks}
               setTasks={setTasks}
               sideScreenName={sideScreenName}

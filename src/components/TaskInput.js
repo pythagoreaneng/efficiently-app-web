@@ -36,12 +36,13 @@ const AddTaskButton = styled.button`
 // input component to add tasks
 const TaskInput = ({
   onSubmit,
-  searchRef,
+  searchBarRef,
   inputRef,
   todayDate,
   inboxRef,
   todayRef,
   starRef,
+  searchRef,
   upcomingRef,
   archiveRef,
 }) => {
@@ -69,14 +70,34 @@ const TaskInput = ({
     inputRef.current.focus();
   }, []);
 
+  useEffect(() => {
+    if (window.location.pathname === "/search") {
+      searchBarRef.current.focus();
+    }
+  }, [window.location.pathname]);
+
   const submitRef = useRef(null);
 
   const searchKeyDown = (e) => {
     console.log(e);
-
+    // behavior for alt input in TaskInput
     if (e.key === "Alt") {
-      console.log("focus on search");
-      searchRef.current.focus();
+      // if already in search => go back to /inbox
+      if (window.location.pathname === "/search") {
+        console.log("getting out of search...");
+        inboxRef.current.focus();
+        inboxRef.current.click();
+      }
+      // if not in search => go to /search
+      else {
+        if (window.location.pathname === "/search") {
+          console.log("fist if");
+        } else {
+          console.log("focus on search now");
+          searchRef.current.click();
+          searchBarRef.current.focus();
+        }
+      }
     } else if (e.key === "ArrowUp") {
       console.log("Control");
       if (window.location.pathname === "/") {

@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { RiCloseFill } from "react-icons/ri";
-import { RiEditBoxLine } from "react-icons/ri";
 import styled from "styled-components";
 import useOutsideClick from "../Hooks/useOutsideClick";
 
@@ -22,7 +21,7 @@ const TaskContainer = styled.div`
   position: relative;
 `;
 
-const OptionsContainer = styled.button`
+const RemoveContainer = styled.button`
   position: absolute;
   right: 1rem;
   display: flex;
@@ -88,6 +87,7 @@ const Task = ({ completed, title, completeTask, id, removeTask, editTask }) => {
         console.log("Invalid edit");
         return;
       }
+      console.log("setEdit triggered");
       setEdit(edit);
       setIsEdit(false);
     }
@@ -103,7 +103,7 @@ const Task = ({ completed, title, completeTask, id, removeTask, editTask }) => {
       <TaskTitleContainer onClick={handleOnClickEdit}>
         {isEdit ? (
           <EditInput
-            placeholder={title}
+            placeholder="Press enter to confirm edit"
             value={edit}
             onChange={handleEdit}
             onKeyDown={editKeyDown}
@@ -114,10 +114,9 @@ const Task = ({ completed, title, completeTask, id, removeTask, editTask }) => {
         )}
       </TaskTitleContainer>
 
-      <OptionsContainer>
-        {/* <RiEditBoxLine onChange={(title) => editTask(id, title)} /> */}
+      <RemoveContainer>
         <RiCloseFill onClick={() => removeTask(id)} />
-      </OptionsContainer>
+      </RemoveContainer>
     </TaskContainer>
   );
 };

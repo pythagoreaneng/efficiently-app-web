@@ -6,6 +6,7 @@ import {
   RiCalendarTodoFill,
   RiArchiveFill,
   RiLightbulbFlashFill,
+  RiSearchLine,
 } from "react-icons/ri";
 import SectionTasks from "../components/SectionTasks";
 import TaskInput from "../components/TaskInput";
@@ -98,12 +99,13 @@ const TaskScreen = ({
     task.title.toLowerCase().includes(search.toLowerCase())
   );
 
-  const searchRef = useRef(null);
+  const searchBarRef = useRef(null);
   const inboxRef = useRef(null);
   const starRef = useRef(null);
   const archiveRef = useRef(null);
   const upcomingRef = useRef(null);
   const todayRef = useRef(null);
+  const searchRef = useRef(null);
 
   const inputRef = useRef(null);
 
@@ -111,7 +113,10 @@ const TaskScreen = ({
     console.log(e);
 
     if (e.key === "Alt") {
-      console.log("focus on search");
+      if (window.location.pathname === "/search") {
+        inboxRef.current.click();
+      }
+      console.log("focus on search in inputKeyDown");
       inputRef.current.focus();
     } else if (e.key === "ArrowUp") {
       console.log("Control");
@@ -171,7 +176,7 @@ const TaskScreen = ({
                 placeholder="Search(Press alt or  ⌥)"
                 onChange={handleSearch}
                 value={search}
-                ref={searchRef}
+                ref={searchBarRef}
                 onKeyDown={inputKeyDown}
               />
             </TopSearchForm>
@@ -258,6 +263,21 @@ const TaskScreen = ({
                 </NavLink>
               </SectionName>
             </SideSectionWrapper>
+            <SideSectionWrapper>
+              <SectionIcon>
+                <RiSearchLine />
+              </SectionIcon>
+              <SectionName>
+                <NavLink
+                  to="/search"
+                  activeStyle={{ fontWeight: "bold" }}
+                  onClick={() => sectionTypeHandler("archive")}
+                  ref={searchRef}
+                >
+                  Search
+                </NavLink>
+              </SectionName>
+            </SideSectionWrapper>
           </SideScreenContainer>
           <MainScreenContainer>
             <SectionTasksContainer>
@@ -274,13 +294,14 @@ const TaskScreen = ({
             <TaskInputContainer>
               <TaskInput
                 onSubmit={addTask}
-                searchRef={searchRef}
+                searchBarRef={searchBarRef}
                 inputRef={inputRef}
                 inboxRef={inboxRef}
                 todayRef={todayRef}
                 starRef={starRef}
                 upcomingRef={upcomingRef}
                 archiveRef={archiveRef}
+                searchRef={searchRef}
               />
             </TaskInputContainer>
           </MainScreenContainer>
