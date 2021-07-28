@@ -33,7 +33,7 @@ const AddTaskButton = styled.button`
 `;
 
 // input component to add tasks
-const TaskInput = ({ onSubmit, searchRef, inputRef }) => {
+const TaskInput = ({ onSubmit, searchRef, inputRef, todayDate }) => {
   const [input, setInput] = useState("");
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -42,12 +42,18 @@ const TaskInput = ({ onSubmit, searchRef, inputRef }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit({
-      key: Math.floor(Math.random() * 10000),
+      key: Math.floor(Math.random() * 1000),
       title: input,
+      completed: false,
+      star: false,
+      created_date: todayDate,
+      due_date: "07/28/2021",
+      schedule_date: "08/28/2021",
     });
     setInput("");
   };
 
+  // focus refs
   useEffect(() => {
     inputRef.current.focus();
   }, []);
@@ -66,7 +72,6 @@ const TaskInput = ({ onSubmit, searchRef, inputRef }) => {
     <>
       <AddTaskContainer onSubmit={handleSubmit}>
         <WriteTaskInput
-          id="input"
           placeholder="Start from here"
           onChange={handleChange}
           value={input}

@@ -4,6 +4,7 @@ import Inbox from "./pages/index";
 import Star from "./pages/star";
 import Archive from "./pages/archive";
 import Upcoming from "./pages/upcoming";
+import Today from "./pages/today";
 import test_tasks_1 from "./pages/data/test_tasks_1";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -41,6 +42,15 @@ function App() {
           </Route>
           <Route path="/upcoming">
             <Upcoming
+              tasks={tasks}
+              setTasks={setTasks}
+              sideScreenName={sideScreenName}
+              sectionType={sectionType}
+              setSectionType={setSectionType}
+            />
+          </Route>
+          <Route path="/today">
+            <Today
               tasks={tasks}
               setTasks={setTasks}
               sideScreenName={sideScreenName}

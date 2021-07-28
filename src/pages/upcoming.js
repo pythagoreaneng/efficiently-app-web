@@ -7,6 +7,7 @@ const Upcoming = ({
   sideScreenName,
   sectionType,
   setSectionType,
+  today,
 }) => {
   return (
     <>

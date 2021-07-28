@@ -5,6 +5,7 @@ import {
   RiStarSFill,
   RiCalendarTodoFill,
   RiArchiveFill,
+  RiLightbulbFlashFill,
 } from "react-icons/ri";
 import SectionTasks from "../components/SectionTasks";
 import TaskInput from "../components/TaskInput";
@@ -29,6 +30,13 @@ import { NavLink } from "react-router-dom";
 
 // TaskScreen is an interface which serves all the ToDo functionality
 
+var todayDate = new Date();
+var dd = String(todayDate.getDate()).padStart(2, "0");
+var mm = String(todayDate.getMonth() + 1).padStart(2, "0"); //January is 0!
+var yyyy = todayDate.getFullYear();
+
+todayDate = mm + "/" + dd + "/" + yyyy;
+
 const TaskScreen = ({
   tasks,
   setTasks,
@@ -51,16 +59,23 @@ const TaskScreen = ({
 
     const newTasks = [task, ...tasks];
     setTasks(newTasks);
-    console.log(tasks);
+    console.log("tasks:", tasks);
     return;
   };
 
+  const removeTask = (key) => {
+    let newTasks = [...tasks].filter((task) => task.key !== key);
+    setTasks(newTasks);
+  };
+
   const completeTask = (key) => {
-    alert("Completing Task");
-    console.log(tasks);
-    const newTasks = tasks.map((task) => task.key !== key);
-    console.log(newTasks);
-    // setTasks(newTasks);
+    let newTasks = tasks.map((task) => {
+      if (task.key === key) {
+        task.completed = !task.completed;
+      }
+      return task;
+    });
+    setTasks(newTasks);
   };
 
   // search related
@@ -78,7 +93,6 @@ const TaskScreen = ({
   const inputKeyDown = (e) => {
     console.log(e);
     if (e.key === "Alt") {
-      console.log("focus on input");
       inputRef.current.focus();
     }
   };
@@ -125,6 +139,21 @@ const TaskScreen = ({
                   onClick={() => sectionTypeHandler("inbox")}
                 >
                   Inbox
+                </NavLink>
+              </SectionName>
+            </SideSectionWrapper>
+            <SideSectionWrapper>
+              <SectionIcon>
+                <RiLightbulbFlashFill />
+              </SectionIcon>
+
+              <SectionName>
+                <NavLink
+                  to="/today"
+                  activeStyle={{ fontWeight: "bold" }}
+                  onClick={() => sectionTypeHandler("today")}
+                >
+                  Today
                 </NavLink>
               </SectionName>
             </SideSectionWrapper>
@@ -178,6 +207,8 @@ const TaskScreen = ({
                 tasks={filteredTasks}
                 sectionType={sectionType}
                 completeTask={completeTask}
+                todayDate={todayDate}
+                removeTask={removeTask}
               />
             </SectionTasksContainer>
 
@@ -186,6 +217,7 @@ const TaskScreen = ({
                 onSubmit={addTask}
                 searchRef={searchRef}
                 inputRef={inputRef}
+                todayDate={todayDate}
               />
             </TaskInputContainer>
           </MainScreenContainer>
