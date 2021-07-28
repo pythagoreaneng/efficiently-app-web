@@ -124,10 +124,10 @@ const Task = ({
         ) : (
           <div>{edit}</div>
         )}
+        <p>{scheduleDate}</p>
+        <p>{dueDate}</p>
+        <p>{createdDate}</p>
       </TaskTitleContainer>
-      {scheduleDate}
-      {dueDate}
-      {createdDate}
 
       <OptionContainer>
         {star ? (

@@ -36,7 +36,7 @@ var dd = String(todayDate.getDate()).padStart(2, "0");
 var mm = String(todayDate.getMonth() + 1).padStart(2, "0"); //January is 0!
 var yyyy = todayDate.getFullYear();
 
-todayDate = mm + "/" + dd + "/" + yyyy;
+todayDate = mm + "-" + dd + "-" + yyyy;
 
 const TaskScreen = ({
   tasks,

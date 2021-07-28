@@ -6,7 +6,7 @@ var test_tasks_2 = [
     star: true,
     createdDate: "07-11-2021",
     dueDate: "07-11-2021",
-    schedule_date: "08/28/2021",
+    scheduleDate: "08-28-2021",
   },
   {
     key: 2,
@@ -15,7 +15,7 @@ var test_tasks_2 = [
     star: true,
     createdDate: "07-11-2021",
     dueDate: "07-11-2021",
-    schedule_date: "08/28/2021",
+    scheduleDate: "08-28-2021",
   },
   {
     key: 3,
@@ -24,7 +24,7 @@ var test_tasks_2 = [
     star: true,
     createdDate: "07-11-2021",
     dueDate: "07-11-2021",
-    schedule_date: "01/28/2021",
+    scheduleDate: "01-28-2021",
   },
   {
     key: 4,
@@ -33,7 +33,7 @@ var test_tasks_2 = [
     star: true,
     createdDate: "07-11-2021",
     dueDate: "07-11-2021",
-    schedule_date: "03/28/2021",
+    scheduleDate: "03-28-2021",
   },
   {
     key: 5,
@@ -42,7 +42,7 @@ var test_tasks_2 = [
     star: false,
     createdDate: "07-24-2021",
     dueDate: "07-24-2021",
-    schedule_date: "12/28/2021",
+    scheduleDate: "12-28-2021",
   },
 ];
 
