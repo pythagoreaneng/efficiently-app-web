@@ -23,10 +23,14 @@ const TaskContainer = styled.div`
 const Task = ({ completed, title, completeTask, tempKey, removeTask }) => {
   return (
     <TaskContainer key={tempKey}>
-      <Checkbox type="Checkbox" onClick={(key) => completeTask(key)} />
+      <Checkbox
+        key={Math.random()}
+        type="Checkbox"
+        onClick={() => completeTask(tempKey)}
+      />
       {title}
-      <button onClick={() => removeTask(tempKey)}>
-        <RiDeleteBin2Fill />
+      <button key={Math.random()} onClick={() => removeTask(tempKey)}>
+        <RiDeleteBin2Fill key={Math.random()} />
       </button>
     </TaskContainer>
   );
