@@ -99,7 +99,7 @@ const TaskInput = ({
         }
       }
     } else if (e.key === "ArrowUp") {
-      console.log("Control");
+      console.log("arrow up");
       if (window.location.pathname === "/") {
         console.log("if inboxRef");
         archiveRef.current.click();
@@ -117,7 +117,7 @@ const TaskInput = ({
         upcomingRef.current.click();
       }
     } else if (e.key === "ArrowDown") {
-      console.log("Control");
+      console.log("Arrow down(searchKeyDown)");
       if (window.location.pathname === "/") {
         console.log("if inboxRef");
         todayRef.current.click();
