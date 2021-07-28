@@ -89,6 +89,16 @@ const TaskScreen = ({
     setTasks(newTasks);
   };
 
+  const switchStar = (key) => {
+    let newTasks = tasks.map((task) => {
+      if (task.key === key) {
+        task.star = !task.star;
+      }
+      return task;
+    });
+    setTasks(newTasks);
+  };
+
   // search related
   const [search, setSearch] = useState("");
   const handleSearch = (e) => {
@@ -264,6 +274,7 @@ const TaskScreen = ({
                 todayDate={todayDate}
                 removeTask={removeTask}
                 editTask={editTask}
+                switchStar={switchStar}
               />
             </SectionTasksContainer>
 
