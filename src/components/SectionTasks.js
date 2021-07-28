@@ -18,13 +18,13 @@ const SectionTasks = ({
       .map((task) => {
         return (
           <Task
-            tempKey={task.key}
+            id={task.key}
+            key={task.key}
             completed={task.completed}
             title={task.title}
             star={task.star}
             completeTask={completeTask}
             removeTask={removeTask}
-            key={Math.random()}
           />
         );
       });
@@ -34,13 +34,13 @@ const SectionTasks = ({
       .map((task) => {
         return (
           <Task
-            tempKey={task.key}
+            id={task.key}
+            key={task.key}
             completed={task.completed}
             title={task.title}
             star={task.star}
             completeTask={completeTask}
             removeTask={removeTask}
-            key={Math.random()}
           />
         );
       });
@@ -50,13 +50,13 @@ const SectionTasks = ({
       .map((task) => {
         return (
           <Task
-            tempKey={task.key}
+            id={task.key}
+            key={task.key}
             completed={task.completed}
             title={task.title}
             star={task.star}
             completeTask={completeTask}
             removeTask={removeTask}
-            key={Math.random()}
           />
         );
       });
@@ -66,13 +66,13 @@ const SectionTasks = ({
       .map((task) => {
         return (
           <Task
-            tempKey={task.key}
+            id={task.key}
+            key={task.key}
             completed={task.completed}
             title={task.title}
             star={task.star}
             completeTask={completeTask}
             removeTask={removeTask}
-            key={Math.random()}
           />
         );
       });
@@ -82,13 +82,13 @@ const SectionTasks = ({
       .map((task) => {
         return (
           <Task
-            tempKey={task.key}
+            id={task.key}
+            key={task.key}
             completed={task.completed}
             title={task.title}
             star={task.star}
             completeTask={completeTask}
             removeTask={removeTask}
-            key={Math.random()}
           />
         );
       });
@@ -99,13 +99,13 @@ const SectionTasks = ({
       .map((task) => {
         return (
           <Task
-            tempKey={task.key}
+            id={task.key}
+            key={task.key}
             completed={task.completed}
             title={task.title}
             star={task.star}
             completeTask={completeTask}
             removeTask={removeTask}
-            key={Math.random()}
           />
         );
       });

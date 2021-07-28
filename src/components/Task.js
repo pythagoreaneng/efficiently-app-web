@@ -20,16 +20,16 @@ const TaskContainer = styled.div`
 `;
 
 // single task card component
-const Task = ({ completed, title, completeTask, tempKey, removeTask }) => {
+const Task = ({ completed, title, completeTask, id, removeTask }) => {
   return (
-    <TaskContainer key={tempKey}>
+    <TaskContainer key={id}>
       <Checkbox
         key={Math.random()}
         type="Checkbox"
-        onClick={() => completeTask(tempKey)}
+        onClick={() => completeTask(id)}
       />
       {title}
-      <button key={Math.random()} onClick={() => removeTask(tempKey)}>
+      <button key={Math.random()} onClick={() => removeTask(id)}>
         <RiDeleteBin2Fill key={Math.random()} />
       </button>
     </TaskContainer>
