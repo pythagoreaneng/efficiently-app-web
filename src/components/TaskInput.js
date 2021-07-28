@@ -78,7 +78,7 @@ const TaskInput = ({
 
   const submitRef = useRef(null);
 
-  const searchKeyDown = (e) => {
+  const inInputKeyDown = (e) => {
     console.log(e);
     // behavior for alt input in TaskInput
     if (e.key === "Alt") {
@@ -117,7 +117,7 @@ const TaskInput = ({
         upcomingRef.current.click();
       }
     } else if (e.key === "ArrowDown") {
-      console.log("Arrow down(searchKeyDown)");
+      console.log("Arrow down(inInputKeyDown)");
       if (window.location.pathname === "/") {
         console.log("if inboxRef");
         todayRef.current.click();
@@ -149,7 +149,7 @@ const TaskInput = ({
           onChange={handleChange}
           value={input}
           ref={inputRef}
-          onKeyDown={searchKeyDown}
+          onKeyDown={inInputKeyDown}
           onClick={handleTaskInputClick}
         />
         <AddTaskButton onClick={handleSubmit} ref={submitRef}>
