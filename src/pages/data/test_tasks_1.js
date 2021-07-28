@@ -1,4 +1,4 @@
-const test_tasks_1 = [
+var test_tasks_1 = [
   {
     key: 1,
     title: "sample title 1",

@@ -7,10 +7,10 @@ const SectionTasks = ({
   tasks,
   sectionType,
   completeTask,
-  today,
   todayDate,
   removeTask,
   editTask,
+  switchStar,
 }) => {
   if (sectionType === "inbox") {
     // diplays inbox, which is task.completed = false
@@ -27,6 +27,7 @@ const SectionTasks = ({
             completeTask={completeTask}
             removeTask={removeTask}
             editTask={editTask}
+            switchStar={switchStar}
           />
         );
       });
@@ -44,6 +45,7 @@ const SectionTasks = ({
             completeTask={completeTask}
             removeTask={removeTask}
             editTask={editTask}
+            switchStar={switchStar}
           />
         );
       });
@@ -61,6 +63,7 @@ const SectionTasks = ({
             completeTask={completeTask}
             removeTask={removeTask}
             editTask={editTask}
+            switchStar={switchStar}
           />
         );
       });
@@ -78,6 +81,7 @@ const SectionTasks = ({
             completeTask={completeTask}
             removeTask={removeTask}
             editTask={editTask}
+            switchStar={switchStar}
           />
         );
       });
@@ -95,9 +99,28 @@ const SectionTasks = ({
             completeTask={completeTask}
             removeTask={removeTask}
             editTask={editTask}
+            switchStar={switchStar}
           />
         );
       });
+  } else if (sectionType === "search") {
+    // no filtering
+    return tasks.map((task) => {
+      return (
+        <Task
+          id={task.key}
+          key={task.key}
+          completed={task.completed}
+          title={task.title}
+          star={task.star}
+          completeTask={completeTask}
+          removeTask={removeTask}
+          switchStar={switchStar}
+          editTask={editTask}
+          switchStar={switchStar}
+        />
+      );
+    });
   } else {
     // any other cases displays inbox
     return tasks
@@ -113,6 +136,8 @@ const SectionTasks = ({
             completeTask={completeTask}
             removeTask={removeTask}
             editTask={editTask}
+            star={task.star}
+            switchStar={switchStar}
           />
         );
       });

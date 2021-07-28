@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { RiCloseFill } from "react-icons/ri";
-import { RiEditBoxLine } from "react-icons/ri";
+import { RiCloseFill, RiStarSFill, RiStarSLine } from "react-icons/ri";
 import styled from "styled-components";
 import useOutsideClick from "../Hooks/useOutsideClick";
 
@@ -22,7 +21,7 @@ const TaskContainer = styled.div`
   position: relative;
 `;
 
-const OptionsContainer = styled.button`
+const OptionContainer = styled.button`
   position: absolute;
   right: 1rem;
   display: flex;
@@ -41,7 +40,16 @@ const TaskTitleContainer = styled.div`
 `;
 
 // single task card component
-const Task = ({ completed, title, completeTask, id, removeTask, editTask }) => {
+const Task = ({
+  completed,
+  title,
+  completeTask,
+  id,
+  removeTask,
+  editTask,
+  star,
+  switchStar,
+}) => {
   const [isEdit, setIsEdit] = useState(false);
   const [edit, setEdit] = useState(title);
   const handleEdit = (e) => {
@@ -88,6 +96,7 @@ const Task = ({ completed, title, completeTask, id, removeTask, editTask }) => {
         console.log("Invalid edit");
         return;
       }
+      console.log("setEdit triggered");
       setEdit(edit);
       setIsEdit(false);
     }
@@ -103,7 +112,7 @@ const Task = ({ completed, title, completeTask, id, removeTask, editTask }) => {
       <TaskTitleContainer onClick={handleOnClickEdit}>
         {isEdit ? (
           <EditInput
-            placeholder={title}
+            placeholder="Press enter to confirm edit"
             value={edit}
             onChange={handleEdit}
             onKeyDown={editKeyDown}
@@ -114,10 +123,14 @@ const Task = ({ completed, title, completeTask, id, removeTask, editTask }) => {
         )}
       </TaskTitleContainer>
 
-      <OptionsContainer>
-        {/* <RiEditBoxLine onChange={(title) => editTask(id, title)} /> */}
+      <OptionContainer>
+        {star ? (
+          <RiStarSFill onClick={() => switchStar(id)} />
+        ) : (
+          <RiStarSLine onClick={() => switchStar(id)} />
+        )}
         <RiCloseFill onClick={() => removeTask(id)} />
-      </OptionsContainer>
+      </OptionContainer>
     </TaskContainer>
   );
 };

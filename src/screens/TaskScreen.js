@@ -6,6 +6,7 @@ import {
   RiCalendarTodoFill,
   RiArchiveFill,
   RiLightbulbFlashFill,
+  RiSearchLine,
 } from "react-icons/ri";
 import SectionTasks from "../components/SectionTasks";
 import TaskInput from "../components/TaskInput";
@@ -88,6 +89,16 @@ const TaskScreen = ({
     setTasks(newTasks);
   };
 
+  const switchStar = (key) => {
+    let newTasks = tasks.map((task) => {
+      if (task.key === key) {
+        task.star = !task.star;
+      }
+      return task;
+    });
+    setTasks(newTasks);
+  };
+
   // search related
   const [search, setSearch] = useState("");
   const handleSearch = (e) => {
@@ -98,58 +109,37 @@ const TaskScreen = ({
     task.title.toLowerCase().includes(search.toLowerCase())
   );
 
-  const searchRef = useRef(null);
+  const searchBarRef = useRef(null);
   const inboxRef = useRef(null);
   const starRef = useRef(null);
   const archiveRef = useRef(null);
   const upcomingRef = useRef(null);
   const todayRef = useRef(null);
+  const searchRef = useRef(null);
 
   const inputRef = useRef(null);
 
-  const inputKeyDown = (e) => {
+  const inSearchBarKeyDown = (e) => {
     console.log(e);
 
     if (e.key === "Alt") {
-      console.log("focus on search");
+      if (window.location.pathname === "/search") {
+        inboxRef.current.click();
+      }
+      console.log("focus on search in inSearchBarKeyDown");
       inputRef.current.focus();
     } else if (e.key === "ArrowUp") {
-      console.log("Control");
-      if (window.location.pathname === "/") {
-        console.log("if inboxRef");
-        archiveRef.current.click();
-      } else if (window.location.pathname === "/today") {
-        console.log("if todayRef");
-        inboxRef.current.click();
-      } else if (window.location.pathname === "/star") {
-        console.log("if todayRef");
-        todayRef.current.click();
-      } else if (window.location.pathname === "/upcoming") {
-        console.log("if todayRef");
-        starRef.current.click();
-      } else if (window.location.pathname === "/archive") {
-        console.log("if todayRef");
-        upcomingRef.current.click();
-      }
+      console.log("arrow up(input down!)");
+      archiveRef.current.click();
     } else if (e.key === "ArrowDown") {
-      console.log("Control");
-      if (window.location.pathname === "/") {
-        console.log("if inboxRef");
-        todayRef.current.click();
-      } else if (window.location.pathname === "/today") {
-        console.log("if todayRef");
-        starRef.current.click();
-      } else if (window.location.pathname === "/star") {
-        console.log("if todayRef");
-        upcomingRef.current.click();
-      } else if (window.location.pathname === "/upcoming") {
-        console.log("if todayRef");
-        archiveRef.current.click();
-      } else if (window.location.pathname === "/archive") {
-        console.log("if todayRef");
-        inboxRef.current.click();
-      }
+      console.log("Arrow down(inSearchBarKeyDown)");
+      inputRef.current.focus();
+      inboxRef.current.click();
     }
+  };
+
+  const handleSearchBarClick = () => {
+    searchRef.current.click();
   };
 
   return (
@@ -171,8 +161,9 @@ const TaskScreen = ({
                 placeholder="Search(Press alt or  ⌥)"
                 onChange={handleSearch}
                 value={search}
-                ref={searchRef}
-                onKeyDown={inputKeyDown}
+                ref={searchBarRef}
+                onKeyDown={inSearchBarKeyDown}
+                onClick={handleSearchBarClick}
               />
             </TopSearchForm>
           </TopSearchContainer>
@@ -258,6 +249,21 @@ const TaskScreen = ({
                 </NavLink>
               </SectionName>
             </SideSectionWrapper>
+            <SideSectionWrapper>
+              <SectionIcon>
+                <RiSearchLine />
+              </SectionIcon>
+              <SectionName>
+                <NavLink
+                  to="/search"
+                  activeStyle={{ fontWeight: "bold" }}
+                  onClick={() => sectionTypeHandler("search")}
+                  ref={searchRef}
+                >
+                  Search
+                </NavLink>
+              </SectionName>
+            </SideSectionWrapper>
           </SideScreenContainer>
           <MainScreenContainer>
             <SectionTasksContainer>
@@ -268,19 +274,21 @@ const TaskScreen = ({
                 todayDate={todayDate}
                 removeTask={removeTask}
                 editTask={editTask}
+                switchStar={switchStar}
               />
             </SectionTasksContainer>
 
             <TaskInputContainer>
               <TaskInput
                 onSubmit={addTask}
-                searchRef={searchRef}
+                searchBarRef={searchBarRef}
                 inputRef={inputRef}
                 inboxRef={inboxRef}
                 todayRef={todayRef}
                 starRef={starRef}
                 upcomingRef={upcomingRef}
                 archiveRef={archiveRef}
+                searchRef={searchRef}
               />
             </TaskInputContainer>
           </MainScreenContainer>
