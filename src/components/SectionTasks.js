@@ -59,7 +59,7 @@ const SectionTasks = ({
       });
   } else if (sectionType === "upcoming") {
     return tasks
-      .filter((task) => task.schedule_date > todayDate)
+      .filter((task) => task.scheduleDate > todayDate)
       .map((task) => {
         return (
           <Task
@@ -101,7 +101,7 @@ const SectionTasks = ({
       });
   } else if (sectionType === "today") {
     return tasks
-      .filter((task) => task.due_date === todayDate)
+      .filter((task) => task.dueDate === todayDate)
       .map((task) => {
         return (
           <Task

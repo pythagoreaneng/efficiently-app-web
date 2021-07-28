@@ -36,7 +36,7 @@ var dd = String(todayDate.getDate()).padStart(2, "0");
 var mm = String(todayDate.getMonth() + 1).padStart(2, "0"); //January is 0!
 var yyyy = todayDate.getFullYear();
 
-todayDate = mm + "-" + dd + "-" + yyyy;
+todayDate = yyyy + "-" + mm + "-" + dd;
 
 const TaskScreen = ({
   tasks,
@@ -281,6 +281,7 @@ const TaskScreen = ({
             <TaskInputContainer>
               <TaskInput
                 onSubmit={addTask}
+                todayDate={todayDate}
                 searchBarRef={searchBarRef}
                 inputRef={inputRef}
                 inboxRef={inboxRef}

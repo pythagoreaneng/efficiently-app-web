@@ -124,9 +124,9 @@ const Task = ({
         ) : (
           <div>{edit}</div>
         )}
+        <p>{createdDate}</p>
         <p>{scheduleDate}</p>
         <p>{dueDate}</p>
-        <p>{createdDate}</p>
       </TaskTitleContainer>
 
       <OptionContainer>
