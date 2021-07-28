@@ -7,7 +7,12 @@ import Upcoming from "./pages/upcoming";
 import Today from "./pages/today";
 import test_tasks_1 from "./pages/data/test_tasks_1";
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 
 function App() {
   // unfiltered tasks
@@ -67,6 +72,15 @@ function App() {
               setSectionType={setSectionType}
             />
           </Route>
+          <Redirect to="/">
+            <Inbox
+              tasks={tasks}
+              setTasks={setTasks}
+              sideScreenName={sideScreenName}
+              sectionType={sectionType}
+              setSectionType={setSectionType}
+            />
+          </Redirect>
         </Switch>
       </Router>
     </>
