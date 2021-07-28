@@ -119,44 +119,17 @@ const TaskScreen = ({
       console.log("focus on search in inputKeyDown");
       inputRef.current.focus();
     } else if (e.key === "ArrowUp") {
-      console.log("arrow up(input down)");
-      if (window.location.pathname === "/") {
-        console.log("if inboxRef");
-        archiveRef.current.click();
-      } else if (window.location.pathname === "/today") {
-        console.log("if todayRef");
-        inboxRef.current.click();
-      } else if (window.location.pathname === "/star") {
-        console.log("if todayRef");
-        todayRef.current.click();
-      } else if (window.location.pathname === "/upcoming") {
-        console.log("if todayRef");
-        starRef.current.click();
-      } else if (window.location.pathname === "/archive") {
-        console.log("if todayRef");
-        upcomingRef.current.click();
-      }
+      console.log("arrow up(input down!)");
+      archiveRef.current.click();
     } else if (e.key === "ArrowDown") {
       console.log("Arrow down(inputKeyDown)");
       inputRef.current.focus();
       inboxRef.current.click();
-      // if (window.location.pathname === "/") {
-      //   console.log("if inboxRef(inputKeyDown)");
-      //   todayRef.current.click();
-      // } else if (window.location.pathname === "/today") {
-      //   console.log("if todayRef(inputKeyDown)");
-      //   starRef.current.click();
-      // } else if (window.location.pathname === "/star") {
-      //   console.log("if todayRef(inputKeyDown)");
-      //   upcomingRef.current.click();
-      // } else if (window.location.pathname === "/upcoming") {
-      //   console.log("if todayRef(inputKeyDown)");
-      //   archiveRef.current.click();
-      // } else if (window.location.pathname === "/archive") {
-      //   console.log("if todayRef(inputKeyDown)");
-      //   inboxRef.current.click();
-      // }
     }
+  };
+
+  const handleSearchBarClick = () => {
+    searchRef.current.click();
   };
 
   return (
@@ -180,6 +153,7 @@ const TaskScreen = ({
                 value={search}
                 ref={searchBarRef}
                 onKeyDown={inputKeyDown}
+                onClick={handleSearchBarClick}
               />
             </TopSearchForm>
           </TopSearchContainer>

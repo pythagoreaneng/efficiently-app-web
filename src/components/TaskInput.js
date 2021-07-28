@@ -137,6 +137,10 @@ const TaskInput = ({
     }
   };
 
+  const handleTaskInputClick = () => {
+    inboxRef.current.click();
+  };
+
   return (
     <>
       <AddTaskContainer onSubmit={handleSubmit}>
@@ -146,6 +150,7 @@ const TaskInput = ({
           value={input}
           ref={inputRef}
           onKeyDown={searchKeyDown}
+          onClick={handleTaskInputClick}
         />
         <AddTaskButton onClick={handleSubmit} ref={submitRef}>
           <RiAddCircleFill size={50} color={"#44BCFF"} />
