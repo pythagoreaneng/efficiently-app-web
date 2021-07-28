@@ -9,21 +9,21 @@ const SectionTasks = ({
   completeTask,
   today,
   todayDate,
+  removeTask,
 }) => {
   if (sectionType === "inbox") {
     // diplays inbox, which is task.completed = false
     return tasks
       .filter((task) => !task.completed)
       .map((task) => {
-        console.log(task.title);
-        console.log(task.key);
         return (
           <Task
-            key={task.key}
+            tempKey={task.key}
             completed={task.completed}
             title={task.title}
             star={task.star}
             completeTask={completeTask}
+            removeTask={removeTask}
           />
         );
       });
@@ -37,6 +37,8 @@ const SectionTasks = ({
             completed={task.completed}
             title={task.title}
             star={task.star}
+            completeTask={completeTask}
+            removeTask={removeTask}
           />
         );
       });
@@ -50,6 +52,8 @@ const SectionTasks = ({
             completed={task.completed}
             title={task.title}
             star={task.star}
+            completeTask={completeTask}
+            removeTask={removeTask}
           />
         );
       });
@@ -63,6 +67,8 @@ const SectionTasks = ({
             completed={task.completed}
             title={task.title}
             star={task.star}
+            completeTask={completeTask}
+            removeTask={removeTask}
           />
         );
       });
@@ -76,6 +82,8 @@ const SectionTasks = ({
             completed={task.completed}
             title={task.title}
             star={task.star}
+            completeTask={completeTask}
+            removeTask={removeTask}
           />
         );
       });
@@ -90,6 +98,8 @@ const SectionTasks = ({
             completed={task.completed}
             title={task.title}
             star={task.star}
+            completeTask={completeTask}
+            removeTask={removeTask}
           />
         );
       });

@@ -42,7 +42,7 @@ const TaskInput = ({ onSubmit, searchRef, inputRef, todayDate }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit({
-      key: Math.floor(Math.random() * 10000),
+      key: Math.floor(Math.random() * 1000),
       title: input,
       completed: false,
       star: false,
@@ -72,7 +72,6 @@ const TaskInput = ({ onSubmit, searchRef, inputRef, todayDate }) => {
     <>
       <AddTaskContainer onSubmit={handleSubmit}>
         <WriteTaskInput
-          id="input"
           placeholder="Start from here"
           onChange={handleChange}
           value={input}

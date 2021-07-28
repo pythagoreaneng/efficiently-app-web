@@ -59,16 +59,26 @@ const TaskScreen = ({
 
     const newTasks = [task, ...tasks];
     setTasks(newTasks);
-    console.log(tasks);
+    console.log("tasks:", tasks);
     return;
   };
 
   const completeTask = (key) => {
-    alert("Completing Task");
-    console.log(tasks);
-    const newTasks = tasks.map((task) => task.key !== key);
-    console.log(newTasks);
+    let newTasks = tasks.map((task) => {
+      console.log(key);
+      if (key === task.key) {
+        task.complete = !task.complete;
+        console.log("task complete", task.complete);
+      }
+      return tasks;
+    });
+    console.log("Outside of completeTask");
     //setTasks(newTasks);
+  };
+
+  const removeTask = (key) => {
+    const newTasks = [...tasks].filter((task) => task.key !== key);
+    setTasks(newTasks);
   };
 
   // search related
@@ -201,6 +211,7 @@ const TaskScreen = ({
                 sectionType={sectionType}
                 completeTask={completeTask}
                 todayDate={todayDate}
+                removeTask={removeTask}
               />
             </SectionTasksContainer>
 

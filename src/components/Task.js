@@ -1,4 +1,5 @@
 import React from "react";
+import { RiDeleteBin2Fill } from "react-icons/ri";
 import styled from "styled-components";
 
 const Checkbox = styled.input`
@@ -19,13 +20,14 @@ const TaskContainer = styled.div`
 `;
 
 // single task card component
-const Task = ({ completed, title, completeTask, key }) => {
-  console.log(key);
-  console.log(title);
+const Task = ({ completed, title, completeTask, tempKey, removeTask }) => {
   return (
-    <TaskContainer key={key}>
+    <TaskContainer key={tempKey}>
       <Checkbox type="Checkbox" onClick={(key) => completeTask(key)} />
       {title}
+      <button onClick={() => removeTask(tempKey)}>
+        <RiDeleteBin2Fill />
+      </button>
     </TaskContainer>
   );
 };
