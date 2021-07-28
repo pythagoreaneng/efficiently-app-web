@@ -271,7 +271,7 @@ const TaskScreen = ({
                 <NavLink
                   to="/search"
                   activeStyle={{ fontWeight: "bold" }}
-                  onClick={() => sectionTypeHandler("archive")}
+                  onClick={() => sectionTypeHandler("search")}
                   ref={searchRef}
                 >
                   Search

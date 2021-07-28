@@ -7,7 +7,6 @@ const SectionTasks = ({
   tasks,
   sectionType,
   completeTask,
-  today,
   todayDate,
   removeTask,
   editTask,
@@ -98,6 +97,22 @@ const SectionTasks = ({
           />
         );
       });
+  } else if (sectionType === "search") {
+    // no filtering
+    return tasks.map((task) => {
+      return (
+        <Task
+          id={task.key}
+          key={task.key}
+          completed={task.completed}
+          title={task.title}
+          star={task.star}
+          completeTask={completeTask}
+          removeTask={removeTask}
+          editTask={editTask}
+        />
+      );
+    });
   } else {
     // any other cases displays inbox
     return tasks
