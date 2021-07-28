@@ -44,6 +44,8 @@ const TaskScreen = ({
   sideScreenName,
   sectionType,
   setSectionType,
+  createdDate,
+  dueDate,
 }) => {
   // clears search box upon click
   const sectionTypeHandler = (e) => {
@@ -272,6 +274,8 @@ const TaskScreen = ({
                 sectionType={sectionType}
                 completeTask={completeTask}
                 todayDate={todayDate}
+                dueDate={dueDate}
+                createdDate={createdDate}
                 removeTask={removeTask}
                 editTask={editTask}
                 switchStar={switchStar}
