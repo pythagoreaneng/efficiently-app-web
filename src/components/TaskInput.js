@@ -46,11 +46,13 @@ const TaskInput = ({
   upcomingRef,
   archiveRef,
 }) => {
+  // hook to handle TaskInput value
   const [input, setInput] = useState("");
+  // handler for this hook
   const handleChange = (e) => {
     setInput(e.target.value);
   };
-
+  // handler for submitting input
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit({
@@ -62,83 +64,77 @@ const TaskInput = ({
       due_date: "07/28/2021",
       schedule_date: "08/28/2021",
     });
+    // clear input
     setInput("");
   };
 
-  // focus refs
+  // hook to handle focus(either on TaskInput or SearchBar)
   useEffect(() => {
-    inputRef.current.focus();
-  }, []);
-
-  useEffect(() => {
+    // if in '/search' then focus on search bar automatically
     if (window.location.pathname === "/search") {
       searchBarRef.current.focus();
     }
-  }, [window.location.pathname]);
+    // if not then focus on TaskInput
+    else {
+      inputRef.current.focus();
+    }
+  }, []);
 
   const submitRef = useRef(null);
 
+  // handler to go to inbox when user click TaskInput box
+  const handleTaskInputClick = () => {
+    inboxRef.current.click();
+  };
+
+  // Key Downs available in TaskInput
+  // note that '/' is inbox directory
   const inInputKeyDown = (e) => {
     console.log(e);
     // behavior for alt input in TaskInput
     if (e.key === "Alt") {
-      // if already in search => go back to /inbox
+      // if in '/search' => go to '/'
       if (window.location.pathname === "/search") {
-        console.log("getting out of search...");
-        inboxRef.current.focus();
         inboxRef.current.click();
+        inboxRef.current.focus();
       }
-      // if not in search => go to /search
+      // if not in '/search' => go to '/search'
       else {
-        if (window.location.pathname === "/search") {
-          console.log("fist if");
-        } else {
-          console.log("focus on search now");
-          searchRef.current.click();
-          searchBarRef.current.focus();
-        }
+        searchRef.current.click();
+        searchBarRef.current.focus();
       }
+
+      // traverse side menu using up/down arrows (inbox to archive)
     } else if (e.key === "ArrowUp") {
       console.log("arrow up");
+      // i.e. if in '/'
       if (window.location.pathname === "/") {
-        console.log("if inboxRef");
+        // then go to '/archive' when UpArrow is input
         archiveRef.current.click();
       } else if (window.location.pathname === "/today") {
-        console.log("if todayRef");
         inboxRef.current.click();
       } else if (window.location.pathname === "/star") {
-        console.log("if todayRef");
         todayRef.current.click();
       } else if (window.location.pathname === "/upcoming") {
-        console.log("if todayRef");
         starRef.current.click();
       } else if (window.location.pathname === "/archive") {
-        console.log("if todayRef");
         upcomingRef.current.click();
       }
+      // up arrow ver (opposite direction)
     } else if (e.key === "ArrowDown") {
       console.log("Arrow down(inInputKeyDown)");
       if (window.location.pathname === "/") {
-        console.log("if inboxRef");
         todayRef.current.click();
       } else if (window.location.pathname === "/today") {
-        console.log("if todayRef");
         starRef.current.click();
       } else if (window.location.pathname === "/star") {
-        console.log("if todayRef");
         upcomingRef.current.click();
       } else if (window.location.pathname === "/upcoming") {
-        console.log("if todayRef");
         archiveRef.current.click();
       } else if (window.location.pathname === "/archive") {
-        console.log("if todayRef");
         inboxRef.current.click();
       }
     }
-  };
-
-  const handleTaskInputClick = () => {
-    inboxRef.current.click();
   };
 
   return (
@@ -146,10 +142,10 @@ const TaskInput = ({
       <AddTaskContainer onSubmit={handleSubmit}>
         <WriteTaskInput
           placeholder="Start from here(Press ↑↓ to navigate)"
-          onChange={handleChange}
           value={input}
           ref={inputRef}
           onKeyDown={inInputKeyDown}
+          onChange={handleChange}
           onClick={handleTaskInputClick}
         />
         <AddTaskButton onClick={handleSubmit} ref={submitRef}>
