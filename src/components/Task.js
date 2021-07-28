@@ -51,6 +51,7 @@ const Task = ({
   switchStar,
   createdDate,
   dueDate,
+  scheduleDate,
 }) => {
   const [isEdit, setIsEdit] = useState(false);
   const [edit, setEdit] = useState(title);
@@ -124,7 +125,9 @@ const Task = ({
           <div>{edit}</div>
         )}
       </TaskTitleContainer>
+      {scheduleDate}
       {dueDate}
+      {createdDate}
 
       <OptionContainer>
         {star ? (

@@ -30,8 +30,9 @@ const SectionTasks = ({
             removeTask={removeTask}
             editTask={editTask}
             switchStar={switchStar}
-            createdDate={createdDate}
-            dueDate={dueDate}
+            createdDate={task.createdDate}
+            dueDate={task.dueDate}
+            scheduleDate={task.scheduleDate}
           />
         );
       });
@@ -50,8 +51,9 @@ const SectionTasks = ({
             removeTask={removeTask}
             editTask={editTask}
             switchStar={switchStar}
-            createdDate={createdDate}
-            dueDate={dueDate}
+            createdDate={task.createdDate}
+            dueDate={task.dueDate}
+            scheduleDate={task.scheduleDate}
           />
         );
       });
@@ -70,8 +72,9 @@ const SectionTasks = ({
             removeTask={removeTask}
             editTask={editTask}
             switchStar={switchStar}
-            createdDate={createdDate}
-            dueDate={dueDate}
+            createdDate={task.createdDate}
+            dueDate={task.dueDate}
+            scheduleDate={task.scheduleDate}
           />
         );
       });
@@ -90,8 +93,9 @@ const SectionTasks = ({
             removeTask={removeTask}
             editTask={editTask}
             switchStar={switchStar}
-            createdDate={createdDate}
-            dueDate={dueDate}
+            createdDate={task.createdDate}
+            dueDate={task.dueDate}
+            scheduleDate={task.scheduleDate}
           />
         );
       });
@@ -110,8 +114,9 @@ const SectionTasks = ({
             removeTask={removeTask}
             editTask={editTask}
             switchStar={switchStar}
-            createdDate={createdDate}
-            dueDate={dueDate}
+            createdDate={task.createdDate}
+            dueDate={task.dueDate}
+            scheduleDate={task.scheduleDate}
           />
         );
       });
@@ -130,8 +135,9 @@ const SectionTasks = ({
           switchStar={switchStar}
           editTask={editTask}
           switchStar={switchStar}
-          createdDate={createdDate}
-          dueDate={dueDate}
+          createdDate={task.createdDate}
+          dueDate={task.dueDate}
+          scheduleDate={task.scheduleDate}
         />
       );
     });
@@ -152,8 +158,9 @@ const SectionTasks = ({
             editTask={editTask}
             star={task.star}
             switchStar={switchStar}
-            createdDate={createdDate}
-            dueDate={dueDate}
+            createdDate={task.createdDate}
+            dueDate={task.dueDate}
+            scheduleDate={task.scheduleDate}
           />
         );
       });
