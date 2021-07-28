@@ -120,7 +120,7 @@ const TaskInput = ({
     <>
       <AddTaskContainer onSubmit={handleSubmit}>
         <WriteTaskInput
-          placeholder="Start from here"
+          placeholder="Start from here(Press ↑↓ to navigate)"
           onChange={handleChange}
           value={input}
           ref={inputRef}
