@@ -10,6 +10,7 @@ const SectionTasks = ({
   today,
   todayDate,
   removeTask,
+  editTask,
 }) => {
   if (sectionType === "inbox") {
     // diplays inbox, which is task.completed = false
@@ -25,6 +26,7 @@ const SectionTasks = ({
             star={task.star}
             completeTask={completeTask}
             removeTask={removeTask}
+            editTask={editTask}
           />
         );
       });
@@ -41,6 +43,7 @@ const SectionTasks = ({
             star={task.star}
             completeTask={completeTask}
             removeTask={removeTask}
+            editTask={editTask}
           />
         );
       });
@@ -57,6 +60,7 @@ const SectionTasks = ({
             star={task.star}
             completeTask={completeTask}
             removeTask={removeTask}
+            editTask={editTask}
           />
         );
       });
@@ -73,6 +77,7 @@ const SectionTasks = ({
             star={task.star}
             completeTask={completeTask}
             removeTask={removeTask}
+            editTask={editTask}
           />
         );
       });
@@ -89,6 +94,7 @@ const SectionTasks = ({
             star={task.star}
             completeTask={completeTask}
             removeTask={removeTask}
+            editTask={editTask}
           />
         );
       });
@@ -106,6 +112,7 @@ const SectionTasks = ({
             star={task.star}
             completeTask={completeTask}
             removeTask={removeTask}
+            editTask={editTask}
           />
         );
       });

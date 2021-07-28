@@ -68,6 +68,16 @@ const TaskScreen = ({
     setTasks(newTasks);
   };
 
+  const editTask = (taskId, newTitle) => {
+    // if (!newTitle.title || /^\s*$/.test(newTitle.text)) {
+    //   return;
+    // }
+
+    setTasks((prev) =>
+      prev.map((task) => (task.id === taskId ? newTitle : task))
+    );
+  };
+
   const completeTask = (key) => {
     let newTasks = tasks.map((task) => {
       if (task.key === key) {
@@ -209,6 +219,7 @@ const TaskScreen = ({
                 completeTask={completeTask}
                 todayDate={todayDate}
                 removeTask={removeTask}
+                editTask={editTask}
               />
             </SectionTasksContainer>
 
