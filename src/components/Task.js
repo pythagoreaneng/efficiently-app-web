@@ -28,6 +28,18 @@ const OptionsContainer = styled.button`
   display: flex;
 `;
 
+const EditInput = styled.input`
+  background-color: #efefef;
+  width: 100%;
+  &:focus {
+    outline: none;
+  }
+`;
+
+const TaskTitleContainer = styled.div`
+  width: 70%;
+`;
+
 // single task card component
 const Task = ({ completed, title, completeTask, id, removeTask, editTask }) => {
   const [isEdit, setIsEdit] = useState(false);
@@ -88,9 +100,9 @@ const Task = ({ completed, title, completeTask, id, removeTask, editTask }) => {
   return (
     <TaskContainer key={id}>
       <Checkbox type="Checkbox" onClick={() => completeTask(id)} />
-      <div onClick={handleOnClickEdit}>
+      <TaskTitleContainer onClick={handleOnClickEdit}>
         {isEdit ? (
-          <input
+          <EditInput
             placeholder={title}
             value={edit}
             onChange={handleEdit}
@@ -100,7 +112,7 @@ const Task = ({ completed, title, completeTask, id, removeTask, editTask }) => {
         ) : (
           <div>{edit}</div>
         )}
-      </div>
+      </TaskTitleContainer>
 
       <OptionsContainer>
         {/* <RiEditBoxLine onChange={(title) => editTask(id, title)} /> */}
