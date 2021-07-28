@@ -1,5 +1,5 @@
 import React from "react";
-import { RiDeleteBin2Fill } from "react-icons/ri";
+import { RiCloseFill } from "react-icons/ri";
 import styled from "styled-components";
 
 const Checkbox = styled.input`
@@ -17,21 +17,23 @@ const TaskContainer = styled.div`
   background-color: #efefef;
   margin: 1.5rem 3rem;
   padding: 0.1rem;
+  position: relative;
+`;
+
+const RemoveContainer = styled.button`
+  position: absolute;
+  right: 1rem;
 `;
 
 // single task card component
 const Task = ({ completed, title, completeTask, id, removeTask }) => {
   return (
     <TaskContainer key={id}>
-      <Checkbox
-        key={Math.random()}
-        type="Checkbox"
-        onClick={() => completeTask(id)}
-      />
+      <Checkbox type="Checkbox" onClick={() => completeTask(id)} />
       {title}
-      <button key={Math.random()} onClick={() => removeTask(id)}>
-        <RiDeleteBin2Fill key={Math.random()} />
-      </button>
+      <RemoveContainer onClick={() => removeTask(id)}>
+        <RiCloseFill />
+      </RemoveContainer>
     </TaskContainer>
   );
 };
