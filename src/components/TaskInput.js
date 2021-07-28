@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { RiAddCircleFill } from "react-icons/ri";
+import { NavLink, Route } from "react-router-dom";
 import styled from "styled-components";
 
 const AddTaskContainer = styled.div`
@@ -33,7 +34,17 @@ const AddTaskButton = styled.button`
 `;
 
 // input component to add tasks
-const TaskInput = ({ onSubmit, searchRef, inputRef, todayDate }) => {
+const TaskInput = ({
+  onSubmit,
+  searchRef,
+  inputRef,
+  todayDate,
+  inboxRef,
+  todayRef,
+  starRef,
+  upcomingRef,
+  archiveRef,
+}) => {
   const [input, setInput] = useState("");
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -62,9 +73,46 @@ const TaskInput = ({ onSubmit, searchRef, inputRef, todayDate }) => {
 
   const searchKeyDown = (e) => {
     console.log(e);
+
     if (e.key === "Alt") {
       console.log("focus on search");
       searchRef.current.focus();
+    } else if (e.key === "ArrowUp") {
+      console.log("Control");
+      if (window.location.pathname === "/") {
+        console.log("if inboxRef");
+        archiveRef.current.click();
+      } else if (window.location.pathname === "/today") {
+        console.log("if todayRef");
+        inboxRef.current.click();
+      } else if (window.location.pathname === "/star") {
+        console.log("if todayRef");
+        todayRef.current.click();
+      } else if (window.location.pathname === "/upcoming") {
+        console.log("if todayRef");
+        starRef.current.click();
+      } else if (window.location.pathname === "/archive") {
+        console.log("if todayRef");
+        upcomingRef.current.click();
+      }
+    } else if (e.key === "ArrowDown") {
+      console.log("Control");
+      if (window.location.pathname === "/") {
+        console.log("if inboxRef");
+        todayRef.current.click();
+      } else if (window.location.pathname === "/today") {
+        console.log("if todayRef");
+        starRef.current.click();
+      } else if (window.location.pathname === "/star") {
+        console.log("if todayRef");
+        upcomingRef.current.click();
+      } else if (window.location.pathname === "/upcoming") {
+        console.log("if todayRef");
+        archiveRef.current.click();
+      } else if (window.location.pathname === "/archive") {
+        console.log("if todayRef");
+        inboxRef.current.click();
+      }
     }
   };
 

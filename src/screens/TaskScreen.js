@@ -99,15 +99,58 @@ const TaskScreen = ({
   );
 
   const searchRef = useRef(null);
+  const inboxRef = useRef(null);
+  const starRef = useRef(null);
+  const archiveRef = useRef(null);
+  const upcomingRef = useRef(null);
+  const todayRef = useRef(null);
+
+  const inputRef = useRef(null);
 
   const inputKeyDown = (e) => {
     console.log(e);
+
     if (e.key === "Alt") {
+      console.log("focus on search");
       inputRef.current.focus();
+    } else if (e.key === "ArrowUp") {
+      console.log("Control");
+      if (window.location.pathname === "/") {
+        console.log("if inboxRef");
+        archiveRef.current.click();
+      } else if (window.location.pathname === "/today") {
+        console.log("if todayRef");
+        inboxRef.current.click();
+      } else if (window.location.pathname === "/star") {
+        console.log("if todayRef");
+        todayRef.current.click();
+      } else if (window.location.pathname === "/upcoming") {
+        console.log("if todayRef");
+        starRef.current.click();
+      } else if (window.location.pathname === "/archive") {
+        console.log("if todayRef");
+        upcomingRef.current.click();
+      }
+    } else if (e.key === "ArrowDown") {
+      console.log("Control");
+      if (window.location.pathname === "/") {
+        console.log("if inboxRef");
+        todayRef.current.click();
+      } else if (window.location.pathname === "/today") {
+        console.log("if todayRef");
+        starRef.current.click();
+      } else if (window.location.pathname === "/star") {
+        console.log("if todayRef");
+        upcomingRef.current.click();
+      } else if (window.location.pathname === "/upcoming") {
+        console.log("if todayRef");
+        archiveRef.current.click();
+      } else if (window.location.pathname === "/archive") {
+        console.log("if todayRef");
+        inboxRef.current.click();
+      }
     }
   };
-
-  const inputRef = useRef(null);
 
   return (
     <>
@@ -147,6 +190,7 @@ const TaskScreen = ({
                   to="/"
                   activeStyle={{ fontWeight: "bold" }}
                   onClick={() => sectionTypeHandler("inbox")}
+                  ref={inboxRef}
                 >
                   Inbox
                 </NavLink>
@@ -162,6 +206,7 @@ const TaskScreen = ({
                   to="/today"
                   activeStyle={{ fontWeight: "bold" }}
                   onClick={() => sectionTypeHandler("today")}
+                  ref={todayRef}
                 >
                   Today
                 </NavLink>
@@ -177,6 +222,7 @@ const TaskScreen = ({
                   to="/star"
                   activeStyle={{ fontWeight: "bold" }}
                   onClick={() => sectionTypeHandler("star")}
+                  ref={starRef}
                 >
                   Star
                 </NavLink>
@@ -191,6 +237,7 @@ const TaskScreen = ({
                   to="/upcoming"
                   activeStyle={{ fontWeight: "bold" }}
                   onClick={() => sectionTypeHandler("upcoming")}
+                  ref={upcomingRef}
                 >
                   Upcoming
                 </NavLink>
@@ -205,6 +252,7 @@ const TaskScreen = ({
                   to="/archive"
                   activeStyle={{ fontWeight: "bold" }}
                   onClick={() => sectionTypeHandler("archive")}
+                  ref={archiveRef}
                 >
                   Archive
                 </NavLink>
@@ -228,7 +276,11 @@ const TaskScreen = ({
                 onSubmit={addTask}
                 searchRef={searchRef}
                 inputRef={inputRef}
-                todayDate={todayDate}
+                inboxRef={inboxRef}
+                todayRef={todayRef}
+                starRef={starRef}
+                upcomingRef={upcomingRef}
+                archiveRef={archiveRef}
               />
             </TaskInputContainer>
           </MainScreenContainer>
