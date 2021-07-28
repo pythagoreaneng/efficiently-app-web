@@ -72,6 +72,10 @@ const Task = ({ completed, title, completeTask, id, removeTask, editTask }) => {
 
   const editKeyDown = (e) => {
     if (e.key === "Enter") {
+      if (edit === "" || /^\s*$/.test(edit)) {
+        console.log("Invalid edit");
+        return;
+      }
       setEdit(edit);
       setIsEdit(false);
     }
