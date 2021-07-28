@@ -19,9 +19,11 @@ const TaskContainer = styled.div`
 `;
 
 // single task card component
-const Task = ({ completed, title, completeTask }) => {
+const Task = ({ completed, title, completeTask, key }) => {
+  console.log(key);
+  console.log(title);
   return (
-    <TaskContainer>
+    <TaskContainer key={key}>
       <Checkbox type="Checkbox" onClick={(key) => completeTask(key)} />
       {title}
     </TaskContainer>

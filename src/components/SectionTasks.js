@@ -15,6 +15,8 @@ const SectionTasks = ({
     return tasks
       .filter((task) => !task.completed)
       .map((task) => {
+        console.log(task.title);
+        console.log(task.key);
         return (
           <Task
             key={task.key}
