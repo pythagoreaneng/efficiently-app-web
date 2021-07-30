@@ -33,6 +33,7 @@ const SectionTasks = ({
             createdDate={task.createdDate}
             dueDate={task.dueDate}
             scheduleDate={task.scheduleDate}
+            todayDate={todayDate}
           />
         );
       });
@@ -54,6 +55,7 @@ const SectionTasks = ({
             createdDate={task.createdDate}
             dueDate={task.dueDate}
             scheduleDate={task.scheduleDate}
+            todayDate={todayDate}
           />
         );
       });
@@ -75,6 +77,7 @@ const SectionTasks = ({
             createdDate={task.createdDate}
             dueDate={task.dueDate}
             scheduleDate={task.scheduleDate}
+            todayDate={todayDate}
           />
         );
       });
@@ -96,6 +99,7 @@ const SectionTasks = ({
             createdDate={task.createdDate}
             dueDate={task.dueDate}
             scheduleDate={task.scheduleDate}
+            todayDate={todayDate}
           />
         );
       });
@@ -117,6 +121,8 @@ const SectionTasks = ({
             createdDate={task.createdDate}
             dueDate={task.dueDate}
             scheduleDate={task.scheduleDate}
+            todayDate={todayDate}
+            todayDate={todayDate}
           />
         );
       });
@@ -138,6 +144,7 @@ const SectionTasks = ({
           createdDate={task.createdDate}
           dueDate={task.dueDate}
           scheduleDate={task.scheduleDate}
+          todayDate={todayDate}
         />
       );
     });
@@ -161,6 +168,7 @@ const SectionTasks = ({
             createdDate={task.createdDate}
             dueDate={task.dueDate}
             scheduleDate={task.scheduleDate}
+            todayDate={todayDate}
           />
         );
       });

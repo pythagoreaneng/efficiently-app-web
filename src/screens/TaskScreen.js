@@ -28,15 +28,16 @@ import {
   MainScreenContainer,
 } from "../pages/styles";
 import { NavLink } from "react-router-dom";
+import moment from "moment";
 
 // TaskScreen is an interface which serves all the ToDo functionality
 
-var todayDate = new Date();
-var dd = String(todayDate.getDate()).padStart(2, "0");
-var mm = String(todayDate.getMonth() + 1).padStart(2, "0"); //January is 0!
-var yyyy = todayDate.getFullYear();
-
-todayDate = yyyy + "-" + mm + "-" + dd;
+// var todayDate = new Date();
+// var dd = String(todayDate.getDate()).padStart(2, "0");
+// var mm = String(todayDate.getMonth() + 1).padStart(2, "0"); //January is 0!
+// var yyyy = todayDate.getFullYear();
+var todayDate = moment().format("YYYY-MM-DD");
+console.log(todayDate);
 
 const TaskScreen = ({
   tasks,
@@ -275,6 +276,7 @@ const TaskScreen = ({
                 removeTask={removeTask}
                 editTask={editTask}
                 switchStar={switchStar}
+                todayDate={todayDate}
               />
             </SectionTasksContainer>
 
