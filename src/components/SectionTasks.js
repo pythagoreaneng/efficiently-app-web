@@ -11,6 +11,8 @@ const SectionTasks = ({
   removeTask,
   editTask,
   switchStar,
+  createdDate,
+  dueDate,
 }) => {
   if (sectionType === "inbox") {
     // diplays inbox, which is task.completed = false
@@ -28,6 +30,10 @@ const SectionTasks = ({
             removeTask={removeTask}
             editTask={editTask}
             switchStar={switchStar}
+            createdDate={task.createdDate}
+            dueDate={task.dueDate}
+            scheduleDate={task.scheduleDate}
+            todayDate={todayDate}
           />
         );
       });
@@ -46,12 +52,16 @@ const SectionTasks = ({
             removeTask={removeTask}
             editTask={editTask}
             switchStar={switchStar}
+            createdDate={task.createdDate}
+            dueDate={task.dueDate}
+            scheduleDate={task.scheduleDate}
+            todayDate={todayDate}
           />
         );
       });
   } else if (sectionType === "upcoming") {
     return tasks
-      .filter((task) => task.schedule_date > todayDate)
+      .filter((task) => task.scheduleDate > todayDate)
       .map((task) => {
         return (
           <Task
@@ -64,6 +74,10 @@ const SectionTasks = ({
             removeTask={removeTask}
             editTask={editTask}
             switchStar={switchStar}
+            createdDate={task.createdDate}
+            dueDate={task.dueDate}
+            scheduleDate={task.scheduleDate}
+            todayDate={todayDate}
           />
         );
       });
@@ -82,12 +96,16 @@ const SectionTasks = ({
             removeTask={removeTask}
             editTask={editTask}
             switchStar={switchStar}
+            createdDate={task.createdDate}
+            dueDate={task.dueDate}
+            scheduleDate={task.scheduleDate}
+            todayDate={todayDate}
           />
         );
       });
   } else if (sectionType === "today") {
     return tasks
-      .filter((task) => task.due_date === todayDate)
+      .filter((task) => task.dueDate === todayDate)
       .map((task) => {
         return (
           <Task
@@ -100,6 +118,11 @@ const SectionTasks = ({
             removeTask={removeTask}
             editTask={editTask}
             switchStar={switchStar}
+            createdDate={task.createdDate}
+            dueDate={task.dueDate}
+            scheduleDate={task.scheduleDate}
+            todayDate={todayDate}
+            todayDate={todayDate}
           />
         );
       });
@@ -118,6 +141,10 @@ const SectionTasks = ({
           switchStar={switchStar}
           editTask={editTask}
           switchStar={switchStar}
+          createdDate={task.createdDate}
+          dueDate={task.dueDate}
+          scheduleDate={task.scheduleDate}
+          todayDate={todayDate}
         />
       );
     });
@@ -138,6 +165,10 @@ const SectionTasks = ({
             editTask={editTask}
             star={task.star}
             switchStar={switchStar}
+            createdDate={task.createdDate}
+            dueDate={task.dueDate}
+            scheduleDate={task.scheduleDate}
+            todayDate={todayDate}
           />
         );
       });

@@ -14,10 +14,11 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import test_tasks_2 from "./pages/data/test_tasks_2";
 
 function App() {
   // unfiltered tasks
-  const [tasks, setTasks] = useState(test_tasks_1);
+  const [tasks, setTasks] = useState(test_tasks_2);
 
   // screen name hook,
   const [sideScreenName, setSideScreenName] = useState("");

@@ -59,9 +59,9 @@ const TaskInput = ({
       title: input,
       completed: false,
       star: false,
-      created_date: todayDate,
-      due_date: "07/28/2021",
-      schedule_date: "08/28/2021",
+      createdDate: todayDate,
+      dueDate: "2021-07-28",
+      scheduleDate: "2021-08-28",
     });
     // clear input
     setInput("");

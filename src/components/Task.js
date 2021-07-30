@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { RiCloseFill, RiStarSFill, RiStarSLine } from "react-icons/ri";
 import styled from "styled-components";
 import useOutsideClick from "../Hooks/useOutsideClick";
+import moment from "moment";
 
 const Checkbox = styled.input`
   margin: 1rem;
@@ -39,6 +40,12 @@ const TaskTitleContainer = styled.div`
   width: 70%;
 `;
 
+const DaysContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-size: 0.6em;
+`;
+
 // single task card component
 const Task = ({
   completed,
@@ -49,6 +56,10 @@ const Task = ({
   editTask,
   star,
   switchStar,
+  createdDate,
+  dueDate,
+  scheduleDate,
+  todayDate,
 }) => {
   const [isEdit, setIsEdit] = useState(false);
   const [edit, setEdit] = useState(title);
@@ -106,6 +117,9 @@ const Task = ({
     console.log("Outside click");
   });
 
+  var untilScheduleDate = moment(scheduleDate).fromNow();
+  var untilDueDate = moment(dueDate).fromNow();
+
   return (
     <TaskContainer key={id}>
       <Checkbox type="Checkbox" onClick={() => completeTask(id)} />
@@ -121,7 +135,13 @@ const Task = ({
         ) : (
           <div>{edit}</div>
         )}
+
+        <p></p>
       </TaskTitleContainer>
+      <DaysContainer>
+        <p>{scheduleDate && <p>Scheduled {untilScheduleDate}</p>}</p>
+        <p>{dueDate && <p>due {untilDueDate}</p>}</p>
+      </DaysContainer>
 
       <OptionContainer>
         {star ? (
