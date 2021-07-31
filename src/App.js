@@ -26,27 +26,13 @@ function App() {
       <TasksContextProvider>
         <Router>
           <Switch>
-            <Route path="/star">
-              <Star />
-            </Route>
-            <Route path="/archive">
-              <Archive />
-            </Route>
-            <Route path="/upcoming">
-              <Upcoming />
-            </Route>
-            <Route path="/today">
-              <Today />
-            </Route>
-            <Route path="/search">
-              <Search />
-            </Route>
-            <Route exact path="/">
-              <Inbox />
-            </Route>
-            <Redirect to="/">
-              <Inbox />
-            </Redirect>
+            <Route path="/star" component={Star} />
+            <Route path="/archive" component={Archive} />
+            <Route path="/upcoming" component={Upcoming} />
+            <Route path="/today" component={Today} />
+            <Route path="/search" component={Search} />
+            <Route exact path="/" component={Search} />
+            <Redirect to="/" component={Inbox} />
           </Switch>
         </Router>
       </TasksContextProvider>
