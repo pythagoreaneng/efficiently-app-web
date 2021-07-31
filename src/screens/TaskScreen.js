@@ -37,7 +37,7 @@ import moment from "moment";
 // var mm = String(todayDate.getMonth() + 1).padStart(2, "0"); //January is 0!
 // var yyyy = todayDate.getFullYear();
 var todayDate = moment().format("YYYY-MM-D");
-D;
+
 console.log(todayDate);
 
 const TaskScreen = ({
