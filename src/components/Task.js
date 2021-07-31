@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { RiCloseFill, RiStarSFill, RiStarSLine } from "react-icons/ri";
 import styled from "styled-components";
-import useOutsideClick from "../Hooks/useOutsideClick";
+
 import moment from "moment";
 
 const Checkbox = styled.input`
@@ -112,10 +112,6 @@ const Task = ({
       setIsEdit(false);
     }
   };
-
-  useOutsideClick(editRef, () => {
-    console.log("Outside click");
-  });
 
   var untilScheduleDate = moment(scheduleDate).fromNow();
   var untilDueDate = moment(dueDate).fromNow();
