@@ -12,8 +12,6 @@ const Upcoming = ({
   return (
     <>
       <TaskScreen
-        tasks={tasks}
-        setTasks={setTasks}
         sideScreenName={sideScreenName}
         sectionType={sectionType}
         setSectionType={setSectionType}

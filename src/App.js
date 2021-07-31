@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./index.css";
 import Inbox from "./pages/index";
 import Star from "./pages/star";
@@ -6,7 +6,7 @@ import Archive from "./pages/archive";
 import Upcoming from "./pages/upcoming";
 import Today from "./pages/today";
 import Search from "./pages/search";
-import test_tasks_1 from "./pages/data/test_tasks_1";
+import TasksContextProvider from "./providers/TasksContext";
 
 import {
   BrowserRouter as Router,
@@ -15,11 +15,11 @@ import {
   Redirect,
 } from "react-router-dom";
 import test_tasks_2 from "./pages/data/test_tasks_2";
-import Task from "./components/Task";
+import TasksContext from "./providers/TasksContext";
 
 function App() {
   // unfiltered tasks
-  const [tasks, setTasks] = useState([]);
+  // const [tasks, setTasks] = useState(test_tasks_2);
 
   // screen name hook,
   const [sideScreenName, setSideScreenName] = useState("");
@@ -27,97 +27,61 @@ function App() {
   // list type (inbox, star, ...) hook, required for filtering tasks in SectionTasks
   const [sectionType, setSectionType] = useState("inbox");
 
-  // save tasks locally
-  const saveTasksLocally = () => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-    console.log("ran saveTaskLocally()");
-  };
-
-  const getTasksLocally = () => {
-    if (localStorage.getItem("tasks") === null) {
-      localStorage.setItem("tasks", JSON.stringify());
-    } else {
-      setTasks(JSON.parse(localStorage.getItem("tasks")));
-    }
-  };
-
-  // intial loading of locally saved tasks
-  useEffect(() => {
-    getTasksLocally();
-  }, []);
-
-  // on task change re-save locally
-  useEffect(() => {
-    saveTasksLocally();
-  }, [tasks]);
-
   return (
     <>
       <Router>
         <Switch>
-          <Route path="/star">
-            <Star
-              tasks={tasks}
-              setTasks={setTasks}
-              sideScreenName={sideScreenName}
-              sectionType={sectionType}
-              setSectionType={setSectionType}
-            />
-          </Route>
-          <Route path="/archive">
-            <Archive
-              tasks={tasks}
-              setTasks={setTasks}
-              sideScreenName={sideScreenName}
-              sectionType={sectionType}
-              setSectionType={setSectionType}
-            />
-          </Route>
-          <Route path="/upcoming">
-            <Upcoming
-              tasks={tasks}
-              setTasks={setTasks}
-              sideScreenName={sideScreenName}
-              sectionType={sectionType}
-              setSectionType={setSectionType}
-            />
-          </Route>
-          <Route path="/today">
-            <Today
-              tasks={tasks}
-              setTasks={setTasks}
-              sideScreenName={sideScreenName}
-              sectionType={sectionType}
-              setSectionType={setSectionType}
-            />
-          </Route>
-          <Route path="/search">
-            <Search
-              tasks={tasks}
-              setTasks={setTasks}
-              sideScreenName={sideScreenName}
-              sectionType={sectionType}
-              setSectionType={setSectionType}
-            />
-          </Route>
-          <Route exact path="/">
-            <Inbox
-              tasks={tasks}
-              setTasks={setTasks}
-              sideScreenName={sideScreenName}
-              sectionType={sectionType}
-              setSectionType={setSectionType}
-            />
-          </Route>
-          <Redirect to="/">
-            <Inbox
-              tasks={tasks}
-              setTasks={setTasks}
-              sideScreenName={sideScreenName}
-              sectionType={sectionType}
-              setSectionType={setSectionType}
-            />
-          </Redirect>
+          <TasksContextProvider>
+            <Route path="/star">
+              <Star
+                sideScreenName={sideScreenName}
+                sectionType={sectionType}
+                setSectionType={setSectionType}
+              />
+            </Route>
+            <Route path="/archive">
+              <Archive
+                sideScreenName={sideScreenName}
+                sectionType={sectionType}
+                setSectionType={setSectionType}
+              />
+            </Route>
+            <Route path="/upcoming">
+              <Upcoming
+                sideScreenName={sideScreenName}
+                sectionType={sectionType}
+                setSectionType={setSectionType}
+              />
+            </Route>
+            <Route path="/today">
+              <Today
+                sideScreenName={sideScreenName}
+                sectionType={sectionType}
+                setSectionType={setSectionType}
+              />
+            </Route>
+            <Route path="/search">
+              <Search
+                sideScreenName={sideScreenName}
+                sectionType={sectionType}
+                setSectionType={setSectionType}
+              />
+            </Route>
+            <Route exact path="/">
+              <Inbox
+                sideScreenName={sideScreenName}
+                sectionType={sectionType}
+                setSectionType={setSectionType}
+              />
+            </Route>
+            <Redirect to="/">
+              <Inbox
+                sideScreenName={sideScreenName}
+                sectionType={sectionType}
+                setSectionType={setSectionType}
+              />
+            </Redirect>
+          </TasksContextProvider>
         </Switch>
       </Router>
     </>

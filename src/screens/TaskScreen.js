@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext, useEffect } from "react";
 import {
   RiCalendarCheckFill,
   RiInboxFill,
@@ -29,6 +29,7 @@ import {
 } from "../pages/styles";
 import { NavLink } from "react-router-dom";
 import moment from "moment";
+import { TasksContext } from "../providers/TasksContext";
 
 // TaskScreen is an interface which serves all the ToDo functionality
 
@@ -36,16 +37,12 @@ import moment from "moment";
 // var dd = String(todayDate.getDate()).padStart(2, "0");
 // var mm = String(todayDate.getMonth() + 1).padStart(2, "0"); //January is 0!
 // var yyyy = todayDate.getFullYear();
-var todayDate = moment().format("YYYY-MM-DD");
-console.log(todayDate);
+var todayDate = moment().format("YYYY-MM-D");
 
-const TaskScreen = ({
-  tasks,
-  setTasks,
-  sideScreenName,
-  sectionType,
-  setSectionType,
-}) => {
+const TaskScreen = ({ sideScreenName, sectionType, setSectionType }) => {
+  const { tasks, setTasks } = useContext(TasksContext);
+  console.log(tasks);
+
   // clears search box upon click
   const sectionTypeHandler = (e) => {
     setSectionType(e);
@@ -106,7 +103,7 @@ const TaskScreen = ({
     setSearch(e.target.value);
   };
 
-  const filteredTasks =  tasks.filter((task) =>
+  const filteredTasks = tasks.filter((task) =>
     task.title.toLowerCase().includes(search.toLowerCase())
   );
 
@@ -142,6 +139,30 @@ const TaskScreen = ({
   const handleSearchBarClick = () => {
     searchRef.current.click();
   };
+
+  // save tasks locally
+  const saveTasksLocally = () => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    console.log("ran saveTaskLocally()");
+  };
+
+  const getTasksLocally = () => {
+    if (localStorage.getItem("tasks") === null) {
+      localStorage.setItem("tasks", JSON.stringify());
+    } else {
+      setTasks(JSON.parse(localStorage.getItem("tasks")));
+    }
+  };
+
+  // intial loading of locally saved tasks
+  useEffect(() => {
+    getTasksLocally();
+  }, []);
+
+  // on task change re-save locally
+  useEffect(() => {
+    saveTasksLocally();
+  }, [tasks]);
 
   return (
     <>

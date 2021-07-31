@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import TasksContext from "../providers/TasksContext";
 import TaskScreen from "../screens/TaskScreen";
 
 const Star = ({
@@ -9,11 +10,11 @@ const Star = ({
   setSectionType,
   today,
 }) => {
+  const msg = useContext(TasksContext);
   return (
     <>
+      {msg}
       <TaskScreen
-        tasks={tasks}
-        setTasks={setTasks}
         sideScreenName={sideScreenName}
         sectionType={sectionType}
         setSectionType={setSectionType}

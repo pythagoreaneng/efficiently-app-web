@@ -60,7 +60,7 @@ const TaskInput = ({
       completed: false,
       star: false,
       createdDate: todayDate,
-      dueDate: "2021-07-28",
+      dueDate: "2021-07-31",
       scheduleDate: "2021-08-28",
     });
     // clear input
