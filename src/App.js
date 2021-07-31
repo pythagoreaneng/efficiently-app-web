@@ -20,8 +20,6 @@ import TasksContext from "./providers/TasksContext";
 function App() {
   // unfiltered tasks
   // const [tasks, setTasks] = useState(test_tasks_2);
-  const tasks = useContext(TasksContextProvider);
-  const setTasks = useContext(TasksContextProvider);
 
   // screen name hook,
   const [sideScreenName, setSideScreenName] = useState("");
