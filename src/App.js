@@ -29,27 +29,27 @@ function App() {
 
   // save tasks locally
   const saveTasksLocally = () => {
-      localStorage.setItem('tasks', JSON.stringify(tasks));
-      console.log("ran saveTaskLocally()")
-  }
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    console.log("ran saveTaskLocally()");
+  };
 
   const getTasksLocally = () => {
-    if (localStorage.getItem('tasks') === null) {
-      localStorage.setItem('tasks', JSON.stringify());
+    if (localStorage.getItem("tasks") === null) {
+      localStorage.setItem("tasks", JSON.stringify());
     } else {
-      setTasks(JSON.parse(localStorage.getItem('tasks'))); 
+      setTasks(JSON.parse(localStorage.getItem("tasks")));
     }
-  }
+  };
 
   // intial loading of locally saved tasks
-  useEffect(()=> {
+  useEffect(() => {
     getTasksLocally();
   }, []);
 
   // on task change re-save locally
   useEffect(() => {
     saveTasksLocally();
-  },[tasks]);
+  }, [tasks]);
 
   return (
     <>
