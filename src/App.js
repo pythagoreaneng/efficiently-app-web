@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./index.css";
 import Inbox from "./pages/index";
 import Star from "./pages/star";
@@ -15,16 +15,42 @@ import {
   Redirect,
 } from "react-router-dom";
 import test_tasks_2 from "./pages/data/test_tasks_2";
+import Task from "./components/Task";
 
 function App() {
   // unfiltered tasks
-  const [tasks, setTasks] = useState(test_tasks_2);
+  const [tasks, setTasks] = useState([]);
 
   // screen name hook,
   const [sideScreenName, setSideScreenName] = useState("");
 
   // list type (inbox, star, ...) hook, required for filtering tasks in SectionTasks
   const [sectionType, setSectionType] = useState("inbox");
+
+  // save tasks locally
+  const saveTasksLocally = () => {
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      console.log("ran saveTaskLocally()")
+  }
+
+  const getTasksLocally = () => {
+    if (localStorage.getItem('tasks') === null) {
+      localStorage.setItem('tasks', JSON.stringify());
+    } else {
+      setTasks(JSON.parse(localStorage.getItem('tasks'))); 
+    }
+  }
+
+  // intial loading of locally saved tasks
+  useEffect(()=> {
+    getTasksLocally();
+  }, []);
+
+  // on task change re-save locally
+  useEffect(() => {
+    saveTasksLocally();
+  },[tasks]);
+
   return (
     <>
       <Router>
