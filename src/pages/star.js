@@ -1,13 +1,8 @@
-import React, { useContext } from "react";
-import TasksContext from "../providers/TasksContext";
+import React from "react";
 import TaskScreen from "../screens/TaskScreen";
 
 const Star = () => {
-  return (
-    <>
-      <TaskScreen />
-    </>
-  );
+  return <TaskScreen />;
 };
 
 export default Star;
