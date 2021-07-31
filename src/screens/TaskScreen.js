@@ -39,8 +39,15 @@ import { TasksContext } from "../providers/TasksContext";
 // var yyyy = todayDate.getFullYear();
 var todayDate = moment().format("YYYY-MM-D");
 
-const TaskScreen = ({ sideScreenName, sectionType, setSectionType }) => {
-  const { tasks, setTasks } = useContext(TasksContext);
+const TaskScreen = () => {
+  const {
+    tasks,
+    setTasks,
+    sideScreenName,
+    setSideScreenName,
+    sectionType,
+    setSectionType,
+  } = useContext(TasksContext);
   console.log(tasks);
 
   // clears search box upon click
@@ -139,30 +146,6 @@ const TaskScreen = ({ sideScreenName, sectionType, setSectionType }) => {
   const handleSearchBarClick = () => {
     searchRef.current.click();
   };
-
-  // save tasks locally
-  const saveTasksLocally = () => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-    console.log("ran saveTaskLocally()");
-  };
-
-  const getTasksLocally = () => {
-    if (localStorage.getItem("tasks") === null) {
-      localStorage.setItem("tasks", JSON.stringify());
-    } else {
-      setTasks(JSON.parse(localStorage.getItem("tasks")));
-    }
-  };
-
-  // intial loading of locally saved tasks
-  useEffect(() => {
-    getTasksLocally();
-  }, []);
-
-  // on task change re-save locally
-  useEffect(() => {
-    saveTasksLocally();
-  }, [tasks]);
 
   return (
     <>

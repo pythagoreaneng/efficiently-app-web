@@ -21,69 +21,35 @@ function App() {
   // unfiltered tasks
   // const [tasks, setTasks] = useState(test_tasks_2);
 
-  // screen name hook,
-  const [sideScreenName, setSideScreenName] = useState("");
-
-  // list type (inbox, star, ...) hook, required for filtering tasks in SectionTasks
-  const [sectionType, setSectionType] = useState("inbox");
-
   return (
     <>
-      <Router>
-        <Switch>
-          <TasksContextProvider>
+      <TasksContextProvider>
+        <Router>
+          <Switch>
             <Route path="/star">
-              <Star
-                sideScreenName={sideScreenName}
-                sectionType={sectionType}
-                setSectionType={setSectionType}
-              />
+              <Star />
             </Route>
             <Route path="/archive">
-              <Archive
-                sideScreenName={sideScreenName}
-                sectionType={sectionType}
-                setSectionType={setSectionType}
-              />
+              <Archive />
             </Route>
             <Route path="/upcoming">
-              <Upcoming
-                sideScreenName={sideScreenName}
-                sectionType={sectionType}
-                setSectionType={setSectionType}
-              />
+              <Upcoming />
             </Route>
             <Route path="/today">
-              <Today
-                sideScreenName={sideScreenName}
-                sectionType={sectionType}
-                setSectionType={setSectionType}
-              />
+              <Today />
             </Route>
             <Route path="/search">
-              <Search
-                sideScreenName={sideScreenName}
-                sectionType={sectionType}
-                setSectionType={setSectionType}
-              />
+              <Search />
             </Route>
             <Route exact path="/">
-              <Inbox
-                sideScreenName={sideScreenName}
-                sectionType={sectionType}
-                setSectionType={setSectionType}
-              />
+              <Inbox />
             </Route>
             <Redirect to="/">
-              <Inbox
-                sideScreenName={sideScreenName}
-                sectionType={sectionType}
-                setSectionType={setSectionType}
-              />
+              <Inbox />
             </Redirect>
-          </TasksContextProvider>
-        </Switch>
-      </Router>
+          </Switch>
+        </Router>
+      </TasksContextProvider>
     </>
   );
 }
