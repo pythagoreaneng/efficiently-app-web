@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import {
   RiCalendarCheckFill,
   RiInboxFill,
@@ -29,6 +29,7 @@ import {
 } from "../pages/styles";
 import { NavLink } from "react-router-dom";
 import moment from "moment";
+import { TasksContext } from "../providers/TasksContext";
 
 // TaskScreen is an interface which serves all the ToDo functionality
 
@@ -38,15 +39,10 @@ import moment from "moment";
 // var yyyy = todayDate.getFullYear();
 var todayDate = moment().format("YYYY-MM-D");
 
-console.log(todayDate);
+const TaskScreen = ({ sideScreenName, sectionType, setSectionType }) => {
+  const { tasks, setTasks } = useContext(TasksContext);
+  console.log(tasks);
 
-const TaskScreen = ({
-  tasks,
-  setTasks,
-  sideScreenName,
-  sectionType,
-  setSectionType,
-}) => {
   // clears search box upon click
   const sectionTypeHandler = (e) => {
     setSectionType(e);

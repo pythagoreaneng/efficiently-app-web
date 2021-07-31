@@ -12,8 +12,6 @@ const Archive = ({
   return (
     <>
       <TaskScreen
-        tasks={tasks}
-        setTasks={setTasks}
         sideScreenName={sideScreenName}
         sectionType={sectionType}
         setSectionType={setSectionType}

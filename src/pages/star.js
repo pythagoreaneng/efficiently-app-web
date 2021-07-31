@@ -15,8 +15,6 @@ const Star = ({
     <>
       {msg}
       <TaskScreen
-        tasks={tasks}
-        setTasks={setTasks}
         sideScreenName={sideScreenName}
         sectionType={sectionType}
         setSectionType={setSectionType}

@@ -1,10 +1,16 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext, useState } from "react";
+import test_tasks_2 from "../pages/data/test_tasks_2";
 
-const TaskContext = React.createContext(null);
+export const TasksContext = React.createContext(null);
 
-const TasksContextProvider = ({ children }) => {
-  const msg = "Hi";
-  return <TaskContext.Provider>{children}</TaskContext.Provider>;
+export const TasksContextProvider = ({ children }) => {
+  const [tasks, setTasks] = useState(test_tasks_2);
+
+  return (
+    <TasksContext.Provider value={{ tasks, setTasks }}>
+      {children}
+    </TasksContext.Provider>
+  );
 };
 
 export default TasksContextProvider;

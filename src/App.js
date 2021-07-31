@@ -19,14 +19,16 @@ import TasksContext from "./providers/TasksContext";
 
 function App() {
   // unfiltered tasks
-  const [tasks, setTasks] = useState(test_tasks_2);
+  // const [tasks, setTasks] = useState(test_tasks_2);
+  const tasks = useContext(TasksContextProvider);
+  const setTasks = useContext(TasksContextProvider);
 
   // screen name hook,
   const [sideScreenName, setSideScreenName] = useState("");
 
   // list type (inbox, star, ...) hook, required for filtering tasks in SectionTasks
   const [sectionType, setSectionType] = useState("inbox");
-  const msg = useContext(TasksContext);
+
   return (
     <>
       <Router>
@@ -34,8 +36,6 @@ function App() {
           <TasksContextProvider>
             <Route path="/star">
               <Star
-                tasks={tasks}
-                setTasks={setTasks}
                 sideScreenName={sideScreenName}
                 sectionType={sectionType}
                 setSectionType={setSectionType}
@@ -43,8 +43,6 @@ function App() {
             </Route>
             <Route path="/archive">
               <Archive
-                tasks={tasks}
-                setTasks={setTasks}
                 sideScreenName={sideScreenName}
                 sectionType={sectionType}
                 setSectionType={setSectionType}
@@ -52,8 +50,6 @@ function App() {
             </Route>
             <Route path="/upcoming">
               <Upcoming
-                tasks={tasks}
-                setTasks={setTasks}
                 sideScreenName={sideScreenName}
                 sectionType={sectionType}
                 setSectionType={setSectionType}
@@ -61,8 +57,6 @@ function App() {
             </Route>
             <Route path="/today">
               <Today
-                tasks={tasks}
-                setTasks={setTasks}
                 sideScreenName={sideScreenName}
                 sectionType={sectionType}
                 setSectionType={setSectionType}
@@ -70,8 +64,6 @@ function App() {
             </Route>
             <Route path="/search">
               <Search
-                tasks={tasks}
-                setTasks={setTasks}
                 sideScreenName={sideScreenName}
                 sectionType={sectionType}
                 setSectionType={setSectionType}
@@ -79,8 +71,6 @@ function App() {
             </Route>
             <Route exact path="/">
               <Inbox
-                tasks={tasks}
-                setTasks={setTasks}
                 sideScreenName={sideScreenName}
                 sectionType={sectionType}
                 setSectionType={setSectionType}
@@ -88,8 +78,6 @@ function App() {
             </Route>
             <Redirect to="/">
               <Inbox
-                tasks={tasks}
-                setTasks={setTasks}
                 sideScreenName={sideScreenName}
                 sectionType={sectionType}
                 setSectionType={setSectionType}
