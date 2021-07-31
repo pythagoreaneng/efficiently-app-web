@@ -106,7 +106,7 @@ const TaskScreen = ({
     setSearch(e.target.value);
   };
 
-  const filteredTasks = tasks.filter((task) =>
+  const filteredTasks =  tasks.filter((task) =>
     task.title.toLowerCase().includes(search.toLowerCase())
   );
 
