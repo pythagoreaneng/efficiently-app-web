@@ -92,6 +92,7 @@ const Task = ({
     }
   };
 
+  //Issue: clicking anohter task when editing 
   useOutsideClick(editRef, () => { // stops edit when clicked outside of edit input.
     if (edit === "") { // if left blank, delete task
       removeTask(id);
