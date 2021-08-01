@@ -36,8 +36,7 @@ import moment from "moment";
 // var dd = String(todayDate.getDate()).padStart(2, "0");
 // var mm = String(todayDate.getMonth() + 1).padStart(2, "0"); //January is 0!
 // var yyyy = todayDate.getFullYear();
-var todayDate = moment().format("YYYY-MM-D");
-
+var todayDate = moment().format("YYYY-MM-DD");
 console.log(todayDate);
 
 const TaskScreen = ({
@@ -71,14 +70,14 @@ const TaskScreen = ({
     setTasks(newTasks);
   };
 
-  const editTask = (taskId, newTitle) => {
-    // if (!newTitle.title || /^\s*$/.test(newTitle.text)) {
-    //   return;
-    // }
-
-    setTasks((prev) =>
-      prev.map((task) => (task.id === taskId ? newTitle : task))
-    );
+  const editTask = (id, taskTitle) => {
+    let newTasks = tasks.map((task) => { // map through tasks
+      if (task.key === id) { // find key
+        task.title = taskTitle; // update title
+      }
+      return task;
+    });
+    setTasks(newTasks); // update Tasks
   };
 
   const completeTask = (key) => {
