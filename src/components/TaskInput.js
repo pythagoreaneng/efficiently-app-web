@@ -34,7 +34,7 @@ const AddTaskButton = styled.button`
 `;
 
 // input component to add tasks
-const TaskInput = ({ onSubmit, todayDate }) => {
+const TaskInput = ({ onSubmit }) => {
   const {
     searchBarRef,
     inboxRef,
@@ -44,6 +44,7 @@ const TaskInput = ({ onSubmit, todayDate }) => {
     todayRef,
     searchRef,
     inputRef,
+    todayDate,
   } = useContext(TaskContext);
   // hook to handle TaskInput value
   const [input, setInput] = useState("");

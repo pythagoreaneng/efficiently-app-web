@@ -1,13 +1,5 @@
 import React, { useState, useRef, useContext, useEffect } from "react";
-import {
-  RiCalendarCheckFill,
-  RiInboxFill,
-  RiStarSFill,
-  RiCalendarTodoFill,
-  RiArchiveFill,
-  RiLightbulbFlashFill,
-  RiSearchLine,
-} from "react-icons/ri";
+import { RiCalendarCheckFill } from "react-icons/ri";
 import SectionTasks from "../components/SectionTasks";
 import TaskInput from "../components/TaskInput";
 import {
@@ -21,10 +13,7 @@ import {
   TopSearchInput,
   ScreenContainer,
   SectionTasksContainer,
-  SectionIcon,
-  SectionName,
   SideScreenContainer,
-  SideSectionWrapper,
   MainScreenContainer,
 } from "../pages/styles";
 import { NavLink } from "react-router-dom";
@@ -32,26 +21,20 @@ import moment from "moment";
 import { TaskContext } from "../providers/TaskContext";
 import SideScreen from "../components/SideScreen";
 
-var todayDate = moment().format("YYYY-MM-D");
-
 const TaskScreen = () => {
   const {
     tasks,
     setTasks,
     sideScreenName,
-    setSideScreenName,
     sectionType,
-    setSectionType,
     inboxRef,
-    starRef,
     archiveRef,
-    upcomingRef,
-    todayRef,
     searchRef,
     inputRef,
     searchBarRef,
     handleSearch,
     search,
+    todayDate,
   } = useContext(TaskContext);
   console.log(sectionType);
 
@@ -74,10 +57,6 @@ const TaskScreen = () => {
   };
 
   const editTask = (taskId, newTitle) => {
-    // if (!newTitle.title || /^\s*$/.test(newTitle.text)) {
-    //   return;
-    // }
-
     setTasks((prev) =>
       prev.map((task) => (task.id === taskId ? newTitle : task))
     );
@@ -167,7 +146,6 @@ const TaskScreen = () => {
                 tasks={filteredTasks}
                 sectionType={sectionType}
                 completeTask={completeTask}
-                todayDate={todayDate}
                 removeTask={removeTask}
                 editTask={editTask}
                 switchStar={switchStar}
@@ -176,18 +154,7 @@ const TaskScreen = () => {
             </SectionTasksContainer>
 
             <TaskInputContainer>
-              <TaskInput
-                onSubmit={addTask}
-                todayDate={todayDate}
-                // searchBarRef={searchBarRef}
-                // inputRef={inputRef}
-                // inboxRef={inboxRef}
-                // todayRef={todayRef}
-                // starRef={starRef}
-                // upcomingRef={upcomingRef}
-                // archiveRef={archiveRef}
-                // searchRef={searchRef}
-              />
+              <TaskInput onSubmit={addTask} />
             </TaskInputContainer>
           </MainScreenContainer>
         </ScreenContainer>

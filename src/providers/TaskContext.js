@@ -1,11 +1,5 @@
-import React, {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  useRef,
-} from "react";
-import test_tasks_2 from "../pages/data/test_tasks_2";
+import React, { useState, useEffect, useRef } from "react";
+import moment from "moment";
 
 export const TaskContext = React.createContext(null);
 
@@ -62,6 +56,8 @@ export const TaskContextProvider = ({ children }) => {
     setSearch("");
   };
 
+  var todayDate = moment().format("YYYY-MM-D");
+
   return (
     <TaskContext.Provider
       value={{
@@ -83,6 +79,7 @@ export const TaskContextProvider = ({ children }) => {
         setSearch,
         handleSearch,
         sectionTypeHandler,
+        todayDate,
       }}
     >
       {children}
