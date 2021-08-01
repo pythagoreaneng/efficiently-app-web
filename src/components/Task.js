@@ -79,12 +79,8 @@ const Task = ({
     }
   }, [isEdit]);
 
-<<<<<<< HEAD
 
   const editKeyDown = (e) => { // stops edit when enter is hit in edit input.
-=======
-  const editKeyDown = (e) => {
->>>>>>> c0c77428835991355624905cf993d35e159cbbe3
     if (e.key === "Enter") {
       if (edit === "" || /^\s*$/.test(edit)) { // check input
         console.log("Invalid edit");
