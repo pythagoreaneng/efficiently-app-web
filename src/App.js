@@ -1,11 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./index.css";
-import Inbox from "./pages/index";
-import Star from "./pages/star";
-import Archive from "./pages/archive";
-import Upcoming from "./pages/upcoming";
-import Today from "./pages/today";
-import Search from "./pages/search";
+import { Inbox, Star, Archive, Upcoming, Today, Search } from "./pages";
+import TaskContextProvider from "./providers/TaskContext";
 
 import {
   BrowserRouter as Router,
@@ -13,112 +9,25 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import test_tasks_2 from "./pages/data/test_tasks_2";
-import Task from "./components/Task";
+import login from "./pages/login";
 
 function App() {
-  // unfiltered tasks
-  const [tasks, setTasks] = useState([]);
-
-  // screen name hook,
-  const [sideScreenName, setSideScreenName] = useState("");
-
-  // list type (inbox, star, ...) hook, required for filtering tasks in SectionTasks
-  const [sectionType, setSectionType] = useState("inbox");
-
-  // save tasks locally
-  const saveTasksLocally = () => {
-      localStorage.setItem('tasks', JSON.stringify(tasks));
-      console.log("ran saveTaskLocally()")
-  }
-
-  const getTasksLocally = () => {
-    if (localStorage.getItem('tasks') === null) {
-      localStorage.setItem('tasks', JSON.stringify());
-    } else {
-      setTasks(JSON.parse(localStorage.getItem('tasks'))); 
-    }
-  }
-
-  // intial loading of locally saved tasks
-  useEffect(()=> {
-    getTasksLocally();
-  }, []);
-
-  // on task change re-save locally
-  useEffect(() => {
-    saveTasksLocally();
-  },[tasks]);
-
   return (
     <>
-      <Router>
-        <Switch>
-          <Route path="/star">
-            <Star
-              tasks={tasks}
-              setTasks={setTasks}
-              sideScreenName={sideScreenName}
-              sectionType={sectionType}
-              setSectionType={setSectionType}
-            />
-          </Route>
-          <Route path="/archive">
-            <Archive
-              tasks={tasks}
-              setTasks={setTasks}
-              sideScreenName={sideScreenName}
-              sectionType={sectionType}
-              setSectionType={setSectionType}
-            />
-          </Route>
-          <Route path="/upcoming">
-            <Upcoming
-              tasks={tasks}
-              setTasks={setTasks}
-              sideScreenName={sideScreenName}
-              sectionType={sectionType}
-              setSectionType={setSectionType}
-            />
-          </Route>
-          <Route path="/today">
-            <Today
-              tasks={tasks}
-              setTasks={setTasks}
-              sideScreenName={sideScreenName}
-              sectionType={sectionType}
-              setSectionType={setSectionType}
-            />
-          </Route>
-          <Route path="/search">
-            <Search
-              tasks={tasks}
-              setTasks={setTasks}
-              sideScreenName={sideScreenName}
-              sectionType={sectionType}
-              setSectionType={setSectionType}
-            />
-          </Route>
-          <Route exact path="/">
-            <Inbox
-              tasks={tasks}
-              setTasks={setTasks}
-              sideScreenName={sideScreenName}
-              sectionType={sectionType}
-              setSectionType={setSectionType}
-            />
-          </Route>
-          <Redirect to="/">
-            <Inbox
-              tasks={tasks}
-              setTasks={setTasks}
-              sideScreenName={sideScreenName}
-              sectionType={sectionType}
-              setSectionType={setSectionType}
-            />
-          </Redirect>
-        </Switch>
-      </Router>
+      <TaskContextProvider>
+        <Router>
+          <Switch>
+            <Route path="/today" component={Today} />
+            <Route path="/star" component={Star} />
+            <Route path="/upcoming" component={Upcoming} />
+            <Route path="/archive" component={Archive} />
+            <Route path="/search" component={Search} />
+            <Route path="/login" component={login} />
+            <Route exact path="/" component={Inbox} />
+            <Redirect to="/" component={Inbox} />
+          </Switch>
+        </Router>
+      </TaskContextProvider>
     </>
   );
 }
