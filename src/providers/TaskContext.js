@@ -9,7 +9,10 @@ export const TaskContextProvider = ({ children }) => {
   const [sideScreenName, setSideScreenName] = useState("");
 
   // list type (inbox, star, ...) hook, required for filtering tasks in SectionTasks
-  const [sectionType, setSectionType] = useState("inbox");
+  const pathName = window.location.pathname;
+  const initialSection = pathName.substring(1);
+
+  const [sectionType, setSectionType] = useState(initialSection); // set inital section to path name
 
   // save tasks locally
   const saveTasksLocally = () => {
