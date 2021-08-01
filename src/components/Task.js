@@ -79,28 +79,6 @@ const Task = ({
     }
   }, [isEdit]);
 
-  // const editKeyDown = (e) => {
-  //   if (editRef.current && editRef.current.contains(e.target)) {
-  //     // inside click
-  //     console.log("init");
-  //     if (e.key === "Enter") {
-  //       setEdit(edit);
-  //       setIsEdit(false);
-  //       console.log("inside");
-  //     }
-  //     console.log("outside");
-  //   }
-  //   console.log(e);
-  //   // outside click
-  //   setEdit(false);
-
-  //   console.log(e);
-  //   if (e.key === "Enter") {
-  //     setEdit(edit);
-  //     setIsEdit(false);
-  //   }
-  // };
-
   const editKeyDown = (e) => {
     if (e.key === "Enter") {
       if (edit === "" || /^\s*$/.test(edit)) {
@@ -131,12 +109,10 @@ const Task = ({
         ) : (
           <div>{edit}</div>
         )}
-
-        <p></p>
       </TaskTitleContainer>
       <DaysContainer>
-        <p>{scheduleDate && <p>Scheduled {untilScheduleDate}</p>}</p>
-        <p>{dueDate && <p>due {untilDueDate}</p>}</p>
+        <p>{scheduleDate && <span>Scheduled {untilScheduleDate}</span>}</p>
+        <p>{dueDate && <span>due {untilDueDate}</span>}</p>
       </DaysContainer>
 
       <OptionContainer>

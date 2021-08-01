@@ -1,8 +1,8 @@
 import React from "react";
 import TaskScreen from "../screens/TaskScreen";
 
-const Upcoming = () => {
+const Inbox = () => {
   return <TaskScreen />;
 };
 
-export default Upcoming;
+export default Inbox;
