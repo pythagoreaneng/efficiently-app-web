@@ -33,6 +33,7 @@ import { TaskContext } from "../providers/TaskContext";
 
 var todayDate = moment().format("YYYY-MM-D");
 
+
 const TaskScreen = () => {
   const {
     tasks,
@@ -43,6 +44,7 @@ const TaskScreen = () => {
     setSectionType,
   } = useContext(TaskContext);
   console.log(sectionType);
+
 
   // clears search box upon click
   const sectionTypeHandler = (e) => {
