@@ -1,12 +1,10 @@
 import React, { useState, useRef, useContext, useEffect } from "react";
-import { RiCalendarCheckFill } from "react-icons/ri";
 import SectionTasks from "../components/SectionTasks";
 import TaskInput from "../components/TaskInput";
 import {
   Container,
   TopNavContainer,
   TaskInputContainer,
-  TopTitleWrapper,
   TopTitleContainer,
   TopSearchContainer,
   TopSearchForm,
@@ -16,10 +14,10 @@ import {
   SideScreenContainer,
   MainScreenContainer,
 } from "../pages/styles";
-import { NavLink } from "react-router-dom";
-import moment from "moment";
+
 import { TaskContext } from "../providers/TaskContext";
 import SideScreen from "../components/SideScreen";
+import Header from "../components/Header";
 
 const TaskScreen = () => {
   const {
@@ -38,7 +36,6 @@ const TaskScreen = () => {
   } = useContext(TaskContext);
   console.log(sectionType);
 
-  //this has to add date
   const addTask = (task) => {
     if (task.title === "" || /^\s*$/.test(task.title)) {
       console.log("Invalid task");
@@ -114,12 +111,7 @@ const TaskScreen = () => {
       <Container>
         <TopNavContainer>
           <TopTitleContainer>
-            <NavLink exact to="/">
-              <TopTitleWrapper>
-                <RiCalendarCheckFill className="h-8 w-8" />
-                <div>Efficiently App</div>
-              </TopTitleWrapper>
-            </NavLink>
+            <Header />
           </TopTitleContainer>
           <TopSearchContainer>
             <TopSearchForm>

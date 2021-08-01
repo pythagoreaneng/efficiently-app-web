@@ -46,6 +46,7 @@ const TaskInput = ({ onSubmit }) => {
     inputRef,
     todayDate,
   } = useContext(TaskContext);
+
   // hook to handle TaskInput value
   const [input, setInput] = useState("");
   // handler for this hook
