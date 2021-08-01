@@ -33,7 +33,6 @@ import { TaskContext } from "../providers/TaskContext";
 
 var todayDate = moment().format("YYYY-MM-D");
 
-
 const TaskScreen = () => {
   const {
     tasks,
@@ -70,14 +69,14 @@ const TaskScreen = () => {
     setTasks(newTasks);
   };
 
-  const editTask = (taskId, newTitle) => {
-    // if (!newTitle.title || /^\s*$/.test(newTitle.text)) {
-    //   return;
-    // }
-
-    setTasks((prev) =>
-      prev.map((task) => (task.id === taskId ? newTitle : task))
-    );
+  const editTask = (id, taskTitle) => {
+    let newTasks = tasks.map((task) => { // map through tasks
+      if (task.key === id) { // find key
+        task.title = taskTitle; // update title
+      }
+      return task;
+    });
+    setTasks(newTasks); // update Tasks
   };
 
   const completeTask = (key) => {
