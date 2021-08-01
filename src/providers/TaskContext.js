@@ -1,9 +1,9 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import test_tasks_2 from "../pages/data/test_tasks_2";
 
-export const TasksContext = React.createContext(null);
+export const TaskContext = React.createContext(null);
 
-export const TasksContextProvider = ({ children }) => {
+export const TaskContextProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
   // screen name hook,
   const [sideScreenName, setSideScreenName] = useState("");
@@ -37,7 +37,7 @@ export const TasksContextProvider = ({ children }) => {
   }, [tasks]);
 
   return (
-    <TasksContext.Provider
+    <TaskContext.Provider
       value={{
         tasks,
         setTasks,
@@ -48,8 +48,8 @@ export const TasksContextProvider = ({ children }) => {
       }}
     >
       {children}
-    </TasksContext.Provider>
+    </TaskContext.Provider>
   );
 };
 
-export default TasksContextProvider;
+export default TaskContextProvider;

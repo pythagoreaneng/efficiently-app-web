@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.css";
 import { Inbox, Star, Archive, Upcoming, Today, Search } from "./pages";
-import TasksContextProvider from "./providers/TasksContext";
+import TaskContextProvider from "./providers/TaskContext";
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,7 +12,7 @@ import {
 function App() {
   return (
     <>
-      <TasksContextProvider>
+      <TaskContextProvider>
         <Router>
           <Switch>
             <Route path="/today" component={Today} />
@@ -24,7 +24,7 @@ function App() {
             <Redirect to="/" component={Inbox} />
           </Switch>
         </Router>
-      </TasksContextProvider>
+      </TaskContextProvider>
     </>
   );
 }

@@ -29,14 +29,8 @@ import {
 } from "../pages/styles";
 import { NavLink } from "react-router-dom";
 import moment from "moment";
-import { TasksContext } from "../providers/TasksContext";
+import { TaskContext } from "../providers/TaskContext";
 
-// TaskScreen is an interface which serves all the ToDo functionality
-
-// var todayDate = new Date();
-// var dd = String(todayDate.getDate()).padStart(2, "0");
-// var mm = String(todayDate.getMonth() + 1).padStart(2, "0"); //January is 0!
-// var yyyy = todayDate.getFullYear();
 var todayDate = moment().format("YYYY-MM-D");
 
 const TaskScreen = () => {
@@ -47,8 +41,8 @@ const TaskScreen = () => {
     setSideScreenName,
     sectionType,
     setSectionType,
-  } = useContext(TasksContext);
-  console.log(tasks);
+  } = useContext(TaskContext);
+  console.log(sectionType);
 
   // clears search box upon click
   const sectionTypeHandler = (e) => {
