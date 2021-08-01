@@ -8,6 +8,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import login from "./pages/login";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/upcoming" component={Upcoming} />
             <Route path="/archive" component={Archive} />
             <Route path="/search" component={Search} />
+            <Route path="/login" component={login} />
             <Route exact path="/" component={Inbox} />
             <Redirect to="/" component={Inbox} />
           </Switch>
