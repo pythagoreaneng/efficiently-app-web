@@ -30,6 +30,7 @@ import {
 import { NavLink } from "react-router-dom";
 import moment from "moment";
 import { TaskContext } from "../providers/TaskContext";
+import SideScreen from "../components/SideScreen";
 
 var todayDate = moment().format("YYYY-MM-D");
 
@@ -41,14 +42,18 @@ const TaskScreen = () => {
     setSideScreenName,
     sectionType,
     setSectionType,
+    inboxRef,
+    starRef,
+    archiveRef,
+    upcomingRef,
+    todayRef,
+    searchRef,
+    inputRef,
+    searchBarRef,
+    handleSearch,
+    search,
   } = useContext(TaskContext);
   console.log(sectionType);
-
-  // clears search box upon click
-  const sectionTypeHandler = (e) => {
-    setSectionType(e);
-    setSearch("");
-  };
 
   //this has to add date
   const addTask = (task) => {
@@ -98,26 +103,6 @@ const TaskScreen = () => {
     setTasks(newTasks);
   };
 
-  // search related
-  const [search, setSearch] = useState("");
-  const handleSearch = (e) => {
-    setSearch(e.target.value);
-  };
-
-  const filteredTasks = tasks.filter((task) =>
-    task.title.toLowerCase().includes(search.toLowerCase())
-  );
-
-  const searchBarRef = useRef(null);
-  const inboxRef = useRef(null);
-  const starRef = useRef(null);
-  const archiveRef = useRef(null);
-  const upcomingRef = useRef(null);
-  const todayRef = useRef(null);
-  const searchRef = useRef(null);
-
-  const inputRef = useRef(null);
-
   const inSearchBarKeyDown = (e) => {
     console.log(e);
 
@@ -140,6 +125,10 @@ const TaskScreen = () => {
   const handleSearchBarClick = () => {
     searchRef.current.click();
   };
+
+  const filteredTasks = tasks.filter((task) =>
+    task.title.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <>
@@ -170,99 +159,7 @@ const TaskScreen = () => {
         <ScreenContainer>
           <SideScreenContainer>
             {sideScreenName}
-            <SideSectionWrapper>
-              <SectionIcon>
-                <RiInboxFill />
-              </SectionIcon>
-              <SectionName>
-                <NavLink
-                  exact
-                  to="/"
-                  activeStyle={{ fontWeight: "bold" }}
-                  onClick={() => sectionTypeHandler("inbox")}
-                  ref={inboxRef}
-                >
-                  Inbox
-                </NavLink>
-              </SectionName>
-            </SideSectionWrapper>
-            <SideSectionWrapper>
-              <SectionIcon>
-                <RiLightbulbFlashFill />
-              </SectionIcon>
-
-              <SectionName>
-                <NavLink
-                  to="/today"
-                  activeStyle={{ fontWeight: "bold" }}
-                  onClick={() => sectionTypeHandler("today")}
-                  ref={todayRef}
-                >
-                  Today
-                </NavLink>
-              </SectionName>
-            </SideSectionWrapper>
-            <SideSectionWrapper>
-              <SectionIcon>
-                <RiStarSFill />
-              </SectionIcon>
-
-              <SectionName>
-                <NavLink
-                  to="/star"
-                  activeStyle={{ fontWeight: "bold" }}
-                  onClick={() => sectionTypeHandler("star")}
-                  ref={starRef}
-                >
-                  Star
-                </NavLink>
-              </SectionName>
-            </SideSectionWrapper>
-            <SideSectionWrapper>
-              <SectionIcon>
-                <RiCalendarTodoFill />
-              </SectionIcon>
-              <SectionName>
-                <NavLink
-                  to="/upcoming"
-                  activeStyle={{ fontWeight: "bold" }}
-                  onClick={() => sectionTypeHandler("upcoming")}
-                  ref={upcomingRef}
-                >
-                  Upcoming
-                </NavLink>
-              </SectionName>
-            </SideSectionWrapper>
-            <SideSectionWrapper>
-              <SectionIcon>
-                <RiArchiveFill />
-              </SectionIcon>
-              <SectionName>
-                <NavLink
-                  to="/archive"
-                  activeStyle={{ fontWeight: "bold" }}
-                  onClick={() => sectionTypeHandler("archive")}
-                  ref={archiveRef}
-                >
-                  Archive
-                </NavLink>
-              </SectionName>
-            </SideSectionWrapper>
-            <SideSectionWrapper>
-              <SectionIcon>
-                <RiSearchLine />
-              </SectionIcon>
-              <SectionName>
-                <NavLink
-                  to="/search"
-                  activeStyle={{ fontWeight: "bold" }}
-                  onClick={() => sectionTypeHandler("search")}
-                  ref={searchRef}
-                >
-                  Search
-                </NavLink>
-              </SectionName>
-            </SideSectionWrapper>
+            <SideScreen />
           </SideScreenContainer>
           <MainScreenContainer>
             <SectionTasksContainer>
@@ -282,14 +179,14 @@ const TaskScreen = () => {
               <TaskInput
                 onSubmit={addTask}
                 todayDate={todayDate}
-                searchBarRef={searchBarRef}
-                inputRef={inputRef}
-                inboxRef={inboxRef}
-                todayRef={todayRef}
-                starRef={starRef}
-                upcomingRef={upcomingRef}
-                archiveRef={archiveRef}
-                searchRef={searchRef}
+                // searchBarRef={searchBarRef}
+                // inputRef={inputRef}
+                // inboxRef={inboxRef}
+                // todayRef={todayRef}
+                // starRef={starRef}
+                // upcomingRef={upcomingRef}
+                // archiveRef={archiveRef}
+                // searchRef={searchRef}
               />
             </TaskInputContainer>
           </MainScreenContainer>

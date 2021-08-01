@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useRef,
+} from "react";
 import test_tasks_2 from "../pages/data/test_tasks_2";
 
 export const TaskContext = React.createContext(null);
@@ -36,6 +42,26 @@ export const TaskContextProvider = ({ children }) => {
     saveTasksLocally();
   }, [tasks]);
 
+  const searchBarRef = useRef(null);
+  const inboxRef = useRef(null);
+  const starRef = useRef(null);
+  const archiveRef = useRef(null);
+  const upcomingRef = useRef(null);
+  const todayRef = useRef(null);
+  const searchRef = useRef(null);
+  const inputRef = useRef(null);
+
+  // search related
+  const [search, setSearch] = useState("");
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const sectionTypeHandler = (e) => {
+    setSectionType(e);
+    setSearch("");
+  };
+
   return (
     <TaskContext.Provider
       value={{
@@ -45,6 +71,18 @@ export const TaskContextProvider = ({ children }) => {
         setSideScreenName,
         sectionType,
         setSectionType,
+        searchBarRef,
+        inboxRef,
+        starRef,
+        archiveRef,
+        upcomingRef,
+        todayRef,
+        searchRef,
+        inputRef,
+        search,
+        setSearch,
+        handleSearch,
+        sectionTypeHandler,
       }}
     >
       {children}

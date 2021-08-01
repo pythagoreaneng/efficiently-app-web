@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { RiAddCircleFill } from "react-icons/ri";
 import styled from "styled-components";
+import { TaskContext } from "../providers/TaskContext";
 
 const AddTaskContainer = styled.div`
   width: 100%;
@@ -33,18 +34,17 @@ const AddTaskButton = styled.button`
 `;
 
 // input component to add tasks
-const TaskInput = ({
-  onSubmit,
-  searchBarRef,
-  inputRef,
-  todayDate,
-  inboxRef,
-  todayRef,
-  starRef,
-  searchRef,
-  upcomingRef,
-  archiveRef,
-}) => {
+const TaskInput = ({ onSubmit, todayDate }) => {
+  const {
+    searchBarRef,
+    inboxRef,
+    starRef,
+    archiveRef,
+    upcomingRef,
+    todayRef,
+    searchRef,
+    inputRef,
+  } = useContext(TaskContext);
   // hook to handle TaskInput value
   const [input, setInput] = useState("");
   // handler for this hook
