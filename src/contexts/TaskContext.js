@@ -71,6 +71,11 @@ export const TaskContextProvider = ({ children }) => {
     setTasks(newTasks);
   };
 
+  const removeTask = (key) => {
+    let newTasks = [...filteredTasks].filter((task) => task.key !== key);
+    setTasks(newTasks);
+  };
+
   const filteredTasks = tasks.filter((task) =>
     task.title.toLowerCase().includes(search.toLowerCase())
   );
@@ -99,6 +104,7 @@ export const TaskContextProvider = ({ children }) => {
         todayDate,
         completeTask,
         filteredTasks,
+        removeTask,
       }}
     >
       {children}

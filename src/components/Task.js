@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { RiCloseFill, RiStarSFill, RiStarSLine } from "react-icons/ri";
 import styled from "styled-components";
 
 import moment from "moment";
+import { TaskContext } from "../contexts/TaskContext";
 
 const Checkbox = styled.input`
   margin: 1rem;
@@ -47,25 +48,14 @@ const DaysContainer = styled.div`
 `;
 
 // single task card component
-const Task = ({
-  completed,
-  title,
-  completeTask,
-  id,
-  removeTask,
-  editTask,
-  star,
-  switchStar,
-  createdDate,
-  dueDate,
-  scheduleDate,
-  todayDate,
-}) => {
+const Task = ({ title, star, dueDate, scheduleDate, id }) => {
   const [isEdit, setIsEdit] = useState(false);
   const [edit, setEdit] = useState(title);
   const handleEdit = (e) => {
     setEdit(e.target.value);
   };
+
+  const { completeTask, removeTask, switchStar } = useContext(TaskContext);
 
   const editRef = useRef(null);
 
