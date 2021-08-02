@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { RiAddCircleFill } from "react-icons/ri";
 import styled from "styled-components";
-import { TaskContext } from "../providers/TaskContext";
+import { TaskContext } from "../contexts/TaskContext";
 
 const AddTaskContainer = styled.div`
   width: 100%;

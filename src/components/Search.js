@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { TopSearchForm, TopSearchInput } from "../pages/styles";
-import { TaskContext } from "../providers/TaskContext";
+import { TaskContext } from "../contexts/TaskContext";
 
 const Search = () => {
   const {

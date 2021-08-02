@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { TaskContext } from "../providers/TaskContext";
+import { TaskContext } from "../contexts/TaskContext";
 import Task from "./Task";
 
 // SectionTasks displays a filtered list of tasks depending on a sectionType props passed into it

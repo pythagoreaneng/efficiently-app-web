@@ -9,7 +9,7 @@ import {
 } from "react-icons/ri";
 import { SectionIcon, SectionName, SideSectionWrapper } from "../pages/styles";
 import { NavLink } from "react-router-dom";
-import { TaskContext } from "../providers/TaskContext";
+import { TaskContext } from "../contexts/TaskContext";
 
 const SideBar = () => {
   const {
