@@ -3,7 +3,7 @@ import { TaskContext } from "../contexts/TaskContext";
 import Task from "./Task";
 
 const TaskList = () => {
-  const { tasks, todayDate, filteredTasks } = useContext(TaskContext);
+  const { tasks, todayDate, searchedTasks } = useContext(TaskContext);
 
   const inboxTasks = tasks.filter((task) => !task.completed);
   const archiveTasks = tasks.filter((task) => task.completed);
@@ -31,7 +31,7 @@ const TaskList = () => {
       break;
     default:
       // anything else including seach
-      renderingTasks = filteredTasks;
+      renderingTasks = searchedTasks;
       break;
   }
 

@@ -48,10 +48,13 @@ export const TaskContextProvider = ({ children }) => {
   const [search, setSearch] = useState("");
   console.log("seach is:", search);
 
-  var filteredTasks = tasks.filter((task) => {
+  var searchedTasks = tasks.filter((task) => {
     console.log("task.title is: ", task.title);
-    console.log("task.title.toLowerCase is: ", task.title.toLowerCase());
-    task.title.toLowerCase().includes(search.toLowerCase());
+    try {
+      task.title.toLowerCase().includes(search.toLowerCase());
+    } catch (error) {
+      console.log("Error occured:", error);
+    }
   });
   const handleSearch = (e) => {
     setSearch(e.target.value);
@@ -89,7 +92,7 @@ export const TaskContextProvider = ({ children }) => {
     setTasks(newTasks);
   };
 
-  //var filteredTasks = tasks.filter((task) => console.log(task));
+  //var searchedTasks = tasks.filter((task) => console.log(task));
 
   return (
     <TaskContext.Provider
@@ -112,7 +115,7 @@ export const TaskContextProvider = ({ children }) => {
         handleSearch,
         todayDate,
         completeTask,
-        filteredTasks,
+        searchedTasks,
         removeTask,
         editTask,
         toggleStar,
