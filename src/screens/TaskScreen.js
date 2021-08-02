@@ -37,6 +37,16 @@ const TaskScreen = () => {
   } = useContext(TaskContext);
   console.log(sectionType);
 
+
+
+  // clears search box upon click
+  const sectionTypeHandler = (e) => {
+    setSectionType(e);
+    setSearch("");
+  };
+
+  //this has to add date
+
   const addTask = (task) => {
     if (task.title === "" || /^\s*$/.test(task.title)) {
       console.log("Invalid task");
@@ -54,10 +64,15 @@ const TaskScreen = () => {
     setTasks(newTasks);
   };
 
-  const editTask = (taskId, newTitle) => {
-    setTasks((prev) =>
-      prev.map((task) => (task.id === taskId ? newTitle : task))
-    );
+
+  const editTask = (id, taskTitle) => {
+    let newTasks = tasks.map((task) => { // map through tasks
+      if (task.key === id) { // find key
+        task.title = taskTitle; // update title
+      }
+      return task;
+    });
+    setTasks(newTasks); // update Tasks
   };
 
   const switchStar = (key) => {

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { RiCloseFill, RiStarSFill, RiStarSLine } from "react-icons/ri";
 import styled from "styled-components";
-
+import useOutsideClick from "../Hooks/useOutsideClick";
 import moment from "moment";
 
 const Checkbox = styled.input`
@@ -79,17 +79,27 @@ const Task = ({
     }
   }, [isEdit]);
 
-  const editKeyDown = (e) => {
+
+  const editKeyDown = (e) => { // stops edit when enter is hit in edit input.
     if (e.key === "Enter") {
-      if (edit === "" || /^\s*$/.test(edit)) {
+      if (edit === "" || /^\s*$/.test(edit)) { // check input
         console.log("Invalid edit");
         return;
       }
-      console.log("setEdit triggered");
-      setEdit(edit);
-      setIsEdit(false);
+      setEdit(edit); //change value of edit,
+      setIsEdit(false); // set edit attribute to false,
+      editTask(id, edit); // update the task globally.
     }
   };
+
+  //Issue: clicking anohter task when editing 
+  useOutsideClick(editRef, () => { // stops edit when clicked outside of edit input.
+    if (edit === "") { // if left blank, delete task
+      removeTask(id);
+    } else { // update task
+      editTask(id, edit)
+    }  
+  });
 
   var untilScheduleDate = moment(scheduleDate).fromNow();
   var untilDueDate = moment(dueDate).fromNow();
