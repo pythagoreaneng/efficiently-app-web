@@ -2,22 +2,14 @@ import React, { useState, useRef, useContext, useEffect } from "react";
 import SectionTasks from "../components/SectionTasks";
 import TaskInput from "../components/TaskInput";
 import {
-  Container,
-  TopNavContainer,
-  TaskInputContainer,
-  TopTitleContainer,
-  TopSearchContainer,
+  SearchContainer,
   TopSearchForm,
   TopSearchInput,
-  ScreenContainer,
-  SectionTasksContainer,
-  SideScreenContainer,
-  MainScreenContainer,
 } from "../pages/styles";
 
 import { TaskContext } from "../providers/TaskContext";
 import SideScreen from "../components/SideScreen";
-import Header from "../components/Header";
+import Titile from "./Title";
 
 const Search = () => {
   const {
@@ -58,7 +50,7 @@ const Search = () => {
     searchRef.current.click();
   };
   return (
-    <>
+    <TopSearchForm>
       <TopSearchInput
         type="search"
         placeholder="Search(Press alt or  ⌥)"
@@ -68,7 +60,7 @@ const Search = () => {
         onKeyDown={inSearchBarKeyDown}
         onClick={handleSearchBarClick}
       />
-    </>
+    </TopSearchForm>
   );
 };
 

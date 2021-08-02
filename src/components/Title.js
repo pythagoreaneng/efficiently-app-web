@@ -1,9 +1,9 @@
 import React from "react";
 import { RiCalendarCheckFill } from "react-icons/ri";
-import { TopTitleWrapper } from "../pages/styles";
+import { TitleContainer, TopTitleWrapper } from "../pages/styles";
 import { NavLink } from "react-router-dom";
 
-const Header = () => {
+const Title = () => {
   return (
     <div>
       <NavLink exact to="/">
@@ -16,4 +16,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Title;

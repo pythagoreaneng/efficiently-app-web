@@ -4,7 +4,7 @@ export const Container = styled.div`
   width: auto;
 `;
 
-export const TopNavContainer = styled.div`
+export const HeaderContainer = styled.div`
   height: 10%;
   width: 100wh;
   background-color: #46bcff;
@@ -19,7 +19,7 @@ export const TopLogoContainer = styled.div`
   alitgn-items: cetner;
 `;
 
-export const TopTitleContainer = styled.div`
+export const TitleContainer = styled.div`
   width: 30%;
   display: flex;
   flex-direction: row;
@@ -31,7 +31,7 @@ export const TopTitleContainer = styled.div`
 export const TopTitleWrapper = styled.div`
   display: flex;
 `;
-export const TopSearchContainer = styled.div`
+export const SearchContainer = styled.div`
   width: 70%;
   display: flex;
 `;
