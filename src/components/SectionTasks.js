@@ -1,19 +1,35 @@
-import React from "react";
+import React, { useContext } from "react";
+import { TaskContext } from "../providers/TaskContext";
 import Task from "./Task";
 
 // SectionTasks displays a filtered list of tasks depending on a sectionType props passed into it
 // Embeded insided TaskScreen
-const SectionTasks = ({
-  tasks,
-  sectionType,
-  completeTask,
-  todayDate,
-  removeTask,
-  editTask,
-  switchStar,
-  createdDate,
-  dueDate,
-}) => {
+
+const SectionTasks = ({ tasks }) => {
+  const { setTasks, sectionType, todayDate, completeTask } =
+    useContext(TaskContext);
+
+  const removeTask = (key) => {
+    let newTasks = [...tasks].filter((task) => task.key !== key);
+    setTasks(newTasks);
+  };
+
+  const editTask = (taskId, newTitle) => {
+    setTasks((prev) =>
+      prev.map((task) => (task.id === taskId ? newTitle : task))
+    );
+  };
+
+  const switchStar = (key) => {
+    let newTasks = tasks.map((task) => {
+      if (task.key === key) {
+        task.star = !task.star;
+      }
+      return task;
+    });
+    setTasks(newTasks);
+  };
+
   if (sectionType === "inbox") {
     // diplays inbox, which is task.completed = false
     return tasks
