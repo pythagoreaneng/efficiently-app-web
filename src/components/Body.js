@@ -3,7 +3,7 @@ import { SectionTasksContainer, TaskInputContainer } from "../pages/styles";
 import SectionTasks from "./SectionTasks";
 import TaskInput from "./TaskInput";
 
-const MainScreen = () => {
+const Body = () => {
   return (
     <div>
       <SectionTasksContainer>
@@ -16,4 +16,4 @@ const MainScreen = () => {
   );
 };
 
-export default MainScreen;
+export default Body;

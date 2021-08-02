@@ -11,7 +11,7 @@ import { SectionIcon, SectionName, SideSectionWrapper } from "../pages/styles";
 import { NavLink } from "react-router-dom";
 import { TaskContext } from "../providers/TaskContext";
 
-const SideScreen = () => {
+const SideBar = () => {
   const {
     inboxRef,
     starRef,
@@ -120,4 +120,4 @@ const SideScreen = () => {
   );
 };
 
-export default SideScreen;
+export default SideBar;

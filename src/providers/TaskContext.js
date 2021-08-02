@@ -6,7 +6,7 @@ export const TaskContext = React.createContext(null);
 export const TaskContextProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
   // screen name hook,
-  const [sideScreenName, setSideScreenName] = useState("");
+  const [SideBarName, setSideBarName] = useState("");
 
   // list type (inbox, star, ...) hook, required for filtering tasks in SectionTasks
   const pathName = window.location.pathname;
@@ -80,8 +80,8 @@ export const TaskContextProvider = ({ children }) => {
       value={{
         tasks,
         setTasks,
-        sideScreenName,
-        setSideScreenName,
+        SideBarName,
+        setSideBarName,
         sectionType,
         setSectionType,
         searchBarRef,

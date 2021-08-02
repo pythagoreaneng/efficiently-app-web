@@ -1,37 +1,28 @@
 import React from "react";
-import { Title, Search, SideScreen } from "../components/";
-import MainScreen from "../components/MainScreen";
+import { Header, SideBar, Body } from "../components/";
 import {
   Container,
   HeaderContainer,
-  TitleContainer,
-  SearchContainer,
-  ScreenContainer,
-  SideScreenContainer,
-  MainScreenContainer,
+  ContentContainer,
+  SideBarContainer,
+  BodyContainer,
 } from "../pages/styles";
 
 const TaskScreen = () => {
   return (
     <Container>
       <HeaderContainer>
-        <TitleContainer>
-          <Title />
-        </TitleContainer>
-        <SearchContainer>
-          <Search />
-        </SearchContainer>
+        <Header />
       </HeaderContainer>
 
-      <ScreenContainer>
-        <SideScreenContainer>
-          <SideScreen />
-        </SideScreenContainer>
-
-        <MainScreenContainer>
-          <MainScreen />
-        </MainScreenContainer>
-      </ScreenContainer>
+      <ContentContainer>
+        <SideBarContainer>
+          <SideBar />
+        </SideBarContainer>
+        <BodyContainer>
+          <Body />
+        </BodyContainer>
+      </ContentContainer>
     </Container>
   );
 };

@@ -57,18 +57,18 @@ export const TopSearchInput = styled.input`
   }
 `;
 
-export const ScreenContainer = styled.div`
+export const ContentContainer = styled.div`
   display: flex;
   height: 90%;
 `;
 
-export const MainScreenContainer = styled.div`
+export const BodyContainer = styled.div`
   width: 70%;
   height: 100%;
   position: relative;
 `;
 
-export const SideScreenContainer = styled.div`
+export const SideBarContainer = styled.div`
   width: 30%;
   height: 100%;
   background-color: #fafafa;
