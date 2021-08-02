@@ -106,7 +106,7 @@ export const MainTitleContainer = styled.div`
   background-color: blue;
 `;
 
-export const SectionTasksContainer = styled.div`
+export const TaskListContainer = styled.div`
   height: 85%;
   overflow-y: auto;
 `;

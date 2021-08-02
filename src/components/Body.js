@@ -1,14 +1,14 @@
 import React from "react";
-import { SectionTasksContainer, TaskInputContainer } from "../pages/styles";
-import SectionTasks from "./SectionTasks";
+import { TaskListContainer, TaskInputContainer } from "../pages/styles";
+import TaskList from "./TaskList";
 import TaskInput from "./TaskInput";
 
 const Body = () => {
   return (
     <>
-      <SectionTasksContainer>
-        <SectionTasks />
-      </SectionTasksContainer>
+      <TaskListContainer>
+        <TaskList />
+      </TaskListContainer>
       <TaskInputContainer>
         <TaskInput />
       </TaskInputContainer>

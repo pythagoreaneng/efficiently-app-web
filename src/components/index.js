@@ -1,5 +1,5 @@
 export { default as Search } from "./Search";
-export { default as SectionTasks } from "./SectionTasks";
+export { default as TaskList } from "./TaskList";
 export { default as SideBar } from "./SideBar";
 export { default as Task } from "./Task";
 export { default as TaskInput } from "./TaskInput";

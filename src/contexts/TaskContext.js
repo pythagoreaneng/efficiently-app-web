@@ -8,7 +8,7 @@ export const TaskContextProvider = ({ children }) => {
   // screen name hook,
   const [SideBarName, setSideBarName] = useState("");
 
-  // list type (inbox, star, ...) hook, required for filtering tasks in SectionTasks
+  // list type (inbox, star, ...) hook, required for filtering tasks in TaskList
   const pathName = window.location.pathname;
   const initialSection = pathName.substring(1);
 
