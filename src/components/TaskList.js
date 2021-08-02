@@ -13,20 +13,28 @@ const TaskList = () => {
 
   var renderingTasks = tasks; // type of tasks to be rendered
 
-  if (window.location.pathname === "/archive") {
-    renderingTasks = archiveTasks;
-  } else if (window.location.pathname === "/upcoming") {
-    renderingTasks = upcomingTasks;
-  } else if (window.location.pathname === "/star") {
-    renderingTasks = starTasks;
-  } else if (window.location.pathname === "/today") {
-    renderingTasks = todayTasks;
-  } else if (window.location.pathname === "/search") {
-    renderingTasks = filteredTasks;
-  } else {
-    // render inbox for any other cases
-    renderingTasks = inboxTasks;
+  switch (window.location.pathname) {
+    case "/":
+      renderingTasks = inboxTasks;
+      break;
+    case "/today":
+      renderingTasks = todayTasks;
+      break;
+    case "/star":
+      renderingTasks = starTasks;
+      break;
+    case "/upcoming":
+      renderingTasks = upcomingTasks;
+      break;
+    case "/archive":
+      renderingTasks = archiveTasks;
+      break;
+    default:
+      // anything else including seach
+      renderingTasks = filteredTasks;
+      break;
   }
+
   return renderingTasks.map((task) => {
     return <Task key={task.id} task={task} />;
   });
