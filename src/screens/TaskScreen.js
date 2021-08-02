@@ -1,6 +1,11 @@
 import React from "react";
-import SectionTasks from "../components/SectionTasks";
-import TaskInput from "../components/TaskInput";
+import {
+  Title,
+  Search,
+  SideScreen,
+  SectionTasks,
+  TaskInput,
+} from "../components/";
 import {
   Container,
   HeaderContainer,
@@ -12,10 +17,6 @@ import {
   SideScreenContainer,
   MainScreenContainer,
 } from "../pages/styles";
-
-import SideScreen from "../components/SideScreen";
-import Title from "../components/Title";
-import Search from "../components/Search";
 
 const TaskScreen = () => {
   return (
