@@ -1,19 +1,12 @@
 import React from "react";
-import {
-  Title,
-  Search,
-  SideScreen,
-  SectionTasks,
-  TaskInput,
-} from "../components/";
+import { Title, Search, SideScreen } from "../components/";
+import MainScreen from "../components/MainScreen";
 import {
   Container,
   HeaderContainer,
-  TaskInputContainer,
   TitleContainer,
   SearchContainer,
   ScreenContainer,
-  SectionTasksContainer,
   SideScreenContainer,
   MainScreenContainer,
 } from "../pages/styles";
@@ -36,12 +29,7 @@ const TaskScreen = () => {
         </SideScreenContainer>
 
         <MainScreenContainer>
-          <SectionTasksContainer>
-            <SectionTasks />
-          </SectionTasksContainer>
-          <TaskInputContainer>
-            <TaskInput />
-          </TaskInputContainer>
+          <MainScreen />
         </MainScreenContainer>
       </ScreenContainer>
     </Container>

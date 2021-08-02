@@ -1,6 +1,6 @@
 import React from "react";
 import { RiCalendarCheckFill } from "react-icons/ri";
-import { TitleContainer, TopTitleWrapper } from "../pages/styles";
+import { TopTitleWrapper } from "../pages/styles";
 import { NavLink } from "react-router-dom";
 
 const Title = () => {
