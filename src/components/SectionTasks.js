@@ -5,12 +5,12 @@ import Task from "./Task";
 // SectionTasks displays a filtered list of tasks depending on a sectionType props passed into it
 // Embeded insided TaskScreen
 
-const SectionTasks = ({ tasks }) => {
-  const { setTasks, sectionType, todayDate, completeTask } =
+const SectionTasks = ({}) => {
+  const { setTasks, sectionType, todayDate, completeTask, filteredTasks } =
     useContext(TaskContext);
 
   const removeTask = (key) => {
-    let newTasks = [...tasks].filter((task) => task.key !== key);
+    let newTasks = [...filteredTasks].filter((task) => task.key !== key);
     setTasks(newTasks);
   };
 
@@ -21,7 +21,7 @@ const SectionTasks = ({ tasks }) => {
   };
 
   const switchStar = (key) => {
-    let newTasks = tasks.map((task) => {
+    let newTasks = filteredTasks.map((task) => {
       if (task.key === key) {
         task.star = !task.star;
       }
@@ -32,7 +32,7 @@ const SectionTasks = ({ tasks }) => {
 
   if (sectionType === "inbox") {
     // diplays inbox, which is task.completed = false
-    return tasks
+    return filteredTasks
       .filter((task) => !task.completed)
       .map((task) => {
         return (
@@ -54,7 +54,7 @@ const SectionTasks = ({ tasks }) => {
         );
       });
   } else if (sectionType === "archive") {
-    return tasks
+    return filteredTasks
       .filter((task) => task.completed)
       .map((task) => {
         return (
@@ -76,7 +76,7 @@ const SectionTasks = ({ tasks }) => {
         );
       });
   } else if (sectionType === "upcoming") {
-    return tasks
+    return filteredTasks
       .filter((task) => task.scheduleDate > todayDate)
       .map((task) => {
         return (
@@ -98,7 +98,7 @@ const SectionTasks = ({ tasks }) => {
         );
       });
   } else if (sectionType === "star") {
-    return tasks
+    return filteredTasks
       .filter((task) => task.star)
       .map((task) => {
         return (
@@ -120,7 +120,7 @@ const SectionTasks = ({ tasks }) => {
         );
       });
   } else if (sectionType === "today") {
-    return tasks
+    return filteredTasks
       .filter((task) => task.dueDate === todayDate)
       .map((task) => {
         return (
@@ -144,7 +144,7 @@ const SectionTasks = ({ tasks }) => {
       });
   } else if (sectionType === "search") {
     // no filtering
-    return tasks.map((task) => {
+    return filteredTasks.map((task) => {
       return (
         <Task
           id={task.key}
@@ -166,7 +166,7 @@ const SectionTasks = ({ tasks }) => {
     });
   } else {
     // any other cases displays inbox
-    return tasks
+    return filteredTasks
       .filter((task) => !task.completed)
       .map((task) => {
         return (

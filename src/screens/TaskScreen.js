@@ -37,10 +37,6 @@ const TaskScreen = () => {
     return;
   };
 
-  const filteredTasks = tasks.filter((task) =>
-    task.title.toLowerCase().includes(search.toLowerCase())
-  );
-
   return (
     <>
       <Container>
@@ -61,7 +57,7 @@ const TaskScreen = () => {
           </SideScreenContainer>
           <MainScreenContainer>
             <SectionTasksContainer>
-              <SectionTasks tasks={filteredTasks} />
+              <SectionTasks />
             </SectionTasksContainer>
 
             <TaskInputContainer>

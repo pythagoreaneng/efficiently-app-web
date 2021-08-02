@@ -71,6 +71,10 @@ export const TaskContextProvider = ({ children }) => {
     setTasks(newTasks);
   };
 
+  const filteredTasks = tasks.filter((task) =>
+    task.title.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <TaskContext.Provider
       value={{
@@ -94,6 +98,7 @@ export const TaskContextProvider = ({ children }) => {
         sectionTypeHandler,
         todayDate,
         completeTask,
+        filteredTasks,
       }}
     >
       {children}
