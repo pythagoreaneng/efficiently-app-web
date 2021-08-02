@@ -18,6 +18,7 @@ import {
 import { TaskContext } from "../providers/TaskContext";
 import SideScreen from "../components/SideScreen";
 import Header from "../components/Header";
+import Search from "../components/Search";
 
 const TaskScreen = () => {
   const {
@@ -106,15 +107,7 @@ const TaskScreen = () => {
           </TopTitleContainer>
           <TopSearchContainer>
             <TopSearchForm>
-              <TopSearchInput
-                type="search"
-                placeholder="Search(Press alt or  ⌥)"
-                onChange={handleSearch}
-                value={search}
-                ref={searchBarRef}
-                onKeyDown={inSearchBarKeyDown}
-                onClick={handleSearchBarClick}
-              />
+              <Search />
             </TopSearchForm>
           </TopSearchContainer>
         </TopNavContainer>
