@@ -11,7 +11,7 @@ const TaskList = () => {
   const starTasks = tasks.filter((task) => task.star);
   const todayTasks = tasks.filter((task) => task.dueDate === todayDate);
 
-  var renderingTasks = tasks; // type of tasks to be rendered
+  let renderingTasks = tasks; // type of tasks to be rendered
 
   switch (window.location.pathname) {
     case "/":
