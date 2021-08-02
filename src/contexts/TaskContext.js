@@ -48,14 +48,15 @@ export const TaskContextProvider = ({ children }) => {
   const [search, setSearch] = useState("");
   console.log("seach is:", search);
 
-  var searchedTasks = tasks.filter((task) => {
-    console.log("task.title is: ", task.title);
-    try {
-      task.title.toLowerCase().includes(search.toLowerCase());
-    } catch (error) {
-      console.log("Error occured:", error);
-    }
-  });
+  // var searchedTasks = tasks.filter((task) => {
+  //   console.log("task.title is: ", task.title);
+  //   try {
+  //     task.title.toLowerCase().includes(search.toLowerCase());
+  //   } catch (error) {
+  //     console.log("Error occured:", error);
+  //   }
+  // });
+
   const handleSearch = (e) => {
     setSearch(e.target.value);
   };
@@ -115,7 +116,6 @@ export const TaskContextProvider = ({ children }) => {
         handleSearch,
         todayDate,
         completeTask,
-        searchedTasks,
         removeTask,
         editTask,
         toggleStar,

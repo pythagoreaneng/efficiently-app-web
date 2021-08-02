@@ -3,13 +3,20 @@ import { TaskContext } from "../contexts/TaskContext";
 import Task from "./Task";
 
 const TaskList = () => {
-  const { tasks, todayDate, searchedTasks } = useContext(TaskContext);
+  const { tasks, todayDate, search } = useContext(TaskContext);
 
   const inboxTasks = tasks.filter((task) => !task.completed);
   const archiveTasks = tasks.filter((task) => task.completed);
   const upcomingTasks = tasks.filter((task) => task.scheduleDate > todayDate);
   const starTasks = tasks.filter((task) => task.star);
   const todayTasks = tasks.filter((task) => task.dueDate === todayDate);
+  const searchedTasks = tasks.filter((task) => {
+    try {
+      task.title.toLowerCase().includes(search.toLowerCase());
+    } catch (error) {
+      console.log(error);
+    }
+  });
 
   let renderingTasks = tasks; // type of tasks to be rendered
 
@@ -31,6 +38,7 @@ const TaskList = () => {
       break;
     default:
       // anything else including seach
+      console.log(window.location.pathname);
       renderingTasks = searchedTasks;
       break;
   }
