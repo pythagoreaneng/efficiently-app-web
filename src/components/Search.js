@@ -1,22 +1,9 @@
-import React, { useState, useRef, useContext, useEffect } from "react";
-import SectionTasks from "../components/SectionTasks";
-import TaskInput from "../components/TaskInput";
-import {
-  SearchContainer,
-  TopSearchForm,
-  TopSearchInput,
-} from "../pages/styles";
-
+import React, { useContext } from "react";
+import { TopSearchForm, TopSearchInput } from "../pages/styles";
 import { TaskContext } from "../providers/TaskContext";
-import SideScreen from "../components/SideScreen";
-import Titile from "./Title";
 
 const Search = () => {
   const {
-    tasks,
-    setTasks,
-    sideScreenName,
-    sectionType,
     inboxRef,
     archiveRef,
     searchRef,
@@ -24,8 +11,6 @@ const Search = () => {
     searchBarRef,
     handleSearch,
     search,
-    todayDate,
-    completeTask,
   } = useContext(TaskContext);
 
   const inSearchBarKeyDown = (e) => {
