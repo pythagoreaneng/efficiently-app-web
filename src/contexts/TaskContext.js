@@ -62,9 +62,10 @@ export const TaskContextProvider = ({ children }) => {
 
   var todayDate = moment().format("YYYY-MM-D");
 
-  const completeTask = (key) => {
+  const completeTask = (id) => {
     let newTasks = tasks.map((task) => {
-      if (task.key === key) {
+      console.log("Running completeTask");
+      if (task.id === id) {
         task.completed = !task.completed;
       }
       return task;
@@ -72,8 +73,8 @@ export const TaskContextProvider = ({ children }) => {
     setTasks(newTasks);
   };
 
-  const removeTask = (key) => {
-    let newTasks = [...filteredTasks].filter((task) => task.key !== key);
+  const removeTask = (id) => {
+    let newTasks = [...filteredTasks].filter((task) => task.id !== id);
     setTasks(newTasks);
   };
 
@@ -83,9 +84,9 @@ export const TaskContextProvider = ({ children }) => {
     );
   };
 
-  const switchStar = (key) => {
+  const switchStar = (id) => {
     let newTasks = filteredTasks.map((task) => {
-      if (task.key === key) {
+      if (task.id === id) {
         task.star = !task.star;
       }
       return task;
