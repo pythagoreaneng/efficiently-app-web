@@ -8,12 +8,6 @@ export const TaskContextProvider = ({ children }) => {
   // screen name hook,
   const [SideBarName, setSideBarName] = useState("");
 
-  // list type (inbox, star, ...) hook, required for filtering tasks in TaskList
-  const pathName = window.location.pathname;
-  const initialSection = pathName.substring(1);
-
-  const [sectionType, setSectionType] = useState(initialSection); // set inital section to path name
-
   // save tasks locally
   const saveTasksLocally = () => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -53,11 +47,6 @@ export const TaskContextProvider = ({ children }) => {
   const [search, setSearch] = useState("");
   const handleSearch = (e) => {
     setSearch(e.target.value);
-  };
-
-  const sectionTypeHandler = (e) => {
-    setSectionType(e);
-    setSearch("");
   };
 
   var todayDate = moment().format("YYYY-MM-D");
@@ -105,8 +94,6 @@ export const TaskContextProvider = ({ children }) => {
         setTasks,
         SideBarName,
         setSideBarName,
-        sectionType,
-        setSectionType,
         searchBarRef,
         inboxRef,
         starRef,
@@ -119,7 +106,6 @@ export const TaskContextProvider = ({ children }) => {
         search,
         setSearch,
         handleSearch,
-        sectionTypeHandler,
         todayDate,
         completeTask,
         filteredTasks,

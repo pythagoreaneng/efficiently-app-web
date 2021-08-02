@@ -2,17 +2,18 @@ import React, { useContext } from "react";
 import { TaskContext } from "../contexts/TaskContext";
 import Task from "./Task";
 
-// TaskList displays a filtered list of tasks depending on a sectionType props passed into it
+// TaskList displays a filtered list of tasks depending on a folder props passed into it
 // Embeded insided TaskScreen
 
 const TaskList = ({}) => {
   const {
     tasks,
     setTasks,
-    sectionType,
+    folder,
     todayDate,
     completeTask,
     filteredTasks,
+    pathName,
   } = useContext(TaskContext);
 
   const inboxTasks = tasks.filter((task) => !task.completed);
@@ -21,28 +22,30 @@ const TaskList = ({}) => {
   const starTasks = tasks.filter((task) => task.star);
   const todayTasks = tasks.filter((task) => task.dueDate === todayDate);
 
-  if (sectionType === "inbox") {
+  console.log(window.location.pathname);
+
+  if (window.location.pathname === "/inbox") {
     // diplays inbox, which is task.completed = false
     return inboxTasks.map((task) => {
       return <Task key={task.id} task={task} />;
     });
-  } else if (sectionType === "archive") {
+  } else if (window.location.pathname === "/archive") {
     return archiveTasks.map((task) => {
       return <Task key={task.id} task={task} />;
     });
-  } else if (sectionType === "upcoming") {
+  } else if (window.location.pathname === "/upcoming") {
     return upcomingTasks.map((task) => {
       return <Task key={task.id} task={task} />;
     });
-  } else if (sectionType === "star") {
+  } else if (window.location.pathname === "/star") {
     return starTasks.map((task) => {
       return <Task key={task.id} task={task} />;
     });
-  } else if (sectionType === "today") {
+  } else if (window.location.pathname === "/today") {
     return todayTasks.map((task) => {
       return <Task key={task.id} task={task} />;
     });
-  } else if (sectionType === "search") {
+  } else if (window.location.pathname === "/search") {
     // no filtering
     return filteredTasks.map((task) => {
       return <Task key={task.id} task={task} />;

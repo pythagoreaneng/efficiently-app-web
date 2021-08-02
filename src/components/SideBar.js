@@ -12,15 +12,8 @@ import { NavLink } from "react-router-dom";
 import { TaskContext } from "../contexts/TaskContext";
 
 const SideBar = () => {
-  const {
-    inboxRef,
-    starRef,
-    archiveRef,
-    upcomingRef,
-    todayRef,
-    searchRef,
-    sectionTypeHandler,
-  } = useContext(TaskContext);
+  const { inboxRef, starRef, archiveRef, upcomingRef, todayRef, searchRef } =
+    useContext(TaskContext);
   return (
     <>
       <SideSectionWrapper>
@@ -32,7 +25,6 @@ const SideBar = () => {
             exact
             to="/"
             activeStyle={{ fontWeight: "bold" }}
-            onClick={() => sectionTypeHandler("inbox")}
             ref={inboxRef}
           >
             Inbox
@@ -48,7 +40,6 @@ const SideBar = () => {
           <NavLink
             to="/today"
             activeStyle={{ fontWeight: "bold" }}
-            onClick={() => sectionTypeHandler("today")}
             ref={todayRef}
           >
             Today
@@ -64,7 +55,6 @@ const SideBar = () => {
           <NavLink
             to="/star"
             activeStyle={{ fontWeight: "bold" }}
-            onClick={() => sectionTypeHandler("star")}
             ref={starRef}
           >
             Star
@@ -79,7 +69,6 @@ const SideBar = () => {
           <NavLink
             to="/upcoming"
             activeStyle={{ fontWeight: "bold" }}
-            onClick={() => sectionTypeHandler("upcoming")}
             ref={upcomingRef}
           >
             Upcoming
@@ -94,7 +83,6 @@ const SideBar = () => {
           <NavLink
             to="/archive"
             activeStyle={{ fontWeight: "bold" }}
-            onClick={() => sectionTypeHandler("archive")}
             ref={archiveRef}
           >
             Archive
@@ -109,7 +97,6 @@ const SideBar = () => {
           <NavLink
             to="/search"
             activeStyle={{ fontWeight: "bold" }}
-            onClick={() => sectionTypeHandler("search")}
             ref={searchRef}
           >
             Search
