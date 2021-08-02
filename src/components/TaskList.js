@@ -35,6 +35,7 @@ const TaskList = () => {
       break;
   }
 
+  // renders renderingTasks
   return renderingTasks.map((task) => {
     return <Task key={task.id} task={task} />;
   });
