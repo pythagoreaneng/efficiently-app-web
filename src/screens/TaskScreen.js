@@ -33,6 +33,7 @@ const TaskScreen = () => {
     handleSearch,
     search,
     todayDate,
+    completeTask,
   } = useContext(TaskContext);
   console.log(sectionType);
 
@@ -57,16 +58,6 @@ const TaskScreen = () => {
     setTasks((prev) =>
       prev.map((task) => (task.id === taskId ? newTitle : task))
     );
-  };
-
-  const completeTask = (key) => {
-    let newTasks = tasks.map((task) => {
-      if (task.key === key) {
-        task.completed = !task.completed;
-      }
-      return task;
-    });
-    setTasks(newTasks);
   };
 
   const switchStar = (key) => {

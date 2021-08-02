@@ -58,6 +58,16 @@ export const TaskContextProvider = ({ children }) => {
 
   var todayDate = moment().format("YYYY-MM-D");
 
+  const completeTask = (key) => {
+    let newTasks = tasks.map((task) => {
+      if (task.key === key) {
+        task.completed = !task.completed;
+      }
+      return task;
+    });
+    setTasks(newTasks);
+  };
+
   return (
     <TaskContext.Provider
       value={{
@@ -80,6 +90,7 @@ export const TaskContextProvider = ({ children }) => {
         handleSearch,
         sectionTypeHandler,
         todayDate,
+        completeTask,
       }}
     >
       {children}
