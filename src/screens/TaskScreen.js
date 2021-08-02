@@ -23,50 +23,47 @@ import Search from "../components/Search";
 const TaskScreen = () => {
   const { tasks, setTasks, sideScreenName, sectionType, search } =
     useContext(TaskContext);
-  console.log(sectionType);
 
-  const addTask = (task) => {
-    if (task.title === "" || /^\s*$/.test(task.title)) {
-      console.log("Invalid task");
-      return;
-    }
+  // const addTask = (task) => {
+  //   if (task.title === "" || /^\s*$/.test(task.title)) {
+  //     console.log("Invalid task");
+  //     return;
+  //   }
 
-    const newTasks = [task, ...tasks];
-    setTasks(newTasks);
-    console.log("tasks:", tasks);
-    return;
-  };
+  //   const newTasks = [task, ...tasks];
+  //   setTasks(newTasks);
+  //   console.log("tasks:", tasks);
+  //   return;
+  // };
 
   return (
-    <>
-      <Container>
-        <TopNavContainer>
-          <TopTitleContainer>
-            <Header />
-          </TopTitleContainer>
-          <TopSearchContainer>
-            <TopSearchForm>
-              <Search />
-            </TopSearchForm>
-          </TopSearchContainer>
-        </TopNavContainer>
-        <ScreenContainer>
-          <SideScreenContainer>
-            {sideScreenName}
-            <SideScreen />
-          </SideScreenContainer>
-          <MainScreenContainer>
-            <SectionTasksContainer>
-              <SectionTasks />
-            </SectionTasksContainer>
+    <Container>
+      <TopNavContainer>
+        <TopTitleContainer>
+          <Header />
+        </TopTitleContainer>
+        <TopSearchContainer>
+          <TopSearchForm>
+            <Search />
+          </TopSearchForm>
+        </TopSearchContainer>
+      </TopNavContainer>
+      <ScreenContainer>
+        <SideScreenContainer>
+          {sideScreenName}
+          <SideScreen />
+        </SideScreenContainer>
+        <MainScreenContainer>
+          <SectionTasksContainer>
+            <SectionTasks />
+          </SectionTasksContainer>
 
-            <TaskInputContainer>
-              <TaskInput onSubmit={addTask} />
-            </TaskInputContainer>
-          </MainScreenContainer>
-        </ScreenContainer>
-      </Container>
-    </>
+          <TaskInputContainer>
+            <TaskInput />
+          </TaskInputContainer>
+        </MainScreenContainer>
+      </ScreenContainer>
+    </Container>
   );
 };
 

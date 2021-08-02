@@ -36,6 +36,8 @@ const AddTaskButton = styled.button`
 // input component to add tasks
 const TaskInput = ({ onSubmit }) => {
   const {
+    tasks,
+    setTasks,
     searchBarRef,
     inboxRef,
     starRef,
@@ -53,10 +55,23 @@ const TaskInput = ({ onSubmit }) => {
   const handleChange = (e) => {
     setInput(e.target.value);
   };
+
+  const addTask = (task) => {
+    if (task.title === "" || /^\s*$/.test(task.title)) {
+      console.log("Invalid task");
+      return;
+    }
+
+    const newTasks = [task, ...tasks];
+    setTasks(newTasks);
+    console.log("tasks:", tasks);
+    return;
+  };
+
   // handler for submitting input
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({
+    addTask({
       key: Math.floor(Math.random() * 1000),
       title: input,
       completed: false,
