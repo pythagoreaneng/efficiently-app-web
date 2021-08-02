@@ -5,14 +5,14 @@ import TaskInput from "./TaskInput";
 
 const Body = () => {
   return (
-    <div>
+    <>
       <SectionTasksContainer>
         <SectionTasks />
       </SectionTasksContainer>
       <TaskInputContainer>
         <TaskInput />
       </TaskInputContainer>
-    </div>
+    </>
   );
 };
 

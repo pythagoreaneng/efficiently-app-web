@@ -5,14 +5,14 @@ import { NavLink } from "react-router-dom";
 
 const Title = () => {
   return (
-    <div>
+    <>
       <NavLink exact to="/">
         <TopTitleWrapper>
           <RiCalendarCheckFill className="h-8 w-8" />
           <div>Efficiently App</div>
         </TopTitleWrapper>
       </NavLink>
-    </div>
+    </>
   );
 };
 

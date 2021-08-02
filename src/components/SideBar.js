@@ -22,7 +22,7 @@ const SideBar = () => {
     sectionTypeHandler,
   } = useContext(TaskContext);
   return (
-    <div>
+    <>
       <SideSectionWrapper>
         <SectionIcon>
           <RiInboxFill />
@@ -116,7 +116,7 @@ const SideBar = () => {
           </NavLink>
         </SectionName>
       </SideSectionWrapper>
-    </div>
+    </>
   );
 };
 
