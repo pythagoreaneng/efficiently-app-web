@@ -7,9 +7,9 @@ import {
   RiLightbulbFlashFill,
   RiSearchLine,
 } from "react-icons/ri";
-import { SectionIcon, SectionName, SideSectionWrapper } from "../pages/styles";
 import { NavLink } from "react-router-dom";
 import { TaskContext } from "../contexts/TaskContext";
+import { SectionIcon, SectionName, SideSectionWrapper } from "../pages/styles";
 
 const SideBar = () => {
   const { inboxRef, starRef, archiveRef, upcomingRef, todayRef, searchRef } =
