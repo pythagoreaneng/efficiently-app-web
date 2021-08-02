@@ -49,7 +49,7 @@ const DaysContainer = styled.div`
 `;
 
 const Task = ({ task }) => {
-  const { completeTask, removeTask, switchStar, editTask, todayDate } =
+  const { completeTask, removeTask, toggleStar, editTask, todayDate } =
     useContext(TaskContext);
   const [isEdit, setIsEdit] = useState(false);
   const [edit, setEdit] = useState(task.title);
@@ -98,7 +98,7 @@ const Task = ({ task }) => {
   var untilScheduleDate = moment(task.scheduleDate).fromNow();
   var untilDueDate = moment(task.dueDate).fromNow();
 
-  console.log("task.id:", task.id);
+  console.log("In Task.js task.id:", task.id);
 
   return (
     <TaskContainer key={task.id}>
@@ -123,9 +123,9 @@ const Task = ({ task }) => {
 
       <OptionContainer>
         {task.star ? (
-          <RiStarSFill onClick={() => switchStar(task.id)} />
+          <RiStarSFill onClick={() => toggleStar(task.id)} />
         ) : (
-          <RiStarSLine onClick={() => switchStar(task.id)} />
+          <RiStarSLine onClick={() => toggleStar(task.id)} />
         )}
         <RiCloseFill onClick={() => removeTask(task.id)} />
       </OptionContainer>

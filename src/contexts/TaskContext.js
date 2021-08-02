@@ -5,6 +5,7 @@ export const TaskContext = React.createContext(null);
 
 export const TaskContextProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
+
   // screen name hook,
   const [SideBarName, setSideBarName] = useState("");
 
@@ -45,6 +46,13 @@ export const TaskContextProvider = ({ children }) => {
 
   // search related
   const [search, setSearch] = useState("");
+  console.log("seach is:", search);
+
+  var filteredTasks = tasks.filter((task) => {
+    console.log("task.title is: ", task.title);
+    console.log("task.title.toLowerCase is: ", task.title.toLowerCase());
+    task.title.toLowerCase().includes(search.toLowerCase());
+  });
   const handleSearch = (e) => {
     setSearch(e.target.value);
   };
@@ -63,18 +71,16 @@ export const TaskContextProvider = ({ children }) => {
   };
 
   const removeTask = (id) => {
-    let newTasks = [...filteredTasks].filter((task) => task.id !== id);
+    let newTasks = [...tasks].filter((task) => task.id !== id);
     setTasks(newTasks);
   };
 
-  const editTask = (taskId, newTitle) => {
-    setTasks((prev) =>
-      prev.map((task) => (task.id === taskId ? newTitle : task))
-    );
+  const editTask = (id, newTitle) => {
+    setTasks((prev) => prev.map((task) => (task.id === id ? newTitle : task)));
   };
 
-  const switchStar = (id) => {
-    let newTasks = filteredTasks.map((task) => {
+  const toggleStar = (id) => {
+    let newTasks = tasks.map((task) => {
       if (task.id === id) {
         task.star = !task.star;
       }
@@ -83,9 +89,7 @@ export const TaskContextProvider = ({ children }) => {
     setTasks(newTasks);
   };
 
-  const filteredTasks = tasks.filter((task) =>
-    task.title.toLowerCase().includes(search.toLowerCase())
-  );
+  //var filteredTasks = tasks.filter((task) => console.log(task));
 
   return (
     <TaskContext.Provider
@@ -111,7 +115,7 @@ export const TaskContextProvider = ({ children }) => {
         filteredTasks,
         removeTask,
         editTask,
-        switchStar,
+        toggleStar,
         editTask,
       }}
     >
