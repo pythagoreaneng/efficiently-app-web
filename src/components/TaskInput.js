@@ -72,7 +72,7 @@ const TaskInput = ({ onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     addTask({
-      key: Math.floor(Math.random() * 1000),
+      id: Math.floor(Math.random() * 1000),
       title: input,
       completed: false,
       star: false,

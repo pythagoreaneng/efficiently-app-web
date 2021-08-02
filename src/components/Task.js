@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { RiCloseFill, RiStarSFill, RiStarSLine } from "react-icons/ri";
 import styled from "styled-components";
+import useOutsideClick from "../hooks/useOutsideClick";
 
 import moment from "moment";
 import { TaskContext } from "../contexts/TaskContext";
@@ -47,15 +48,14 @@ const DaysContainer = styled.div`
   font-size: 0.6em;
 `;
 
-// single task card component
-const Task = ({ title, star, dueDate, scheduleDate, id }) => {
+const Task = ({ task }) => {
+  const { completeTask, removeTask, switchStar, editTask, todayDate } =
+    useContext(TaskContext);
   const [isEdit, setIsEdit] = useState(false);
-  const [edit, setEdit] = useState(title);
+  const [edit, setEdit] = useState(task.title);
   const handleEdit = (e) => {
     setEdit(e.target.value);
   };
-
-  const { completeTask, removeTask, switchStar } = useContext(TaskContext);
 
   const editRef = useRef(null);
 
@@ -70,23 +70,39 @@ const Task = ({ title, star, dueDate, scheduleDate, id }) => {
   }, [isEdit]);
 
   const editKeyDown = (e) => {
+    // stops edit when enter is hit in edit input.
     if (e.key === "Enter") {
       if (edit === "" || /^\s*$/.test(edit)) {
+        // check input
         console.log("Invalid edit");
         return;
       }
-      console.log("setEdit triggered");
-      setEdit(edit);
-      setIsEdit(false);
+      setEdit(edit); //change value of edit,
+      setIsEdit(false); // set edit attribute to false,
+      editTask(task.id, edit); // update the task globally.
     }
   };
 
-  var untilScheduleDate = moment(scheduleDate).fromNow();
-  var untilDueDate = moment(dueDate).fromNow();
+  //Issue: clicking anohter task when editing
+  useOutsideClick(editRef, () => {
+    // stops edit when clicked outside of edit input.
+    if (edit === "") {
+      // if left blank, delete task
+      removeTask(task.id);
+    } else {
+      // update task
+      editTask(task.id, edit);
+    }
+  });
+
+  var untilScheduleDate = moment(task.scheduleDate).fromNow();
+  var untilDueDate = moment(task.dueDate).fromNow();
+
+  console.log("task.id:", task.id);
 
   return (
-    <TaskContainer key={id}>
-      <Checkbox type="Checkbox" onClick={() => completeTask(id)} />
+    <TaskContainer key={task.id}>
+      <Checkbox type="Checkbox" onClick={() => completeTask(task.id)} />
       <TaskTitleContainer onClick={handleOnClickEdit}>
         {isEdit ? (
           <EditInput
@@ -101,17 +117,17 @@ const Task = ({ title, star, dueDate, scheduleDate, id }) => {
         )}
       </TaskTitleContainer>
       <DaysContainer>
-        <p>{scheduleDate && <span>Scheduled {untilScheduleDate}</span>}</p>
-        <p>{dueDate && <span>due {untilDueDate}</span>}</p>
+        <p>{task.scheduleDate && <span>Scheduled {untilScheduleDate}</span>}</p>
+        <p>{task.dueDate && <span>due {untilDueDate}</span>}</p>
       </DaysContainer>
 
       <OptionContainer>
-        {star ? (
-          <RiStarSFill onClick={() => switchStar(id)} />
+        {task.star ? (
+          <RiStarSFill onClick={() => switchStar(task.id)} />
         ) : (
-          <RiStarSLine onClick={() => switchStar(id)} />
+          <RiStarSLine onClick={() => switchStar(task.id)} />
         )}
-        <RiCloseFill onClick={() => removeTask(id)} />
+        <RiCloseFill onClick={() => removeTask(task.id)} />
       </OptionContainer>
     </TaskContainer>
   );

@@ -47,6 +47,7 @@ export const TaskContextProvider = ({ children }) => {
   const todayRef = useRef(null);
   const searchRef = useRef(null);
   const inputRef = useRef(null);
+  const editRef = useRef(null);
 
   // search related
   const [search, setSearch] = useState("");
@@ -76,6 +77,22 @@ export const TaskContextProvider = ({ children }) => {
     setTasks(newTasks);
   };
 
+  const editTask = (taskId, newTitle) => {
+    setTasks((prev) =>
+      prev.map((task) => (task.id === taskId ? newTitle : task))
+    );
+  };
+
+  const switchStar = (key) => {
+    let newTasks = filteredTasks.map((task) => {
+      if (task.key === key) {
+        task.star = !task.star;
+      }
+      return task;
+    });
+    setTasks(newTasks);
+  };
+
   const filteredTasks = tasks.filter((task) =>
     task.title.toLowerCase().includes(search.toLowerCase())
   );
@@ -97,6 +114,7 @@ export const TaskContextProvider = ({ children }) => {
         todayRef,
         searchRef,
         inputRef,
+        editRef,
         search,
         setSearch,
         handleSearch,
@@ -105,6 +123,9 @@ export const TaskContextProvider = ({ children }) => {
         completeTask,
         filteredTasks,
         removeTask,
+        editTask,
+        switchStar,
+        editTask,
       }}
     >
       {children}

@@ -6,187 +6,56 @@ import Task from "./Task";
 // Embeded insided TaskScreen
 
 const SectionTasks = ({}) => {
-  const { setTasks, sectionType, todayDate, completeTask, filteredTasks } =
-    useContext(TaskContext);
+  const {
+    tasks,
+    setTasks,
+    sectionType,
+    todayDate,
+    completeTask,
+    filteredTasks,
+  } = useContext(TaskContext);
 
-  const removeTask = (key) => {
-    let newTasks = [...filteredTasks].filter((task) => task.key !== key);
-    setTasks(newTasks);
-  };
-
-  const editTask = (taskId, newTitle) => {
-    setTasks((prev) =>
-      prev.map((task) => (task.id === taskId ? newTitle : task))
-    );
-  };
-
-  const switchStar = (key) => {
-    let newTasks = filteredTasks.map((task) => {
-      if (task.key === key) {
-        task.star = !task.star;
-      }
-      return task;
-    });
-    setTasks(newTasks);
-  };
+  const inboxTasks = tasks.filter((task) => !task.completed);
+  const archiveTasks = tasks.filter((task) => task.completed);
 
   if (sectionType === "inbox") {
     // diplays inbox, which is task.completed = false
-    return filteredTasks
-      .filter((task) => !task.completed)
-      .map((task) => {
-        return (
-          <Task
-            id={task.key}
-            key={task.key}
-            completed={task.completed}
-            title={task.title}
-            star={task.star}
-            completeTask={completeTask}
-            removeTask={removeTask}
-            editTask={editTask}
-            switchStar={switchStar}
-            createdDate={task.createdDate}
-            dueDate={task.dueDate}
-            scheduleDate={task.scheduleDate}
-            todayDate={todayDate}
-          />
-        );
-      });
+    return inboxTasks.map((task) => {
+      return <Task task={task} />;
+    });
   } else if (sectionType === "archive") {
-    return filteredTasks
-      .filter((task) => task.completed)
-      .map((task) => {
-        return (
-          <Task
-            id={task.key}
-            key={task.key}
-            completed={task.completed}
-            title={task.title}
-            star={task.star}
-            completeTask={completeTask}
-            removeTask={removeTask}
-            editTask={editTask}
-            switchStar={switchStar}
-            createdDate={task.createdDate}
-            dueDate={task.dueDate}
-            scheduleDate={task.scheduleDate}
-            todayDate={todayDate}
-          />
-        );
-      });
+    return archiveTasks.map((task) => {
+      return <Task task={task} />;
+    });
   } else if (sectionType === "upcoming") {
     return filteredTasks
       .filter((task) => task.scheduleDate > todayDate)
       .map((task) => {
-        return (
-          <Task
-            id={task.key}
-            key={task.key}
-            completed={task.completed}
-            title={task.title}
-            star={task.star}
-            completeTask={completeTask}
-            removeTask={removeTask}
-            editTask={editTask}
-            switchStar={switchStar}
-            createdDate={task.createdDate}
-            dueDate={task.dueDate}
-            scheduleDate={task.scheduleDate}
-            todayDate={todayDate}
-          />
-        );
+        return <Task task={task} />;
       });
   } else if (sectionType === "star") {
     return filteredTasks
       .filter((task) => task.star)
       .map((task) => {
-        return (
-          <Task
-            id={task.key}
-            key={task.key}
-            completed={task.completed}
-            title={task.title}
-            star={task.star}
-            completeTask={completeTask}
-            removeTask={removeTask}
-            editTask={editTask}
-            switchStar={switchStar}
-            createdDate={task.createdDate}
-            dueDate={task.dueDate}
-            scheduleDate={task.scheduleDate}
-            todayDate={todayDate}
-          />
-        );
+        return <Task task={task} />;
       });
   } else if (sectionType === "today") {
     return filteredTasks
       .filter((task) => task.dueDate === todayDate)
       .map((task) => {
-        return (
-          <Task
-            id={task.key}
-            key={task.key}
-            completed={task.completed}
-            title={task.title}
-            star={task.star}
-            completeTask={completeTask}
-            removeTask={removeTask}
-            editTask={editTask}
-            switchStar={switchStar}
-            createdDate={task.createdDate}
-            dueDate={task.dueDate}
-            scheduleDate={task.scheduleDate}
-            todayDate={todayDate}
-            todayDate={todayDate}
-          />
-        );
+        return <Task task={task} />;
       });
   } else if (sectionType === "search") {
     // no filtering
     return filteredTasks.map((task) => {
-      return (
-        <Task
-          id={task.key}
-          key={task.key}
-          completed={task.completed}
-          title={task.title}
-          star={task.star}
-          completeTask={completeTask}
-          removeTask={removeTask}
-          switchStar={switchStar}
-          editTask={editTask}
-          switchStar={switchStar}
-          createdDate={task.createdDate}
-          dueDate={task.dueDate}
-          scheduleDate={task.scheduleDate}
-          todayDate={todayDate}
-        />
-      );
+      return <Task task={task} />;
     });
   } else {
     // any other cases displays inbox
     return filteredTasks
       .filter((task) => !task.completed)
       .map((task) => {
-        return (
-          <Task
-            id={task.key}
-            key={task.key}
-            completed={task.completed}
-            title={task.title}
-            star={task.star}
-            completeTask={completeTask}
-            removeTask={removeTask}
-            editTask={editTask}
-            star={task.star}
-            switchStar={switchStar}
-            createdDate={task.createdDate}
-            dueDate={task.dueDate}
-            scheduleDate={task.scheduleDate}
-            todayDate={todayDate}
-          />
-        );
+        return <Task task={task} />;
       });
   }
 };
