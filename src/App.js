@@ -20,6 +20,8 @@ import {
 } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import Reset from "./pages/Reset";
+import Profile from "./pages/Profile";
+import Preferences from "./pages/Preferences";
 
 function App() {
   return (
@@ -33,6 +35,7 @@ function App() {
             <PrivateRoute path="/upcoming" component={Upcoming} />
             <PrivateRoute path="/archive" component={Archive} />
             <PrivateRoute path="/search" component={Search} />
+            <PrivateRoute path="/profile" component={Profile} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/reset" component={Reset} />

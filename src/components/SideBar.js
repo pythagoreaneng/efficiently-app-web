@@ -7,7 +7,7 @@ import {
   RiLightbulbFlashFill,
   RiSearchLine,
 } from "react-icons/ri";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { TaskContext } from "../contexts/TaskContext";
 import {
   SectionIcon,
@@ -128,7 +128,8 @@ const SideBar = () => {
         </SideSectionWrapper>
       </SideSectionContainer>
       <LoginStatusContainer>
-        {error && <div>Error: {error}</div>} {currentUser.email}
+        {error && <div>Error: {error}</div>}
+        <Link to="/profile">{currentUser.email}</Link>
         <LogoutButton onClick={handleLogout}>(Logout)</LogoutButton>
       </LoginStatusContainer>
     </>
