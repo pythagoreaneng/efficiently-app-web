@@ -127,22 +127,31 @@ const ErrorMessage = styled.div`
   margin: 0.5rem 0;
   background-color: #ffcccb;
 `;
+const SuccessMessage = styled.div`
+  position: absolute;
+  top: 0.5rem;
+  font-size: 0.8em;
+  padding: 0 0.5rem;
+  margin: 0.5rem 0;
+  background-color: #90ee90;
+`;
 
 const Reset = () => {
   const emailRef = useRef(null);
-  const passwordRef = useRef(null);
-
   const { resetPassword } = useAuth();
   const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSubmitLogin = async (e) => {
     e.preventDefault();
 
     try {
+      setSuccessMessage("");
       setError("");
       setLoading(true);
       await resetPassword(emailRef.current.value);
+      setSuccessMessage("Reset link has been sent to your email");
     } catch {
       setError("Failed to reset password");
     }
@@ -154,6 +163,9 @@ const Reset = () => {
         <LoginColumnContainer>
           <LoginPanelContainer>
             {error && <ErrorMessage>{error}</ErrorMessage>}
+            {successMessage && (
+              <SuccessMessage>{successMessage}</SuccessMessage>
+            )}
             <LoginTitleContainer>Reset Password</LoginTitleContainer>
 
             <LoginBodyContainer>

@@ -127,6 +127,13 @@ const ErrorMessage = styled.div`
   margin: 0.5rem 0;
   background-color: #ffcccb;
 `;
+const ForgotMessage = styled.div`
+  position: absolute;
+  bottom: 0.5rem;
+  font-size: 0.8em;
+  padding: 0 0.5rem;
+  margin: 0.5rem 0;
+`;
 
 const Login = () => {
   const emailRef = useRef(null);
@@ -181,13 +188,14 @@ const Login = () => {
                   <LoginButton disabled={loading} type="submit">
                     Login
                   </LoginButton>
+                  <ForgotMessage>
+                    <BottomLink to="/reset">Forgot password</BottomLink>
+                  </ForgotMessage>
                 </LoginButtonContainer>
               </LoginForm>
             </LoginBodyContainer>
           </LoginPanelContainer>
-          <BottomMessage>
-            Forgot password? <BottomLink to="/reset">Reset password</BottomLink>
-          </BottomMessage>
+
           <BottomMessage>
             Don't have an account? <BottomLink to="/signup">Signup</BottomLink>
           </BottomMessage>
