@@ -28,6 +28,7 @@ const LoginPanelContainer = styled.div`
   display: flex;
   flex-direction: column;
   //justify-content: center;
+  position: relative;
   align-items: center;
   height: 25%;
   width: 100%;
@@ -119,6 +120,15 @@ const BottomLink = styled(Link)`
   }
 `;
 
+const ErrorMessage = styled.div`
+  position: absolute;
+  top: 0.5rem;
+  font-size: 0.8em;
+  padding: 0 0.5rem;
+  margin: 0.5rem 0;
+  background-color: #ffcccb;
+`;
+
 const Signup = () => {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
@@ -147,8 +157,8 @@ const Signup = () => {
     <>
       <LoginBackground>
         <LoginColumnContainer>
-          {error && console.log(error)}
           <LoginPanelContainer>
+            {error && <ErrorMessage>{error}</ErrorMessage>}
             <LoginTitleContainer>Signup</LoginTitleContainer>
             <LoginBodyContainer>
               <LoginForm onSubmit={handleSubmitSignup}>
