@@ -82,8 +82,6 @@ export const TaskContextProvider = ({ children }) => {
     setTasks(newTasks);
   };
 
-  //var searchedTasks = tasks.filter((task) => console.log(task));
-
   return (
     <TaskContext.Provider
       value={{
