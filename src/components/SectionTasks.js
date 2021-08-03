@@ -13,28 +13,9 @@ const SectionTasks = ({}) => {
     completeTask,
     filteredTasks,
     editTask,
+    switchStar,
+    removeTask,
   } = useContext(TaskContext);
-
-  const removeTask = (key) => {
-    let newTasks = [...filteredTasks].filter((task) => task.key !== key);
-    setTasks(newTasks);
-  };
-
-  // const editTask = (taskId, newTitle) => {
-  //   setTasks(
-  //     filteredTasks.map((task) => (task.key === taskId ? newTitle : task))
-  //   );
-  // };
-
-  const switchStar = (key) => {
-    let newTasks = filteredTasks.map((task) => {
-      if (task.key === key) {
-        task.star = !task.star;
-      }
-      return task;
-    });
-    setTasks(newTasks);
-  };
 
   if (sectionType === "inbox") {
     // diplays inbox, which is task.completed = false

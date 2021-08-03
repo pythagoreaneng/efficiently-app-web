@@ -61,6 +61,16 @@ export const TaskContextProvider = ({ children }) => {
 
   var todayDate = moment().format("YYYY-MM-D");
 
+  const switchStar = (key) => {
+    let newTasks = tasks.map((task) => {
+      if (task.key === key) {
+        task.star = !task.star;
+      }
+      return task;
+    });
+    setTasks(newTasks);
+  };
+
   const completeTask = (key) => {
     let newTasks = tasks.map((task) => {
       if (task.key === key) {
@@ -71,8 +81,13 @@ export const TaskContextProvider = ({ children }) => {
     setTasks(newTasks);
   };
 
+  const removeTask = (key) => {
+    let newTasks = [...tasks].filter((task) => task.key !== key);
+    setTasks(newTasks);
+  };
+
   const editTask = (taskId, taskTitle) => {
-    let newTasks = filteredTasks.map((task) => {
+    let newTasks = tasks.map((task) => {
       // map through tasks
       if (task.key === taskId) {
         // find key
@@ -82,6 +97,14 @@ export const TaskContextProvider = ({ children }) => {
     });
     setTasks(newTasks); // update Tasks
   };
+
+  // const editTask = (taskKey, newTitle) => {
+  //   setTasks(
+  //     tasks.map((task) =>
+  //       task.key === taskKey ? (task.title = newTitle) : (task.title = task)
+  //     )
+  //   );
+  // };
 
   let filteredTasks = tasks.filter((task) =>
     task.title.toLowerCase().includes(search.toLowerCase())
@@ -112,6 +135,8 @@ export const TaskContextProvider = ({ children }) => {
         completeTask,
         filteredTasks,
         editTask,
+        switchStar,
+        removeTask,
       }}
     >
       {children}

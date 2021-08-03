@@ -53,15 +53,13 @@ const Task = ({
   title,
   completeTask,
   id,
-  removeTask,
   star,
-  switchStar,
   createdDate,
   dueDate,
   scheduleDate,
   todayDate,
 }) => {
-  const { editTask } = useContext(TaskContext);
+  const { editTask, switchStar, removeTask } = useContext(TaskContext);
   const [isEdit, setIsEdit] = useState(false);
   const [edit, setEdit] = useState(title);
   const handleEdit = (e) => {
@@ -91,7 +89,6 @@ const Task = ({
       setEdit(edit); //change value of edit,
       setIsEdit(false); // set edit attribute to false,
       editTask(id, edit); // update the task globally.
-      console.log(edit);
     }
   };
 
