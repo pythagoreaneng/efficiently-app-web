@@ -11,7 +11,7 @@ const TaskList = () => {
   const starTasks = tasks.filter((task) => task.star);
   const todayTasks = tasks.filter((task) => task.dueDate === todayDate);
   const searchedTasks = tasks.filter((task) =>
-    task.title.toLowerCase().includes(search.toLowerCase())
+    task.title.includes(search.toLowerCase())
   );
 
   let renderingTasks = tasks; // type of tasks to be rendered
