@@ -1,7 +1,8 @@
 import React, { useRef, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { useAuth } from "../contexts/AuthContext";
+import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 
 const LoginBackground = styled.div`
   width: 100vw;
@@ -118,25 +119,27 @@ const BottomLink = styled(Link)`
   }
 `;
 
-const Login = () => {
+const Signup = () => {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
-
-  const { login } = useAuth();
+  const passwordConfirmRef = useRef(null);
+  const { signup } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  const handleSubmitLogin = async (e) => {
+  const handleSubmitSignup = async (e) => {
     e.preventDefault();
-
+    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+      return setError("Passwords do not match");
+    }
     try {
       setError("");
       setLoading(true);
-      await login(emailRef.current.value, passwordRef.current.value);
+      await signup(emailRef.current.value, passwordRef.current.value);
       history.push("/");
     } catch {
-      setError("Failed to login");
+      setError("Failed to create an account");
     }
     setLoading(false);
   };
@@ -144,11 +147,11 @@ const Login = () => {
     <>
       <LoginBackground>
         <LoginColumnContainer>
+          {error && console.log(error)}
           <LoginPanelContainer>
-            {error && console.log(error)}
-            <LoginTitleContainer>Log In</LoginTitleContainer>
+            <LoginTitleContainer>Signup</LoginTitleContainer>
             <LoginBodyContainer>
-              <LoginForm onSubmit={handleSubmitLogin}>
+              <LoginForm onSubmit={handleSubmitSignup}>
                 <LoginInputContainer>
                   <LoginInput
                     type="email"
@@ -158,6 +161,7 @@ const Login = () => {
                     spellcheck="false"
                     ref={emailRef}
                   />
+
                   <LoginInput
                     type="password"
                     id="pwd"
@@ -166,17 +170,27 @@ const Login = () => {
                     ref={passwordRef}
                     required
                   />
+
+                  <LoginInput
+                    type="password"
+                    id="pwdcf"
+                    name="pwdcf"
+                    placeholder="Confirm"
+                    ref={passwordConfirmRef}
+                    required
+                  />
                 </LoginInputContainer>
+
                 <LoginButtonContainer>
                   <LoginButton disabled={loading} type="submit">
-                    Login
+                    Join
                   </LoginButton>
                 </LoginButtonContainer>
               </LoginForm>
             </LoginBodyContainer>
           </LoginPanelContainer>
           <BottomMessage>
-            Don't have an account? <BottomLink to="/signup">Signup</BottomLink>
+            Already have an account? <BottomLink to="/login">Login</BottomLink>
           </BottomMessage>
         </LoginColumnContainer>
       </LoginBackground>
@@ -184,4 +198,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
