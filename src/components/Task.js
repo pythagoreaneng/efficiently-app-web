@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { RiCloseFill, RiStarSFill, RiStarSLine } from "react-icons/ri";
 import useOutsideClick from "../hooks/useOutsideClick";
-
 import moment from "moment";
 import { TaskContext } from "../contexts/TaskContext";
 import {
@@ -14,7 +13,7 @@ import {
 } from "../pages/styles";
 
 const Task = ({ task }) => {
-  const { completeTask, removeTask, toggleStar, editTask, todayDate } =
+  const { completeTask, removeTask, toggleStar, editTask } =
     useContext(TaskContext);
   const [isEdit, setIsEdit] = useState(false);
   const [edit, setEdit] = useState(task.title);

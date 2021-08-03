@@ -6,9 +6,6 @@ export const TaskContext = React.createContext(null);
 export const TaskContextProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
 
-  // screen name hook,
-  const [SideBarName, setSideBarName] = useState("");
-
   // save tasks locally
   const saveTasksLocally = () => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -48,15 +45,6 @@ export const TaskContextProvider = ({ children }) => {
   const [search, setSearch] = useState("");
   console.log("seach is:", search);
 
-  // var searchedTasks = tasks.filter((task) => {
-  //   console.log("task.title is: ", task.title);
-  //   try {
-  //     task.title.toLowerCase().includes(search.toLowerCase());
-  //   } catch (error) {
-  //     console.log("Error occured:", error);
-  //   }
-  // });
-
   const handleSearch = (e) => {
     setSearch(e.target.value);
   };
@@ -80,6 +68,7 @@ export const TaskContextProvider = ({ children }) => {
   };
 
   const editTask = (id, newTitle) => {
+    //console.log("newTitle", newTitle);
     setTasks((prev) => prev.map((task) => (task.id === id ? newTitle : task)));
   };
 
@@ -100,8 +89,6 @@ export const TaskContextProvider = ({ children }) => {
       value={{
         tasks,
         setTasks,
-        SideBarName,
-        setSideBarName,
         searchBarRef,
         inboxRef,
         starRef,
