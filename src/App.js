@@ -19,6 +19,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
+import Reset from "./pages/Reset";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <PrivateRoute path="/search" component={Search} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
+            <Route path="/reset" component={Reset} />
             <Redirect to="/" component={Inbox} />
           </Switch>
         </Router>

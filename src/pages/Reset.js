@@ -128,14 +128,13 @@ const ErrorMessage = styled.div`
   background-color: #ffcccb;
 `;
 
-const Login = () => {
+const Reset = () => {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
-  const { login } = useAuth();
+  const { resetPassword } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const history = useHistory();
 
   const handleSubmitLogin = async (e) => {
     e.preventDefault();
@@ -143,10 +142,9 @@ const Login = () => {
     try {
       setError("");
       setLoading(true);
-      await login(emailRef.current.value, passwordRef.current.value);
-      history.push("/");
+      await resetPassword(emailRef.current.value);
     } catch {
-      setError("Failed to login");
+      setError("Failed to reset password");
     }
     setLoading(false);
   };
@@ -156,7 +154,8 @@ const Login = () => {
         <LoginColumnContainer>
           <LoginPanelContainer>
             {error && <ErrorMessage>{error}</ErrorMessage>}
-            <LoginTitleContainer>Log In</LoginTitleContainer>
+            <LoginTitleContainer>Reset Password</LoginTitleContainer>
+
             <LoginBodyContainer>
               <LoginForm onSubmit={handleSubmitLogin}>
                 <LoginInputContainer>
@@ -168,28 +167,17 @@ const Login = () => {
                     spellcheck="false"
                     ref={emailRef}
                   />
-                  <LoginInput
-                    type="password"
-                    id="pwd"
-                    name="pwd"
-                    placeholder="Password"
-                    ref={passwordRef}
-                    required
-                  />
                 </LoginInputContainer>
                 <LoginButtonContainer>
                   <LoginButton disabled={loading} type="submit">
-                    Login
+                    Reset
                   </LoginButton>
                 </LoginButtonContainer>
               </LoginForm>
             </LoginBodyContainer>
           </LoginPanelContainer>
           <BottomMessage>
-            Forgot password? <BottomLink to="/reset">Reset password</BottomLink>
-          </BottomMessage>
-          <BottomMessage>
-            Don't have an account? <BottomLink to="/signup">Signup</BottomLink>
+            Or <BottomLink to="/login">Login</BottomLink>
           </BottomMessage>
         </LoginColumnContainer>
       </LoginBackground>
@@ -197,4 +185,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Reset;
