@@ -6,19 +6,25 @@ import Task from "./Task";
 // Embeded insided TaskScreen
 
 const SectionTasks = ({}) => {
-  const { setTasks, sectionType, todayDate, completeTask, filteredTasks } =
-    useContext(TaskContext);
+  const {
+    setTasks,
+    sectionType,
+    todayDate,
+    completeTask,
+    filteredTasks,
+    editTask,
+  } = useContext(TaskContext);
 
   const removeTask = (key) => {
     let newTasks = [...filteredTasks].filter((task) => task.key !== key);
     setTasks(newTasks);
   };
 
-  const editTask = (taskId, newTitle) => {
-    setTasks((prev) =>
-      prev.map((task) => (task.id === taskId ? newTitle : task))
-    );
-  };
+  // const editTask = (taskId, newTitle) => {
+  //   setTasks(
+  //     filteredTasks.map((task) => (task.key === taskId ? newTitle : task))
+  //   );
+  // };
 
   const switchStar = (key) => {
     let newTasks = filteredTasks.map((task) => {

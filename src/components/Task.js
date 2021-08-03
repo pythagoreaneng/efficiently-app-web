@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
+import { TaskContext } from "../contexts/TaskContext";
 import { RiCloseFill, RiStarSFill, RiStarSLine } from "react-icons/ri";
 import styled from "styled-components";
 import useOutsideClick from "../Hooks/useOutsideClick";
@@ -53,7 +54,6 @@ const Task = ({
   completeTask,
   id,
   removeTask,
-  editTask,
   star,
   switchStar,
   createdDate,
@@ -61,6 +61,7 @@ const Task = ({
   scheduleDate,
   todayDate,
 }) => {
+  const { editTask } = useContext(TaskContext);
   const [isEdit, setIsEdit] = useState(false);
   const [edit, setEdit] = useState(title);
   const handleEdit = (e) => {
@@ -79,26 +80,31 @@ const Task = ({
     }
   }, [isEdit]);
 
-
-  const editKeyDown = (e) => { // stops edit when enter is hit in edit input.
+  const editKeyDown = (e) => {
+    // stops edit when enter is hit in edit input.
     if (e.key === "Enter") {
-      if (edit === "" || /^\s*$/.test(edit)) { // check input
+      if (edit === "" || /^\s*$/.test(edit)) {
+        // check input
         console.log("Invalid edit");
         return;
       }
       setEdit(edit); //change value of edit,
       setIsEdit(false); // set edit attribute to false,
       editTask(id, edit); // update the task globally.
+      console.log(edit);
     }
   };
 
-  //Issue: clicking anohter task when editing 
-  useOutsideClick(editRef, () => { // stops edit when clicked outside of edit input.
-    if (edit === "") { // if left blank, delete task
+  //Issue: clicking anohter task when editing
+  useOutsideClick(editRef, () => {
+    // stops edit when clicked outside of edit input.
+    if (edit === "") {
+      // if left blank, delete task
       removeTask(id);
-    } else { // update task
-      editTask(id, edit)
-    }  
+    } else {
+      // update task
+      editTask(id, edit);
+    }
   });
 
   var untilScheduleDate = moment(scheduleDate).fromNow();

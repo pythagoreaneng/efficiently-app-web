@@ -71,7 +71,19 @@ export const TaskContextProvider = ({ children }) => {
     setTasks(newTasks);
   };
 
-  const filteredTasks = tasks.filter((task) =>
+  const editTask = (taskId, taskTitle) => {
+    let newTasks = filteredTasks.map((task) => {
+      // map through tasks
+      if (task.key === taskId) {
+        // find key
+        task.title = taskTitle; // update title
+      }
+      return task;
+    });
+    setTasks(newTasks); // update Tasks
+  };
+
+  let filteredTasks = tasks.filter((task) =>
     task.title.toLowerCase().includes(search.toLowerCase())
   );
 
@@ -99,6 +111,7 @@ export const TaskContextProvider = ({ children }) => {
         todayDate,
         completeTask,
         filteredTasks,
+        editTask,
       }}
     >
       {children}
