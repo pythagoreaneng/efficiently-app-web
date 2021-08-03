@@ -1,8 +1,7 @@
 import React from "react";
 import "./index.css";
 import { Inbox, Star, Archive, Upcoming, Today, Search } from "./pages";
-import TaskContextProvider from "./providers/TaskContext";
-
+import TaskContextProvider from "./contexts/TaskContext";
 import {
   BrowserRouter as Router,
   Switch,

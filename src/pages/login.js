@@ -92,7 +92,7 @@ const SignUpButton = styled.button`
   }
 `;
 
-const LoginInputContainer = styled.div``;
+const LoginFormContainer = styled.form``;
 
 const login = () => {
   return (
@@ -100,7 +100,7 @@ const login = () => {
       <LoginBackground>
         <LoginPanel>
           <LoginTitleWrapper>Efficiently Login</LoginTitleWrapper>
-          <LoginInputContainer>
+          <LoginFormContainer>
             <UsernameWrapper>
               <LoginInput
                 type="text"
@@ -118,7 +118,7 @@ const login = () => {
                 placeholder="Password"
               />
             </PasswordWrapper>
-          </LoginInputContainer>
+          </LoginFormContainer>
 
           <LoginButtonContainer>
             <LoginButton>Login</LoginButton>

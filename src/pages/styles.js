@@ -4,7 +4,7 @@ export const Container = styled.div`
   width: auto;
 `;
 
-export const TopNavContainer = styled.div`
+export const HeaderContainer = styled.div`
   height: 10%;
   width: 100wh;
   background-color: #46bcff;
@@ -19,7 +19,7 @@ export const TopLogoContainer = styled.div`
   alitgn-items: cetner;
 `;
 
-export const TopTitleContainer = styled.div`
+export const TitleContainer = styled.div`
   width: 30%;
   display: flex;
   flex-direction: row;
@@ -31,7 +31,7 @@ export const TopTitleContainer = styled.div`
 export const TopTitleWrapper = styled.div`
   display: flex;
 `;
-export const TopSearchContainer = styled.div`
+export const SearchContainer = styled.div`
   width: 70%;
   display: flex;
 `;
@@ -57,18 +57,18 @@ export const TopSearchInput = styled.input`
   }
 `;
 
-export const ScreenContainer = styled.div`
+export const ContentContainer = styled.div`
   display: flex;
   height: 90%;
 `;
 
-export const MainScreenContainer = styled.div`
+export const BodyContainer = styled.div`
   width: 70%;
   height: 100%;
   position: relative;
 `;
 
-export const SideScreenContainer = styled.div`
+export const SideBarContainer = styled.div`
   width: 30%;
   height: 100%;
   background-color: #fafafa;

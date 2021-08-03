@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { RiAddCircleFill } from "react-icons/ri";
 import styled from "styled-components";
+import { TaskContext } from "../contexts/TaskContext";
 
 const AddTaskContainer = styled.div`
   width: 100%;
@@ -33,28 +34,44 @@ const AddTaskButton = styled.button`
 `;
 
 // input component to add tasks
-const TaskInput = ({
-  onSubmit,
-  searchBarRef,
-  inputRef,
-  todayDate,
-  inboxRef,
-  todayRef,
-  starRef,
-  searchRef,
-  upcomingRef,
-  archiveRef,
-}) => {
+const TaskInput = ({ onSubmit }) => {
+  const {
+    tasks,
+    setTasks,
+    searchBarRef,
+    inboxRef,
+    starRef,
+    archiveRef,
+    upcomingRef,
+    todayRef,
+    searchRef,
+    inputRef,
+    todayDate,
+  } = useContext(TaskContext);
+
   // hook to handle TaskInput value
   const [input, setInput] = useState("");
   // handler for this hook
   const handleChange = (e) => {
     setInput(e.target.value);
   };
+
+  const addTask = (task) => {
+    if (task.title === "" || /^\s*$/.test(task.title)) {
+      console.log("Invalid task");
+      return;
+    }
+
+    const newTasks = [task, ...tasks];
+    setTasks(newTasks);
+    console.log("tasks:", tasks);
+    return;
+  };
+
   // handler for submitting input
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({
+    addTask({
       key: Math.floor(Math.random() * 1000),
       title: input,
       completed: false,
