@@ -10,13 +10,9 @@ const TaskList = () => {
   const upcomingTasks = tasks.filter((task) => task.scheduleDate > todayDate);
   const starTasks = tasks.filter((task) => task.star);
   const todayTasks = tasks.filter((task) => task.dueDate === todayDate);
-  const searchedTasks = tasks.filter((task) => {
-    try {
-      task.title.toLowerCase().includes(search.toLowerCase());
-    } catch (error) {
-      console.log(error);
-    }
-  });
+  const searchedTasks = tasks.filter((task) =>
+    task.title.includes(search.toLowerCase())
+  );
 
   let renderingTasks = tasks; // type of tasks to be rendered
 

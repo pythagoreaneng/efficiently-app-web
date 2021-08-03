@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Header, SideBar, Body } from "../components/";
 import {
   Container,
@@ -14,7 +14,6 @@ const TaskScreen = () => {
       <HeaderContainer>
         <Header />
       </HeaderContainer>
-
       <ContentContainer>
         <SideBarContainer>
           <SideBar />

@@ -75,6 +75,32 @@ export const SideBarContainer = styled.div`
   padding: 0.5rem 0;
 `;
 
+export const SideSectionContainer = styled.div`
+  width: auto;
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const LoginStatusContainer = styled.div`
+  height: 5%;
+  widgth: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+export const LogoutButton = styled.button`
+  height: 5%;
+  widgth: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.5;
+  &: hover {
+    opacity: 1;
+  }
+`;
+
 export const SideSectionWrapper = styled.div`
   height: 2rem;
   width: auto;
