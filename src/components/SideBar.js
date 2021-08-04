@@ -21,15 +21,8 @@ import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router";
 
 const SideBar = () => {
-  const {
-    inboxRef,
-    starRef,
-    archiveRef,
-    upcomingRef,
-    todayRef,
-    searchRef,
-    setTasks,
-  } = useContext(TaskContext);
+  const { inboxRef, starRef, archiveRef, upcomingRef, todayRef, searchRef } =
+    useContext(TaskContext);
 
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();

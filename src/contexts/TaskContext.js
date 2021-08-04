@@ -8,6 +8,7 @@ export const TaskContext = React.createContext(null);
 export const TaskContextProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
 
+  // this should be handled more propery
   const tasksRef = auth.currentUser
     ? firestore.collection(`users/${auth.currentUser.uid}/userTasks`)
     : firestore.collection(`errorTasks`);
@@ -20,8 +21,6 @@ export const TaskContextProvider = ({ children }) => {
         items.push(doc.data());
       });
       setTasks(items);
-      console.log(items);
-      console.log("getTasks ran");
     });
   };
 
