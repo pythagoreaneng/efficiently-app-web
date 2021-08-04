@@ -1,12 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 import moment from "moment";
-import { auth, firestore } from "../firebase";
+import { firestore } from "../firebase";
+import { v4 as uuidv4 } from "uuid";
 
 export const TaskContext = React.createContext(null);
 
 export const TaskContextProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
-  const tasksRef = firestore.collection(`users/${auth.currentUser.uid}/tasks`);
+
+  // const tasksRef = firestore.collection(
+  //   `users/${auth.currentUser.uid}/userTasks`
+  // );
+  const tasksRef = firestore.collection("test");
 
   // save tasks locally
   const saveTasksLocally = () => {
@@ -37,6 +42,7 @@ export const TaskContextProvider = ({ children }) => {
   useEffect(() => {
     //getTasksLocally();
     getTasks();
+    //getTasksAlt();
   }, []);
 
   // on task change re-save locally
@@ -64,20 +70,42 @@ export const TaskContextProvider = ({ children }) => {
 
   var todayDate = moment().format("YYYY-MM-D");
 
-  const completeTask = (id) => {
-    let newTasks = tasks.map((task) => {
-      console.log("Running completeTask");
-      if (task.id === id) {
-        task.completed = !task.completed;
-      }
-      return task;
-    });
-    setTasks(newTasks);
+  const completeTask = (task) => {
+    // let newTasks = tasks.map((task) => {
+    //   console.log("Running completeTask");
+    //   if (task.id === id) {
+    //     task.completed = !task.completed;
+    //   }
+    //   return task;
+    // });
+    // setTasks(newTasks);
+    tasksRef
+      .doc(task.id)
+      .update({ completed: !task.completed })
+      .then(() => {
+        console.log("Document successfully deleted!");
+        console.log("tasksRef.id", tasksRef.id);
+      })
+      .catch((error) => {
+        console.error("Error removing document: ", error);
+      });
   };
 
   const removeTask = (id) => {
-    let newTasks = [...tasks].filter((task) => task.id !== id);
-    setTasks(newTasks);
+    // let newTasks = [...tasks].filter((task) => task.id !== id);
+    // setTasks(newTasks);
+    //console.log(`auth.currentUser.uid, ${auth.currentUser.uid}`);
+
+    tasksRef
+      .doc(id)
+      .delete()
+      .then(() => {
+        console.log("Document successfully deleted!");
+        console.log("tasksRef.id", tasksRef.id);
+      })
+      .catch((error) => {
+        console.error("Error removing document: ", error);
+      });
   };
 
   const editTask = (taskId, taskTitle) => {
@@ -104,8 +132,11 @@ export const TaskContextProvider = ({ children }) => {
   // handler for submitting input
   const handleSubmit = (e) => {
     e.preventDefault();
-    tasksRef.add({
-      id: Math.floor(Math.random() * 1000),
+    // doc("tasks").set worked
+    const taskId = uuidv4();
+    tasksRef.doc(taskId).set({
+      id: taskId, // generate random string
+      // id: Math.floor(Math.random() * 1000), // generate ramdom int
       title: input,
       completed: false,
       star: false,
@@ -113,6 +144,7 @@ export const TaskContextProvider = ({ children }) => {
       dueDate: "2021-07-31",
       scheduleDate: "2021-08-28",
     });
+    console.log("tasksRef is:", tasksRef.id);
     // clear input
     setInput("");
   };
@@ -143,7 +175,7 @@ export const TaskContextProvider = ({ children }) => {
         editTask,
         toggleStar,
         editTask,
-        tasksRef,
+        //tasksRef,
         handleSubmit,
         input,
         setInput,

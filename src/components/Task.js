@@ -11,9 +11,10 @@ import {
   TaskContainer,
   TaskTitleContainer,
 } from "../pages/styles";
+import { firestore } from "../firebase";
 
 const Task = ({ task }) => {
-  const { completeTask, removeTask, toggleStar, editTask } =
+  const { completeTask, removeTask, toggleStar, editTask, tasksRef } =
     useContext(TaskContext);
   const [isEdit, setIsEdit] = useState(false);
   const [edit, setEdit] = useState(task.title);
@@ -67,7 +68,7 @@ const Task = ({ task }) => {
       <Checkbox
         defaultChecked={task.completed}
         type="Checkbox"
-        onClick={() => completeTask(task.id)}
+        onClick={() => completeTask(task)}
       />
       <TaskTitleContainer onClick={handleOnClickEdit}>
         {isEdit ? (
