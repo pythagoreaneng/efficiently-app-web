@@ -15,22 +15,18 @@ export const TaskContextProvider = ({ children }) => {
   // intial loading of locally saved tasks
 
   useEffect(() => {
-    if (auth.currentUser) {
-      const getTasks = () => {
-        tasksRef.onSnapshot((querySnapshot) => {
-          const items = [];
-          querySnapshot.forEach((doc) => {
-            items.push(doc.data());
-          });
-          setTasks(items);
-          console.log(items);
-          console.log("getTasks ran");
+    const getTasks = () => {
+      tasksRef.onSnapshot((querySnapshot) => {
+        const items = [];
+        querySnapshot.forEach((doc) => {
+          items.push(doc.data());
         });
-      };
-      getTasks();
-    } else {
-      return setTasks([]);
-    }
+        setTasks(items);
+        console.log(items);
+        console.log("getTasks ran");
+      });
+    };
+    getTasks();
   }, []); // eslint-disable-line
 
   const searchBarRef = useRef(null);

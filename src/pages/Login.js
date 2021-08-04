@@ -156,6 +156,7 @@ const Login = () => {
       setError("Failed to login");
     }
     setLoading(false);
+    window.location.reload(); // reload the page to triger getTasks
   };
   return (
     <>
