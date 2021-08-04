@@ -122,7 +122,7 @@ const BottomLink = styled(Link)`
 const ErrorMessage = styled.div`
   position: absolute;
   top: 0.5rem;
-  font-size: 0.8em;
+  font-size: 0.7em;
   padding: 0 0.5rem;
   margin: 0.5rem 0;
   background-color: #ffcccb;
@@ -163,14 +163,13 @@ const Profile = () => {
 
     Promise.all(promises)
       .then(() => {
-        history.push("/");
+        history.push("/star");
       })
-      .catch(() => {
-        setError("Failed to update account");
+      .catch((err) => {
+        setError(err.message);
       })
       .finally(() => {
         setLoading(false);
-        setError("Updated");
       });
   };
 
@@ -198,14 +197,14 @@ const Profile = () => {
                     type="password"
                     id="pwd"
                     name="pwd"
-                    placeholder="Leave blank to keep the same"
+                    placeholder="Password"
                     ref={passwordRef}
                   />
                   <LoginInput
                     type="password"
                     id="pwdcf"
                     name="pwdcf"
-                    placeholder="Leave blank to keep the same"
+                    placeholder="Confirm"
                     ref={passwordConfirmRef}
                   />
                 </LoginInputContainer>
