@@ -47,6 +47,7 @@ const TaskInput = ({ onSubmit }) => {
     searchRef,
     inputRef,
     todayDate,
+    tasksRef,
   } = useContext(TaskContext);
 
   // hook to handle TaskInput value
@@ -71,7 +72,7 @@ const TaskInput = ({ onSubmit }) => {
   // handler for submitting input
   const handleSubmit = (e) => {
     e.preventDefault();
-    addTask({
+    tasksRef.add({
       id: Math.floor(Math.random() * 1000),
       title: input,
       completed: false,

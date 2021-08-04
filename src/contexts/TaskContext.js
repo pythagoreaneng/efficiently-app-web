@@ -6,9 +6,7 @@ export const TaskContext = React.createContext(null);
 
 export const TaskContextProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
-  const tasksRef = firestore.collection(
-    `users/${auth.currentUser.uid / tasks}`
-  );
+  const tasksRef = firestore.collection(`users/${auth.currentUser.uid}/tasks`);
 
   // save tasks locally
   const saveTasksLocally = () => {
@@ -115,6 +113,7 @@ export const TaskContextProvider = ({ children }) => {
         editTask,
         toggleStar,
         editTask,
+        tasksRef,
       }}
     >
       {children}
