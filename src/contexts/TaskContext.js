@@ -11,22 +11,6 @@ export const TaskContextProvider = ({ children }) => {
   const tasksRef = auth.currentUser
     ? firestore.collection(`users/${auth.currentUser.uid}/userTasks`)
     : firestore.collection(`failed`);
-  //const tasksRef = firestore.collection("test");
-
-  // save tasks locally
-  const saveTasksLocally = () => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-    console.log("ran saveTaskLocally()");
-  };
-
-  const getTasksLocally = () => {
-    if (localStorage.getItem("tasks") === null) {
-      localStorage.setItem("tasks", JSON.stringify());
-      console.log("GetTasksLocally run");
-    } else {
-      setTasks(JSON.parse(localStorage.getItem("tasks")));
-    }
-  };
 
   const getTasks = () => {
     tasksRef.onSnapshot((querySnapshot) => {
@@ -40,15 +24,8 @@ export const TaskContextProvider = ({ children }) => {
 
   // intial loading of locally saved tasks
   useEffect(() => {
-    //getTasksLocally();
     getTasks();
-    //getTasksAlt();
   }, []);
-
-  // on task change re-save locally
-  useEffect(() => {
-    //saveTasksLocally();
-  }, [tasks]);
 
   const searchBarRef = useRef(null);
   const inboxRef = useRef(null);
@@ -70,14 +47,6 @@ export const TaskContextProvider = ({ children }) => {
   var todayDate = moment().format("YYYY-MM-D");
 
   const completeTask = (task) => {
-    // let newTasks = tasks.map((task) => {
-    //   console.log("Running completeTask");
-    //   if (task.id === id) {
-    //     task.completed = !task.completed;
-    //   }
-    //   return task;
-    // });
-    // setTasks(newTasks);
     tasksRef
       .doc(task.id)
       .update({ completed: !task.completed })
@@ -91,10 +60,6 @@ export const TaskContextProvider = ({ children }) => {
   };
 
   const removeTask = (id) => {
-    // let newTasks = [...tasks].filter((task) => task.id !== id);
-    // setTasks(newTasks);
-    //console.log(`auth.currentUser.uid, ${auth.currentUser.uid}`);
-
     tasksRef
       .doc(id)
       .delete()
@@ -107,14 +72,6 @@ export const TaskContextProvider = ({ children }) => {
   };
 
   const editTask = (task, edit) => {
-    // map through tasks
-    // let newTasks = tasks.map((task) => {
-    //   if (task.id === taskId) {
-    //     task.title = taskTitle; // update title
-    //   }
-    //   return task;
-    // });
-    // setTasks(newTasks); // update tasks
     tasksRef
       .doc(task.id)
       .update({ title: edit })
@@ -127,13 +84,6 @@ export const TaskContextProvider = ({ children }) => {
   };
 
   const toggleStar = (task) => {
-    // let newTasks = tasks.map((task) => {
-    //   if (task.id === id) {
-    //     task.star = !task.star;
-    //   }
-    //   return task;
-    // });
-    // setTasks(newTasks);
     tasksRef
       .doc(task.id)
       .update({ star: !task.star })
@@ -190,7 +140,6 @@ export const TaskContextProvider = ({ children }) => {
         editTask,
         toggleStar,
         editTask,
-        //tasksRef,
         handleSubmit,
         input,
         setInput,
