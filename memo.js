@@ -92,7 +92,7 @@ const toggleStar = (task) => {
 // on task change re-save locally
 useEffect(() => {
   //saveTasksLocally();
-}, [tasks]);
+}, [tasks]); // eslint-disable-line
 
 const addTask = (task) => {
   if (task.title === "" || /^\s*$/.test(task.title)) {

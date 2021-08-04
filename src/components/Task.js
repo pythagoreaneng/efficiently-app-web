@@ -31,7 +31,7 @@ const Task = ({ task }) => {
     if (isEdit) {
       editRef.current.focus();
     }
-  }, [isEdit]);
+  }, [isEdit]); // eslint-disable-line
 
   const editKeyDown = (e) => {
     // stops edit when enter is hit in edit input.

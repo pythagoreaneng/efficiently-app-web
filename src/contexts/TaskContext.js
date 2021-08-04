@@ -13,18 +13,24 @@ export const TaskContextProvider = ({ children }) => {
     : firestore.collection(`failed`);
 
   // intial loading of locally saved tasks
+
   useEffect(() => {
-    const getTasks = () => {
-      tasksRef.onSnapshot((querySnapshot) => {
-        const items = [];
-        querySnapshot.forEach((doc) => {
-          items.push(doc.data());
+    if (auth.currentUser) {
+      const getTasks = () => {
+        tasksRef.onSnapshot((querySnapshot) => {
+          const items = [];
+          querySnapshot.forEach((doc) => {
+            items.push(doc.data());
+          });
+          setTasks(items);
+          console.log(items);
+          console.log("getTasks ran");
         });
-        setTasks(items);
-        console.log("getTasks ran");
-      });
-    };
-    getTasks();
+      };
+      getTasks();
+    } else {
+      return setTasks([]);
+    }
   }, []); // eslint-disable-line
 
   const searchBarRef = useRef(null);
@@ -94,7 +100,6 @@ export const TaskContextProvider = ({ children }) => {
         console.error("Error removing document: ", error);
       });
   };
-
   // handler for submitting input
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -64,7 +64,7 @@ const TaskInput = ({ onSubmit }) => {
     else {
       inputRef.current.focus();
     }
-  }, [searchBarRef, inputRef]);
+  }, [searchBarRef, inputRef]); // eslint-disable-line
 
   const submitRef = useRef(null);
 

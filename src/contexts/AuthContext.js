@@ -17,6 +17,10 @@ const AuthProvider = ({ children }) => {
     return auth.signInWithEmailAndPassword(email, password);
   };
   const logout = () => {
+    auth.signOut();
+    localStorage.clear();
+    sessionStorage.clear();
+    window.location.reload();
     return auth.signOut();
   };
   const resetPassword = (email) => {
@@ -32,10 +36,11 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
+      console.log("setting user ran");
       setLoading(false);
     });
     return unsubscribe;
-  }, []);
+  }, []); // eslint-disable-line
 
   const value = {
     currentUser,

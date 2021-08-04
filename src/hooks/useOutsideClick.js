@@ -13,7 +13,7 @@ const useOutsideClick = (ref, callback) => {
     return () => {
       document.removeEventListener("click", handleClick);
     };
-  });
+  }); // eslint-disable-line
 };
 
 export default useOutsideClick;
