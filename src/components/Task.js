@@ -64,7 +64,11 @@ const Task = ({ task }) => {
 
   return (
     <TaskContainer key={task.id}>
-      <Checkbox type="Checkbox" onClick={() => completeTask(task.id)} />
+      <Checkbox
+        defaultChecked={task.completed}
+        type="Checkbox"
+        onClick={() => completeTask(task.id)}
+      />
       <TaskTitleContainer onClick={handleOnClickEdit}>
         {isEdit ? (
           <EditInput
