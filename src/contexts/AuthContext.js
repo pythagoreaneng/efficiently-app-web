@@ -16,12 +16,9 @@ const AuthProvider = ({ children }) => {
   const login = (email, password) => {
     return auth.signInWithEmailAndPassword(email, password);
   };
-  const logout = () => {
+  const logout = async () => {
+    await window.location.reload();
     auth.signOut();
-    localStorage.clear();
-    sessionStorage.clear();
-    window.location.reload();
-    return auth.signOut();
   };
   const resetPassword = (email) => {
     return auth.sendPasswordResetEmail(email);
@@ -39,6 +36,7 @@ const AuthProvider = ({ children }) => {
       console.log("setting user ran");
       setLoading(false);
     });
+
     return unsubscribe;
   }, []); // eslint-disable-line
 

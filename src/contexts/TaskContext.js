@@ -13,19 +13,19 @@ export const TaskContextProvider = ({ children }) => {
     : firestore.collection(`failed`);
 
   // intial loading of locally saved tasks
+  const getTasks = () => {
+    tasksRef.onSnapshot((querySnapshot) => {
+      const items = [];
+      querySnapshot.forEach((doc) => {
+        items.push(doc.data());
+      });
+      setTasks(items);
+      console.log(items);
+      console.log("getTasks ran");
+    });
+  };
 
   useEffect(() => {
-    const getTasks = () => {
-      tasksRef.onSnapshot((querySnapshot) => {
-        const items = [];
-        querySnapshot.forEach((doc) => {
-          items.push(doc.data());
-        });
-        setTasks(items);
-        console.log(items);
-        console.log("getTasks ran");
-      });
-    };
     getTasks();
   }, []); // eslint-disable-line
 

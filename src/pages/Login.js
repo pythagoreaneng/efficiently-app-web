@@ -155,8 +155,8 @@ const Login = () => {
     } catch {
       setError("Failed to login");
     }
+    await window.location.reload(); // reload the page to triger getTasks
     setLoading(false);
-    window.location.reload(); // reload the page to triger getTasks
   };
   return (
     <>
