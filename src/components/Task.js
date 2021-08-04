@@ -90,9 +90,9 @@ const Task = ({ task }) => {
 
       <OptionContainer>
         {task.star ? (
-          <RiStarSFill onClick={() => toggleStar(task.id)} />
+          <RiStarSFill onClick={() => toggleStar(task)} />
         ) : (
-          <RiStarSLine onClick={() => toggleStar(task.id)} />
+          <RiStarSLine onClick={() => toggleStar(task)} />
         )}
         <RiCloseFill onClick={() => removeTask(task.id)} />
       </OptionContainer>

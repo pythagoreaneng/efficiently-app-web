@@ -101,7 +101,6 @@ export const TaskContextProvider = ({ children }) => {
       .delete()
       .then(() => {
         console.log("Document successfully deleted!");
-        console.log("tasksRef.id", tasksRef.id);
       })
       .catch((error) => {
         console.error("Error removing document: ", error);
@@ -119,14 +118,23 @@ export const TaskContextProvider = ({ children }) => {
     setTasks(newTasks); // update tasks
   };
 
-  const toggleStar = (id) => {
-    let newTasks = tasks.map((task) => {
-      if (task.id === id) {
-        task.star = !task.star;
-      }
-      return task;
-    });
-    setTasks(newTasks);
+  const toggleStar = (task) => {
+    // let newTasks = tasks.map((task) => {
+    //   if (task.id === id) {
+    //     task.star = !task.star;
+    //   }
+    //   return task;
+    // });
+    // setTasks(newTasks);
+    tasksRef
+      .doc(task.id)
+      .update({ star: !task.star })
+      .then(() => {
+        console.log("Document successfully deleted!");
+      })
+      .catch((error) => {
+        console.error("Error removing document: ", error);
+      });
   };
 
   // handler for submitting input
