@@ -59,10 +59,8 @@ const Task = ({ task }) => {
     }
   });
 
-  var untilScheduleDate = moment(task.scheduleDate).fromNow();
-  var untilDueDate = moment(task.dueDate).fromNow();
-
-  console.log("In Task.js task.id:", task.id);
+  let untilScheduleDate = moment(task.scheduleDate).fromNow();
+  let untilDueDate = moment(task.dueDate).fromNow();
 
   return (
     <TaskContainer key={task.id}>
