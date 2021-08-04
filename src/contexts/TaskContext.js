@@ -1,10 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import moment from "moment";
+import { auth, firestore } from "../firebase";
 
 export const TaskContext = React.createContext(null);
 
 export const TaskContextProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
+  const tasksRef = firestore.collection(
+    `users/${auth.currentUser.uid / tasks}`
+  );
 
   // save tasks locally
   const saveTasksLocally = () => {
