@@ -23,14 +23,25 @@ export const TaskContextProvider = ({ children }) => {
     }
   };
 
+  const getTasks = () => {
+    tasksRef.onSnapshot((querySnapshot) => {
+      const items = [];
+      querySnapshot.forEach((doc) => {
+        items.push(doc.data());
+      });
+      setTasks(items);
+    });
+  };
+
   // intial loading of locally saved tasks
   useEffect(() => {
-    getTasksLocally();
+    //getTasksLocally();
+    getTasks();
   }, []);
 
   // on task change re-save locally
   useEffect(() => {
-    saveTasksLocally();
+    //saveTasksLocally();
   }, [tasks]);
 
   const searchBarRef = useRef(null);
