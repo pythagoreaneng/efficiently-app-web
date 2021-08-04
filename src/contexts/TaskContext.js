@@ -62,7 +62,6 @@ export const TaskContextProvider = ({ children }) => {
 
   // search related
   const [search, setSearch] = useState("");
-  console.log("seach is:", search);
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
@@ -107,15 +106,24 @@ export const TaskContextProvider = ({ children }) => {
       });
   };
 
-  const editTask = (taskId, taskTitle) => {
+  const editTask = (task, edit) => {
     // map through tasks
-    let newTasks = tasks.map((task) => {
-      if (task.id === taskId) {
-        task.title = taskTitle; // update title
-      }
-      return task;
-    });
-    setTasks(newTasks); // update tasks
+    // let newTasks = tasks.map((task) => {
+    //   if (task.id === taskId) {
+    //     task.title = taskTitle; // update title
+    //   }
+    //   return task;
+    // });
+    // setTasks(newTasks); // update tasks
+    tasksRef
+      .doc(task.id)
+      .update({ title: edit })
+      .then(() => {
+        console.log("Document successfully deleted!");
+      })
+      .catch((error) => {
+        console.error("Error removing document: ", error);
+      });
   };
 
   const toggleStar = (task) => {
@@ -140,10 +148,9 @@ export const TaskContextProvider = ({ children }) => {
   // handler for submitting input
   const handleSubmit = (e) => {
     e.preventDefault();
-    // doc("tasks").set worked
-    const taskId = uuidv4();
+    const taskId = uuidv4(); // generate string id every time task is generated and assign to it
     tasksRef.doc(taskId).set({
-      id: taskId, // generate random string
+      id: taskId, // task gets assigned the id
       // id: Math.floor(Math.random() * 1000), // generate ramdom int
       title: input,
       completed: false,

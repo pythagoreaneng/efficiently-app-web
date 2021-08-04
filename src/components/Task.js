@@ -44,7 +44,7 @@ const Task = ({ task }) => {
       }
       setEdit(edit); //change value of edit,
       setIsEdit(false); // set edit attribute to false,
-      editTask(task.id, edit); // update the task globally.
+      editTask(task, edit); // update the task globally.
     }
   };
 
@@ -56,7 +56,7 @@ const Task = ({ task }) => {
       removeTask(task.id);
     } else {
       // update task
-      editTask(task.id, edit);
+      editTask(task, edit);
     }
   });
 
