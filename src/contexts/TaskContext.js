@@ -10,7 +10,7 @@ export const TaskContextProvider = ({ children }) => {
 
   const tasksRef = auth.currentUser
     ? firestore.collection(`users/${auth.currentUser.uid}/userTasks`)
-    : firestore.collection(`failed`);
+    : firestore.collection(`errorTasks`);
 
   // intial loading of locally saved tasks
   const getTasks = () => {
