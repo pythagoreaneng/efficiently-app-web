@@ -93,3 +93,15 @@ const toggleStar = (task) => {
 useEffect(() => {
   //saveTasksLocally();
 }, [tasks]);
+
+const addTask = (task) => {
+  if (task.title === "" || /^\s*$/.test(task.title)) {
+    console.log("Invalid task");
+    return;
+  }
+
+  const newTasks = [task, ...tasks];
+  setTasks(newTasks);
+  console.log("tasks:", tasks);
+  return;
+};

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import { RiAddCircleFill } from "react-icons/ri";
 import styled from "styled-components";
 import { TaskContext } from "../contexts/TaskContext";
@@ -36,8 +36,6 @@ const AddTaskButton = styled.button`
 // input component to add tasks
 const TaskInput = ({ onSubmit }) => {
   const {
-    tasks,
-    setTasks,
     searchBarRef,
     inboxRef,
     starRef,
@@ -46,8 +44,6 @@ const TaskInput = ({ onSubmit }) => {
     todayRef,
     searchRef,
     inputRef,
-    todayDate,
-    tasksRef,
     handleSubmit,
     input,
     setInput,
@@ -56,18 +52,6 @@ const TaskInput = ({ onSubmit }) => {
   // handler for this hook
   const handleChange = (e) => {
     setInput(e.target.value);
-  };
-
-  const addTask = (task) => {
-    if (task.title === "" || /^\s*$/.test(task.title)) {
-      console.log("Invalid task");
-      return;
-    }
-
-    const newTasks = [task, ...tasks];
-    setTasks(newTasks);
-    console.log("tasks:", tasks);
-    return;
   };
 
   // hook to handle focus(either on TaskInput or SearchBar)
@@ -80,7 +64,7 @@ const TaskInput = ({ onSubmit }) => {
     else {
       inputRef.current.focus();
     }
-  }, []);
+  }, [searchBarRef, inputRef]);
 
   const submitRef = useRef(null);
 

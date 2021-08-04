@@ -11,10 +11,9 @@ import {
   TaskContainer,
   TaskTitleContainer,
 } from "../pages/styles";
-import { firestore } from "../firebase";
 
 const Task = ({ task }) => {
-  const { completeTask, removeTask, toggleStar, editTask, tasksRef } =
+  const { completeTask, removeTask, toggleStar, editTask } =
     useContext(TaskContext);
   const [isEdit, setIsEdit] = useState(false);
   const [edit, setEdit] = useState(task.title);

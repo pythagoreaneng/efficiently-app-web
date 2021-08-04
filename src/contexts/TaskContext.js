@@ -12,20 +12,20 @@ export const TaskContextProvider = ({ children }) => {
     ? firestore.collection(`users/${auth.currentUser.uid}/userTasks`)
     : firestore.collection(`failed`);
 
-  const getTasks = () => {
-    tasksRef.onSnapshot((querySnapshot) => {
-      const items = [];
-      querySnapshot.forEach((doc) => {
-        items.push(doc.data());
-      });
-      setTasks(items);
-    });
-  };
-
   // intial loading of locally saved tasks
   useEffect(() => {
+    const getTasks = () => {
+      tasksRef.onSnapshot((querySnapshot) => {
+        const items = [];
+        querySnapshot.forEach((doc) => {
+          items.push(doc.data());
+        });
+        setTasks(items);
+        console.log("getTasks ran");
+      });
+    };
     getTasks();
-  }, []);
+  }, []); // eslint-disable-line
 
   const searchBarRef = useRef(null);
   const inboxRef = useRef(null);
@@ -139,7 +139,6 @@ export const TaskContextProvider = ({ children }) => {
         removeTask,
         editTask,
         toggleStar,
-        editTask,
         handleSubmit,
         input,
         setInput,

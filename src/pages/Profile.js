@@ -127,13 +127,13 @@ const ErrorMessage = styled.div`
   margin: 0.5rem 0;
   background-color: #ffcccb;
 `;
-const ForgotMessage = styled.div`
-  position: absolute;
-  bottom: 0.5rem;
-  font-size: 0.8em;
-  padding: 0 0.5rem;
-  margin: 0.5rem 0;
-`;
+// const ForgotMessage = styled.div`
+//   position: absolute;
+//   bottom: 0.5rem;
+//   font-size: 0.8em;
+//   padding: 0 0.5rem;
+//   margin: 0.5rem 0;
+// `;
 
 const Profile = () => {
   const emailRef = useRef(null);

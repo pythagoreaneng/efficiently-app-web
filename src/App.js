@@ -21,7 +21,6 @@ import {
 import PrivateRoute from "./PrivateRoute";
 import Reset from "./pages/Reset";
 import Profile from "./pages/Profile";
-import Preferences from "./pages/Preferences";
 
 function App() {
   return (
