@@ -101,6 +101,25 @@ export const TaskContextProvider = ({ children }) => {
     setTasks(newTasks);
   };
 
+  // handler for submitting input
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    tasksRef.add({
+      id: Math.floor(Math.random() * 1000),
+      title: input,
+      completed: false,
+      star: false,
+      createdDate: todayDate,
+      dueDate: "2021-07-31",
+      scheduleDate: "2021-08-28",
+    });
+    // clear input
+    setInput("");
+  };
+
+  // hook to handle TaskInput value
+  const [input, setInput] = useState("");
+
   return (
     <TaskContext.Provider
       value={{
@@ -125,6 +144,9 @@ export const TaskContextProvider = ({ children }) => {
         toggleStar,
         editTask,
         tasksRef,
+        handleSubmit,
+        input,
+        setInput,
       }}
     >
       {children}

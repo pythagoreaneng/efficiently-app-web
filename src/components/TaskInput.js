@@ -48,10 +48,11 @@ const TaskInput = ({ onSubmit }) => {
     inputRef,
     todayDate,
     tasksRef,
+    handleSubmit,
+    input,
+    setInput,
   } = useContext(TaskContext);
 
-  // hook to handle TaskInput value
-  const [input, setInput] = useState("");
   // handler for this hook
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -67,22 +68,6 @@ const TaskInput = ({ onSubmit }) => {
     setTasks(newTasks);
     console.log("tasks:", tasks);
     return;
-  };
-
-  // handler for submitting input
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    tasksRef.add({
-      id: Math.floor(Math.random() * 1000),
-      title: input,
-      completed: false,
-      star: false,
-      createdDate: todayDate,
-      dueDate: "2021-07-31",
-      scheduleDate: "2021-08-28",
-    });
-    // clear input
-    setInput("");
   };
 
   // hook to handle focus(either on TaskInput or SearchBar)
