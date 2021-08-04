@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import moment from "moment";
-import { firestore } from "../firebase";
+import { auth, firestore } from "../firebase";
 import { v4 as uuidv4 } from "uuid";
 
 export const TaskContext = React.createContext(null);
@@ -8,9 +8,9 @@ export const TaskContext = React.createContext(null);
 export const TaskContextProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
 
-  const tasksRef = firestore.collection(
-    `users/${auth.currentUser.uid}/userTasks`
-  );
+  const tasksRef = auth.currentUser
+    ? firestore.collection(`users/${auth.currentUser.uid}/userTasks`)
+    : firestore.collection(`failed`);
   //const tasksRef = firestore.collection("test");
 
   // save tasks locally
