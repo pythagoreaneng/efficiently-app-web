@@ -67,9 +67,15 @@ export const TaskContextProvider = ({ children }) => {
     setTasks(newTasks);
   };
 
-  const editTask = (id, newTitle) => {
-    //console.log("newTitle", newTitle);
-    setTasks((prev) => prev.map((task) => (task.id === id ? newTitle : task)));
+  const editTask = (taskId, taskTitle) => {
+    // map through tasks
+    let newTasks = tasks.map((task) => {
+      if (task.id === taskId) {
+        task.title = taskTitle; // update title
+      }
+      return task;
+    });
+    setTasks(newTasks); // update tasks
   };
 
   const toggleStar = (id) => {
