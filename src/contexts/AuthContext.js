@@ -33,22 +33,24 @@ const AuthProvider = ({ children }) => {
     return currentUser.updatePassword(password);
   };
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      setCurrentUser(user);
+  function onAuthStateChange() {
+    return auth.onAuthStateChanged((user) => {
       setLoading(false);
       if (user) {
-        if (window.location.pathname === "/login" || "/signup") {
-          history.push("/");
-        } else {
-        }
+        setCurrentUser(user);
+        console.log("The user is logged in");
       } else {
-        console.log("You are not logged in");
+        console.log("The user is not logged in");
       }
     });
+  }
 
-    return unsubscribe;
-  }, []); // eslint-disable-line
+  useEffect(() => {
+    const unsubscribe = onAuthStateChange();
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
   const value = {
     currentUser,

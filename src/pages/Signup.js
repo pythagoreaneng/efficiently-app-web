@@ -132,7 +132,6 @@ const ErrorMessage = styled.div`
 const Signup = () => {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
-  const passwordConfirmRef = useRef(null);
   const usernameRef = useRef(null);
   const { signup } = useAuth();
   const [error, setError] = useState("");
@@ -141,9 +140,7 @@ const Signup = () => {
 
   const handleSubmitSignup = async (e) => {
     e.preventDefault();
-    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      return setError("Passwords do not match");
-    }
+
     try {
       setError("");
       setLoading(true);
@@ -186,14 +183,6 @@ const Signup = () => {
                     required
                   />
 
-                  <LoginInput
-                    type="password"
-                    id="pwdcf"
-                    name="pwdcf"
-                    placeholder="Confirm"
-                    ref={passwordConfirmRef}
-                    required
-                  />
                   <LoginInput
                     type="text"
                     id="username"
