@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { RiCloseFill, RiStarSFill, RiStarSLine } from "react-icons/ri";
-import useOutsideClick from "../hooks/useOutsideClick";
 import moment from "moment";
 import { TaskContext } from "../contexts/TaskContext";
 import {
@@ -17,7 +16,7 @@ const Task = ({ task }) => {
     useContext(TaskContext);
   const [isEdit, setIsEdit] = useState(false);
   const [edit, setEdit] = useState(task.title);
-  const handleEdit = (e) => {
+  const handleChange = (e) => {
     setEdit(e.target.value);
   };
 
@@ -52,17 +51,16 @@ const Task = ({ task }) => {
     }
   };
 
-  //Issue: clicking anohter task when editing
-  useOutsideClick(editRef, () => {
-    // stops edit when clicked outside of edit input.
-    if (edit === "") {
-      // if left blank, delete task
-      removeTask(task.id);
-    } else {
-      // update task
-      editTask(task.id, edit);
+  const outsideClick = () => {
+    // if same don't run saveTasks()
+    if (edit === task.title) {
+      setIsEdit(false);
+      return;
     }
-  });
+    setEdit(edit); //change value of edit,
+    setIsEdit(false); // set edit attribute to false,
+    editTask(task.id, edit); // update the task globally.
+  };
 
   let untilScheduleDate = moment(task.scheduleDate).fromNow();
   let untilDueDate = moment(task.dueDate).fromNow();
@@ -75,7 +73,8 @@ const Task = ({ task }) => {
           <EditInput
             placeholder="Press enter to confirm edit"
             value={edit}
-            onChange={handleEdit}
+            onChange={handleChange}
+            onBlur={outsideClick}
             onKeyDown={editKeyDown}
             ref={editRef}
           />
