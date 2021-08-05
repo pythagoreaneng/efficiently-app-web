@@ -138,9 +138,12 @@ export const TaskContextProvider = ({ children }) => {
         removeTask,
         editTask,
         toggleStar,
+<<<<<<< HEAD
         handleSubmit,
         input,
         setInput,
+=======
+>>>>>>> upstream-dev
       }}
     >
       {children}
