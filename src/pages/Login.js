@@ -16,6 +16,7 @@ const Login = () => {
   const { emailRef, passwordRef, error, setError, loading, setLoading } =
     useContext(EntryContext);
 
+  // function to handle login request
   const handleSubmitLogin = async (e) => {
     e.preventDefault();
     try {
@@ -29,6 +30,8 @@ const Login = () => {
     await window.location.reload(); // reload the page to triger getTasks
     setLoading(false);
   };
+
+  // componenent for login form
   const LoginForm = (
     <EntryForm onSubmit={handleSubmitLogin}>
       <EntryInputContainer>
@@ -39,11 +42,12 @@ const Login = () => {
           placeholder="Email"
           spellcheck="false"
           ref={emailRef}
+          required
         />
         <EntryInput
           type="password"
-          id="pwd"
-          name="pwd"
+          id="password"
+          name="password"
           placeholder="Password"
           ref={passwordRef}
           required
@@ -60,6 +64,7 @@ const Login = () => {
     </EntryForm>
   );
 
+  // message to let user go to signup page instead
   const SignupMessage = (
     <>
       Don't have an account?{" "}

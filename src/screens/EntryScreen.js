@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { EntryContext } from "../contexts/EntryContext";
+import styled from "styled-components";
 
 const EntryBackground = styled.div`
   width: 100vw;
@@ -136,29 +136,31 @@ export const EntryForgotMessage = styled.div`
   margin: 0.5rem 0;
 `;
 
+export const SuccessMessage = styled.div`
+  position: absolute;
+  top: 0.5rem;
+  font-size: 0.8em;
+  padding: 0 0.5rem;
+  margin: 0.5rem 0;
+  background-color: #90ee90;
+`;
+// interface for login, signup, reset pages
+// i.e. title: "Sign up", form={SignupForm}, bottomMessage={LoginMessage}
 const EntryScreen = ({ title, form, bottomMessage }) => {
-  const {
-    emailRef,
-    passwordRef,
-    usernameRef,
-    error,
-    setError,
-    loading,
-    setLoading,
-  } = useContext(EntryContext);
+  // import error and success messages from Entry Context
+  const { error, successMessage } = useContext(EntryContext);
   return (
-    <>
-      <EntryBackground>
-        <EntryColumnContainer>
-          <EntryPanelContainer>
-            {error && <EntryErrorMessage>{error}</EntryErrorMessage>}
-            <EntryTitleContainer>{title}</EntryTitleContainer>
-            <EntryBodyContainer>{form}</EntryBodyContainer>
-          </EntryPanelContainer>
-          <EntryBottomContainer>{bottomMessage}</EntryBottomContainer>
-        </EntryColumnContainer>
-      </EntryBackground>
-    </>
+    <EntryBackground>
+      <EntryColumnContainer>
+        <EntryPanelContainer>
+          {successMessage && <SuccessMessage>{successMessage}</SuccessMessage>}
+          {error && <EntryErrorMessage>{error}</EntryErrorMessage>}
+          <EntryTitleContainer>{title}</EntryTitleContainer>
+          <EntryBodyContainer>{form}</EntryBodyContainer>
+        </EntryPanelContainer>
+        <EntryBottomContainer>{bottomMessage}</EntryBottomContainer>
+      </EntryColumnContainer>
+    </EntryBackground>
   );
 };
 

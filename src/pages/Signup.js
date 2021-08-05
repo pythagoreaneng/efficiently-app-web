@@ -15,6 +15,7 @@ const Signup = () => {
   const { emailRef, passwordRef, usernameRef, setError, loading, setLoading } =
     useContext(EntryContext);
 
+  // function to handle reset request
   const handleSubmitSignup = async (e) => {
     e.preventDefault();
     try {
@@ -33,6 +34,7 @@ const Signup = () => {
     setLoading(false);
   };
 
+  // componenent for signup form
   const SignupForm = (
     <EntryForm onSubmit={handleSubmitSignup}>
       <EntryInputContainer>
@@ -51,6 +53,7 @@ const Signup = () => {
           placeholder="Email"
           spellcheck="false"
           ref={emailRef}
+          required
         />
 
         <EntryInput
@@ -71,6 +74,7 @@ const Signup = () => {
     </EntryForm>
   );
 
+  // message to let user login instead
   const LoginMessage = (
     <>
       Already have an account?{" "}
