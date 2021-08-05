@@ -13,8 +13,8 @@ const AuthProvider = ({ children }) => {
 
   const history = useHistory();
 
-  const signup = (email, password) => {
-    return auth.createUserWithEmailAndPassword(email, password);
+  const signup = (email, password, username) => {
+    return auth.createUserWithEmailAndPassword(email, password).then();
   };
   const login = (email, password) => {
     return auth.signInWithEmailAndPassword(email, password);
