@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Redirect, useHistory } from "react-router-dom";
-import { auth } from "../firebase";
+import { auth, firestore } from "../firebase";
 
 export const AuthContext = React.createContext(null);
 export const useAuth = () => {
@@ -8,13 +8,21 @@ export const useAuth = () => {
 };
 
 const AuthProvider = ({ children }) => {
+  const history = useHistory();
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
 
-  const history = useHistory();
+  const userRef = auth.currentUser
+    ? firestore.collection(`users/${auth.currentUser.uid}/userProfiles`)
+    : firestore.collection(`catch`);
 
   const signup = (email, password, username) => {
-    return auth.createUserWithEmailAndPassword(email, password).then();
+    return auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((cred) => {
+        cred.user.updateProfile({ displayName: username });
+      })
+      .then(() => {});
   };
   const login = (email, password) => {
     return auth.signInWithEmailAndPassword(email, password);
@@ -33,12 +41,19 @@ const AuthProvider = ({ children }) => {
     return currentUser.updatePassword(password);
   };
 
-  function onAuthStateChange() {
-    return auth.onAuthStateChanged((user) => {
+  const onAuthStateChange = () => {
+    return auth.onAuthStateChanged(async (user) => {
       setCurrentUser(user);
       setLoading(false);
       if (user) {
         console.log("The user is logged in");
+        try {
+          await setCurrentUser(user);
+          user.updateProfile({ displayName: user.displayName });
+        } catch (err) {
+          console.log(err);
+        }
+
         if (window.location.pathname === "/login" || "/signup") {
           history.push("/");
         }
@@ -47,11 +62,11 @@ const AuthProvider = ({ children }) => {
         history.push("/login");
       }
     });
-  }
+  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChange();
-    return () => unsubscribe();
+    return unsubscribe;
   }, []);
 
   const value = {
@@ -63,6 +78,7 @@ const AuthProvider = ({ children }) => {
     updateEmail,
     updatePassword,
     history,
+    userRef,
   };
 
   return (

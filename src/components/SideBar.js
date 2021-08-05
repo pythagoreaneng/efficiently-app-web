@@ -126,6 +126,7 @@ const SideBar = () => {
             </NavLink>
           </SectionName>
         </SideSectionWrapper>
+        Welcome, @{currentUser.displayName}
       </SideSectionContainer>
       <LoginStatusContainer>
         {error && <div>Error: {error}</div>}

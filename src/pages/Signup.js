@@ -149,6 +149,7 @@ const Signup = () => {
         passwordRef.current.value,
         usernameRef.current.value
       );
+      await window.location.reload();
       history.push("/");
     } catch {
       setError("Failed to create an account");
