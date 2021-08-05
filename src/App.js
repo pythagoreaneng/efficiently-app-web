@@ -10,7 +10,7 @@ import {
   Login,
   Signup,
 } from "./pages";
-import AuthProvider from "./contexts/AuthContext";
+import UserProvider from "./contexts/AuthContext";
 import TaskContextProvider from "./contexts/TaskContext";
 import {
   BrowserRouter as Router,
@@ -25,7 +25,7 @@ import Profile from "./pages/Profile";
 function App() {
   return (
     <Router>
-      <AuthProvider>
+      <UserProvider>
         <TaskContextProvider>
           <Switch>
             <PrivateRoute exact path="/" component={Inbox} />
@@ -41,7 +41,7 @@ function App() {
             <Redirect to="/" component={Inbox} />
           </Switch>
         </TaskContextProvider>
-      </AuthProvider>
+      </UserProvider>
     </Router>
   );
 }
