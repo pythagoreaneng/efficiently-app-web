@@ -121,7 +121,7 @@ export const BottomLink = styled(Link)`
 
 export const ErrorMessage = styled.div`
   position: absolute;
-  top: 0.5rem;
+  top: 2rem;
   font-size: 0.8em;
   padding: 0 0.5rem;
   margin: 0.5rem 0;
