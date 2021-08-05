@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Redirect, useHistory } from "react-router-dom";
 import { auth } from "../firebase";
 
 export const AuthContext = React.createContext(null);
@@ -34,6 +35,12 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
       setLoading(false);
+      if (user) {
+        if (window.location.pathname === "/login") {
+          console.log("logged in");
+          return <Redirect to="/ddd" />;
+        }
+      }
     });
 
     return unsubscribe;

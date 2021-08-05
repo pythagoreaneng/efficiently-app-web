@@ -133,6 +133,7 @@ const Signup = () => {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const passwordConfirmRef = useRef(null);
+  const usernameRef = useRef(null);
   const { signup } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -146,7 +147,11 @@ const Signup = () => {
     try {
       setError("");
       setLoading(true);
-      await signup(emailRef.current.value, passwordRef.current.value);
+      await signup(
+        emailRef.current.value,
+        passwordRef.current.value,
+        usernameRef.current.value
+      );
       history.push("/");
     } catch {
       setError("Failed to create an account");
@@ -187,6 +192,14 @@ const Signup = () => {
                     name="pwdcf"
                     placeholder="Confirm"
                     ref={passwordConfirmRef}
+                    required
+                  />
+                  <LoginInput
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Username"
+                    ref={usernameRef}
                     required
                   />
                 </LoginInputContainer>
