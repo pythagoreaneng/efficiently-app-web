@@ -9,13 +9,14 @@ export const TaskContextProvider = ({ children }) => {
   // save tasks locally
   const saveTasksLocally = () => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
-    console.log("ran saveTaskLocally()");
+    console.log("saveTaskLocally()");
   };
 
+  // get tasks
   const getTasksLocally = () => {
+    console.log("getTasksLocally()");
     if (localStorage.getItem("tasks") === null) {
       localStorage.setItem("tasks", JSON.stringify());
-      console.log("GetTasksLocally run");
     } else {
       setTasks(JSON.parse(localStorage.getItem("tasks")));
     }
@@ -43,7 +44,6 @@ export const TaskContextProvider = ({ children }) => {
 
   // search related
   const [search, setSearch] = useState("");
-  console.log("seach is:", search);
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
@@ -110,7 +110,6 @@ export const TaskContextProvider = ({ children }) => {
         removeTask,
         editTask,
         toggleStar,
-        editTask,
       }}
     >
       {children}

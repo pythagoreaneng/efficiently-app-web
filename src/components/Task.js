@@ -41,6 +41,11 @@ const Task = ({ task }) => {
         console.log("Invalid edit");
         return;
       }
+      // if same don't run saveTasks()
+      if (edit === task.title) {
+        setIsEdit(false);
+        return;
+      }
       setEdit(edit); //change value of edit,
       setIsEdit(false); // set edit attribute to false,
       editTask(task.id, edit); // update the task globally.
