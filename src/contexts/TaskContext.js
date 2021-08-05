@@ -101,7 +101,6 @@ export const TaskContextProvider = ({ children }) => {
     const taskId = uuidv4(); // generate string id every time task is generated and assign to it
     tasksRef.doc(taskId).set({
       id: taskId, // task gets assigned the id
-      // id: Math.floor(Math.random() * 1000), // generate ramdom int
       title: input,
       completed: false,
       star: false,
