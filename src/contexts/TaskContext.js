@@ -1,36 +1,32 @@
 import React, { useState, useEffect, useRef } from "react";
 import moment from "moment";
+import { auth, firestore } from "../firebase";
+import { v4 as uuidv4 } from "uuid";
 
 export const TaskContext = React.createContext(null);
 
 export const TaskContextProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
 
-  // save tasks locally
-  const saveTasksLocally = () => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-    console.log("saveTaskLocally()");
-  };
-
-  // get tasks
-  const getTasksLocally = () => {
-    console.log("getTasksLocally()");
-    if (localStorage.getItem("tasks") === null) {
-      localStorage.setItem("tasks", JSON.stringify());
-    } else {
-      setTasks(JSON.parse(localStorage.getItem("tasks")));
-    }
-  };
+  // this should be handled more propery
+  const tasksRef = auth.currentUser
+    ? firestore.collection(`users/${auth.currentUser.uid}/userTasks`)
+    : firestore.collection(`catch`);
 
   // intial loading of locally saved tasks
-  useEffect(() => {
-    getTasksLocally();
-  }, []);
+  const getTasks = () => {
+    tasksRef.onSnapshot((querySnapshot) => {
+      const items = [];
+      querySnapshot.forEach((doc) => {
+        items.push(doc.data());
+      });
+      setTasks(items);
+    });
+  };
 
-  // on task change re-save locally
   useEffect(() => {
-    saveTasksLocally();
-  }, [tasks]);
+    getTasks();
+  }, []); // eslint-disable-line
 
   const searchBarRef = useRef(null);
   const inboxRef = useRef(null);
@@ -51,42 +47,74 @@ export const TaskContextProvider = ({ children }) => {
 
   var todayDate = moment().format("YYYY-MM-D");
 
-  const completeTask = (id) => {
-    let newTasks = tasks.map((task) => {
-      console.log("Running completeTask");
-      if (task.id === id) {
-        task.completed = !task.completed;
-      }
-      return task;
-    });
-    setTasks(newTasks);
+  const completeTask = (task) => {
+    tasksRef
+      .doc(task.id)
+      .update({ completed: !task.completed })
+      .then(() => {
+        console.log("Document successfully deleted!");
+        console.log("tasksRef.id", tasksRef.id);
+      })
+      .catch((error) => {
+        console.error("Error removing document: ", error);
+      });
   };
 
   const removeTask = (id) => {
-    let newTasks = [...tasks].filter((task) => task.id !== id);
-    setTasks(newTasks);
+    tasksRef
+      .doc(id)
+      .delete()
+      .then(() => {
+        console.log("Document successfully deleted!");
+      })
+      .catch((error) => {
+        console.error("Error removing document: ", error);
+      });
   };
 
-  const editTask = (taskId, taskTitle) => {
-    // map through tasks
-    let newTasks = tasks.map((task) => {
-      if (task.id === taskId) {
-        task.title = taskTitle; // update title
-      }
-      return task;
-    });
-    setTasks(newTasks); // update tasks
+  const editTask = (task, edit) => {
+    tasksRef
+      .doc(task.id)
+      .update({ title: edit })
+      .then(() => {
+        console.log("Document successfully deleted!");
+      })
+      .catch((error) => {
+        console.error("Error removing document: ", error);
+      });
   };
 
-  const toggleStar = (id) => {
-    let newTasks = tasks.map((task) => {
-      if (task.id === id) {
-        task.star = !task.star;
-      }
-      return task;
-    });
-    setTasks(newTasks);
+  const toggleStar = (task) => {
+    tasksRef
+      .doc(task.id)
+      .update({ star: !task.star })
+      .then(() => {
+        console.log("Document successfully deleted!");
+      })
+      .catch((error) => {
+        console.error("Error removing document: ", error);
+      });
   };
+  // handler for submitting input
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const taskId = uuidv4(); // generate string id every time task is generated and assign to it
+    tasksRef.doc(taskId).set({
+      id: taskId, // task gets assigned the id
+      title: input,
+      completed: false,
+      star: false,
+      createdDate: todayDate,
+      dueDate: "2021-07-31",
+      scheduleDate: "2021-08-28",
+    });
+    console.log("tasksRef is:", tasksRef.id);
+    // clear input
+    setInput("");
+  };
+
+  // hook to handle TaskInput value
+  const [input, setInput] = useState("");
 
   return (
     <TaskContext.Provider
@@ -110,6 +138,12 @@ export const TaskContextProvider = ({ children }) => {
         removeTask,
         editTask,
         toggleStar,
+<<<<<<< HEAD
+        handleSubmit,
+        input,
+        setInput,
+=======
+>>>>>>> upstream-dev
       }}
     >
       {children}

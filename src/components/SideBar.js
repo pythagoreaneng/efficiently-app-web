@@ -7,7 +7,7 @@ import {
   RiLightbulbFlashFill,
   RiSearchLine,
 } from "react-icons/ri";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { TaskContext } from "../contexts/TaskContext";
 import {
   SectionIcon,
@@ -18,15 +18,15 @@ import {
   LogoutButton,
 } from "../pages/styles";
 import { useAuth } from "../contexts/AuthContext";
-import { useHistory } from "react-router";
 
 const SideBar = () => {
+  const { history } = useAuth();
   const { inboxRef, starRef, archiveRef, upcomingRef, todayRef, searchRef } =
     useContext(TaskContext);
 
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
-  const history = useHistory();
+
   const handleLogout = async () => {
     setError("");
     try {
@@ -126,9 +126,11 @@ const SideBar = () => {
             </NavLink>
           </SectionName>
         </SideSectionWrapper>
+        Welcome, @{currentUser.displayName}
       </SideSectionContainer>
       <LoginStatusContainer>
-        {error && <div>Error: {error}</div>} {currentUser.email}
+        {error && <div>Error: {error}</div>}
+        <Link to="/profile">{currentUser.email}</Link>
         <LogoutButton onClick={handleLogout}>(Logout)</LogoutButton>
       </LoginStatusContainer>
     </>

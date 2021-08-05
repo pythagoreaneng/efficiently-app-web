@@ -1,37 +1,84 @@
 import React, { useContext, useEffect, useState } from "react";
-import { auth } from "../firebase";
+import { useHistory } from "react-router-dom";
+import { auth, firestore } from "../firebase";
 
 export const AuthContext = React.createContext(null);
 export const useAuth = () => {
   return useContext(AuthContext);
 };
 
-const AuthProvider = ({ children }) => {
+const UserProvider = ({ children }) => {
+  const history = useHistory();
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
 
-  const signup = (email, password) => {
-    return auth.createUserWithEmailAndPassword(email, password);
+  const userRef = auth.currentUser
+    ? firestore.collection(`users/${auth.currentUser.uid}/userProfiles`)
+    : firestore.collection(`catch`);
+
+  const signup = (email, password, username) => {
+    return auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((cred) => {
+        cred.user.updateProfile({ displayName: username });
+      })
+      .then(() => {});
   };
   const login = (email, password) => {
     return auth.signInWithEmailAndPassword(email, password);
   };
-  const logout = () => {
-    return auth.signOut();
+  const logout = async () => {
+    await window.location.reload();
+    auth.signOut();
   };
   const resetPassword = (email) => {
     return auth.sendPasswordResetEmail(email);
   };
+  const updateEmail = (email) => {
+    return currentUser.updateEmail(email);
+  };
+  const updatePassword = (password) => {
+    return currentUser.updatePassword(password);
+  };
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
+  const onAuthStateChange = () => {
+    return auth.onAuthStateChanged(async (user) => {
       setCurrentUser(user);
       setLoading(false);
+      if (user) {
+        console.log("The user is logged in");
+        try {
+          await setCurrentUser(user);
+          user.updateProfile({ displayName: user.displayName });
+        } catch (err) {
+          console.log(err);
+        }
+
+        if (window.location.pathname === "/login" || "/signup") {
+          history.push("/");
+        }
+      } else {
+        console.log("The user is not logged in");
+      }
     });
+  };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChange();
     return unsubscribe;
   }, []);
 
-  const value = { currentUser, signup, login, logout, resetPassword };
+  const value = {
+    currentUser,
+    signup,
+    login,
+    logout,
+    resetPassword,
+    updateEmail,
+    updatePassword,
+    history,
+    userRef,
+  };
 
   return (
     <AuthContext.Provider value={value}>
@@ -40,4 +87,4 @@ const AuthProvider = ({ children }) => {
   );
 };
 
-export default AuthProvider;
+export default UserProvider;

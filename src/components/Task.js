@@ -30,7 +30,7 @@ const Task = ({ task }) => {
     if (isEdit) {
       editRef.current.focus();
     }
-  }, [isEdit]);
+  }, [isEdit]); // eslint-disable-line
 
   const editKeyDown = (e) => {
     // stops edit when enter is hit in edit input.
@@ -47,7 +47,7 @@ const Task = ({ task }) => {
       }
       setEdit(edit); //change value of edit,
       setIsEdit(false); // set edit attribute to false,
-      editTask(task.id, edit); // update the task globally.
+      editTask(task, edit); // update the task globally.
     }
   };
 
@@ -67,7 +67,11 @@ const Task = ({ task }) => {
 
   return (
     <TaskContainer key={task.id}>
-      <Checkbox type="Checkbox" onClick={() => completeTask(task.id)} />
+      <Checkbox
+        defaultChecked={task.completed}
+        type="Checkbox"
+        onClick={() => completeTask(task)}
+      />
       <TaskTitleContainer onClick={handleOnClickEdit}>
         {isEdit ? (
           <EditInput
@@ -89,9 +93,9 @@ const Task = ({ task }) => {
 
       <OptionContainer>
         {task.star ? (
-          <RiStarSFill onClick={() => toggleStar(task.id)} />
+          <RiStarSFill onClick={() => toggleStar(task)} />
         ) : (
-          <RiStarSLine onClick={() => toggleStar(task.id)} />
+          <RiStarSLine onClick={() => toggleStar(task)} />
         )}
         <RiCloseFill onClick={() => removeTask(task.id)} />
       </OptionContainer>

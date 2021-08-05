@@ -10,7 +10,7 @@ import {
   Login,
   Signup,
 } from "./pages";
-import AuthProvider from "./contexts/AuthContext";
+import UserProvider from "./contexts/AuthContext";
 import TaskContextProvider from "./contexts/TaskContext";
 import {
   BrowserRouter as Router,
@@ -20,12 +20,14 @@ import {
 } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import Reset from "./pages/Reset";
+import Profile from "./pages/Profile";
+import EntryContextProvider from "./contexts/EntryContext";
 
 function App() {
   return (
-    <AuthProvider>
-      <TaskContextProvider>
-        <Router>
+    <Router>
+      <UserProvider>
+        <TaskContextProvider>
           <Switch>
             <PrivateRoute exact path="/" component={Inbox} />
             <PrivateRoute path="/today" component={Today} />
@@ -33,14 +35,18 @@ function App() {
             <PrivateRoute path="/upcoming" component={Upcoming} />
             <PrivateRoute path="/archive" component={Archive} />
             <PrivateRoute path="/search" component={Search} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
-            <Route path="/reset" component={Reset} />
+            <PrivateRoute path="/profile" component={Profile} />
+            <EntryContextProvider>
+              <Route path="/login" component={Login} />
+              <Route path="/signup" component={Signup} />
+              <Route path="/reset" component={Reset} />
+            </EntryContextProvider>
+
             <Redirect to="/" component={Inbox} />
           </Switch>
-        </Router>
-      </TaskContextProvider>
-    </AuthProvider>
+        </TaskContextProvider>
+      </UserProvider>
+    </Router>
   );
 }
 
