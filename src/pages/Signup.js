@@ -172,6 +172,7 @@ const Signup = () => {
                     placeholder="Email"
                     spellcheck="false"
                     ref={emailRef}
+                    required
                   />
 
                   <LoginInput

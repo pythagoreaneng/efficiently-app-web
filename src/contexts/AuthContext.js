@@ -35,21 +35,23 @@ const AuthProvider = ({ children }) => {
 
   function onAuthStateChange() {
     return auth.onAuthStateChanged((user) => {
+      setCurrentUser(user);
       setLoading(false);
       if (user) {
-        setCurrentUser(user);
         console.log("The user is logged in");
+        if (window.location.pathname === "/login" || "/signup") {
+          history.push("/");
+        }
       } else {
         console.log("The user is not logged in");
+        history.push("/login");
       }
     });
   }
 
   useEffect(() => {
     const unsubscribe = onAuthStateChange();
-    return () => {
-      unsubscribe();
-    };
+    return () => unsubscribe();
   }, []);
 
   const value = {
