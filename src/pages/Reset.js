@@ -5,7 +5,7 @@ import { useAuth } from "../contexts/AuthContext";
 import EntryContextProvider, { EntryContext } from "../contexts/EntryContext";
 import EntryScreen from "../screens/EntryScreen";
 
-const LoginBackground = styled.div`
+const EntryBackground = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -16,7 +16,7 @@ const LoginBackground = styled.div`
   background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
 `;
 
-const LoginColumnContainer = styled.div`
+const EntryColumnContainer = styled.div`
   width: auto;
   height: 100%;
   display: flex;
@@ -25,7 +25,7 @@ const LoginColumnContainer = styled.div`
   align-items: center;
 `;
 
-const LoginPanelContainer = styled.div`
+const EntryPanelContainer = styled.div`
   display: flex;
   flex-direction: column;
   //justify-content: center;
@@ -41,7 +41,7 @@ const LoginPanelContainer = styled.div`
   text-align: center;
 `;
 
-const LoginTitleContainer = styled.div`
+const EntryTitleContainer = styled.div`
   height: 30%;
   font-size: 1.7em;
   display: flex;
@@ -49,13 +49,13 @@ const LoginTitleContainer = styled.div`
   justify-content: center;
 `;
 
-const LoginBodyContainer = styled.div`
+const EntryBodyContainer = styled.div`
   height: 70%;
   width: 60%;
   font-size: 1em;
 `;
 
-const LoginForm = styled.form`
+const EntryForm = styled.form`
   height: 100%;
   width: auto;
   display: flex;
@@ -64,7 +64,7 @@ const LoginForm = styled.form`
   align-items: center;
 `;
 
-const LoginInputContainer = styled.div`
+const EntryInputContainer = styled.div`
   height: 50%;
   width: 100%;
   white-space: no-wrap;
@@ -74,7 +74,7 @@ const LoginInputContainer = styled.div`
   flex-direction: column;
 `;
 
-const LoginButtonContainer = styled.div`
+const EntryButtonContainer = styled.div`
   height: 50%;
   width: 100%;
   display: flex;
@@ -83,7 +83,7 @@ const LoginButtonContainer = styled.div`
   flex-direction: column;
 `;
 
-const LoginInput = styled.input`
+const EntryInput = styled.input`
   text-align: center;
   padding: 0.7rem 1rem;
   margin: 0.7rem 0;
@@ -95,7 +95,7 @@ const LoginInput = styled.input`
   }
 `;
 
-const LoginButton = styled.button`
+const LoginConfirmButton = styled.button`
   padding: 0.6rem 2rem;
   font-size: 0.8em;
   border-radius: 0.5rem;
@@ -107,21 +107,21 @@ const LoginButton = styled.button`
   }
 `;
 
-const BottomContainer = styled.div`
+const EntryBottomContainer = styled.div`
   text-align: center;
   opacity: 0.5;
   font-size: 0.8em;
   margin-top: 0.7rem;
 `;
 
-const BottomLink = styled(Link)`
+const EntryBottomLink = styled(Link)`
   text-decoration: underline;
   &:hover {
     color: #fff;
   }
 `;
 
-const ErrorMessage = styled.div`
+const EntryErrorMessage = styled.div`
   position: absolute;
   top: 0.5rem;
   font-size: 0.8em;
@@ -167,15 +167,15 @@ const Reset = () => {
   return (
     <>
       <EntryScreen>
-        <LoginPanelContainer>
-          {error && <ErrorMessage>{error}</ErrorMessage>}
+        <EntryPanelContainer>
+          {error && <EntryErrorMessage>{error}</EntryErrorMessage>}
           {successMessage && <SuccessMessage>{successMessage}</SuccessMessage>}
-          <LoginTitleContainer>Reset Password</LoginTitleContainer>
+          <EntryTitleContainer>Reset Password</EntryTitleContainer>
 
-          <LoginBodyContainer>
-            <LoginForm onSubmit={handleSubmitReset}>
-              <LoginInputContainer>
-                <LoginInput
+          <EntryBodyContainer>
+            <EntryForm onSubmit={handleSubmitReset}>
+              <EntryInputContainer>
+                <EntryInput
                   type="email"
                   id="email"
                   name="email"
@@ -183,18 +183,19 @@ const Reset = () => {
                   spellcheck="false"
                   ref={emailRef}
                 />
-              </LoginInputContainer>
-              <LoginButtonContainer>
-                <LoginButton disabled={loading} type="submit">
+              </EntryInputContainer>
+              <EntryButtonContainer>
+                <LoginConfirmButton disabled={loading} type="submit">
                   Reset
-                </LoginButton>
-              </LoginButtonContainer>
-            </LoginForm>
-          </LoginBodyContainer>
-        </LoginPanelContainer>
-        <BottomContainer>
-          Remember your password? <BottomLink to="/login">Login</BottomLink>
-        </BottomContainer>
+                </LoginConfirmButton>
+              </EntryButtonContainer>
+            </EntryForm>
+          </EntryBodyContainer>
+        </EntryPanelContainer>
+        <EntryBottomContainer>
+          Remember your password?{" "}
+          <EntryBottomLink to="/login">Login</EntryBottomLink>
+        </EntryBottomContainer>
       </EntryScreen>
     </>
   );

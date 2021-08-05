@@ -2,18 +2,13 @@ import React, { useContext } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { EntryContext } from "../contexts/EntryContext";
 import EntryScreen, {
-  BottomLink,
-  BottomContainer,
-  ErrorMessage,
-  ForgotMessage,
-  LoginBodyContainer,
-  LoginButton,
-  LoginButtonContainer,
-  LoginForm,
-  LoginInput,
-  LoginInputContainer,
-  LoginPanelContainer,
-  LoginTitleContainer,
+  EntryBottomLink,
+  EntryForgotMessage,
+  LoginConfirmButton,
+  EntryButtonContainer,
+  EntryForm,
+  EntryInput,
+  EntryInputContainer,
 } from "../screens/EntryScreen";
 
 const Login = () => {
@@ -34,46 +29,46 @@ const Login = () => {
     await window.location.reload(); // reload the page to triger getTasks
     setLoading(false);
   };
+  const LoginForm = (
+    <EntryForm onSubmit={handleSubmitLogin}>
+      <EntryInputContainer>
+        <EntryInput
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email"
+          spellcheck="false"
+          ref={emailRef}
+        />
+        <EntryInput
+          type="password"
+          id="pwd"
+          name="pwd"
+          placeholder="Password"
+          ref={passwordRef}
+          required
+        />
+      </EntryInputContainer>
+      <EntryButtonContainer>
+        <LoginConfirmButton disabled={loading} type="submit">
+          Login
+        </LoginConfirmButton>
+        <EntryForgotMessage>
+          <EntryBottomLink to="/reset">Forgot password</EntryBottomLink>
+        </EntryForgotMessage>
+      </EntryButtonContainer>
+    </EntryForm>
+  );
+
+  const SignupMessage = (
+    <>
+      Don't have an account?{" "}
+      <EntryBottomLink to="/signup">Signup</EntryBottomLink>
+    </>
+  );
+
   return (
-    <EntryScreen title="Login">
-      <LoginPanelContainer>
-        {error && <ErrorMessage>{error}</ErrorMessage>}
-        <LoginTitleContainer>Login</LoginTitleContainer>
-        <LoginBodyContainer>
-          <LoginForm onSubmit={handleSubmitLogin}>
-            <LoginInputContainer>
-              <LoginInput
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Email"
-                spellcheck="false"
-                ref={emailRef}
-              />
-              <LoginInput
-                type="password"
-                id="pwd"
-                name="pwd"
-                placeholder="Password"
-                ref={passwordRef}
-                required
-              />
-            </LoginInputContainer>
-            <LoginButtonContainer>
-              <LoginButton disabled={loading} type="submit">
-                Login
-              </LoginButton>
-              <ForgotMessage>
-                <BottomLink to="/reset">Forgot password</BottomLink>
-              </ForgotMessage>
-            </LoginButtonContainer>
-          </LoginForm>
-        </LoginBodyContainer>
-      </LoginPanelContainer>
-      <BottomContainer>
-        Don't have an account? <BottomLink to="/signup">Signup</BottomLink>
-      </BottomContainer>
-    </EntryScreen>
+    <EntryScreen title="Login" form={LoginForm} bottomMessage={SignupMessage} />
   );
 };
 

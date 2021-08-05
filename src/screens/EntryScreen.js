@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { EntryContext } from "../contexts/EntryContext";
 
-const LoginBackground = styled.div`
+const EntryBackground = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -14,7 +14,7 @@ const LoginBackground = styled.div`
   background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
 `;
 
-export const LoginColumnContainer = styled.div`
+export const EntryColumnContainer = styled.div`
   width: auto;
   height: 100%;
   display: flex;
@@ -23,7 +23,7 @@ export const LoginColumnContainer = styled.div`
   align-items: center;
 `;
 
-export const LoginPanelContainer = styled.div`
+export const EntryPanelContainer = styled.div`
   display: flex;
   flex-direction: column;
   //justify-content: center;
@@ -39,7 +39,7 @@ export const LoginPanelContainer = styled.div`
   text-align: center;
 `;
 
-export const LoginTitleContainer = styled.div`
+export const EntryTitleContainer = styled.div`
   height: 30%;
   font-size: 1.7em;
   display: flex;
@@ -47,13 +47,13 @@ export const LoginTitleContainer = styled.div`
   justify-content: center;
 `;
 
-export const LoginBodyContainer = styled.div`
+export const EntryBodyContainer = styled.div`
   height: 70%;
   width: 60%;
   font-size: 1em;
 `;
 
-export const LoginForm = styled.form`
+export const EntryForm = styled.form`
   height: 100%;
   width: auto;
   display: flex;
@@ -62,7 +62,7 @@ export const LoginForm = styled.form`
   align-items: center;
 `;
 
-export const LoginInputContainer = styled.div`
+export const EntryInputContainer = styled.div`
   height: 50%;
   width: 100%;
   white-space: no-wrap;
@@ -72,7 +72,7 @@ export const LoginInputContainer = styled.div`
   flex-direction: column;
 `;
 
-export const LoginButtonContainer = styled.div`
+export const EntryButtonContainer = styled.div`
   height: 50%;
   width: 100%;
   display: flex;
@@ -81,7 +81,7 @@ export const LoginButtonContainer = styled.div`
   flex-direction: column;
 `;
 
-export const LoginInput = styled.input`
+export const EntryInput = styled.input`
   text-align: center;
   padding: 0.7rem 1rem;
   margin: 0.7rem 0;
@@ -93,7 +93,7 @@ export const LoginInput = styled.input`
   }
 `;
 
-export const LoginButton = styled.button`
+export const LoginConfirmButton = styled.button`
   padding: 0.6rem 2rem;
   font-size: 0.8em;
   border-radius: 0.5rem;
@@ -105,21 +105,21 @@ export const LoginButton = styled.button`
   }
 `;
 
-export const BottomContainer = styled.div`
+export const EntryBottomContainer = styled.div`
   text-align: center;
   opacity: 0.5;
   font-size: 0.8em;
   margin-top: 0.7rem;
 `;
 
-export const BottomLink = styled(Link)`
+export const EntryBottomLink = styled(Link)`
   text-decoration: underline;
   &:hover {
     opacity: 0.5;
   }
 `;
 
-export const ErrorMessage = styled.div`
+export const EntryErrorMessage = styled.div`
   position: absolute;
   top: 2rem;
   font-size: 0.8em;
@@ -128,7 +128,7 @@ export const ErrorMessage = styled.div`
   background-color: #ffcccb;
 `;
 
-export const ForgotMessage = styled.div`
+export const EntryForgotMessage = styled.div`
   position: absolute;
   bottom: 0.5rem;
   font-size: 0.8em;
@@ -148,16 +148,16 @@ const EntryScreen = ({ title, form, bottomMessage }) => {
   } = useContext(EntryContext);
   return (
     <>
-      <LoginBackground>
-        <LoginColumnContainer>
-          <LoginPanelContainer>
-            {error && <ErrorMessage>{error}</ErrorMessage>}
-            <LoginTitleContainer>{title}</LoginTitleContainer>
-            <LoginBodyContainer>{form}</LoginBodyContainer>
-          </LoginPanelContainer>
-          <BottomContainer>{bottomMessage}</BottomContainer>
-        </LoginColumnContainer>
-      </LoginBackground>
+      <EntryBackground>
+        <EntryColumnContainer>
+          <EntryPanelContainer>
+            {error && <EntryErrorMessage>{error}</EntryErrorMessage>}
+            <EntryTitleContainer>{title}</EntryTitleContainer>
+            <EntryBodyContainer>{form}</EntryBodyContainer>
+          </EntryPanelContainer>
+          <EntryBottomContainer>{bottomMessage}</EntryBottomContainer>
+        </EntryColumnContainer>
+      </EntryBackground>
     </>
   );
 };

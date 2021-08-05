@@ -1,17 +1,12 @@
 import React, { useContext } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import EntryScreen, {
-  BottomLink,
-  BottomContainer,
-  ErrorMessage,
-  LoginBodyContainer,
-  LoginButton,
-  LoginButtonContainer,
-  LoginForm,
-  LoginInput,
-  LoginInputContainer,
-  LoginPanelContainer,
-  LoginTitleContainer,
+  EntryBottomLink,
+  LoginConfirmButton,
+  EntryButtonContainer,
+  EntryForm,
+  EntryInput,
+  EntryInputContainer,
 } from "../screens/EntryScreen";
 import { EntryContext } from "../contexts/EntryContext";
 
@@ -39,9 +34,9 @@ const Signup = () => {
   };
 
   const SignupForm = (
-    <LoginForm onSubmit={handleSubmitSignup}>
-      <LoginInputContainer>
-        <LoginInput
+    <EntryForm onSubmit={handleSubmitSignup}>
+      <EntryInputContainer>
+        <EntryInput
           type="text"
           id="username"
           name="username"
@@ -49,7 +44,7 @@ const Signup = () => {
           ref={usernameRef}
           required
         />
-        <LoginInput
+        <EntryInput
           type="email"
           id="email"
           name="email"
@@ -58,7 +53,7 @@ const Signup = () => {
           ref={emailRef}
         />
 
-        <LoginInput
+        <EntryInput
           type="password"
           id="pwd"
           name="pwd"
@@ -66,29 +61,28 @@ const Signup = () => {
           ref={passwordRef}
           required
         />
-      </LoginInputContainer>
+      </EntryInputContainer>
 
-      <LoginButtonContainer>
-        <LoginButton disabled={loading} type="submit">
+      <EntryButtonContainer>
+        <LoginConfirmButton disabled={loading} type="submit">
           Join
-        </LoginButton>
-      </LoginButtonContainer>
-    </LoginForm>
+        </LoginConfirmButton>
+      </EntryButtonContainer>
+    </EntryForm>
   );
 
-  const BottomMessage = (
+  const LoginMessage = (
     <>
-      Already have an account? <BottomLink to="/login">Login</BottomLink>
+      Already have an account?{" "}
+      <EntryBottomLink to="/login">Login</EntryBottomLink>
     </>
   );
   return (
-    <>
-      <EntryScreen
-        title="Signup"
-        form={SignupForm}
-        bottomMessage={BottomMessage}
-      />
-    </>
+    <EntryScreen
+      title="Signup"
+      form={SignupForm}
+      bottomMessage={LoginMessage}
+    />
   );
 };
 
