@@ -34,7 +34,7 @@ const Signup = () => {
 
   return (
     <>
-      <EntryScreen>
+      <EntryScreen title="Sign up">
         <LoginForm onSubmit={handleSubmitSignup}>
           <LoginInputContainer>
             <LoginInput

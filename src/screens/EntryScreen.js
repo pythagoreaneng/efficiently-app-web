@@ -1,6 +1,5 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import { useAuth } from "../contexts/AuthContext";
 import { Link } from "react-router-dom";
 import { EntryContext } from "../contexts/EntryContext";
 
@@ -106,21 +105,21 @@ export const LoginButton = styled.button`
   }
 `;
 
-const BottomMessage = styled.div`
+export const BottomMessage = styled.div`
   text-align: center;
   opacity: 0.5;
   font-size: 0.8em;
   margin-top: 0.7rem;
 `;
 
-const BottomLink = styled(Link)`
+export const BottomLink = styled(Link)`
   text-decoration: underline;
   &:hover {
     color: #fff;
   }
 `;
 
-const ErrorMessage = styled.div`
+export const ErrorMessage = styled.div`
   position: absolute;
   top: 0.5rem;
   font-size: 0.8em;
@@ -129,7 +128,15 @@ const ErrorMessage = styled.div`
   background-color: #ffcccb;
 `;
 
-const EntryScreen = ({ children }) => {
+export const ForgotMessage = styled.div`
+  position: absolute;
+  bottom: 0.5rem;
+  font-size: 0.8em;
+  padding: 0 0.5rem;
+  margin: 0.5rem 0;
+`;
+
+const EntryScreen = ({ title, children }) => {
   const { error } = useContext(EntryContext);
 
   return (
@@ -138,7 +145,7 @@ const EntryScreen = ({ children }) => {
         <LoginColumnContainer>
           <LoginPanelContainer>
             {error && <ErrorMessage>{error}</ErrorMessage>}
-            <LoginTitleContainer>Signup</LoginTitleContainer>
+            <LoginTitleContainer>{title}</LoginTitleContainer>
             <LoginBodyContainer>{children}</LoginBodyContainer>
           </LoginPanelContainer>
           <BottomMessage>
