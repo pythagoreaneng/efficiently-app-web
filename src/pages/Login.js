@@ -3,7 +3,7 @@ import { useAuth } from "../contexts/AuthContext";
 import { EntryContext } from "../contexts/EntryContext";
 import EntryScreen, {
   BottomLink,
-  BottomMessage,
+  BottomContainer,
   ErrorMessage,
   ForgotMessage,
   LoginBodyContainer,
@@ -70,9 +70,9 @@ const Login = () => {
           </LoginForm>
         </LoginBodyContainer>
       </LoginPanelContainer>
-      <BottomMessage>
+      <BottomContainer>
         Don't have an account? <BottomLink to="/signup">Signup</BottomLink>
-      </BottomMessage>
+      </BottomContainer>
     </EntryScreen>
   );
 };

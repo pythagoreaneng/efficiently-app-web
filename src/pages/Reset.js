@@ -107,7 +107,7 @@ const LoginButton = styled.button`
   }
 `;
 
-const BottomMessage = styled.div`
+const BottomContainer = styled.div`
   text-align: center;
   opacity: 0.5;
   font-size: 0.8em;
@@ -192,9 +192,9 @@ const Reset = () => {
             </LoginForm>
           </LoginBodyContainer>
         </LoginPanelContainer>
-        <BottomMessage>
+        <BottomContainer>
           Remember your password? <BottomLink to="/login">Login</BottomLink>
-        </BottomMessage>
+        </BottomContainer>
       </EntryScreen>
     </>
   );

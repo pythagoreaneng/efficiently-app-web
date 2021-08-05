@@ -105,7 +105,7 @@ export const LoginButton = styled.button`
   }
 `;
 
-export const BottomMessage = styled.div`
+export const BottomContainer = styled.div`
   text-align: center;
   opacity: 0.5;
   font-size: 0.8em;
@@ -136,11 +136,27 @@ export const ForgotMessage = styled.div`
   margin: 0.5rem 0;
 `;
 
-const EntryScreen = ({ title, children, bottomMessage, bottomLink }) => {
+const EntryScreen = ({ title, form, bottomMessage }) => {
+  const {
+    emailRef,
+    passwordRef,
+    usernameRef,
+    error,
+    setError,
+    loading,
+    setLoading,
+  } = useContext(EntryContext);
   return (
     <>
       <LoginBackground>
-        <LoginColumnContainer>{children}</LoginColumnContainer>
+        <LoginColumnContainer>
+          <LoginPanelContainer>
+            {error && <ErrorMessage>{error}</ErrorMessage>}
+            <LoginTitleContainer>{title}</LoginTitleContainer>
+            <LoginBodyContainer>{form}</LoginBodyContainer>
+          </LoginPanelContainer>
+          <BottomContainer>{bottomMessage}</BottomContainer>
+        </LoginColumnContainer>
       </LoginBackground>
     </>
   );

@@ -105,7 +105,7 @@ const LoginButton = styled.button`
   }
 `;
 
-const BottomMessage = styled.div`
+const BottomContainer = styled.div`
   text-align: center;
   opacity: 0.5;
   font-size: 0.8em;
@@ -217,9 +217,9 @@ const Profile = () => {
             </LoginBodyContainer>
           </LoginPanelContainer>
 
-          <BottomMessage>
+          <BottomContainer>
             <BottomLink to="/">Go back to main page</BottomLink>
-          </BottomMessage>
+          </BottomContainer>
         </LoginColumnContainer>
       </LoginBackground>
     </>

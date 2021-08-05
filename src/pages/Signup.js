@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import EntryScreen, {
   BottomLink,
-  BottomMessage,
+  BottomContainer,
   ErrorMessage,
   LoginBodyContainer,
   LoginButton,
@@ -17,15 +17,8 @@ import { EntryContext } from "../contexts/EntryContext";
 
 const Signup = () => {
   const { signup, history } = useAuth();
-  const {
-    emailRef,
-    passwordRef,
-    usernameRef,
-    error,
-    setError,
-    loading,
-    setLoading,
-  } = useContext(EntryContext);
+  const { emailRef, passwordRef, usernameRef, setError, loading, setLoading } =
+    useContext(EntryContext);
 
   const handleSubmitSignup = async (e) => {
     e.preventDefault();
@@ -45,54 +38,56 @@ const Signup = () => {
     setLoading(false);
   };
 
+  const SignupForm = (
+    <LoginForm onSubmit={handleSubmitSignup}>
+      <LoginInputContainer>
+        <LoginInput
+          type="text"
+          id="username"
+          name="username"
+          placeholder="@username"
+          ref={usernameRef}
+          required
+        />
+        <LoginInput
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email"
+          spellcheck="false"
+          ref={emailRef}
+        />
+
+        <LoginInput
+          type="password"
+          id="pwd"
+          name="pwd"
+          placeholder="Password"
+          ref={passwordRef}
+          required
+        />
+      </LoginInputContainer>
+
+      <LoginButtonContainer>
+        <LoginButton disabled={loading} type="submit">
+          Join
+        </LoginButton>
+      </LoginButtonContainer>
+    </LoginForm>
+  );
+
+  const BottomMessage = (
+    <>
+      Already have an account? <BottomLink to="/login">Login</BottomLink>
+    </>
+  );
   return (
     <>
-      <EntryScreen>
-        <LoginPanelContainer>
-          {error && <ErrorMessage>{error}</ErrorMessage>}
-          <LoginTitleContainer>Signup</LoginTitleContainer>
-          <LoginBodyContainer>
-            <LoginForm onSubmit={handleSubmitSignup}>
-              <LoginInputContainer>
-                <LoginInput
-                  type="text"
-                  id="username"
-                  name="username"
-                  placeholder="@username"
-                  ref={usernameRef}
-                  required
-                />
-                <LoginInput
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="Email"
-                  spellcheck="false"
-                  ref={emailRef}
-                />
-
-                <LoginInput
-                  type="password"
-                  id="pwd"
-                  name="pwd"
-                  placeholder="Password"
-                  ref={passwordRef}
-                  required
-                />
-              </LoginInputContainer>
-
-              <LoginButtonContainer>
-                <LoginButton disabled={loading} type="submit">
-                  Join
-                </LoginButton>
-              </LoginButtonContainer>
-            </LoginForm>
-          </LoginBodyContainer>
-        </LoginPanelContainer>
-        <BottomMessage>
-          Already have an account? <BottomLink to="/login">Login</BottomLink>
-        </BottomMessage>
-      </EntryScreen>
+      <EntryScreen
+        title="Signup"
+        form={SignupForm}
+        bottomMessage={BottomMessage}
+      />
     </>
   );
 };
