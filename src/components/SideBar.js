@@ -126,11 +126,11 @@ const SideBar = () => {
             </NavLink>
           </SectionName>
         </SideSectionWrapper>
-        Welcome, @{currentUser.displayName}
+        <Link to="/profile"> Welcome, @{currentUser.displayName}</Link>
       </SideSectionContainer>
       <LoginStatusContainer>
         {error && <div>Error: {error}</div>}
-        <Link to="/profile">{currentUser.email}</Link>
+        <Link to="/Settings">{currentUser.email}</Link>
         <LogoutButton onClick={handleLogout}>(Logout)</LogoutButton>
       </LoginStatusContainer>
     </>
