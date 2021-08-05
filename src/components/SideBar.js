@@ -18,15 +18,15 @@ import {
   LogoutButton,
 } from "../pages/styles";
 import { useAuth } from "../contexts/AuthContext";
-import { useHistory } from "react-router";
 
 const SideBar = () => {
+  const { history } = useAuth();
   const { inboxRef, starRef, archiveRef, upcomingRef, todayRef, searchRef } =
     useContext(TaskContext);
 
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
-  const history = useHistory();
+
   const handleLogout = async () => {
     setError("");
     try {

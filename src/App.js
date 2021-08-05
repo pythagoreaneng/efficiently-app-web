@@ -24,9 +24,9 @@ import Profile from "./pages/Profile";
 
 function App() {
   return (
-    <AuthProvider>
-      <TaskContextProvider>
-        <Router>
+    <Router>
+      <AuthProvider>
+        <TaskContextProvider>
           <Switch>
             <PrivateRoute exact path="/" component={Inbox} />
             <PrivateRoute path="/today" component={Today} />
@@ -40,9 +40,9 @@ function App() {
             <Route path="/reset" component={Reset} />
             <Redirect to="/" component={Inbox} />
           </Switch>
-        </Router>
-      </TaskContextProvider>
-    </AuthProvider>
+        </TaskContextProvider>
+      </AuthProvider>
+    </Router>
   );
 }
 

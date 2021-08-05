@@ -11,6 +11,8 @@ const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
 
+  const history = useHistory();
+
   const signup = (email, password) => {
     return auth.createUserWithEmailAndPassword(email, password);
   };
@@ -36,10 +38,12 @@ const AuthProvider = ({ children }) => {
       setCurrentUser(user);
       setLoading(false);
       if (user) {
-        if (window.location.pathname === "/login") {
-          console.log("logged in");
-          return <Redirect to="/ddd" />;
+        if (window.location.pathname === "/login" || "/signup") {
+          history.push("/");
+        } else {
         }
+      } else {
+        console.log("You are not logged in");
       }
     });
 
@@ -54,6 +58,7 @@ const AuthProvider = ({ children }) => {
     resetPassword,
     updateEmail,
     updatePassword,
+    history,
   };
 
   return (
