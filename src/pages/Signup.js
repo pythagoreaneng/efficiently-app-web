@@ -38,8 +38,8 @@ const Signup = () => {
         usernameRef.current.value
       );
       history.push("/");
-    } catch {
-      setError("Failed to create an account");
+    } catch (err) {
+      setError(err.message);
     }
     window.location.reload();
     setLoading(false);

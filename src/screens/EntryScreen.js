@@ -137,8 +137,6 @@ export const ForgotMessage = styled.div`
 `;
 
 const EntryScreen = ({ title, children, bottomMessage, bottomLink }) => {
-  const { error } = useContext(EntryContext);
-
   return (
     <>
       <LoginBackground>

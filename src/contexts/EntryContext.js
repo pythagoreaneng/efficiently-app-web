@@ -7,6 +7,7 @@ export const EntryContextProvider = ({ children }) => {
   const passwordRef = useRef(null);
   const usernameRef = useRef(null);
   const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
   const value = {
@@ -17,6 +18,8 @@ export const EntryContextProvider = ({ children }) => {
     emailRef,
     passwordRef,
     usernameRef,
+    successMessage,
+    setSuccessMessage,
   };
 
   return (

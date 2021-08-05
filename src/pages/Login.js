@@ -28,8 +28,8 @@ const Login = () => {
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
       history.push("/");
-    } catch {
-      setError("Failed to login");
+    } catch (err) {
+      setError(err.message);
     }
     await window.location.reload(); // reload the page to triger getTasks
     setLoading(false);

@@ -1,7 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useAuth } from "../contexts/AuthContext";
+import EntryContextProvider, { EntryContext } from "../contexts/EntryContext";
+import EntryScreen from "../screens/EntryScreen";
 
 const LoginBackground = styled.div`
   width: 100vw;
@@ -137,13 +139,18 @@ const SuccessMessage = styled.div`
 `;
 
 const Reset = () => {
-  const emailRef = useRef(null);
-  const { resetPassword } = useAuth();
-  const [error, setError] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
-  const [loading, setLoading] = useState(false);
+  const { resetPassword, history } = useAuth();
+  const {
+    emailRef,
+    successMessage,
+    setSuccessMessage,
+    error,
+    setError,
+    loading,
+    setLoading,
+  } = useContext(EntryContext);
 
-  const handleSubmitLogin = async (e) => {
+  const handleSubmitReset = async (e) => {
     e.preventDefault();
 
     try {
@@ -152,47 +159,43 @@ const Reset = () => {
       setLoading(true);
       await resetPassword(emailRef.current.value);
       setSuccessMessage("Reset link has been sent to your email");
-    } catch {
-      setError("Failed to reset password");
+    } catch (err) {
+      setError(err.message);
     }
     setLoading(false);
   };
   return (
     <>
-      <LoginBackground>
-        <LoginColumnContainer>
-          <LoginPanelContainer>
-            {error && <ErrorMessage>{error}</ErrorMessage>}
-            {successMessage && (
-              <SuccessMessage>{successMessage}</SuccessMessage>
-            )}
-            <LoginTitleContainer>Reset Password</LoginTitleContainer>
+      <EntryScreen>
+        <LoginPanelContainer>
+          {error && <ErrorMessage>{error}</ErrorMessage>}
+          {successMessage && <SuccessMessage>{successMessage}</SuccessMessage>}
+          <LoginTitleContainer>Reset Password</LoginTitleContainer>
 
-            <LoginBodyContainer>
-              <LoginForm onSubmit={handleSubmitLogin}>
-                <LoginInputContainer>
-                  <LoginInput
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Email"
-                    spellcheck="false"
-                    ref={emailRef}
-                  />
-                </LoginInputContainer>
-                <LoginButtonContainer>
-                  <LoginButton disabled={loading} type="submit">
-                    Reset
-                  </LoginButton>
-                </LoginButtonContainer>
-              </LoginForm>
-            </LoginBodyContainer>
-          </LoginPanelContainer>
-          <BottomMessage>
-            Or <BottomLink to="/login">Login</BottomLink>
-          </BottomMessage>
-        </LoginColumnContainer>
-      </LoginBackground>
+          <LoginBodyContainer>
+            <LoginForm onSubmit={handleSubmitReset}>
+              <LoginInputContainer>
+                <LoginInput
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Email"
+                  spellcheck="false"
+                  ref={emailRef}
+                />
+              </LoginInputContainer>
+              <LoginButtonContainer>
+                <LoginButton disabled={loading} type="submit">
+                  Reset
+                </LoginButton>
+              </LoginButtonContainer>
+            </LoginForm>
+          </LoginBodyContainer>
+        </LoginPanelContainer>
+        <BottomMessage>
+          Remember your password? <BottomLink to="/login">Login</BottomLink>
+        </BottomMessage>
+      </EntryScreen>
     </>
   );
 };
