@@ -14,7 +14,7 @@ const LoginBackground = styled.div`
   background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
 `;
 
-const LoginColumnContainer = styled.div`
+export const LoginColumnContainer = styled.div`
   width: auto;
   height: 100%;
   display: flex;
@@ -23,7 +23,7 @@ const LoginColumnContainer = styled.div`
   align-items: center;
 `;
 
-const LoginPanelContainer = styled.div`
+export const LoginPanelContainer = styled.div`
   display: flex;
   flex-direction: column;
   //justify-content: center;
@@ -39,7 +39,7 @@ const LoginPanelContainer = styled.div`
   text-align: center;
 `;
 
-const LoginTitleContainer = styled.div`
+export const LoginTitleContainer = styled.div`
   height: 30%;
   font-size: 1.7em;
   display: flex;
@@ -47,7 +47,7 @@ const LoginTitleContainer = styled.div`
   justify-content: center;
 `;
 
-const LoginBodyContainer = styled.div`
+export const LoginBodyContainer = styled.div`
   height: 70%;
   width: 60%;
   font-size: 1em;
@@ -136,22 +136,13 @@ export const ForgotMessage = styled.div`
   margin: 0.5rem 0;
 `;
 
-const EntryScreen = ({ title, children }) => {
+const EntryScreen = ({ title, children, bottomMessage, bottomLink }) => {
   const { error } = useContext(EntryContext);
 
   return (
     <>
       <LoginBackground>
-        <LoginColumnContainer>
-          <LoginPanelContainer>
-            {error && <ErrorMessage>{error}</ErrorMessage>}
-            <LoginTitleContainer>{title}</LoginTitleContainer>
-            <LoginBodyContainer>{children}</LoginBodyContainer>
-          </LoginPanelContainer>
-          <BottomMessage>
-            Already have an account? <BottomLink to="/login">Login</BottomLink>
-          </BottomMessage>
-        </LoginColumnContainer>
+        <LoginColumnContainer>{children}</LoginColumnContainer>
       </LoginBackground>
     </>
   );
