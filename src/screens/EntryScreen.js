@@ -115,7 +115,7 @@ export const BottomMessage = styled.div`
 export const BottomLink = styled(Link)`
   text-decoration: underline;
   &:hover {
-    color: #fff;
+    opacity: 0.5;
   }
 `;
 
