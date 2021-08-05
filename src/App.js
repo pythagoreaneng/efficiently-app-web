@@ -10,7 +10,7 @@ import {
   Login,
   Signup,
 } from "./pages";
-import AuthProvider from "./contexts/AuthContext";
+import UserProvider from "./contexts/AuthContext";
 import TaskContextProvider from "./contexts/TaskContext";
 import {
   BrowserRouter as Router,
@@ -21,11 +21,12 @@ import {
 import PrivateRoute from "./PrivateRoute";
 import Reset from "./pages/Reset";
 import Profile from "./pages/Profile";
+import EntryContextProvider from "./contexts/EntryContext";
 
 function App() {
   return (
     <Router>
-      <AuthProvider>
+      <UserProvider>
         <TaskContextProvider>
           <Switch>
             <PrivateRoute exact path="/" component={Inbox} />
@@ -35,13 +36,16 @@ function App() {
             <PrivateRoute path="/archive" component={Archive} />
             <PrivateRoute path="/search" component={Search} />
             <PrivateRoute path="/profile" component={Profile} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
-            <Route path="/reset" component={Reset} />
+            <EntryContextProvider>
+              <Route path="/login" component={Login} />
+              <Route path="/signup" component={Signup} />
+              <Route path="/reset" component={Reset} />
+            </EntryContextProvider>
+
             <Redirect to="/" component={Inbox} />
           </Switch>
         </TaskContextProvider>
-      </AuthProvider>
+      </UserProvider>
     </Router>
   );
 }

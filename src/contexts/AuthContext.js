@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { auth, firestore } from "../firebase";
 
 export const AuthContext = React.createContext(null);
@@ -7,7 +7,7 @@ export const useAuth = () => {
   return useContext(AuthContext);
 };
 
-const AuthProvider = ({ children }) => {
+const UserProvider = ({ children }) => {
   const history = useHistory();
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
@@ -59,7 +59,6 @@ const AuthProvider = ({ children }) => {
         }
       } else {
         console.log("The user is not logged in");
-        history.push("/login");
       }
     });
   };
@@ -88,4 +87,4 @@ const AuthProvider = ({ children }) => {
   );
 };
 
-export default AuthProvider;
+export default UserProvider;

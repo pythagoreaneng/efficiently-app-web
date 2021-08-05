@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { useAuth } from "../contexts/AuthContext";
 
-const LoginBackground = styled.div`
+const EntryBackground = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -14,7 +14,7 @@ const LoginBackground = styled.div`
   background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
 `;
 
-const LoginColumnContainer = styled.div`
+const EntryColumnContainer = styled.div`
   width: auto;
   height: 100%;
   display: flex;
@@ -23,7 +23,7 @@ const LoginColumnContainer = styled.div`
   align-items: center;
 `;
 
-const LoginPanelContainer = styled.div`
+const EntryPanelContainer = styled.div`
   display: flex;
   flex-direction: column;
   //justify-content: center;
@@ -39,7 +39,7 @@ const LoginPanelContainer = styled.div`
   text-align: center;
 `;
 
-const LoginTitleContainer = styled.div`
+const EntryTitleContainer = styled.div`
   height: 30%;
   font-size: 1.7em;
   display: flex;
@@ -47,13 +47,13 @@ const LoginTitleContainer = styled.div`
   justify-content: center;
 `;
 
-const LoginBodyContainer = styled.div`
+const EntryBodyContainer = styled.div`
   height: 70%;
   width: 60%;
   font-size: 1em;
 `;
 
-const LoginForm = styled.form`
+const EntryForm = styled.form`
   height: 100%;
   width: auto;
   display: flex;
@@ -62,7 +62,7 @@ const LoginForm = styled.form`
   align-items: center;
 `;
 
-const LoginInputContainer = styled.div`
+const EntryInputContainer = styled.div`
   height: 50%;
   width: 100%;
   white-space: no-wrap;
@@ -72,7 +72,7 @@ const LoginInputContainer = styled.div`
   flex-direction: column;
 `;
 
-const LoginButtonContainer = styled.div`
+const EntryButtonContainer = styled.div`
   height: 50%;
   width: 100%;
   display: flex;
@@ -81,7 +81,7 @@ const LoginButtonContainer = styled.div`
   flex-direction: column;
 `;
 
-const LoginInput = styled.input`
+const EntryInput = styled.input`
   text-align: center;
   padding: 0.7rem 1rem;
   margin: 0.7rem 0;
@@ -93,7 +93,7 @@ const LoginInput = styled.input`
   }
 `;
 
-const LoginButton = styled.button`
+const LoginConfirmButton = styled.button`
   padding: 0.6rem 2rem;
   font-size: 0.8em;
   border-radius: 0.5rem;
@@ -105,21 +105,21 @@ const LoginButton = styled.button`
   }
 `;
 
-const BottomMessage = styled.div`
+const EntryBottomContainer = styled.div`
   text-align: center;
   opacity: 0.5;
   font-size: 0.8em;
   margin-top: 0.7rem;
 `;
 
-const BottomLink = styled(Link)`
+const EntryBottomLink = styled(Link)`
   text-decoration: underline;
   &:hover {
     color: #fff;
   }
 `;
 
-const ErrorMessage = styled.div`
+const EntryErrorMessage = styled.div`
   position: absolute;
   top: 0.5rem;
   font-size: 0.7em;
@@ -127,7 +127,7 @@ const ErrorMessage = styled.div`
   margin: 0.5rem 0;
   background-color: #ffcccb;
 `;
-// const ForgotMessage = styled.div`
+// const EntryForgotMessage = styled.div`
 //   position: absolute;
 //   bottom: 0.5rem;
 //   font-size: 0.8em;
@@ -175,15 +175,15 @@ const Profile = () => {
 
   return (
     <>
-      <LoginBackground>
-        <LoginColumnContainer>
-          <LoginPanelContainer>
-            {error && <ErrorMessage>{error}</ErrorMessage>}
-            <LoginTitleContainer>Update Profile</LoginTitleContainer>
-            <LoginBodyContainer>
-              <LoginForm onSubmit={handleSubmitUpdate}>
-                <LoginInputContainer>
-                  <LoginInput
+      <EntryBackground>
+        <EntryColumnContainer>
+          <EntryPanelContainer>
+            {error && <EntryErrorMessage>{error}</EntryErrorMessage>}
+            <EntryTitleContainer>Update Profile</EntryTitleContainer>
+            <EntryBodyContainer>
+              <EntryForm onSubmit={handleSubmitUpdate}>
+                <EntryInputContainer>
+                  <EntryInput
                     type="email"
                     id="email"
                     name="email"
@@ -193,35 +193,35 @@ const Profile = () => {
                     required
                     defaultValue={currentUser.email}
                   />
-                  <LoginInput
+                  <EntryInput
                     type="password"
                     id="pwd"
                     name="pwd"
                     placeholder="Password"
                     ref={passwordRef}
                   />
-                  <LoginInput
+                  <EntryInput
                     type="password"
                     id="pwdcf"
                     name="pwdcf"
                     placeholder="Confirm"
                     ref={passwordConfirmRef}
                   />
-                </LoginInputContainer>
-                <LoginButtonContainer>
-                  <LoginButton disabled={loading} type="submit">
+                </EntryInputContainer>
+                <EntryButtonContainer>
+                  <LoginConfirmButton disabled={loading} type="submit">
                     Update
-                  </LoginButton>
-                </LoginButtonContainer>
-              </LoginForm>
-            </LoginBodyContainer>
-          </LoginPanelContainer>
+                  </LoginConfirmButton>
+                </EntryButtonContainer>
+              </EntryForm>
+            </EntryBodyContainer>
+          </EntryPanelContainer>
 
-          <BottomMessage>
-            <BottomLink to="/">Go back to main page</BottomLink>
-          </BottomMessage>
-        </LoginColumnContainer>
-      </LoginBackground>
+          <EntryBottomContainer>
+            <EntryBottomLink to="/">Go back to main page</EntryBottomLink>
+          </EntryBottomContainer>
+        </EntryColumnContainer>
+      </EntryBackground>
     </>
   );
 };
