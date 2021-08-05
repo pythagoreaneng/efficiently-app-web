@@ -1,18 +1,31 @@
 import React, { useContext } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import EntryScreen, {
+  BottomLink,
+  BottomMessage,
+  ErrorMessage,
+  LoginBodyContainer,
   LoginButton,
   LoginButtonContainer,
   LoginForm,
   LoginInput,
   LoginInputContainer,
+  LoginPanelContainer,
+  LoginTitleContainer,
 } from "../screens/EntryScreen";
 import { EntryContext } from "../contexts/EntryContext";
 
 const Signup = () => {
   const { signup, history } = useAuth();
-  const { emailRef, passwordRef, usernameRef, setError, loading, setLoading } =
-    useContext(EntryContext);
+  const {
+    emailRef,
+    passwordRef,
+    usernameRef,
+    error,
+    setError,
+    loading,
+    setLoading,
+  } = useContext(EntryContext);
 
   const handleSubmitSignup = async (e) => {
     e.preventDefault();
@@ -34,42 +47,51 @@ const Signup = () => {
 
   return (
     <>
-      <EntryScreen title="Sign up">
-        <LoginForm onSubmit={handleSubmitSignup}>
-          <LoginInputContainer>
-            <LoginInput
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Email"
-              spellcheck="false"
-              ref={emailRef}
-              required
-            />
-            <LoginInput
-              type="password"
-              id="pwd"
-              name="pwd"
-              placeholder="Password"
-              ref={passwordRef}
-              required
-            />
-            <LoginInput
-              type="text"
-              id="username"
-              name="username"
-              placeholder="Username"
-              ref={usernameRef}
-              required
-            />
-          </LoginInputContainer>
+      <EntryScreen>
+        <LoginPanelContainer>
+          {error && <ErrorMessage>{error}</ErrorMessage>}
+          <LoginTitleContainer>Signup</LoginTitleContainer>
+          <LoginBodyContainer>
+            <LoginForm onSubmit={handleSubmitSignup}>
+              <LoginInputContainer>
+                <LoginInput
+                  type="text"
+                  id="username"
+                  name="username"
+                  placeholder="@username"
+                  ref={usernameRef}
+                  required
+                />
+                <LoginInput
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Email"
+                  spellcheck="false"
+                  ref={emailRef}
+                />
 
-          <LoginButtonContainer>
-            <LoginButton disabled={loading} type="submit">
-              Join
-            </LoginButton>
-          </LoginButtonContainer>
-        </LoginForm>
+                <LoginInput
+                  type="password"
+                  id="pwd"
+                  name="pwd"
+                  placeholder="Password"
+                  ref={passwordRef}
+                  required
+                />
+              </LoginInputContainer>
+
+              <LoginButtonContainer>
+                <LoginButton disabled={loading} type="submit">
+                  Join
+                </LoginButton>
+              </LoginButtonContainer>
+            </LoginForm>
+          </LoginBodyContainer>
+        </LoginPanelContainer>
+        <BottomMessage>
+          Already have an account? <BottomLink to="/login">Login</BottomLink>
+        </BottomMessage>
       </EntryScreen>
     </>
   );

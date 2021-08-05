@@ -71,7 +71,7 @@ const Login = () => {
         </LoginBodyContainer>
       </LoginPanelContainer>
       <BottomMessage>
-        Already have an account? <BottomLink to="/login">Login</BottomLink>
+        Don't have an account? <BottomLink to="/signup">Signup</BottomLink>
       </BottomMessage>
     </EntryScreen>
   );
