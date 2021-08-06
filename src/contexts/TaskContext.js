@@ -52,7 +52,7 @@ export const TaskContextProvider = ({ children }) => {
       .doc(task.id)
       .update({ completed: !task.completed })
       .then(() => {
-        console.log("Document successfully deleted!");
+        console.log("Document successfully completed!");
         console.log("tasksRef.id", tasksRef.id);
       })
       .catch((error) => {
@@ -89,7 +89,7 @@ export const TaskContextProvider = ({ children }) => {
       .doc(task.id)
       .update({ star: !task.star })
       .then(() => {
-        console.log("Document successfully deleted!");
+        console.log("Document successfully toggeled star");
       })
       .catch((error) => {
         console.error("Error removing document: ", error);
