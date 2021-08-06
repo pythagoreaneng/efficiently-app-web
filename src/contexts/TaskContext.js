@@ -77,7 +77,7 @@ export const TaskContextProvider = ({ children }) => {
       .doc(task.id)
       .update({ title: edit })
       .then(() => {
-        console.log("Document successfully deleted!");
+        console.log("Document successfully edited!");
       })
       .catch((error) => {
         console.error("Error removing document: ", error);
