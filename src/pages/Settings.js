@@ -6,7 +6,7 @@ import {
   RiUserFill,
 } from "react-icons/ri";
 import { Link, NavLink } from "react-router-dom";
-import { Header, SideBar, Body, Title } from "../components";
+import { Title } from "../components";
 import { useAuth } from "../contexts/AuthContext";
 import {
   Container,
