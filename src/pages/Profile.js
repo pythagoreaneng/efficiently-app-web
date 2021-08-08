@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { useAuth } from "../contexts/AuthContext";
 import SettingScreen from "../screens/SettingScreen";
@@ -77,7 +77,8 @@ const Profile = () => {
   const passwordConfirmRef = useRef(null);
   const usernameRef = useRef(null);
 
-  const { currentUser, updateEmail, updatePassword } = useAuth();
+  const { currentUser, updateEmail, updatePassword, updateUsername } =
+    useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
@@ -91,6 +92,10 @@ const Profile = () => {
     setLoading(true);
     setError("");
 
+    if (usernameRef.current.value !== currentUser.username) {
+      promises.push(updateUsername(usernameRef.current.value));
+      console.log("username has been updated");
+    }
     if (emailRef.current.value !== currentUser.email) {
       promises.push(updateEmail(emailRef.current.value));
     }

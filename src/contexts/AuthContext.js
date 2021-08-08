@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { auth, firestore } from "../firebase";
 
@@ -12,8 +12,8 @@ const UserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
 
-  const userRef = auth.currentUser
-    ? firestore.collection(`users/${auth.currentUser.uid}/userProfiles`)
+  const userDB = auth.currentUser
+    ? firestore.collection(`users/${auth.currentUser.uid}/user`)
     : firestore.collection(`catch`);
 
   const signup = (email, password, username) => {
@@ -39,6 +39,11 @@ const UserProvider = ({ children }) => {
   };
   const updatePassword = (password) => {
     return currentUser.updatePassword(password);
+  };
+
+  const updateUsername = (username) => {
+    console.log("userDB", userDB);
+    userDB.doc("profile").set({ username: username });
   };
 
   const onAuthStateChange = () => {
@@ -77,7 +82,7 @@ const UserProvider = ({ children }) => {
     updateEmail,
     updatePassword,
     history,
-    userRef,
+    updateUsername,
   };
 
   return (

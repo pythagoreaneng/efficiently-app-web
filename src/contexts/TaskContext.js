@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import moment from "moment";
 import { auth, firestore } from "../firebase";
 import { v4 as uuidv4 } from "uuid";
+import { useAuth } from "./AuthContext";
 
 export const TaskContext = React.createContext(null);
 
@@ -11,10 +12,6 @@ export const TaskContextProvider = ({ children }) => {
   // this should be handled more propery
   const taskDB = auth.currentUser
     ? firestore.collection(`users/${auth.currentUser.uid}/userTasks`)
-    : firestore.collection(`catch`);
-
-  const userDB = auth.currentUser
-    ? firestore.collection(`users/${auth.currentUser.uid}/profile`)
     : firestore.collection(`catch`);
 
   // intial loading of locally saved tasks
