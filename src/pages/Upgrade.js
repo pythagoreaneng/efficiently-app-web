@@ -1,7 +1,8 @@
 import React from "react";
+import { SettingScreen } from "../screens/SettingScreen";
 
 const Upgrade = () => {
-  return <div>Upgrade your efficiency</div>;
+  return <SettingScreen>Upgrade screen</SettingScreen>;
 };
 
 export default Upgrade;

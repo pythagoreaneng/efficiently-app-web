@@ -1,8 +1,8 @@
 import React from "react";
 import {
+  RiArrowLeftSLine,
   RiDoorLockFill,
   RiFlashlightFill,
-  RiInboxFill,
   RiPaletteFill,
   RiUserFill,
 } from "react-icons/ri";
@@ -22,7 +22,7 @@ import {
   SideSectionWrapper,
 } from "../pages/styles";
 
-export const SettingScreen = () => {
+export const SettingScreen = ({ children }) => {
   const { currentUser } = useAuth();
   return (
     <Container>
@@ -97,7 +97,7 @@ export const SettingScreen = () => {
             <Link to="/profile"> Welcome, @{currentUser.displayName}</Link>
           </SideSectionContainer>
         </SideBarContainer>
-        <BodyContainer></BodyContainer>
+        <BodyContainer>{children}</BodyContainer>
       </ContentContainer>
     </Container>
   );

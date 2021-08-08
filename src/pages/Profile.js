@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { useAuth } from "../contexts/AuthContext";
+import SettingScreen from "../screens/SettingScreen";
 
 const EntryBackground = styled.div`
   width: 100vw;
@@ -45,6 +46,7 @@ const EntryTitleContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 `;
 
 const EntryBodyContainer = styled.div`
@@ -174,55 +176,48 @@ const Profile = () => {
   };
 
   return (
-    <>
-      <EntryBackground>
-        <EntryColumnContainer>
-          <EntryPanelContainer>
-            {error && <EntryErrorMessage>{error}</EntryErrorMessage>}
-            <EntryTitleContainer>Update Profile</EntryTitleContainer>
-            <EntryBodyContainer>
-              <EntryForm onSubmit={handleSubmitUpdate}>
-                <EntryInputContainer>
-                  <EntryInput
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Email"
-                    spellcheck="false"
-                    ref={emailRef}
-                    required
-                    defaultValue={currentUser.email}
-                  />
-                  <EntryInput
-                    type="password"
-                    id="pwd"
-                    name="pwd"
-                    placeholder="Password"
-                    ref={passwordRef}
-                  />
-                  <EntryInput
-                    type="password"
-                    id="pwdcf"
-                    name="pwdcf"
-                    placeholder="Confirm"
-                    ref={passwordConfirmRef}
-                  />
-                </EntryInputContainer>
-                <EntryButtonContainer>
-                  <LoginConfirmButton disabled={loading} type="submit">
-                    Update
-                  </LoginConfirmButton>
-                </EntryButtonContainer>
-              </EntryForm>
-            </EntryBodyContainer>
-          </EntryPanelContainer>
+    <SettingScreen>
+      {error && <EntryErrorMessage>{error}</EntryErrorMessage>}
+      <EntryTitleContainer>Account Profile</EntryTitleContainer>
 
-          <EntryBottomContainer>
-            <EntryBottomLink to="/">Go back to main page</EntryBottomLink>
-          </EntryBottomContainer>
-        </EntryColumnContainer>
-      </EntryBackground>
-    </>
+      <EntryForm onSubmit={handleSubmitUpdate}>
+        <EntryInputContainer>
+          <EntryInput
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email"
+            spellcheck="false"
+            ref={emailRef}
+            required
+            defaultValue={currentUser.email}
+          />
+          <EntryInput
+            type="password"
+            id="pwd"
+            name="pwd"
+            placeholder="Password"
+            ref={passwordRef}
+          />
+          <EntryInput
+            type="password"
+            id="pwdcf"
+            name="pwdcf"
+            placeholder="Confirm"
+            ref={passwordConfirmRef}
+          />
+        </EntryInputContainer>
+        <EntryButtonContainer>
+          <LoginConfirmButton disabled={loading} type="submit">
+            Update
+          </LoginConfirmButton>
+        </EntryButtonContainer>
+      </EntryForm>
+
+      <EntryBottomContainer>
+        <EntryBottomLink to="/">Go back to main page</EntryBottomLink>
+      </EntryBottomContainer>
+    </SettingScreen>
   );
 };
 
