@@ -20,9 +20,9 @@ import {
   SectionName,
   SideSectionContainer,
   SideSectionWrapper,
-} from "./styles";
+} from "../pages/styles";
 
-const Settings = () => {
+export const SettingScreen = () => {
   const { currentUser } = useAuth();
   return (
     <Container>
@@ -103,4 +103,4 @@ const Settings = () => {
   );
 };
 
-export default Settings;
+export default SettingScreen;

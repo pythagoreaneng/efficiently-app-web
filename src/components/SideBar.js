@@ -6,6 +6,7 @@ import {
   RiArchiveFill,
   RiLightbulbFlashFill,
   RiSearchLine,
+  RiSettings5Fill,
 } from "react-icons/ri";
 import { Link, NavLink } from "react-router-dom";
 import { TaskContext } from "../contexts/TaskContext";
@@ -14,8 +15,10 @@ import {
   SectionName,
   SideSectionContainer,
   SideSectionWrapper,
+  SideBarContainer,
   LoginStatusContainer,
   LogoutButton,
+  SideBottomContainer,
 } from "../pages/styles";
 import { useAuth } from "../contexts/AuthContext";
 
@@ -128,11 +131,18 @@ const SideBar = () => {
         </SideSectionWrapper>
         <Link to="/profile"> Welcome, @{currentUser.displayName}</Link>
       </SideSectionContainer>
-      <LoginStatusContainer>
-        {error && <div>Error: {error}</div>}
-        <Link to="/Settings">{currentUser.email}</Link>
-        <LogoutButton onClick={handleLogout}>(Logout)</LogoutButton>
-      </LoginStatusContainer>
+
+      {error && <div>Error: {error}</div>}
+      <SideBottomContainer>
+        <Link to="/settings">
+          <RiSettings5Fill />
+        </Link>
+
+        <LoginStatusContainer>
+          {currentUser.email}
+          <LogoutButton onClick={handleLogout}>(Logout)</LogoutButton>
+        </LoginStatusContainer>
+      </SideBottomContainer>
     </>
   );
 };

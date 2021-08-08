@@ -8,6 +8,9 @@ import {
   Today,
   Search,
   Login,
+  Security,
+  Themes,
+  Upgrade,
   Signup,
 } from "./pages";
 import UserProvider from "./contexts/AuthContext";
@@ -38,7 +41,10 @@ function App() {
             <PrivateRoute path="/search" component={Search} />
             <EntryContextProvider>
               <PrivateRoute path="/profile" component={Profile} />
-              <PrivateRoute path="/Settings" component={Settings} />
+              <PrivateRoute path="/security" component={Security} />
+              <PrivateRoute path="/themes" component={Themes} />
+              <PrivateRoute path="/upgrade" component={Upgrade} />
+              <PrivateRoute path="/settings" component={Settings} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} />
               <Route path="/reset" component={Reset} />

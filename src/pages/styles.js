@@ -82,11 +82,17 @@ export const SideSectionContainer = styled.div`
   flex-direction: column;
 `;
 
-export const LoginStatusContainer = styled.div`
+export const SideBottomContainer = styled.div`
   height: 5%;
   widgth: auto;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 1rem;
+`;
+
+export const LoginStatusContainer = styled.div`
+  display: flex;s
   align-items: center;
 `;
 export const LogoutButton = styled.button`

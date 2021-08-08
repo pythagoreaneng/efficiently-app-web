@@ -52,14 +52,18 @@ const Task = ({ task }) => {
   };
 
   const outsideClick = () => {
-    // if same don't run saveTasks()
-    if (edit === task.title) {
+    if (edit === "") { // check if edit is empty
+      removeTask(task.id);
+      setIsEdit(false);
+      return;
+    }
+    if (edit === task.title) { // check if edit is the same
       setIsEdit(false);
       return;
     }
     setEdit(edit); //change value of edit,
     setIsEdit(false); // set edit attribute to false,
-    editTask(task.id, edit); // update the task globally.
+    editTask(task, edit); // update the task.
   };
 
   let untilScheduleDate = moment(task.scheduleDate).fromNow();
