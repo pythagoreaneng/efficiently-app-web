@@ -13,6 +13,10 @@ export const TaskContextProvider = ({ children }) => {
     ? firestore.collection(`users/${auth.currentUser.uid}/userTasks`)
     : firestore.collection(`catch`);
 
+  const userDB = auth.currentUser
+    ? firestore.collection(`users/${auth.currentUser.uid}/profile`)
+    : firestore.collection(`catch`);
+
   // intial loading of locally saved tasks
   const getTasks = () => {
     taskDB.onSnapshot((querySnapshot) => {
