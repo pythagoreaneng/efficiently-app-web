@@ -4,42 +4,6 @@ import styled from "styled-components";
 import { useAuth } from "../contexts/AuthContext";
 import SettingScreen from "../screens/SettingScreen";
 
-const EntryBackground = styled.div`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
-`;
-
-const EntryColumnContainer = styled.div`
-  width: auto;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const EntryPanelContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  //justify-content: center;
-  position: relative;
-  align-items: center;
-  height: 25%;
-  width: 100%;
-  min-height: 25rem;
-  min-width: 19rem;
-  background: rgba(255, 255, 255, 1);
-  box-shadow: 0 0 0.1rem -2px black;
-  border-radius: 0.5rem;
-  text-align: center;
-`;
-
 const EntryTitleContainer = styled.div`
   height: 30%;
   font-size: 1.7em;
@@ -49,12 +13,6 @@ const EntryTitleContainer = styled.div`
   align-items: center;
 `;
 
-const EntryBodyContainer = styled.div`
-  height: 70%;
-  width: 60%;
-  font-size: 1em;
-`;
-
 const EntryForm = styled.form`
   height: 100%;
   width: auto;
@@ -62,16 +20,6 @@ const EntryForm = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
-
-const EntryInputContainer = styled.div`
-  height: 50%;
-  width: 100%;
-  white-space: no-wrap;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
 `;
 
 const EntryButtonContainer = styled.div`
@@ -107,20 +55,6 @@ const LoginConfirmButton = styled.button`
   }
 `;
 
-const EntryBottomContainer = styled.div`
-  text-align: center;
-  opacity: 0.5;
-  font-size: 0.8em;
-  margin-top: 0.7rem;
-`;
-
-const EntryBottomLink = styled(Link)`
-  text-decoration: underline;
-  &:hover {
-    color: #fff;
-  }
-`;
-
 const EntryErrorMessage = styled.div`
   position: absolute;
   top: 0.5rem;
@@ -141,6 +75,7 @@ const Profile = () => {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const passwordConfirmRef = useRef(null);
+  const usernameRef = useRef(null);
 
   const { currentUser, updateEmail, updatePassword } = useAuth();
   const [error, setError] = useState("");
@@ -178,45 +113,47 @@ const Profile = () => {
   return (
     <SettingScreen>
       {error && <EntryErrorMessage>{error}</EntryErrorMessage>}
-      <EntryTitleContainer>Account Profile</EntryTitleContainer>
+      <EntryTitleContainer>Profile settings</EntryTitleContainer>
 
       <EntryForm onSubmit={handleSubmitUpdate}>
-        <EntryInputContainer>
-          <EntryInput
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Email"
-            spellcheck="false"
-            ref={emailRef}
-            required
-            defaultValue={currentUser.email}
-          />
-          <EntryInput
-            type="password"
-            id="pwd"
-            name="pwd"
-            placeholder="Password"
-            ref={passwordRef}
-          />
-          <EntryInput
-            type="password"
-            id="pwdcf"
-            name="pwdcf"
-            placeholder="Confirm"
-            ref={passwordConfirmRef}
-          />
-        </EntryInputContainer>
+        <EntryInput
+          type="username"
+          id="username"
+          name="username"
+          placeholder="@username"
+          ref={usernameRef}
+        />
+        <EntryInput
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email"
+          spellcheck="false"
+          ref={emailRef}
+          required
+          defaultValue={currentUser.email}
+        />
+        <EntryInput
+          type="password"
+          id="pwd"
+          name="pwd"
+          placeholder="Password"
+          ref={passwordRef}
+        />
+        <EntryInput
+          type="password"
+          id="pwdcf"
+          name="pwdcf"
+          placeholder="Confirm"
+          ref={passwordConfirmRef}
+        />
+
         <EntryButtonContainer>
           <LoginConfirmButton disabled={loading} type="submit">
             Update
           </LoginConfirmButton>
         </EntryButtonContainer>
       </EntryForm>
-
-      <EntryBottomContainer>
-        <EntryBottomLink to="/">Go back to main page</EntryBottomLink>
-      </EntryBottomContainer>
     </SettingScreen>
   );
 };
