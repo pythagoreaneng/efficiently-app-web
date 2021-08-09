@@ -90,17 +90,21 @@ export const SideSectionContainer = styled.div`
 `;
 
 export const SideBottomContainer = styled.div`
-  height: 5%;
-  widgth: auto;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  margin: 0 1rem;
 `;
 
 export const UserInfoContainer = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+`;
+
+export const LoginStatusContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 `;
 
@@ -127,10 +131,6 @@ export const UsernameWrapper = styled.div`
   margin: 0.5rem;
 `;
 
-export const LoginStatusContainer = styled.div`
-  display: flex;s
-  align-items: center;
-`;
 export const LogoutButton = styled.button`
   height: 5%;
   widgth: auto;

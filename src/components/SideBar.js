@@ -137,25 +137,25 @@ const SideBar = () => {
       </SideSectionContainer>
 
       {error && <div>Error: {error}</div>}
-      <UserInfoContainer>
-        <UserProfilePicContainer>
-          <UserProfilePic />
-        </UserProfilePicContainer>
-
-        <UsernameWrapper>
-          <Link to="/profile">@{currentUser.displayName}</Link>
-        </UsernameWrapper>
-      </UserInfoContainer>
 
       <SideBottomContainer>
-        <Link to="/settings">
-          <RiSettings5Fill />
-        </Link>
+        <UserInfoContainer>
+          <UserProfilePicContainer>
+            <UserProfilePic />
+          </UserProfilePicContainer>
+
+          <UsernameWrapper>
+            <Link to="/profile">@{currentUser.displayName}</Link>
+          </UsernameWrapper>
+        </UserInfoContainer>
 
         <LoginStatusContainer>
           <LogoutButton onClick={handleLogout}>
             <GoSignOut />
           </LogoutButton>
+          <Link to="/settings">
+            <RiSettings5Fill />
+          </Link>
         </LoginStatusContainer>
       </SideBottomContainer>
     </SideBarWrapper>
