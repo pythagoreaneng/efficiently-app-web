@@ -7,16 +7,10 @@ export const Container = styled.div`
 export const HeaderContainer = styled.div`
   height: 10%;
   width: 100wh;
-  background-color: #46bcff;
+  //background-color: #42bcff;
+  background-color: #42bcef;
   display: flex;
   align-items: center;
-`;
-
-export const TopLogoContainer = styled.div`
-  width: 5%;
-  display: flex;
-  justify-content: center;
-  alitgn-items: cetner;
 `;
 
 export const TitleContainer = styled.div`
@@ -28,8 +22,17 @@ export const TitleContainer = styled.div`
   font-size: 1.5em;
 `;
 
-export const TopTitleWrapper = styled.div`
+export const TitleWrapper = styled.div`
   display: flex;
+  justify-content: center;
+`;
+
+export const AppNameWrapper = styled.div`
+  display: flex;
+  color: white;
+`;
+export const LogoWrapper = styled.div`
+  margin: 0 0.5rem;
 `;
 export const SearchContainer = styled.div`
   width: 70%;
@@ -70,9 +73,13 @@ export const BodyContainer = styled.div`
 
 export const SideBarContainer = styled.div`
   width: 30%;
+`;
+
+export const SideBarWrapper = styled.div`
+  display: flex;
   height: 100%;
-  background-color: #fafafa;
-  padding: 0.5rem 0;
+  flex-direction: column;
+  padding: 1rem 2rem;
 `;
 
 export const SideSectionContainer = styled.div`
@@ -82,13 +89,48 @@ export const SideSectionContainer = styled.div`
   flex-direction: column;
 `;
 
+export const SideBottomContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+export const UserInfoContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+`;
+
 export const LoginStatusContainer = styled.div`
-  height: 5%;
-  widgth: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const UserProfilePicContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
 `;
+
+export const UserProfilePicWrapper = styled.div`
+  height: 3rem;
+  width: 3rem;
+  background-color: #bbb;
+  border-radius: 50%;
+  border: 0.1rem solid #42bcef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const UsernameWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem;
+`;
+
 export const LogoutButton = styled.button`
   height: 5%;
   widgth: auto;
