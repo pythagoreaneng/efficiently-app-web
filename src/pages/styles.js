@@ -104,17 +104,21 @@ export const UserInfoContainer = styled.div`
   align-items: center;
 `;
 
+export const UserProfilePicContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const UserProfilePicWrapper = styled.div`
   height: 3rem;
   width: 3rem;
   background-color: #bbb;
   border-radius: 50%;
-  display: inline-block;
   border: 0.1rem solid #42bcef;
-`;
-
-export const UserProfilePicContainer = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const UsernameWrapper = styled.div`
