@@ -28,7 +28,7 @@ import { useAuth } from "../contexts/AuthContext";
 import UserProfilePic from "./UserProfilePic";
 
 const SideBar = () => {
-  const { history } = useAuth();
+  const { history, userDB } = useAuth();
   const { inboxRef, starRef, archiveRef, upcomingRef, todayRef, searchRef } =
     useContext(TaskContext);
 
@@ -44,6 +44,22 @@ const SideBar = () => {
       setError("Failed to logout");
     }
   };
+
+  userDB
+    .doc("profile")
+    .get()
+    .then((doc) => {
+      if (doc.exists) {
+        console.log("Document data:", doc.data().username);
+        currentUser.updateProfile({ displayName: doc.data().username });
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    })
+    .catch((error) => {
+      console.log("Error getting document:", error);
+    });
   return (
     <SideBarWrapper>
       <SideSectionContainer>

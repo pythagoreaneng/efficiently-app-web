@@ -83,6 +83,7 @@ const UserProvider = ({ children }) => {
     updatePassword,
     history,
     updateUsername,
+    userDB,
   };
 
   return (
