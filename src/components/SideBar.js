@@ -18,13 +18,14 @@ import {
   SideSectionWrapper,
   SideBarWrapper,
   UserInfoContainer,
-  UserProfilePicWrapper,
+  UserProfilePicContainer,
   UsernameWrapper,
   LoginStatusContainer,
   LogoutButton,
   SideBottomContainer,
 } from "../pages/styles";
 import { useAuth } from "../contexts/AuthContext";
+import UserProfilePic from "./UserProfilePic";
 
 const SideBar = () => {
   const { history } = useAuth();
@@ -137,7 +138,9 @@ const SideBar = () => {
 
       {error && <div>Error: {error}</div>}
       <UserInfoContainer>
-        <UserProfilePicWrapper></UserProfilePicWrapper>
+        <UserProfilePicContainer>
+          <UserProfilePic />
+        </UserProfilePicContainer>
 
         <UsernameWrapper>
           <Link to="/profile">@{currentUser.displayName}</Link>

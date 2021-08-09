@@ -105,6 +105,15 @@ export const UserInfoContainer = styled.div`
 `;
 
 export const UserProfilePicWrapper = styled.div`
+  height: 3rem;
+  width: 3rem;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  border: 0.1rem solid #42bcef;
+`;
+
+export const UserProfilePicContainer = styled.div`
   display: flex;
 `;
 
