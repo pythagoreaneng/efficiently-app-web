@@ -73,9 +73,13 @@ export const BodyContainer = styled.div`
 
 export const SideBarContainer = styled.div`
   width: 30%;
+`;
+
+export const SideBarWrapper = styled.div`
+  display: flex;
   height: 100%;
-  background-color: #fafafa;
-  padding: 0.5rem 0;
+  flex-direction: column;
+  padding: 1rem 2rem;
 `;
 
 export const SideSectionContainer = styled.div`
@@ -92,6 +96,22 @@ export const SideBottomContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: 0 1rem;
+`;
+
+export const UserInfoContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+`;
+
+export const UserProfilePicWrapper = styled.div`
+  display: flex;
+`;
+
+export const UsernameWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem;
 `;
 
 export const LoginStatusContainer = styled.div`

@@ -8,6 +8,7 @@ import {
   RiSearchLine,
   RiSettings5Fill,
 } from "react-icons/ri";
+import { GoSignOut } from "react-icons/go";
 import { Link, NavLink } from "react-router-dom";
 import { TaskContext } from "../contexts/TaskContext";
 import {
@@ -15,7 +16,10 @@ import {
   SectionName,
   SideSectionContainer,
   SideSectionWrapper,
-  SideBarContainer,
+  SideBarWrapper,
+  UserInfoContainer,
+  UserProfilePicWrapper,
+  UsernameWrapper,
   LoginStatusContainer,
   LogoutButton,
   SideBottomContainer,
@@ -40,7 +44,7 @@ const SideBar = () => {
     }
   };
   return (
-    <>
+    <SideBarWrapper>
       <SideSectionContainer>
         <SideSectionWrapper>
           <SectionIcon>
@@ -129,21 +133,29 @@ const SideBar = () => {
             </NavLink>
           </SectionName>
         </SideSectionWrapper>
-        <Link to="/profile"> Welcome, @{currentUser.displayName}</Link>
       </SideSectionContainer>
 
       {error && <div>Error: {error}</div>}
+      <UserInfoContainer>
+        <UserProfilePicWrapper></UserProfilePicWrapper>
+
+        <UsernameWrapper>
+          <Link to="/profile">@{currentUser.displayName}</Link>
+        </UsernameWrapper>
+      </UserInfoContainer>
+
       <SideBottomContainer>
         <Link to="/settings">
           <RiSettings5Fill />
         </Link>
 
         <LoginStatusContainer>
-          {currentUser.email}
-          <LogoutButton onClick={handleLogout}>(Logout)</LogoutButton>
+          <LogoutButton onClick={handleLogout}>
+            <GoSignOut />
+          </LogoutButton>
         </LoginStatusContainer>
       </SideBottomContainer>
-    </>
+    </SideBarWrapper>
   );
 };
 
