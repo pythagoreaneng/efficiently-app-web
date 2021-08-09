@@ -1,8 +1,44 @@
 import React from "react";
-import { SettingScreen } from "../screens/SettingScreen";
+import styled from "styled-components";
+import SettingScreen from "../screens/SettingScreen";
+
+const SettingBodyContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+`;
+
+const SettingTitleContainer = styled.div`
+  display: flex;
+  height: 15%;
+  font-size: 2em;
+  justify-content: center;
+  align-items: center;
+`;
+
+const SettingContentContainer = styled.div`
+  height: 85%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+`;
 
 const Upgrade = () => {
-  return <SettingScreen>Upgrade screen</SettingScreen>;
+  return (
+    <SettingScreen>
+      <SettingBodyContainer>
+        <SettingTitleContainer>
+          Upgrade Your Efficiency with Efficiently+
+        </SettingTitleContainer>
+        <SettingContentContainer>Coming Soon</SettingContentContainer>
+      </SettingBodyContainer>
+    </SettingScreen>
+  );
 };
 
 export default Upgrade;

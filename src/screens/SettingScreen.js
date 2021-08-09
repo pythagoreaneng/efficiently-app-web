@@ -93,8 +93,6 @@ export const SettingScreen = ({ children }) => {
                 </NavLink>
               </SectionName>
             </SideSectionWrapper>
-
-            <Link to="/profile"> Welcome, @{currentUser.displayName}</Link>
           </SideSectionContainer>
         </SideBarContainer>
         <BodyContainer>{children}</BodyContainer>

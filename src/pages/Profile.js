@@ -105,7 +105,7 @@ const Profile = () => {
 
     Promise.all(promises)
       .then(() => {
-        history.push("/star");
+        console.log("username has been updated");
       })
       .catch((err) => {
         setError(err.message);

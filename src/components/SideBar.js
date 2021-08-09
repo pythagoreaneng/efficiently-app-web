@@ -60,6 +60,7 @@ const SideBar = () => {
     .catch((error) => {
       console.log("Error getting document:", error);
     });
+
   return (
     <SideBarWrapper>
       <SideSectionContainer>
@@ -169,7 +170,7 @@ const SideBar = () => {
           <LogoutButton onClick={handleLogout}>
             <GoSignOut />
           </LogoutButton>
-          <Link to="/settings">
+          <Link to="/profile">
             <RiSettings5Fill />
           </Link>
         </LoginStatusContainer>

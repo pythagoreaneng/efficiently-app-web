@@ -59,7 +59,9 @@ const UserProvider = ({ children }) => {
           console.log(err);
         }
 
-        if (window.location.pathname === "/login" || "/signup") {
+        if (window.location.pathname === "/login") {
+          history.push("/");
+        } else if (window.location.pathname === "/signup") {
           history.push("/");
         }
       } else {
