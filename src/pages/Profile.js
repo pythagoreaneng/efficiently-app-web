@@ -1,34 +1,14 @@
 import React, { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
+import UserProfilePic from "../components/UserProfilePic";
 import { useAuth } from "../contexts/AuthContext";
 import SettingScreen from "../screens/SettingScreen";
 
-const EntryTitleContainer = styled.div`
-  height: 30%;
-  font-size: 1.7em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
 const EntryForm = styled.form`
-  height: 100%;
-  width: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const EntryButtonContainer = styled.div`
-  height: 50%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  width: 70%;
 `;
 
 const EntryInput = styled.input`
@@ -45,6 +25,7 @@ const EntryInput = styled.input`
 
 const LoginConfirmButton = styled.button`
   padding: 0.6rem 2rem;
+  margin: 2rem;
   font-size: 0.8em;
   border-radius: 0.5rem;
   background-color: #000;
@@ -63,13 +44,32 @@ const EntryErrorMessage = styled.div`
   margin: 0.5rem 0;
   background-color: #ffcccb;
 `;
-// const EntryForgotMessage = styled.div`
-//   position: absolute;
-//   bottom: 0.5rem;
-//   font-size: 0.8em;
-//   padding: 0 0.5rem;
-//   margin: 0.5rem 0;
-// `;
+
+const SettingBodyContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+`;
+
+const SettingTitleContainer = styled.div`
+  display: flex;
+  height: 15%;
+  font-size: 2em;
+  justify-content: center;
+  align-items: center;
+`;
+
+const SettingContentContainer = styled.div`
+  height: 85%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+`;
 
 const Profile = () => {
   const emailRef = useRef(null);
@@ -117,48 +117,50 @@ const Profile = () => {
 
   return (
     <SettingScreen>
-      {error && <EntryErrorMessage>{error}</EntryErrorMessage>}
-      <EntryTitleContainer>Profile settings</EntryTitleContainer>
+      <SettingBodyContainer>
+        {error && <EntryErrorMessage>{error}</EntryErrorMessage>}
+        <SettingTitleContainer>Profile settings</SettingTitleContainer>
+        <SettingContentContainer>
+          <UserProfilePic />
+          <EntryForm onSubmit={handleSubmitUpdate}>
+            <EntryInput
+              type="username"
+              id="username"
+              name="username"
+              placeholder="@username"
+              ref={usernameRef}
+            />
+            <EntryInput
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email"
+              spellcheck="false"
+              ref={emailRef}
+              required
+              defaultValue={currentUser.email}
+            />
+            <EntryInput
+              type="password"
+              id="pwd"
+              name="pwd"
+              placeholder="Password"
+              ref={passwordRef}
+            />
+            <EntryInput
+              type="password"
+              id="pwdcf"
+              name="pwdcf"
+              placeholder="Confirm"
+              ref={passwordConfirmRef}
+            />
 
-      <EntryForm onSubmit={handleSubmitUpdate}>
-        <EntryInput
-          type="username"
-          id="username"
-          name="username"
-          placeholder="@username"
-          ref={usernameRef}
-        />
-        <EntryInput
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Email"
-          spellcheck="false"
-          ref={emailRef}
-          required
-          defaultValue={currentUser.email}
-        />
-        <EntryInput
-          type="password"
-          id="pwd"
-          name="pwd"
-          placeholder="Password"
-          ref={passwordRef}
-        />
-        <EntryInput
-          type="password"
-          id="pwdcf"
-          name="pwdcf"
-          placeholder="Confirm"
-          ref={passwordConfirmRef}
-        />
-
-        <EntryButtonContainer>
-          <LoginConfirmButton disabled={loading} type="submit">
-            Update
-          </LoginConfirmButton>
-        </EntryButtonContainer>
-      </EntryForm>
+            <LoginConfirmButton disabled={loading} type="submit">
+              Update
+            </LoginConfirmButton>
+          </EntryForm>
+        </SettingContentContainer>
+      </SettingBodyContainer>
     </SettingScreen>
   );
 };
