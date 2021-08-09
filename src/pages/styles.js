@@ -28,8 +28,12 @@ export const TitleContainer = styled.div`
   font-size: 1.5em;
 `;
 
-export const TopTitleWrapper = styled.div`
+export const TitleWrapper = styled.div`
   display: flex;
+  justify-content: center;
+`;
+export const LogoWrapper = styled.div`
+  margin: 0 0.5rem;
 `;
 export const SearchContainer = styled.div`
   width: 70%;
