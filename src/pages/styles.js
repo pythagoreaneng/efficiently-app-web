@@ -7,16 +7,10 @@ export const Container = styled.div`
 export const HeaderContainer = styled.div`
   height: 10%;
   width: 100wh;
-  background-color: #46bcff;
+  //background-color: #42bcff;
+  background-color: #42bcef;
   display: flex;
   align-items: center;
-`;
-
-export const TopLogoContainer = styled.div`
-  width: 5%;
-  display: flex;
-  justify-content: center;
-  alitgn-items: cetner;
 `;
 
 export const TitleContainer = styled.div`
@@ -31,6 +25,11 @@ export const TitleContainer = styled.div`
 export const TitleWrapper = styled.div`
   display: flex;
   justify-content: center;
+`;
+
+export const AppNameWrapper = styled.div`
+  display: flex;
+  color: white;
 `;
 export const LogoWrapper = styled.div`
   margin: 0 0.5rem;
