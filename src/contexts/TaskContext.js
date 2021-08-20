@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import moment from "moment";
 import { auth, firestore } from "../firebase";
 import { v4 as uuidv4 } from "uuid";
+import { useAuth } from "./AuthContext";
 
 export const TaskContext = React.createContext(null);
 
@@ -9,13 +10,13 @@ export const TaskContextProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
 
   // this should be handled more propery
-  const tasksRef = auth.currentUser
+  const taskDB = auth.currentUser
     ? firestore.collection(`users/${auth.currentUser.uid}/userTasks`)
     : firestore.collection(`catch`);
 
   // intial loading of locally saved tasks
   const getTasks = () => {
-    tasksRef.onSnapshot((querySnapshot) => {
+    taskDB.onSnapshot((querySnapshot) => {
       const items = [];
       querySnapshot.forEach((doc) => {
         items.push(doc.data());
@@ -48,12 +49,12 @@ export const TaskContextProvider = ({ children }) => {
   var todayDate = moment().format("YYYY-MM-D");
 
   const completeTask = (task) => {
-    tasksRef
+    taskDB
       .doc(task.id)
       .update({ completed: !task.completed })
       .then(() => {
-        console.log("Document successfully completed!");
-        console.log("tasksRef.id", tasksRef.id);
+        console.log("Document successfully deleted!");
+        console.log("taskDB.id", taskDB.id);
       })
       .catch((error) => {
         console.error("Error removing document: ", error);
@@ -61,7 +62,7 @@ export const TaskContextProvider = ({ children }) => {
   };
 
   const removeTask = (id) => {
-    tasksRef
+    taskDB
       .doc(id)
       .delete()
       .then(() => {
@@ -73,7 +74,7 @@ export const TaskContextProvider = ({ children }) => {
   };
 
   const editTask = (task, edit) => {
-    tasksRef
+    taskDB
       .doc(task.id)
       .update({ title: edit })
       .then(() => {
@@ -85,7 +86,7 @@ export const TaskContextProvider = ({ children }) => {
   };
 
   const toggleStar = (task) => {
-    tasksRef
+    taskDB
       .doc(task.id)
       .update({ star: !task.star })
       .then(() => {
@@ -99,7 +100,7 @@ export const TaskContextProvider = ({ children }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const taskId = uuidv4(); // generate string id every time task is generated and assign to it
-    tasksRef.doc(taskId).set({
+    taskDB.doc(taskId).set({
       id: taskId, // task gets assigned the id
       title: input,
       completed: false,
@@ -108,7 +109,7 @@ export const TaskContextProvider = ({ children }) => {
       dueDate: "2021-07-31",
       scheduleDate: "2021-08-28",
     });
-    console.log("tasksRef is:", tasksRef.id);
+    console.log("taskDB is:", taskDB.id);
     // clear input
     setInput("");
   };

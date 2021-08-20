@@ -22,12 +22,12 @@ const completeTask = (task) => {
   //   return task;
   // });
   // setTasks(newTasks);
-  tasksRef
+  taskDB
     .doc(task.id)
     .update({ completed: !task.completed })
     .then(() => {
       console.log("Document successfully deleted!");
-      console.log("tasksRef.id", tasksRef.id);
+      console.log("taskDB.id", taskDB.id);
     })
     .catch((error) => {
       console.error("Error removing document: ", error);
@@ -39,7 +39,7 @@ const removeTask = (id) => {
   // setTasks(newTasks);
   //console.log(`auth.currentUser.uid, ${auth.currentUser.uid}`);
 
-  tasksRef
+  taskDB
     .doc(id)
     .delete()
     .then(() => {
@@ -59,7 +59,7 @@ const editTask = (task, edit) => {
   //   return task;
   // });
   // setTasks(newTasks); // update tasks
-  tasksRef
+  taskDB
     .doc(task.id)
     .update({ title: edit })
     .then(() => {
@@ -78,7 +78,7 @@ const toggleStar = (task) => {
   //   return task;
   // });
   // setTasks(newTasks);
-  tasksRef
+  taskDB
     .doc(task.id)
     .update({ star: !task.star })
     .then(() => {

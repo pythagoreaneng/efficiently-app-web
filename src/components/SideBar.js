@@ -6,7 +6,9 @@ import {
   RiArchiveFill,
   RiLightbulbFlashFill,
   RiSearchLine,
+  RiSettings5Fill,
 } from "react-icons/ri";
+import { GoSignOut } from "react-icons/go";
 import { Link, NavLink } from "react-router-dom";
 import { TaskContext } from "../contexts/TaskContext";
 import {
@@ -14,13 +16,19 @@ import {
   SectionName,
   SideSectionContainer,
   SideSectionWrapper,
+  SideBarWrapper,
+  UserInfoContainer,
+  UserProfilePicContainer,
+  UsernameWrapper,
   LoginStatusContainer,
   LogoutButton,
+  SideBottomContainer,
 } from "../pages/styles";
 import { useAuth } from "../contexts/AuthContext";
+import UserProfilePic from "./UserProfilePic";
 
 const SideBar = () => {
-  const { history } = useAuth();
+  const { history, userDB } = useAuth();
   const { inboxRef, starRef, archiveRef, upcomingRef, todayRef, searchRef } =
     useContext(TaskContext);
 
@@ -36,8 +44,25 @@ const SideBar = () => {
       setError("Failed to logout");
     }
   };
+
+  userDB
+    .doc("profile")
+    .get()
+    .then((doc) => {
+      if (doc.exists) {
+        console.log("Document data:", doc.data().username);
+        currentUser.updateProfile({ displayName: doc.data().username });
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    })
+    .catch((error) => {
+      console.log("Error getting document:", error);
+    });
+
   return (
-    <>
+    <SideBarWrapper>
       <SideSectionContainer>
         <SideSectionWrapper>
           <SectionIcon>
@@ -126,14 +151,30 @@ const SideBar = () => {
             </NavLink>
           </SectionName>
         </SideSectionWrapper>
-        Welcome, @{currentUser.displayName}
       </SideSectionContainer>
-      <LoginStatusContainer>
-        {error && <div>Error: {error}</div>}
-        <Link to="/profile">{currentUser.email}</Link>
-        <LogoutButton onClick={handleLogout}>(Logout)</LogoutButton>
-      </LoginStatusContainer>
-    </>
+
+      {error && <div>Error: {error}</div>}
+
+      {/* <SideBottomContainer>
+        <Link to="/profile">
+          <UserInfoContainer>
+            <UserProfilePicContainer>
+              <UserProfilePic />
+            </UserProfilePicContainer>
+            <UsernameWrapper> @{currentUser.displayName}</UsernameWrapper>
+          </UserInfoContainer>
+        </Link>
+
+        {/* <LoginStatusContainer>
+          <LogoutButton onClick={handleLogout}>
+            <GoSignOut />
+          </LogoutButton>
+          <Link to="/profile">
+            <RiSettings5Fill />
+          </Link>
+        </LoginStatusContainer>
+      </SideBottomContainer> */}
+    </SideBarWrapper>
   );
 };
 
