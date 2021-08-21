@@ -4,6 +4,8 @@ import styled from "styled-components";
 import UserProfilePic from "../components/UserProfilePic";
 import { useAuth } from "../contexts/AuthContext";
 import SettingScreen from "../screens/SettingScreen";
+import { LogoutButton } from "../pages/styles";
+import { GoSignOut } from "react-icons/go";
 
 const EntryForm = styled.form`
   display: flex;
@@ -77,11 +79,21 @@ const Profile = () => {
   const passwordConfirmRef = useRef(null);
   const usernameRef = useRef(null);
 
-  const { currentUser, updateEmail, updatePassword, updateUsername } =
+  const { currentUser, updateEmail, updatePassword, updateUsername, logout } =
     useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
+
+  const handleLogout = async () => {
+    // setError("");
+    try {
+      await logout();
+      // history.push("/login");
+    } catch {
+      // setError("Failed to logout");
+    }
+  };
 
   const handleSubmitUpdate = (e) => {
     e.preventDefault();
@@ -159,6 +171,9 @@ const Profile = () => {
               Update
             </LoginConfirmButton>
           </EntryForm>
+          <LogoutButton onClick={handleLogout}>
+            <GoSignOut /> Logout
+          </LogoutButton>
         </SettingContentContainer>
       </SettingBodyContainer>
     </SettingScreen>

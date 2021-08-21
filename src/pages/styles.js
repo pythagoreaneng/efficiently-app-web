@@ -111,6 +111,8 @@ export const UserProfilePicContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 2rem;
+  margin-top: 1rem;
 `;
 
 export const UserProfilePicWrapper = styled.div`

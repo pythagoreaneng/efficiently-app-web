@@ -24,6 +24,7 @@ import {
 
 export const SettingScreen = ({ children }) => {
   const { currentUser } = useAuth();
+
   return (
     <Container>
       <HeaderContainer>
