@@ -17,24 +17,34 @@ import {
 import UserProfilePic from "./UserProfilePic";
 import Search from "./Search";
 import Title from "./Title";
+import { BiMenu } from "react-icons/bi";
+import styled from "styled-components";
+
+const MenuWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 const Header = () => {
   return (
     <>
       <TitleContainer>
-        <Title />
+        <MenuWrapper>
+          <BiMenu size={30} />
+        </MenuWrapper>
       </TitleContainer>
+
       <SearchContainer>
         <Search />
       </SearchContainer>
       <SideBottomContainer>
-        <Link to="/profile">
+        {/* <Link to="/profile">
           <UserInfoContainer>
             <UserProfilePicContainer>
               <UserProfilePic />
             </UserProfilePicContainer>
           </UserInfoContainer>
-        </Link>
+        </Link> */}
       </SideBottomContainer>
     </>
   );

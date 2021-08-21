@@ -155,7 +155,7 @@ const SideBar = () => {
 
       {error && <div>Error: {error}</div>}
 
-      {/* <SideBottomContainer>
+      <SideBottomContainer>
         <Link to="/profile">
           <UserInfoContainer>
             <UserProfilePicContainer>
@@ -172,8 +172,8 @@ const SideBar = () => {
           <Link to="/profile">
             <RiSettings5Fill />
           </Link>
-        </LoginStatusContainer>
-      </SideBottomContainer> */}
+        </LoginStatusContainer>*/}
+      </SideBottomContainer>
     </SideBarWrapper>
   );
 };
