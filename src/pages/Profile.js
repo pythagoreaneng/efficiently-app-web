@@ -86,12 +86,12 @@ const Profile = () => {
   const history = useHistory();
 
   const handleLogout = async () => {
-    // setError("");
+    setError("");
     try {
       await logout();
-      // history.push("/login");
+      history.push("/login");
     } catch {
-      // setError("Failed to logout");
+      setError("Failed to logout");
     }
   };
 
@@ -139,8 +139,9 @@ const Profile = () => {
               type="username"
               id="username"
               name="username"
-              placeholder="@username"
+              placeholder="Username"
               ref={usernameRef}
+              defaultValue={currentUser.displayName}
             />
             <EntryInput
               type="email"
@@ -163,7 +164,7 @@ const Profile = () => {
               type="password"
               id="pwdcf"
               name="pwdcf"
-              placeholder="Confirm"
+              placeholder="Confirm Password"
               ref={passwordConfirmRef}
             />
 
