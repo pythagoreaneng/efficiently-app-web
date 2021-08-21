@@ -156,24 +156,23 @@ const SideBar = () => {
       {error && <div>Error: {error}</div>}
 
       <SideBottomContainer>
-        <UserInfoContainer>
-          <UserProfilePicContainer>
-            <UserProfilePic />
-          </UserProfilePicContainer>
+        <Link to="/profile">
+          <UserInfoContainer>
+            <UserProfilePicContainer>
+              <UserProfilePic />
+            </UserProfilePicContainer>
+            <UsernameWrapper> @{currentUser.displayName}</UsernameWrapper>
+          </UserInfoContainer>
+        </Link>
 
-          <UsernameWrapper>
-            <Link to="/profile">@{currentUser.displayName}</Link>
-          </UsernameWrapper>
-        </UserInfoContainer>
-
-        <LoginStatusContainer>
+        {/* <LoginStatusContainer>
           <LogoutButton onClick={handleLogout}>
             <GoSignOut />
           </LogoutButton>
           <Link to="/profile">
             <RiSettings5Fill />
           </Link>
-        </LoginStatusContainer>
+        </LoginStatusContainer>*/}
       </SideBottomContainer>
     </SideBarWrapper>
   );
