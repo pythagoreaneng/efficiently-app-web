@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.css";
-import { Inbox, Login, Security, Themes, Upgrade, Signup } from "./pages";
+import { Login, Security, Themes, Upgrade, Signup } from "./pages";
 import UserProvider from "./contexts/AuthContext";
 import TaskContextProvider from "./contexts/TaskContext";
 import {
@@ -14,7 +14,7 @@ import Reset from "./pages/Reset";
 import Profile from "./pages/Profile";
 import EntryContextProvider from "./contexts/EntryContext";
 import Settings from "./pages/Settings";
-import TaskScreen from "./screens/TaskScreen";
+import Inbox from "./pages/Inbox";
 
 function App() {
   return (
@@ -22,12 +22,12 @@ function App() {
       <UserProvider>
         <TaskContextProvider>
           <Switch>
-            <PrivateRoute exact path="/" component={TaskScreen} />
-            <PrivateRoute path="/today" component={TaskScreen} />
-            <PrivateRoute path="/star" component={TaskScreen} />
-            <PrivateRoute path="/upcoming" component={TaskScreen} />
-            <PrivateRoute path="/archive" component={TaskScreen} />
-            <PrivateRoute path="/search" component={TaskScreen} />
+            <PrivateRoute exact path="/" component={Inbox} />
+            <PrivateRoute path="/today" component={Inbox} />
+            <PrivateRoute path="/star" component={Inbox} />
+            <PrivateRoute path="/upcoming" component={Inbox} />
+            <PrivateRoute path="/archive" component={Inbox} />
+            <PrivateRoute path="/search" component={Inbox} />
             <EntryContextProvider>
               <PrivateRoute path="/profile" component={Profile} />
               <PrivateRoute path="/security" component={Security} />
@@ -38,7 +38,7 @@ function App() {
               <Route path="/signup" component={Signup} />
               <Route path="/reset" component={Reset} />
             </EntryContextProvider>
-            <Redirect to="/" component={TaskScreen} />
+            <Redirect to="/" component={Inbox} />
           </Switch>
         </TaskContextProvider>
       </UserProvider>

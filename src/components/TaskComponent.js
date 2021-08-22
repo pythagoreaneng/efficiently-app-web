@@ -1,5 +1,5 @@
 import React from "react";
-import { Header, SideBar, Body } from "../components/";
+import { Header, SideBar, Body } from "../components";
 import {
   Container,
   HeaderContainer,
@@ -8,7 +8,7 @@ import {
   BodyContainer,
 } from "../pages/styles";
 
-const TaskScreen = () => {
+const TaskComponent = () => {
   return (
     <Container>
       <HeaderContainer>
@@ -26,4 +26,4 @@ const TaskScreen = () => {
   );
 };
 
-export default TaskScreen;
+export default TaskComponent;

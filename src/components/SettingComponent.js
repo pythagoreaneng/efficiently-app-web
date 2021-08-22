@@ -1,13 +1,12 @@
 import React from "react";
 import {
-  RiArrowLeftSLine,
   RiDoorLockFill,
   RiFlashlightFill,
   RiPaletteFill,
   RiUserFill,
 } from "react-icons/ri";
 import { Link, NavLink } from "react-router-dom";
-import { Title } from "../components";
+import { Title } from ".";
 import { useAuth } from "../contexts/AuthContext";
 import {
   Container,
@@ -23,8 +22,6 @@ import {
 } from "../pages/styles";
 
 export const SettingComponent = ({ children }) => {
-  const { currentUser } = useAuth();
-
   return (
     <Container>
       <HeaderContainer>

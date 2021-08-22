@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { EntryContext } from "../contexts/EntryContext";
-import EntryScreen, {
+import EntryComponent, {
   EntryBottomLink,
   LoginConfirmButton,
   EntryButtonContainer,
   EntryForm,
   EntryInput,
   EntryInputContainer,
-} from "../screens/EntryScreen";
+} from "../components/EntryComponent";
 
 const Reset = () => {
   const { resetPassword } = useAuth();
@@ -61,7 +61,7 @@ const Reset = () => {
     </>
   );
   return (
-    <EntryScreen
+    <EntryComponent
       title="Reset Password"
       form={ResetForm}
       bottomMessage={RememberLoginMessage}

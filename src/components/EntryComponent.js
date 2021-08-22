@@ -146,7 +146,7 @@ export const SuccessMessage = styled.div`
 `;
 // interface for login, signup, reset pages
 // i.e. title: "Sign up", form={SignupForm}, bottomMessage={LoginMessage}
-const EntryScreen = ({ title, form, bottomMessage }) => {
+const EntryComponent = ({ title, form, bottomMessage }) => {
   // import error and success messages from Entry Context
   const { error, successMessage } = useContext(EntryContext);
   return (
@@ -164,4 +164,4 @@ const EntryScreen = ({ title, form, bottomMessage }) => {
   );
 };
 
-export default EntryScreen;
+export default EntryComponent;

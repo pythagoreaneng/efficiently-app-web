@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import SettingComponent from "../screens/SettingComponent";
+import SettingComponent from "../components/SettingComponent";
 
 const SettingBodyContainer = styled.div`
   display: flex;
