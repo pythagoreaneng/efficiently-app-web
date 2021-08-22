@@ -38,7 +38,6 @@ function App() {
               <Route path="/signup" component={Signup} />
               <Route path="/reset" component={Reset} />
             </EntryContextProvider>
-
             <Redirect to="/" component={TaskScreen} />
           </Switch>
         </TaskContextProvider>

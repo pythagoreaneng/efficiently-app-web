@@ -22,7 +22,7 @@ import {
   SideSectionWrapper,
 } from "../pages/styles";
 
-export const SettingScreen = ({ children }) => {
+export const SettingComponent = ({ children }) => {
   const { currentUser } = useAuth();
 
   return (
@@ -102,4 +102,4 @@ export const SettingScreen = ({ children }) => {
   );
 };
 
-export default SettingScreen;
+export default SettingComponent;

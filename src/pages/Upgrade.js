@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import SettingScreen from "../screens/SettingScreen";
+import SettingComponent from "../screens/SettingComponent";
 
 const SettingBodyContainer = styled.div`
   display: flex;
@@ -30,14 +30,14 @@ const SettingContentContainer = styled.div`
 
 const Upgrade = () => {
   return (
-    <SettingScreen>
+    <SettingComponent>
       <SettingBodyContainer>
         <SettingTitleContainer>
           Upgrade Your Efficiency with Efficiently+
         </SettingTitleContainer>
         <SettingContentContainer>Coming Soon</SettingContentContainer>
       </SettingBodyContainer>
-    </SettingScreen>
+    </SettingComponent>
   );
 };
 

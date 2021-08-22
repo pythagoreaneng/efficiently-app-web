@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import SettingScreen from "../screens/SettingScreen";
+import SettingComponent from "../screens/SettingComponent";
 
 const SettingBodyContainer = styled.div`
   display: flex;
@@ -30,12 +30,12 @@ const SettingContentContainer = styled.div`
 
 const Themes = () => {
   return (
-    <SettingScreen>
+    <SettingComponent>
       <SettingBodyContainer>
         <SettingTitleContainer>Theme settings</SettingTitleContainer>
         <SettingContentContainer>Coming Soon</SettingContentContainer>
       </SettingBodyContainer>
-    </SettingScreen>
+    </SettingComponent>
   );
 };
 
