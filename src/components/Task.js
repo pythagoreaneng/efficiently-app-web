@@ -52,12 +52,14 @@ const Task = ({ task }) => {
   };
 
   const outsideClick = () => {
-    if (edit === "") { // check if edit is empty
+    if (edit === "") {
+      // check if edit is empty
       removeTask(task.id);
       setIsEdit(false);
       return;
     }
-    if (edit === task.title) { // check if edit is the same
+    if (edit === task.title) {
+      // check if edit is the same
       setIsEdit(false);
       return;
     }

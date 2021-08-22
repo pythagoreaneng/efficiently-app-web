@@ -1,18 +1,6 @@
 import React from "react";
 import "./index.css";
-import {
-  Inbox,
-  Star,
-  Archive,
-  Upcoming,
-  Today,
-  Search,
-  Login,
-  Security,
-  Themes,
-  Upgrade,
-  Signup,
-} from "./pages";
+import { Inbox, Login, Security, Themes, Upgrade, Signup } from "./pages";
 import UserProvider from "./contexts/AuthContext";
 import TaskContextProvider from "./contexts/TaskContext";
 import {
@@ -26,6 +14,7 @@ import Reset from "./pages/Reset";
 import Profile from "./pages/Profile";
 import EntryContextProvider from "./contexts/EntryContext";
 import Settings from "./pages/Settings";
+import TaskScreen from "./screens/TaskScreen";
 
 function App() {
   return (
@@ -33,12 +22,12 @@ function App() {
       <UserProvider>
         <TaskContextProvider>
           <Switch>
-            <PrivateRoute exact path="/" component={Inbox} />
-            <PrivateRoute path="/today" component={Today} />
-            <PrivateRoute path="/star" component={Star} />
-            <PrivateRoute path="/upcoming" component={Upcoming} />
-            <PrivateRoute path="/archive" component={Archive} />
-            <PrivateRoute path="/search" component={Search} />
+            <PrivateRoute exact path="/" component={TaskScreen} />
+            <PrivateRoute path="/today" component={TaskScreen} />
+            <PrivateRoute path="/star" component={TaskScreen} />
+            <PrivateRoute path="/upcoming" component={TaskScreen} />
+            <PrivateRoute path="/archive" component={TaskScreen} />
+            <PrivateRoute path="/search" component={TaskScreen} />
             <EntryContextProvider>
               <PrivateRoute path="/profile" component={Profile} />
               <PrivateRoute path="/security" component={Security} />
@@ -50,7 +39,7 @@ function App() {
               <Route path="/reset" component={Reset} />
             </EntryContextProvider>
 
-            <Redirect to="/" component={Inbox} />
+            <Redirect to="/" component={TaskScreen} />
           </Switch>
         </TaskContextProvider>
       </UserProvider>
