@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { EntryContext } from "../contexts/EntryContext";
+import { EntryContext } from "../../contexts/EntryContext";
 import styled from "styled-components";
 
 const EntryBackground = styled.div`

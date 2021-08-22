@@ -5,9 +5,8 @@ import {
   RiPaletteFill,
   RiUserFill,
 } from "react-icons/ri";
-import { Link, NavLink } from "react-router-dom";
-import { Title } from ".";
-import { useAuth } from "../contexts/AuthContext";
+import { NavLink } from "react-router-dom";
+import Title from "../Title";
 import {
   Container,
   HeaderContainer,
@@ -19,7 +18,7 @@ import {
   SectionName,
   SideSectionContainer,
   SideSectionWrapper,
-} from "../pages/styles";
+} from "../../pages/styles";
 
 export const SettingComponent = ({ children }) => {
   return (

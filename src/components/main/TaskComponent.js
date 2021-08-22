@@ -1,12 +1,12 @@
 import React from "react";
-import { Header, SideBar, Body } from "../components";
+import { Header, SideBar, Body } from "..";
 import {
   Container,
   HeaderContainer,
   ContentContainer,
   SideBarContainer,
   BodyContainer,
-} from "../pages/styles";
+} from "../../pages/styles";
 
 const TaskComponent = () => {
   return (

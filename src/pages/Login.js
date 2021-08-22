@@ -9,7 +9,7 @@ import EntryComponent, {
   EntryForm,
   EntryInput,
   EntryInputContainer,
-} from "../components/EntryComponent";
+} from "../components/main/EntryComponent";
 
 const Login = () => {
   const { login, history } = useAuth();
