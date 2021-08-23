@@ -13,12 +13,12 @@ import {
   BodyContainer,
   SideBarContainer,
   ContentContainer,
-  HeaderLeftContainer,
   SectionIcon,
   SectionName,
   SideSectionContainer,
   SideSectionWrapper,
 } from "../../pages/styles";
+import { HeaderLeftContainer } from "../Header/styles";
 
 export const SettingComponent = ({ children }) => {
   return (

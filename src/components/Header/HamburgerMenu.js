@@ -1,11 +1,12 @@
 import React from "react";
 import { BiMenu } from "react-icons/bi";
+import { HeaderLeftContainer } from "./styles";
 
 const HamburgerMenu = () => {
   return (
-    <div>
+    <HeaderLeftContainer>
       <BiMenu size={30} />
-    </div>
+    </HeaderLeftContainer>
   );
 };
 

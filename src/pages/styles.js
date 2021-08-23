@@ -12,13 +12,6 @@ export const HeaderContainer = styled.div`
   align-items: center;
 `;
 
-export const HeaderLeftContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  font-size: 1.5em;
-  margin-left: 1rem;
-`;
-
 export const TitleWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -34,14 +27,6 @@ export const LogoWrapper = styled.div`
 export const SearchContainer = styled.div`
   width: 100%;
   display: flex;
-`;
-
-export const HeaderCenterContainer = styled.div`
-width 100%;
-height: auto;
-display: flex;
-justify-content: center;
-margin: 0 0.5rem;
 `;
 
 export const SearchInputContainer = styled.input`
