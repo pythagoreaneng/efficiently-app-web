@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { EntryContext } from "../contexts/EntryContext";
-import EntryScreen, {
+import {
   EntryBottomLink,
   EntryForgotMessage,
   LoginConfirmButton,
@@ -9,7 +9,8 @@ import EntryScreen, {
   EntryForm,
   EntryInput,
   EntryInputContainer,
-} from "../screens/EntryScreen";
+} from "../EntryComponent.js";
+import EntryComponent from "../EntryComponent";
 
 const Login = () => {
   const { login, history } = useAuth();
@@ -73,7 +74,11 @@ const Login = () => {
   );
 
   return (
-    <EntryScreen title="Login" form={LoginForm} bottomMessage={SignupMessage} />
+    <EntryComponent
+      title="Login"
+      form={LoginForm}
+      bottomMessage={SignupMessage}
+    />
   );
 };
 

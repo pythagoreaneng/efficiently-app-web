@@ -1,20 +1,7 @@
 import React from "react";
 import "./index.css";
-import {
-  Inbox,
-  Star,
-  Archive,
-  Upcoming,
-  Today,
-  Search,
-  Login,
-  Security,
-  Themes,
-  Upgrade,
-  Signup,
-} from "./pages";
-import UserProvider from "./contexts/AuthContext";
-import TaskContextProvider from "./contexts/TaskContext";
+import { Login, Reset, Signup } from "./pages";
+import { Inbox, Security, Themes, Profile, Upgrade } from "./pages";
 import {
   BrowserRouter as Router,
   Switch,
@@ -22,10 +9,11 @@ import {
   Redirect,
 } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
-import Reset from "./pages/Reset";
-import Profile from "./pages/Profile";
-import EntryContextProvider from "./contexts/EntryContext";
-import Settings from "./pages/Settings";
+import {
+  TaskContextProvider,
+  EntryContextProvider,
+  UserProvider,
+} from "./contexts";
 
 function App() {
   return (
@@ -34,22 +22,20 @@ function App() {
         <TaskContextProvider>
           <Switch>
             <PrivateRoute exact path="/" component={Inbox} />
-            <PrivateRoute path="/today" component={Today} />
-            <PrivateRoute path="/star" component={Star} />
-            <PrivateRoute path="/upcoming" component={Upcoming} />
-            <PrivateRoute path="/archive" component={Archive} />
-            <PrivateRoute path="/search" component={Search} />
+            <PrivateRoute path="/today" component={Inbox} />
+            <PrivateRoute path="/star" component={Inbox} />
+            <PrivateRoute path="/upcoming" component={Inbox} />
+            <PrivateRoute path="/archive" component={Inbox} />
+            <PrivateRoute path="/search" component={Inbox} />
             <EntryContextProvider>
               <PrivateRoute path="/profile" component={Profile} />
               <PrivateRoute path="/security" component={Security} />
               <PrivateRoute path="/themes" component={Themes} />
               <PrivateRoute path="/upgrade" component={Upgrade} />
-              <PrivateRoute path="/settings" component={Settings} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} />
               <Route path="/reset" component={Reset} />
             </EntryContextProvider>
-
             <Redirect to="/" component={Inbox} />
           </Switch>
         </TaskContextProvider>

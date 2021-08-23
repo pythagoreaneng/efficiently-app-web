@@ -1,23 +1,4 @@
 import styled from "styled-components";
-export const Container = styled.div`
-  height: 100vh;
-  width: auto;
-`;
-
-export const HeaderContainer = styled.div`
-  height: 10%;
-  width: 100wh;
-  background-color: #efefef;
-  display: flex;
-  align-items: center;
-`;
-
-export const TitleContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  font-size: 1.5em;
-  margin-left: 1rem;
-`;
 
 export const TitleWrapper = styled.div`
   display: flex;
@@ -26,7 +7,7 @@ export const TitleWrapper = styled.div`
 
 export const AppNameWrapper = styled.div`
   display: flex;
-  color: white;
+  color: black;
 `;
 export const LogoWrapper = styled.div`
   margin: 0 0.5rem;
@@ -36,15 +17,7 @@ export const SearchContainer = styled.div`
   display: flex;
 `;
 
-export const TopSearchForm = styled.div`
-  width 100%;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  margin: 0 0.5rem;
-`;
-
-export const TopSearchInput = styled.input`
+export const SearchInputContainer = styled.input`
   width: 80%;
   height: 2.5rem;
   border: 0.1rem solid #efefef;
@@ -58,76 +31,10 @@ export const TopSearchInput = styled.input`
   }
 `;
 
-export const ContentContainer = styled.div`
-  display: flex;
-  height: 90%;
-`;
-
-export const BodyContainer = styled.div`
-  width: 80%;
-  height: 100%;
-  position: relative;
-`;
-
-export const SideBarContainer = styled.div`
-  width: 20%;
-  background-color: #f7f7f7;
-`;
-
-export const SideBarWrapper = styled.div`
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-  // padding: 1rem 2rem;
-`;
-
-export const SideSectionContainer = styled.div`
-  width: auto;
-  height: 95%;
-  display: flex;
-  flex-direction: column;
-`;
-
-export const SideBottomContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-left: 1rem;
-`;
-
-export const UserInfoContainer = styled.div`
-  display: flex;
-  align-items: center;
-  padding-bottom: 1rem;
-`;
-
 export const LoginStatusContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
-
-export const UserProfilePicContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const UserProfilePicWrapper = styled.div`
-  height: 3rem;
-  width: 3rem;
-  background-color: #bbb;
-  border-radius: 50%;
-  border: 0.1rem solid #42bcef;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const UsernameWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  margin: 0.5rem;
 `;
 
 export const LogoutButton = styled.button`
@@ -163,7 +70,7 @@ export const SectionName = styled.div`
   padding: 1rem;
 `;
 
-export const MainTitleContainer = styled.div`
+export const MainHeaderLeftContainer = styled.div`
   height: 5%;
   width: 100%;
   display: flex;
@@ -223,7 +130,7 @@ export const EditInput = styled.input`
   }
 `;
 
-export const TaskTitleContainer = styled.div`
+export const TaskHeaderLeftContainer = styled.div`
   width: 70%;
 `;
 

@@ -106,8 +106,8 @@ export const TaskContextProvider = ({ children }) => {
       completed: false,
       star: false,
       createdDate: todayDate,
-      dueDate: "2021-07-31",
-      scheduleDate: "2021-08-28",
+      dueDate: "",
+      scheduleDate: "",
     });
     console.log("taskDB is:", taskDB.id);
     // clear input

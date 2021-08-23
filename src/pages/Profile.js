@@ -1,9 +1,9 @@
 import React, { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import UserProfilePic from "../components/UserProfilePic";
+import { UserProfilePic } from "../components/Body";
 import { useAuth } from "../contexts/AuthContext";
-import SettingScreen from "../screens/SettingScreen";
+import { SettingLayout } from "../components/Layouts";
 import { LogoutButton } from "../pages/styles";
 import { GoSignOut } from "react-icons/go";
 
@@ -47,7 +47,7 @@ const EntryErrorMessage = styled.div`
   background-color: #ffcccb;
 `;
 
-const SettingBodyContainer = styled.div`
+const SettingContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -56,7 +56,7 @@ const SettingBodyContainer = styled.div`
   align-items: center;
 `;
 
-const SettingTitleContainer = styled.div`
+const SettingHeaderLeftContainer = styled.div`
   display: flex;
   height: 15%;
   font-size: 2em;
@@ -64,7 +64,7 @@ const SettingTitleContainer = styled.div`
   align-items: center;
 `;
 
-const SettingContentContainer = styled.div`
+const SettingBodyContainer = styled.div`
   height: 85%;
   width: 100%;
   display: flex;
@@ -128,11 +128,13 @@ const Profile = () => {
   };
 
   return (
-    <SettingScreen>
-      <SettingBodyContainer>
+    <SettingLayout>
+      <SettingContentContainer>
         {error && <EntryErrorMessage>{error}</EntryErrorMessage>}
-        <SettingTitleContainer>Profile settings</SettingTitleContainer>
-        <SettingContentContainer>
+        <SettingHeaderLeftContainer>
+          Profile settings
+        </SettingHeaderLeftContainer>
+        <SettingBodyContainer>
           <UserProfilePic />
           <EntryForm onSubmit={handleSubmitUpdate}>
             <EntryInput
@@ -175,9 +177,9 @@ const Profile = () => {
           <LogoutButton onClick={handleLogout}>
             <GoSignOut /> Logout
           </LogoutButton>
-        </SettingContentContainer>
-      </SettingBodyContainer>
-    </SettingScreen>
+        </SettingBodyContainer>
+      </SettingContentContainer>
+    </SettingLayout>
   );
 };
 

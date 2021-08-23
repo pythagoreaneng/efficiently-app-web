@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
-import { TopSearchForm, TopSearchInput } from "../pages/styles";
-import { TaskContext } from "../contexts/TaskContext";
+import { SearchInputContainer } from "../../pages/styles";
+import { TaskContext } from "../../contexts/TaskContext";
+import { HeaderCenterContainer } from "./styles";
 
 const Search = () => {
   const {
@@ -35,8 +36,8 @@ const Search = () => {
     searchRef.current.click();
   };
   return (
-    <TopSearchForm>
-      <TopSearchInput
+    <HeaderCenterContainer>
+      <SearchInputContainer
         type="search"
         placeholder="Search(Press alt or  ⌥)"
         onChange={handleSearch}
@@ -45,7 +46,7 @@ const Search = () => {
         onKeyDown={inSearchBarKeyDown}
         onClick={handleSearchBarClick}
       />
-    </TopSearchForm>
+    </HeaderCenterContainer>
   );
 };
 
