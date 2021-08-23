@@ -1,11 +1,8 @@
-export { default as Inbox } from "./tasks/inbox";
-export { default as Today } from "./tasks/today";
-export { default as Star } from "./tasks/star";
-export { default as Upcoming } from "./tasks/upcoming";
-export { default as Archive } from "./tasks/archive";
-export { default as Search } from "./tasks/search";
+export { default as Inbox } from "./Inbox";
 export { default as Login } from "./Login";
 export { default as Security } from "../pages/Security";
 export { default as Themes } from "../pages/Themes";
 export { default as Upgrade } from "../pages/Upgrade";
 export { default as Signup } from "./Signup";
+export { default as Profile } from "./Profile";
+export { default as Reset } from "./Reset";

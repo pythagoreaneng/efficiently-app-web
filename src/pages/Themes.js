@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import SettingScreen from "../screens/SettingScreen";
+import { SettingLayout } from "../components/Layouts";
 
-const SettingBodyContainer = styled.div`
+const SettingContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -11,7 +11,7 @@ const SettingBodyContainer = styled.div`
   align-items: center;
 `;
 
-const SettingTitleContainer = styled.div`
+const SettingHeaderLeftContainer = styled.div`
   display: flex;
   height: 15%;
   font-size: 2em;
@@ -19,7 +19,7 @@ const SettingTitleContainer = styled.div`
   align-items: center;
 `;
 
-const SettingContentContainer = styled.div`
+const SettingBodyContainer = styled.div`
   height: 85%;
   width: 100%;
   display: flex;
@@ -30,12 +30,12 @@ const SettingContentContainer = styled.div`
 
 const Themes = () => {
   return (
-    <SettingScreen>
-      <SettingBodyContainer>
-        <SettingTitleContainer>Theme settings</SettingTitleContainer>
-        <SettingContentContainer>Coming Soon</SettingContentContainer>
-      </SettingBodyContainer>
-    </SettingScreen>
+    <SettingLayout>
+      <SettingContentContainer>
+        <SettingHeaderLeftContainer>Theme settings</SettingHeaderLeftContainer>
+        <SettingBodyContainer>Coming Soon</SettingBodyContainer>
+      </SettingContentContainer>
+    </SettingLayout>
   );
 };
 

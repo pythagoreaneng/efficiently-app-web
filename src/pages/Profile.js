@@ -1,9 +1,11 @@
 import React, { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import UserProfilePic from "../components/UserProfilePic";
+import { UserProfilePic } from "../components/Body";
 import { useAuth } from "../contexts/AuthContext";
-import SettingScreen from "../screens/SettingScreen";
+import { SettingLayout } from "../components/Layouts";
+import { LogoutButton } from "../pages/styles";
+import { GoSignOut } from "react-icons/go";
 
 const EntryForm = styled.form`
   display: flex;
@@ -45,7 +47,7 @@ const EntryErrorMessage = styled.div`
   background-color: #ffcccb;
 `;
 
-const SettingBodyContainer = styled.div`
+const SettingContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -54,7 +56,7 @@ const SettingBodyContainer = styled.div`
   align-items: center;
 `;
 
-const SettingTitleContainer = styled.div`
+const SettingHeaderLeftContainer = styled.div`
   display: flex;
   height: 15%;
   font-size: 2em;
@@ -62,7 +64,7 @@ const SettingTitleContainer = styled.div`
   align-items: center;
 `;
 
-const SettingContentContainer = styled.div`
+const SettingBodyContainer = styled.div`
   height: 85%;
   width: 100%;
   display: flex;
@@ -77,11 +79,21 @@ const Profile = () => {
   const passwordConfirmRef = useRef(null);
   const usernameRef = useRef(null);
 
-  const { currentUser, updateEmail, updatePassword, updateUsername } =
+  const { currentUser, updateEmail, updatePassword, updateUsername, logout } =
     useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
+
+  const handleLogout = async () => {
+    setError("");
+    try {
+      await logout();
+      history.push("/login");
+    } catch {
+      setError("Failed to logout");
+    }
+  };
 
   const handleSubmitUpdate = (e) => {
     e.preventDefault();
@@ -116,19 +128,22 @@ const Profile = () => {
   };
 
   return (
-    <SettingScreen>
-      <SettingBodyContainer>
+    <SettingLayout>
+      <SettingContentContainer>
         {error && <EntryErrorMessage>{error}</EntryErrorMessage>}
-        <SettingTitleContainer>Profile settings</SettingTitleContainer>
-        <SettingContentContainer>
+        <SettingHeaderLeftContainer>
+          Profile settings
+        </SettingHeaderLeftContainer>
+        <SettingBodyContainer>
           <UserProfilePic />
           <EntryForm onSubmit={handleSubmitUpdate}>
             <EntryInput
               type="username"
               id="username"
               name="username"
-              placeholder="@username"
+              placeholder="Username"
               ref={usernameRef}
+              defaultValue={currentUser.displayName}
             />
             <EntryInput
               type="email"
@@ -151,7 +166,7 @@ const Profile = () => {
               type="password"
               id="pwdcf"
               name="pwdcf"
-              placeholder="Confirm"
+              placeholder="Confirm Password"
               ref={passwordConfirmRef}
             />
 
@@ -159,9 +174,12 @@ const Profile = () => {
               Update
             </LoginConfirmButton>
           </EntryForm>
-        </SettingContentContainer>
-      </SettingBodyContainer>
-    </SettingScreen>
+          <LogoutButton onClick={handleLogout}>
+            <GoSignOut /> Logout
+          </LogoutButton>
+        </SettingBodyContainer>
+      </SettingContentContainer>
+    </SettingLayout>
   );
 };
 

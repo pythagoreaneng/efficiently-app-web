@@ -1,15 +1,15 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { RiCloseFill, RiStarSFill, RiStarSLine } from "react-icons/ri";
 import moment from "moment";
-import { TaskContext } from "../contexts/TaskContext";
+import { TaskContext } from "../../contexts/TaskContext";
 import {
   Checkbox,
   DaysContainer,
   EditInput,
   OptionContainer,
   TaskContainer,
-  TaskTitleContainer,
-} from "../pages/styles";
+  TaskHeaderLeftContainer,
+} from "../../pages/styles.js";
 
 const Task = ({ task }) => {
   const { completeTask, removeTask, toggleStar, editTask } =
@@ -52,12 +52,14 @@ const Task = ({ task }) => {
   };
 
   const outsideClick = () => {
-    if (edit === "") { // check if edit is empty
+    if (edit === "") {
+      // check if edit is empty
       removeTask(task.id);
       setIsEdit(false);
       return;
     }
-    if (edit === task.title) { // check if edit is the same
+    if (edit === task.title) {
+      // check if edit is the same
       setIsEdit(false);
       return;
     }
@@ -76,7 +78,7 @@ const Task = ({ task }) => {
         type="Checkbox"
         onClick={() => completeTask(task)}
       />
-      <TaskTitleContainer onClick={handleOnClickEdit}>
+      <TaskHeaderLeftContainer onClick={handleOnClickEdit}>
         {isEdit ? (
           <EditInput
             placeholder="Press enter to confirm edit"
@@ -89,7 +91,7 @@ const Task = ({ task }) => {
         ) : (
           <div>{edit}</div>
         )}
-      </TaskTitleContainer>
+      </TaskHeaderLeftContainer>
       <DaysContainer>
         <p>{task.scheduleDate && <span>Scheduled {untilScheduleDate}</span>}</p>
         <p>{task.dueDate && <span>due {untilDueDate}</span>}</p>

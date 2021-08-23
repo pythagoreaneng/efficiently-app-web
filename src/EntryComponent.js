@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { EntryContext } from "../contexts/EntryContext";
+import { EntryContext } from "./contexts/EntryContext";
 import styled from "styled-components";
 
 const EntryBackground = styled.div`
@@ -39,7 +39,7 @@ export const EntryPanelContainer = styled.div`
   text-align: center;
 `;
 
-export const EntryTitleContainer = styled.div`
+export const EntryHeaderLeftContainer = styled.div`
   height: 30%;
   font-size: 1.7em;
   display: flex;
@@ -47,7 +47,7 @@ export const EntryTitleContainer = styled.div`
   justify-content: center;
 `;
 
-export const EntryBodyContainer = styled.div`
+export const EntryContentContainer = styled.div`
   height: 70%;
   width: 60%;
   font-size: 1em;
@@ -146,7 +146,7 @@ export const SuccessMessage = styled.div`
 `;
 // interface for login, signup, reset pages
 // i.e. title: "Sign up", form={SignupForm}, bottomMessage={LoginMessage}
-const EntryScreen = ({ title, form, bottomMessage }) => {
+const EntryComponent = ({ title, form, bottomMessage }) => {
   // import error and success messages from Entry Context
   const { error, successMessage } = useContext(EntryContext);
   return (
@@ -155,8 +155,8 @@ const EntryScreen = ({ title, form, bottomMessage }) => {
         <EntryPanelContainer>
           {successMessage && <SuccessMessage>{successMessage}</SuccessMessage>}
           {error && <EntryErrorMessage>{error}</EntryErrorMessage>}
-          <EntryTitleContainer>{title}</EntryTitleContainer>
-          <EntryBodyContainer>{form}</EntryBodyContainer>
+          <EntryHeaderLeftContainer>{title}</EntryHeaderLeftContainer>
+          <EntryContentContainer>{form}</EntryContentContainer>
         </EntryPanelContainer>
         <EntryBottomContainer>{bottomMessage}</EntryBottomContainer>
       </EntryColumnContainer>
@@ -164,4 +164,4 @@ const EntryScreen = ({ title, form, bottomMessage }) => {
   );
 };
 
-export default EntryScreen;
+export default EntryComponent;

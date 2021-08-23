@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 import { useAuth } from "../contexts/AuthContext";
-import EntryScreen, {
+import EntryComponent, {
   EntryBottomLink,
   LoginConfirmButton,
   EntryButtonContainer,
   EntryForm,
   EntryInput,
   EntryInputContainer,
-} from "../screens/EntryScreen";
+} from "../EntryComponent.js";
 import { EntryContext } from "../contexts/EntryContext";
 
 const Signup = () => {
@@ -82,7 +82,7 @@ const Signup = () => {
     </>
   );
   return (
-    <EntryScreen
+    <EntryComponent
       title="Signup"
       form={SignupForm}
       bottomMessage={LoginMessage}
