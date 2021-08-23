@@ -10,9 +10,9 @@ import Title from "../Header/Title";
 import {
   Container,
   HeaderContainer,
-  ContentContainer,
-  SideBarContainer,
   BodyContainer,
+  SideBarContainer,
+  ContentContainer,
   TitleContainer,
   SectionIcon,
   SectionName,
@@ -28,7 +28,7 @@ export const SettingComponent = ({ children }) => {
           <Title />
         </TitleContainer>
       </HeaderContainer>
-      <ContentContainer>
+      <BodyContainer>
         <SideBarContainer>
           <SideSectionContainer>
             <SideSectionWrapper>
@@ -92,8 +92,8 @@ export const SettingComponent = ({ children }) => {
             </SideSectionWrapper>
           </SideSectionContainer>
         </SideBarContainer>
-        <BodyContainer>{children}</BodyContainer>
-      </ContentContainer>
+        <ContentContainer>{children}</ContentContainer>
+      </BodyContainer>
     </Container>
   );
 };

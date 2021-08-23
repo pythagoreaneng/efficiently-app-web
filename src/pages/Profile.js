@@ -47,7 +47,7 @@ const EntryErrorMessage = styled.div`
   background-color: #ffcccb;
 `;
 
-const SettingBodyContainer = styled.div`
+const SettingContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -64,7 +64,7 @@ const SettingTitleContainer = styled.div`
   align-items: center;
 `;
 
-const SettingContentContainer = styled.div`
+const SettingBodyContainer = styled.div`
   height: 85%;
   width: 100%;
   display: flex;
@@ -129,10 +129,10 @@ const Profile = () => {
 
   return (
     <SettingComponent>
-      <SettingBodyContainer>
+      <SettingContentContainer>
         {error && <EntryErrorMessage>{error}</EntryErrorMessage>}
         <SettingTitleContainer>Profile settings</SettingTitleContainer>
-        <SettingContentContainer>
+        <SettingBodyContainer>
           <UserProfilePic />
           <EntryForm onSubmit={handleSubmitUpdate}>
             <EntryInput
@@ -175,8 +175,8 @@ const Profile = () => {
           <LogoutButton onClick={handleLogout}>
             <GoSignOut /> Logout
           </LogoutButton>
-        </SettingContentContainer>
-      </SettingBodyContainer>
+        </SettingBodyContainer>
+      </SettingContentContainer>
     </SettingComponent>
   );
 };

@@ -47,7 +47,7 @@ export const EntryTitleContainer = styled.div`
   justify-content: center;
 `;
 
-export const EntryBodyContainer = styled.div`
+export const EntryContentContainer = styled.div`
   height: 70%;
   width: 60%;
   font-size: 1em;
@@ -156,7 +156,7 @@ const EntryComponent = ({ title, form, bottomMessage }) => {
           {successMessage && <SuccessMessage>{successMessage}</SuccessMessage>}
           {error && <EntryErrorMessage>{error}</EntryErrorMessage>}
           <EntryTitleContainer>{title}</EntryTitleContainer>
-          <EntryBodyContainer>{form}</EntryBodyContainer>
+          <EntryContentContainer>{form}</EntryContentContainer>
         </EntryPanelContainer>
         <EntryBottomContainer>{bottomMessage}</EntryBottomContainer>
       </EntryColumnContainer>

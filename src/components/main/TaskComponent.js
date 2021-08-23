@@ -1,27 +1,53 @@
 import React from "react";
-import { Header, SideBar, Body } from "..";
+
 import {
   Container,
-  HeaderContainer,
-  ContentContainer,
-  SideBarContainer,
   BodyContainer,
+  SideBarContainer,
+  TaskInputContainer,
+  TitleContainer,
+  SearchContainer,
 } from "../../pages/styles";
+
+import { TaskListContainer } from "../../pages/styles";
+import TaskList from "../Body/TaskList";
+import TaskInput from "../Body/TaskInput";
+import TaskListContextProvider from "../../contexts/TaskListContext";
+import Search from "../Header/Search";
+import { BiMenu } from "react-icons/bi";
+import Header from "../Header/Header";
+import SideBar from "../Body/SideBar";
+import Content from "../Body/Content";
+import Body from "../Body/Body";
 
 const TaskComponent = () => {
   return (
     <Container>
-      <HeaderContainer>
-        <Header />
-      </HeaderContainer>
-      <ContentContainer>
+      <Header>
+        <TitleContainer>
+          <BiMenu size={30} />
+        </TitleContainer>
+
+        <SearchContainer>
+          <Search />
+        </SearchContainer>
+      </Header>
+      <Body>
         <SideBarContainer>
           <SideBar />
         </SideBarContainer>
-        <BodyContainer>
-          <Body />
-        </BodyContainer>
-      </ContentContainer>
+
+        <Content>
+          <TaskListContainer>
+            <TaskListContextProvider>
+              <TaskList />
+            </TaskListContextProvider>
+          </TaskListContainer>
+          <TaskInputContainer>
+            <TaskInput />
+          </TaskInputContainer>
+        </Content>
+      </Body>
     </Container>
   );
 };

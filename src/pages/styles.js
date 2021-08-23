@@ -58,12 +58,12 @@ export const TopSearchInput = styled.input`
   }
 `;
 
-export const ContentContainer = styled.div`
+export const BodyContainer = styled.div`
   display: flex;
   height: 90%;
 `;
 
-export const BodyContainer = styled.div`
+export const ContentContainer = styled.div`
   width: 80%;
   height: 100%;
   position: relative;

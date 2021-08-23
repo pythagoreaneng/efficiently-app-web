@@ -12,9 +12,9 @@ import { useAuth } from "../contexts/AuthContext";
 import {
   Container,
   HeaderContainer,
-  ContentContainer,
-  SideBarContainer,
   BodyContainer,
+  SideBarContainer,
+  ContentContainer,
   TitleContainer,
   SectionIcon,
   SectionName,
@@ -31,7 +31,7 @@ const Settings = () => {
           <Title />
         </TitleContainer>
       </HeaderContainer>
-      <ContentContainer>
+      <BodyContainer>
         <SideBarContainer>
           <SideSectionContainer>
             <SideSectionWrapper>
@@ -97,8 +97,8 @@ const Settings = () => {
             <Link to="/profile"> Welcome, @{currentUser.displayName}</Link>
           </SideSectionContainer>
         </SideBarContainer>
-        <BodyContainer></BodyContainer>
-      </ContentContainer>
+        <ContentContainer></ContentContainer>
+      </BodyContainer>
     </Container>
   );
 };

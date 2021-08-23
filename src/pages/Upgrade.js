@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import SettingComponent from "../components/main/SettingComponent";
 
-const SettingBodyContainer = styled.div`
+const SettingContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -19,7 +19,7 @@ const SettingTitleContainer = styled.div`
   align-items: center;
 `;
 
-const SettingContentContainer = styled.div`
+const SettingBodyContainer = styled.div`
   height: 85%;
   width: 100%;
   display: flex;
@@ -31,12 +31,12 @@ const SettingContentContainer = styled.div`
 const Upgrade = () => {
   return (
     <SettingComponent>
-      <SettingBodyContainer>
+      <SettingContentContainer>
         <SettingTitleContainer>
           Upgrade Your Efficiency with Efficiently+
         </SettingTitleContainer>
-        <SettingContentContainer>Coming Soon</SettingContentContainer>
-      </SettingBodyContainer>
+        <SettingBodyContainer>Coming Soon</SettingBodyContainer>
+      </SettingContentContainer>
     </SettingComponent>
   );
 };

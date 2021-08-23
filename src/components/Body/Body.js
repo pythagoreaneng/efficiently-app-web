@@ -1,22 +1,8 @@
 import React from "react";
-import { TaskListContainer, TaskInputContainer } from "../../pages/styles";
-import TaskList from "./TaskList";
-import TaskInput from "../Body/TaskInput";
-import TaskListContextProvider from "../../contexts/TaskListContext";
+import { BodyContainer } from "../../pages/styles";
 
-const Body = () => {
-  return (
-    <>
-      <TaskListContainer>
-        <TaskListContextProvider>
-          <TaskList />
-        </TaskListContextProvider>
-      </TaskListContainer>
-      <TaskInputContainer>
-        <TaskInput />
-      </TaskInputContainer>
-    </>
-  );
+const Body = ({ children }) => {
+  return <BodyContainer>{children}</BodyContainer>;
 };
 
 export default Body;
