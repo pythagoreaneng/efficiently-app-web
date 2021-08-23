@@ -11,7 +11,7 @@ const SettingContentContainer = styled.div`
   align-items: center;
 `;
 
-const SettingTitleContainer = styled.div`
+const SettingHeaderLeftContainer = styled.div`
   display: flex;
   height: 15%;
   font-size: 2em;
@@ -32,9 +32,9 @@ const Upgrade = () => {
   return (
     <SettingComponent>
       <SettingContentContainer>
-        <SettingTitleContainer>
+        <SettingHeaderLeftContainer>
           Upgrade Your Efficiency with Efficiently+
-        </SettingTitleContainer>
+        </SettingHeaderLeftContainer>
         <SettingBodyContainer>Coming Soon</SettingBodyContainer>
       </SettingContentContainer>
     </SettingComponent>

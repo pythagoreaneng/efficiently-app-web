@@ -23,6 +23,7 @@ import {
   LoginStatusContainer,
   LogoutButton,
   SideBottomContainer,
+  SideBarContainer,
 } from "../../pages/styles";
 import { useAuth } from "../../contexts/AuthContext";
 import UserProfilePic from "../UserProfilePic";
@@ -62,119 +63,121 @@ const SideBar = () => {
     });
 
   return (
-    <SideBarWrapper>
-      <SideSectionContainer>
-        <SideSectionWrapper>
-          <SectionIcon>
-            <RiInboxFill />
-          </SectionIcon>
-          <SectionName>
-            <NavLink
-              exact
-              to="/"
-              activeStyle={{ fontWeight: "bold" }}
-              ref={inboxRef}
-            >
-              Inbox
-            </NavLink>
-          </SectionName>
-        </SideSectionWrapper>
-        <SideSectionWrapper>
-          <SectionIcon>
-            <RiLightbulbFlashFill />
-          </SectionIcon>
+    <SideBarContainer>
+      <SideBarWrapper>
+        <SideSectionContainer>
+          <SideSectionWrapper>
+            <SectionIcon>
+              <RiInboxFill />
+            </SectionIcon>
+            <SectionName>
+              <NavLink
+                exact
+                to="/"
+                activeStyle={{ fontWeight: "bold" }}
+                ref={inboxRef}
+              >
+                Inbox
+              </NavLink>
+            </SectionName>
+          </SideSectionWrapper>
+          <SideSectionWrapper>
+            <SectionIcon>
+              <RiLightbulbFlashFill />
+            </SectionIcon>
 
-          <SectionName>
-            <NavLink
-              to="/today"
-              activeStyle={{ fontWeight: "bold" }}
-              ref={todayRef}
-            >
-              Today
-            </NavLink>
-          </SectionName>
-        </SideSectionWrapper>
-        <SideSectionWrapper>
-          <SectionIcon>
-            <RiStarSFill />
-          </SectionIcon>
+            <SectionName>
+              <NavLink
+                to="/today"
+                activeStyle={{ fontWeight: "bold" }}
+                ref={todayRef}
+              >
+                Today
+              </NavLink>
+            </SectionName>
+          </SideSectionWrapper>
+          <SideSectionWrapper>
+            <SectionIcon>
+              <RiStarSFill />
+            </SectionIcon>
 
-          <SectionName>
-            <NavLink
-              to="/star"
-              activeStyle={{ fontWeight: "bold" }}
-              ref={starRef}
-            >
-              Star
-            </NavLink>
-          </SectionName>
-        </SideSectionWrapper>
-        <SideSectionWrapper>
-          <SectionIcon>
-            <RiCalendarTodoFill />
-          </SectionIcon>
-          <SectionName>
-            <NavLink
-              to="/upcoming"
-              activeStyle={{ fontWeight: "bold" }}
-              ref={upcomingRef}
-            >
-              Upcoming
-            </NavLink>
-          </SectionName>
-        </SideSectionWrapper>
-        <SideSectionWrapper>
-          <SectionIcon>
-            <RiArchiveFill />
-          </SectionIcon>
-          <SectionName>
-            <NavLink
-              to="/archive"
-              activeStyle={{ fontWeight: "bold" }}
-              ref={archiveRef}
-            >
-              Archive
-            </NavLink>
-          </SectionName>
-        </SideSectionWrapper>
-        <SideSectionWrapper>
-          <SectionIcon>
-            <RiSearchLine />
-          </SectionIcon>
-          <SectionName>
-            <NavLink
-              to="/search"
-              activeStyle={{ fontWeight: "bold" }}
-              ref={searchRef}
-            >
-              Search
-            </NavLink>
-          </SectionName>
-        </SideSectionWrapper>
-      </SideSectionContainer>
+            <SectionName>
+              <NavLink
+                to="/star"
+                activeStyle={{ fontWeight: "bold" }}
+                ref={starRef}
+              >
+                Star
+              </NavLink>
+            </SectionName>
+          </SideSectionWrapper>
+          <SideSectionWrapper>
+            <SectionIcon>
+              <RiCalendarTodoFill />
+            </SectionIcon>
+            <SectionName>
+              <NavLink
+                to="/upcoming"
+                activeStyle={{ fontWeight: "bold" }}
+                ref={upcomingRef}
+              >
+                Upcoming
+              </NavLink>
+            </SectionName>
+          </SideSectionWrapper>
+          <SideSectionWrapper>
+            <SectionIcon>
+              <RiArchiveFill />
+            </SectionIcon>
+            <SectionName>
+              <NavLink
+                to="/archive"
+                activeStyle={{ fontWeight: "bold" }}
+                ref={archiveRef}
+              >
+                Archive
+              </NavLink>
+            </SectionName>
+          </SideSectionWrapper>
+          <SideSectionWrapper>
+            <SectionIcon>
+              <RiSearchLine />
+            </SectionIcon>
+            <SectionName>
+              <NavLink
+                to="/search"
+                activeStyle={{ fontWeight: "bold" }}
+                ref={searchRef}
+              >
+                Search
+              </NavLink>
+            </SectionName>
+          </SideSectionWrapper>
+        </SideSectionContainer>
 
-      {error && <div>Error: {error}</div>}
+        {error && <div>Error: {error}</div>}
 
-      <SideBottomContainer>
-        <Link to="/profile">
-          <UserInfoContainer>
-            <UserProfilePicContainer>
-              <UserProfilePic />
-            </UserProfilePicContainer>
-            <UsernameWrapper> @{currentUser.displayName}</UsernameWrapper>
-          </UserInfoContainer>
-        </Link>
-
-        {/* <LoginStatusContainer>
-          <LogoutButton onClick={handleLogout}>
-            <GoSignOut />
-          </LogoutButton>
+        <SideBottomContainer>
           <Link to="/profile">
-            <RiSettings5Fill />
+            <UserInfoContainer>
+              <UserProfilePicContainer>
+                <UserProfilePic />
+              </UserProfilePicContainer>
+              <UsernameWrapper> @{currentUser.displayName}</UsernameWrapper>
+            </UserInfoContainer>
           </Link>
-        </LoginStatusContainer>*/}
-      </SideBottomContainer>
-    </SideBarWrapper>
+
+          {/* <LoginStatusContainer>
+        <LogoutButton onClick={handleLogout}>
+          <GoSignOut />
+        </LogoutButton>
+        <Link to="/profile">
+          <RiSettings5Fill />
+        </Link>
+      </LoginStatusContainer>*/}
+        </SideBottomContainer>
+      </SideBarWrapper>
+    </SideBarContainer>
   );
 };
 

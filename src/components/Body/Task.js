@@ -8,7 +8,7 @@ import {
   EditInput,
   OptionContainer,
   TaskContainer,
-  TaskTitleContainer,
+  TaskHeaderLeftContainer,
 } from "../../pages/styles.js";
 
 const Task = ({ task }) => {
@@ -78,7 +78,7 @@ const Task = ({ task }) => {
         type="Checkbox"
         onClick={() => completeTask(task)}
       />
-      <TaskTitleContainer onClick={handleOnClickEdit}>
+      <TaskHeaderLeftContainer onClick={handleOnClickEdit}>
         {isEdit ? (
           <EditInput
             placeholder="Press enter to confirm edit"
@@ -91,7 +91,7 @@ const Task = ({ task }) => {
         ) : (
           <div>{edit}</div>
         )}
-      </TaskTitleContainer>
+      </TaskHeaderLeftContainer>
       <DaysContainer>
         <p>{task.scheduleDate && <span>Scheduled {untilScheduleDate}</span>}</p>
         <p>{task.dueDate && <span>due {untilDueDate}</span>}</p>

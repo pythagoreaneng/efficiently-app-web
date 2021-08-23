@@ -13,7 +13,7 @@ import {
   BodyContainer,
   SideBarContainer,
   ContentContainer,
-  TitleContainer,
+  HeaderLeftContainer,
   SectionIcon,
   SectionName,
   SideSectionContainer,
@@ -24,9 +24,9 @@ export const SettingComponent = ({ children }) => {
   return (
     <Container>
       <HeaderContainer>
-        <TitleContainer>
+        <HeaderLeftContainer>
           <Title />
-        </TitleContainer>
+        </HeaderLeftContainer>
       </HeaderContainer>
       <BodyContainer>
         <SideBarContainer>

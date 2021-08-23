@@ -5,8 +5,9 @@ import {
   BodyContainer,
   SideBarContainer,
   TaskInputContainer,
-  TitleContainer,
+  HeaderLeftContainer,
   SearchContainer,
+  HeaderCenterContainer,
 } from "../../pages/styles";
 
 import { TaskListContainer } from "../../pages/styles";
@@ -19,23 +20,22 @@ import Header from "../Header/Header";
 import SideBar from "../Body/SideBar";
 import Content from "../Body/Content";
 import Body from "../Body/Body";
+import HamburgerMenu from "../Header/HamburgerMenu";
 
 const TaskComponent = () => {
   return (
     <Container>
       <Header>
-        <TitleContainer>
-          <BiMenu size={30} />
-        </TitleContainer>
-
-        <SearchContainer>
+        <HeaderLeftContainer>
+          <HamburgerMenu />
+        </HeaderLeftContainer>
+        <HeaderCenterContainer>
           <Search />
-        </SearchContainer>
+        </HeaderCenterContainer>
       </Header>
+
       <Body>
-        <SideBarContainer>
-          <SideBar />
-        </SideBarContainer>
+        <SideBar />
 
         <Content>
           <TaskListContainer>

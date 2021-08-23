@@ -15,7 +15,7 @@ import {
   BodyContainer,
   SideBarContainer,
   ContentContainer,
-  TitleContainer,
+  HeaderLeftContainer,
   SectionIcon,
   SectionName,
   SideSectionContainer,
@@ -27,9 +27,9 @@ const Settings = () => {
   return (
     <Container>
       <HeaderContainer>
-        <TitleContainer>
+        <HeaderLeftContainer>
           <Title />
-        </TitleContainer>
+        </HeaderLeftContainer>
       </HeaderContainer>
       <BodyContainer>
         <SideBarContainer>

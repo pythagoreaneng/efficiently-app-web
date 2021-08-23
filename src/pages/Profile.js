@@ -56,7 +56,7 @@ const SettingContentContainer = styled.div`
   align-items: center;
 `;
 
-const SettingTitleContainer = styled.div`
+const SettingHeaderLeftContainer = styled.div`
   display: flex;
   height: 15%;
   font-size: 2em;
@@ -131,7 +131,9 @@ const Profile = () => {
     <SettingComponent>
       <SettingContentContainer>
         {error && <EntryErrorMessage>{error}</EntryErrorMessage>}
-        <SettingTitleContainer>Profile settings</SettingTitleContainer>
+        <SettingHeaderLeftContainer>
+          Profile settings
+        </SettingHeaderLeftContainer>
         <SettingBodyContainer>
           <UserProfilePic />
           <EntryForm onSubmit={handleSubmitUpdate}>

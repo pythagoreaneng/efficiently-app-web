@@ -39,7 +39,7 @@ export const EntryPanelContainer = styled.div`
   text-align: center;
 `;
 
-export const EntryTitleContainer = styled.div`
+export const EntryHeaderLeftContainer = styled.div`
   height: 30%;
   font-size: 1.7em;
   display: flex;
@@ -155,7 +155,7 @@ const EntryComponent = ({ title, form, bottomMessage }) => {
         <EntryPanelContainer>
           {successMessage && <SuccessMessage>{successMessage}</SuccessMessage>}
           {error && <EntryErrorMessage>{error}</EntryErrorMessage>}
-          <EntryTitleContainer>{title}</EntryTitleContainer>
+          <EntryHeaderLeftContainer>{title}</EntryHeaderLeftContainer>
           <EntryContentContainer>{form}</EntryContentContainer>
         </EntryPanelContainer>
         <EntryBottomContainer>{bottomMessage}</EntryBottomContainer>

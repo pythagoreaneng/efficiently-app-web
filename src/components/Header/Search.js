@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { TopSearchForm, TopSearchInput } from "../../pages/styles";
+import { SearchInputContainer } from "../../pages/styles";
 import { TaskContext } from "../../contexts/TaskContext";
 
 const Search = () => {
@@ -35,17 +35,15 @@ const Search = () => {
     searchRef.current.click();
   };
   return (
-    <TopSearchForm>
-      <TopSearchInput
-        type="search"
-        placeholder="Search(Press alt or  ⌥)"
-        onChange={handleSearch}
-        value={search}
-        ref={searchBarRef}
-        onKeyDown={inSearchBarKeyDown}
-        onClick={handleSearchBarClick}
-      />
-    </TopSearchForm>
+    <SearchInputContainer
+      type="search"
+      placeholder="Search(Press alt or  ⌥)"
+      onChange={handleSearch}
+      value={search}
+      ref={searchBarRef}
+      onKeyDown={inSearchBarKeyDown}
+      onClick={handleSearchBarClick}
+    />
   );
 };
 

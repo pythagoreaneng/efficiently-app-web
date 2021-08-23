@@ -12,7 +12,7 @@ export const HeaderContainer = styled.div`
   align-items: center;
 `;
 
-export const TitleContainer = styled.div`
+export const HeaderLeftContainer = styled.div`
   display: flex;
   flex-direction: row;
   font-size: 1.5em;
@@ -36,15 +36,15 @@ export const SearchContainer = styled.div`
   display: flex;
 `;
 
-export const TopSearchForm = styled.div`
-  width 100%;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  margin: 0 0.5rem;
+export const HeaderCenterContainer = styled.div`
+width 100%;
+height: auto;
+display: flex;
+justify-content: center;
+margin: 0 0.5rem;
 `;
 
-export const TopSearchInput = styled.input`
+export const SearchInputContainer = styled.input`
   width: 80%;
   height: 2.5rem;
   border: 0.1rem solid #efefef;
@@ -163,7 +163,7 @@ export const SectionName = styled.div`
   padding: 1rem;
 `;
 
-export const MainTitleContainer = styled.div`
+export const MainHeaderLeftContainer = styled.div`
   height: 5%;
   width: 100%;
   display: flex;
@@ -223,7 +223,7 @@ export const EditInput = styled.input`
   }
 `;
 
-export const TaskTitleContainer = styled.div`
+export const TaskHeaderLeftContainer = styled.div`
   width: 70%;
 `;
 
