@@ -1,4 +1,4 @@
-import React, { useState, useContext, Children } from "react";
+import React, { useContext } from "react";
 import {
   RiInboxFill,
   RiStarSFill,
@@ -7,14 +7,13 @@ import {
   RiLightbulbFlashFill,
   RiSearchLine,
 } from "react-icons/ri";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { TaskContext } from "../../contexts/TaskContext";
 import {
   SectionIcon,
   SectionName,
   SideSectionWrapper,
 } from "../../pages/styles";
-import { useAuth } from "../../contexts/AuthContext";
 
 const TaskSiderBar = () => {
   const { inboxRef, starRef, archiveRef, upcomingRef, todayRef, searchRef } =

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { EntryContext } from "../contexts/EntryContext";
-import EntryComponent, {
+import {
   EntryBottomLink,
   EntryForgotMessage,
   LoginConfirmButton,
@@ -9,7 +9,8 @@ import EntryComponent, {
   EntryForm,
   EntryInput,
   EntryInputContainer,
-} from "../components/main/EntryComponent";
+} from "../EntryComponent.js";
+import EntryComponent from "../EntryComponent";
 
 const Login = () => {
   const { login, history } = useAuth();

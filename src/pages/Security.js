@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import SettingComponent from "../components/main/SettingComponent";
+import SettingLayout from "../components/SettingLayout.js/SettingLayout";
 
 const SettingContentContainer = styled.div`
   display: flex;
@@ -30,14 +30,14 @@ const SettingBodyContainer = styled.div`
 
 const Security = () => {
   return (
-    <SettingComponent>
+    <SettingLayout>
       <SettingContentContainer>
         <SettingHeaderLeftContainer>
           Security settings
         </SettingHeaderLeftContainer>
         <SettingBodyContainer>Coming Soon</SettingBodyContainer>
       </SettingContentContainer>
-    </SettingComponent>
+    </SettingLayout>
   );
 };
 

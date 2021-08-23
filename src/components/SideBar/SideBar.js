@@ -1,38 +1,19 @@
-import React, { useState, useContext, Children } from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
-  RiInboxFill,
-  RiStarSFill,
-  RiCalendarTodoFill,
-  RiArchiveFill,
-  RiLightbulbFlashFill,
-  RiSearchLine,
-  RiSettings5Fill,
-} from "react-icons/ri";
-import { GoSignOut } from "react-icons/go";
-import { Link, NavLink } from "react-router-dom";
-import { TaskContext } from "../../contexts/TaskContext";
-import {
-  SectionIcon,
-  SectionName,
   SideSectionContainer,
-  SideSectionWrapper,
   SideBarWrapper,
   UserInfoContainer,
   UserProfilePicContainer,
   UsernameWrapper,
-  LoginStatusContainer,
-  LogoutButton,
   SideBottomContainer,
   SideBarContainer,
-} from "../../pages/styles";
+} from "./styles";
 import { useAuth } from "../../contexts/AuthContext";
 import UserProfilePic from "../UserProfilePic";
 
 const SideBar = ({ children }) => {
   const { history, userDB } = useAuth();
-  const { inboxRef, starRef, archiveRef, upcomingRef, todayRef, searchRef } =
-    useContext(TaskContext);
-
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
 
@@ -78,15 +59,6 @@ const SideBar = ({ children }) => {
               <UsernameWrapper> @{currentUser.displayName}</UsernameWrapper>
             </UserInfoContainer>
           </Link>
-
-          {/* <LoginStatusContainer>
-        <LogoutButton onClick={handleLogout}>
-          <GoSignOut />
-        </LogoutButton>
-        <Link to="/profile">
-          <RiSettings5Fill />
-        </Link>
-      </LoginStatusContainer>*/}
         </SideBottomContainer>
       </SideBarWrapper>
     </SideBarContainer>

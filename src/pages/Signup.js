@@ -7,7 +7,7 @@ import EntryComponent, {
   EntryForm,
   EntryInput,
   EntryInputContainer,
-} from "../components/main/EntryComponent";
+} from "../EntryComponent.js";
 import { EntryContext } from "../contexts/EntryContext";
 
 const Signup = () => {

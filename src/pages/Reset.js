@@ -8,7 +8,7 @@ import EntryComponent, {
   EntryForm,
   EntryInput,
   EntryInputContainer,
-} from "../components/main/EntryComponent";
+} from "../EntryComponent";
 
 const Reset = () => {
   const { resetPassword } = useAuth();

@@ -20,7 +20,7 @@ import {
 } from "../../pages/styles";
 import { HeaderLeftContainer } from "../Header/styles";
 
-export const SettingComponent = ({ children }) => {
+export const SettingLayout = ({ children }) => {
   return (
     <Container>
       <HeaderContainer>
@@ -29,7 +29,7 @@ export const SettingComponent = ({ children }) => {
         </HeaderLeftContainer>
       </HeaderContainer>
       <BodyContainer>
-        <SideBarContainer>
+        {/* <SideBarContainer>
           <SideSectionContainer>
             <SideSectionWrapper>
               <SectionIcon>
@@ -91,11 +91,11 @@ export const SettingComponent = ({ children }) => {
               </SectionName>
             </SideSectionWrapper>
           </SideSectionContainer>
-        </SideBarContainer>
+        </SideBarContainer> */}
         <ContentContainer>{children}</ContentContainer>
       </BodyContainer>
     </Container>
   );
 };
 
-export default SettingComponent;
+export default SettingLayout;

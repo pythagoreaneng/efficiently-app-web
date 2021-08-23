@@ -1,8 +1,8 @@
 import React from "react";
-import TaskComponent from "../components/main/TaskComponent";
+import { TaskLayout } from "../components/TaskLayout";
 
 const Inbox = () => {
-  return <TaskComponent />;
+  return <TaskLayout />;
 };
 
 export default Inbox;

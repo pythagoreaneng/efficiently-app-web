@@ -13,7 +13,6 @@ import {
   Container,
   HeaderContainer,
   BodyContainer,
-  SideBarContainer,
   ContentContainer,
   SectionIcon,
   SectionName,
@@ -29,7 +28,7 @@ const Settings = () => {
         <Title />
       </HeaderContainer>
       <BodyContainer>
-        <SideBarContainer>
+        {/* <SideBarContainer>
           <SideSectionContainer>
             <SideSectionWrapper>
               <SectionIcon>
@@ -93,7 +92,7 @@ const Settings = () => {
 
             <Link to="/profile"> Welcome, @{currentUser.displayName}</Link>
           </SideSectionContainer>
-        </SideBarContainer>
+        </SideBarContainer> */}
         <ContentContainer></ContentContainer>
       </BodyContainer>
     </Container>

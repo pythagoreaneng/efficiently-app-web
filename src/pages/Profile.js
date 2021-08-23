@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import UserProfilePic from "../components/UserProfilePic";
 import { useAuth } from "../contexts/AuthContext";
-import SettingComponent from "../components/main/SettingComponent";
+import SettingLayout from "../components/SettingLayout.js/SettingLayout";
 import { LogoutButton } from "../pages/styles";
 import { GoSignOut } from "react-icons/go";
 
@@ -128,7 +128,7 @@ const Profile = () => {
   };
 
   return (
-    <SettingComponent>
+    <SettingLayout>
       <SettingContentContainer>
         {error && <EntryErrorMessage>{error}</EntryErrorMessage>}
         <SettingHeaderLeftContainer>
@@ -179,7 +179,7 @@ const Profile = () => {
           </LogoutButton>
         </SettingBodyContainer>
       </SettingContentContainer>
-    </SettingComponent>
+    </SettingLayout>
   );
 };
 
