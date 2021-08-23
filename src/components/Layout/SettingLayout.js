@@ -1,23 +1,11 @@
 import React from "react";
-import {
-  RiDoorLockFill,
-  RiFlashlightFill,
-  RiPaletteFill,
-  RiUserFill,
-} from "react-icons/ri";
-import { NavLink } from "react-router-dom";
 import Title from "../Header/Title";
 import {
-  Container,
   HeaderContainer,
   BodyContainer,
-  SideBarContainer,
   ContentContainer,
-  SectionIcon,
-  SectionName,
-  SideSectionContainer,
-  SideSectionWrapper,
 } from "../../pages/styles";
+import { Container } from "../Common/styles";
 import { HeaderLeftContainer } from "../Header/styles";
 
 export const SettingLayout = ({ children }) => {

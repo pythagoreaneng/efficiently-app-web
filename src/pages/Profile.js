@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import UserProfilePic from "../components/UserProfilePic";
 import { useAuth } from "../contexts/AuthContext";
-import SettingLayout from "../components/SettingLayout.js/SettingLayout";
+import SettingLayout from "../components/Layout/SettingLayout";
 import { LogoutButton } from "../pages/styles";
 import { GoSignOut } from "react-icons/go";
 

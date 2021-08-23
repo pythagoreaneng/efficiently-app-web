@@ -1,29 +1,12 @@
 import React from "react";
-import {
-  RiDoorLockFill,
-  RiFlashlightFill,
-  RiInboxFill,
-  RiPaletteFill,
-  RiUserFill,
-} from "react-icons/ri";
-import { Link, NavLink } from "react-router-dom";
-import { Title } from "../components";
+import Title from "../components/Header/Title";
 import { useAuth } from "../contexts/AuthContext";
-import {
-  Container,
-  HeaderContainer,
-  BodyContainer,
-  ContentContainer,
-  SectionIcon,
-  SectionName,
-  SideSectionContainer,
-  SideSectionWrapper,
-} from "./styles";
+import { HeaderContainer, BodyContainer, ContentContainer } from "./styles";
 
 const Settings = () => {
   const { currentUser } = useAuth();
   return (
-    <Container>
+    <>
       <HeaderContainer>
         <Title />
       </HeaderContainer>
@@ -95,7 +78,7 @@ const Settings = () => {
         </SideBarContainer> */}
         <ContentContainer></ContentContainer>
       </BodyContainer>
-    </Container>
+    </>
   );
 };
 
