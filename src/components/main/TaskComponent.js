@@ -19,6 +19,7 @@ import Content from "../Body/Content";
 import Body from "../Body/Body";
 import HamburgerMenu from "../Header/HamburgerMenu";
 import { HeaderCenterContainer, HeaderLeftContainer } from "../Header/styles";
+import TaskSiderBar from "../Body/TaskSiderBar";
 
 const TaskComponent = () => {
   return (
@@ -29,7 +30,9 @@ const TaskComponent = () => {
       </Header>
 
       <Body>
-        <SideBar />
+        <SideBar>
+          <TaskSiderBar />
+        </SideBar>
         <Content>
           <TaskListContainer>
             <TaskListContextProvider>
