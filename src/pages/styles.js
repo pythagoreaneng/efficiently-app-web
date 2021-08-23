@@ -26,7 +26,7 @@ export const TitleWrapper = styled.div`
 
 export const AppNameWrapper = styled.div`
   display: flex;
-  color: white;
+  color: black;
 `;
 export const LogoWrapper = styled.div`
   margin: 0 0.5rem;

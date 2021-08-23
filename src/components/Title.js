@@ -12,7 +12,7 @@ const Title = () => {
             <img src={Logo} alt="Logo" />
           </LogoWrapper>
 
-          {/* <AppNameWrapper>Efficiently App</AppNameWrapper> */}
+          <AppNameWrapper>Efficiently App</AppNameWrapper>
         </TitleWrapper>
       </NavLink>
     </>
