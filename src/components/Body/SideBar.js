@@ -10,7 +10,7 @@ import {
 } from "react-icons/ri";
 import { GoSignOut } from "react-icons/go";
 import { Link, NavLink } from "react-router-dom";
-import { TaskContext } from "../contexts/TaskContext";
+import { TaskContext } from "../../contexts/TaskContext";
 import {
   SectionIcon,
   SectionName,
@@ -23,9 +23,9 @@ import {
   LoginStatusContainer,
   LogoutButton,
   SideBottomContainer,
-} from "../pages/styles";
-import { useAuth } from "../contexts/AuthContext";
-import UserProfilePic from "./UserProfilePic";
+} from "../../pages/styles";
+import { useAuth } from "../../contexts/AuthContext";
+import UserProfilePic from "../UserProfilePic";
 
 const SideBar = () => {
   const { history, userDB } = useAuth();

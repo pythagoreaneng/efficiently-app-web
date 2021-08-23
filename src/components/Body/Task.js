@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { RiCloseFill, RiStarSFill, RiStarSLine } from "react-icons/ri";
 import moment from "moment";
-import { TaskContext } from "../contexts/TaskContext";
+import { TaskContext } from "../../contexts/TaskContext";
 import {
   Checkbox,
   DaysContainer,
@@ -9,7 +9,7 @@ import {
   OptionContainer,
   TaskContainer,
   TaskTitleContainer,
-} from "../pages/styles.js";
+} from "../../pages/styles.js";
 
 const Task = ({ task }) => {
   const { completeTask, removeTask, toggleStar, editTask } =

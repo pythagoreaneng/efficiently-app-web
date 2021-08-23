@@ -15,7 +15,7 @@ import {
   SideBottomContainer,
 } from "../../pages/styles";
 import UserProfilePic from "../UserProfilePic";
-import Search from "../Search";
+import Search from "./Search";
 import { BiMenu } from "react-icons/bi";
 import styled from "styled-components";
 
