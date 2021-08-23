@@ -1,5 +1,5 @@
 import React from "react";
-import { TaskLayout } from "../components/Layout";
+import { TaskLayout } from "../components/Layouts";
 
 const Inbox = () => {
   return <TaskLayout />;

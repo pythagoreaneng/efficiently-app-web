@@ -9,8 +9,8 @@ import {
   SideBottomContainer,
   SideBarContainer,
 } from "./styles";
+import UserProfilePic from "./UserProfilePic";
 import { useAuth } from "../../contexts/AuthContext";
-import UserProfilePic from "../UserProfilePic";
 
 const SideBar = ({ children }) => {
   const { history, userDB } = useAuth();

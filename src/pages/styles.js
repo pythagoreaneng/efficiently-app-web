@@ -1,13 +1,5 @@
 import styled from "styled-components";
 
-export const HeaderContainer = styled.div`
-  height: 10%;
-  width: 100wh;
-  background-color: #efefef;
-  display: flex;
-  align-items: center;
-`;
-
 export const TitleWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -39,31 +31,9 @@ export const SearchInputContainer = styled.input`
   }
 `;
 
-export const BodyContainer = styled.div`
-  display: flex;
-  height: 90%;
-`;
-
-export const ContentContainer = styled.div`
-  width: 80%;
-  height: 100%;
-  position: relative;
-`;
-
 export const LoginStatusContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
-`;
-
-export const UserProfilePicWrapper = styled.div`
-  height: 3rem;
-  width: 3rem;
-  background-color: #bbb;
-  border-radius: 50%;
-  border: 0.1rem solid #42bcef;
-  display: flex;
-  justify-content: center;
   align-items: center;
 `;
 

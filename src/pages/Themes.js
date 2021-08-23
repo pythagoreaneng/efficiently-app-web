@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { SettingLayout } from "../components/Layout";
+import { SettingLayout } from "../components/Layouts";
 
 const SettingContentContainer = styled.div`
   display: flex;

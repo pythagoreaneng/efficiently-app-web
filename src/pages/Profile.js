@@ -1,9 +1,9 @@
 import React, { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import UserProfilePic from "../components/UserProfilePic";
+import { UserProfilePic } from "../components/Body";
 import { useAuth } from "../contexts/AuthContext";
-import SettingLayout from "../components/Layout/SettingLayout";
+import { SettingLayout } from "../components/Layouts";
 import { LogoutButton } from "../pages/styles";
 import { GoSignOut } from "react-icons/go";
 

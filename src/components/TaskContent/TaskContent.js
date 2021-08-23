@@ -1,9 +1,9 @@
 import React from "react";
 import { TaskInputContainer } from "../../pages/styles";
 import { TaskListContainer } from "../../pages/styles";
-import { TaskList } from "../TaskList";
-import { TaskInput } from "../TaskInput";
-import TaskListContextProvider from "../../contexts/TaskListContext";
+import { TaskList, TaskInput } from "../TaskList";
+
+import { TaskListContextProvider } from "../../contexts/TaskListContext";
 
 const TaskContent = () => {
   return (
