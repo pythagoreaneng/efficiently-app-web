@@ -6,7 +6,7 @@ import {
   RiUserFill,
 } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
-import Title from "../Title";
+import Title from "../Header/Title";
 import {
   Container,
   HeaderContainer,

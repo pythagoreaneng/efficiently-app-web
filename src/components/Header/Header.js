@@ -1,5 +1,5 @@
 import React from "react";
-import { SearchContainer, TitleContainer } from "../pages/styles";
+import { SearchContainer, TitleContainer } from "../../pages/styles";
 import { Link, NavLink } from "react-router-dom";
 import {
   SectionIcon,
@@ -13,10 +13,9 @@ import {
   LoginStatusContainer,
   LogoutButton,
   SideBottomContainer,
-} from "../pages/styles";
-import UserProfilePic from "./UserProfilePic";
-import Search from "./Search";
-import Title from "./Title";
+} from "../../pages/styles";
+import UserProfilePic from "../UserProfilePic";
+import Search from "../Search";
 import { BiMenu } from "react-icons/bi";
 import styled from "styled-components";
 
