@@ -5,59 +5,47 @@ import {
   RiCalendarTodoFill,
   RiLightbulbFlashFill,
 } from "react-icons/ri";
+import { NavCard } from "../Body";
 import { NavLink } from "react-router-dom";
 import { TaskContext } from "../../contexts/TaskContext";
-import {
-  SectionIcon,
-  SectionName,
-  SideSectionWrapper,
-} from "../../pages/styles";
 
 const SettingSideBar = () => {
   return (
     <>
-      <SideSectionWrapper>
-        <SectionIcon>
-          <RiInboxFill />
-        </SectionIcon>
-        <SectionName>
+      <NavCard
+        icon={<RiInboxFill />}
+        link={
           <NavLink to="/profile" activeStyle={{ fontWeight: "bold" }}>
             Profile
           </NavLink>
-        </SectionName>
-      </SideSectionWrapper>
-      <SideSectionWrapper>
-        <SectionIcon>
-          <RiLightbulbFlashFill />
-        </SectionIcon>
+        }
+      />
 
-        <SectionName>
+      <NavCard
+        icon={<RiLightbulbFlashFill />}
+        link={
           <NavLink to="/themes" activeStyle={{ fontWeight: "bold" }}>
             Theme
           </NavLink>
-        </SectionName>
-      </SideSectionWrapper>
-      <SideSectionWrapper>
-        <SectionIcon>
-          <RiStarSFill />
-        </SectionIcon>
+        }
+      />
 
-        <SectionName>
+      <NavCard
+        icon={<RiInboxFill />}
+        link={
           <NavLink to="/security" activeStyle={{ fontWeight: "bold" }}>
             Security
           </NavLink>
-        </SectionName>
-      </SideSectionWrapper>
-      <SideSectionWrapper>
-        <SectionIcon>
-          <RiCalendarTodoFill />
-        </SectionIcon>
-        <SectionName>
+        }
+      />
+      <NavCard
+        icon={<RiInboxFill />}
+        link={
           <NavLink to="/upgrade" activeStyle={{ fontWeight: "bold" }}>
-            Efficiently +
+            Efficiently+
           </NavLink>
-        </SectionName>
-      </SideSectionWrapper>
+        }
+      />
     </>
   );
 };

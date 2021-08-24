@@ -20,7 +20,7 @@ const TaskSiderBar = () => {
     useContext(TaskContext);
   return (
     <div>
-      <SideSectionWrapper>
+      {/* <SideSectionWrapper>
         <SectionIcon>
           <RiInboxFill />
         </SectionIcon>
@@ -106,7 +106,7 @@ const TaskSiderBar = () => {
             Search
           </NavLink>
         </SectionName>
-      </SideSectionWrapper>
+      </SideSectionWrapper> */}
     </div>
   );
 };

@@ -57,13 +57,6 @@ export const SideSectionWrapper = styled.div`
   align-items: center;
 `;
 
-export const SectionIcon = styled.div`
-  width: 10%;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 1rem;
-`;
 export const SectionName = styled.div`
   display: flex;
   width: 90%;
