@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-export const BodyContainer = styled.div`
+const BodyContainer = styled.div`
   display: flex;
   height: 90%;
 `;

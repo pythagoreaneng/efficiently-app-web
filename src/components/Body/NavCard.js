@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-export const SectionContainer = styled.div`
+const SectionContainer = styled.div`
   height: 2rem;
   width: 100%;
   margin: 1rem;
@@ -10,11 +10,11 @@ export const SectionContainer = styled.div`
   align-items: center;
   justify-content: center;
 `;
-export const IconWrapper = styled.div`
+const IconWrapper = styled.div`
   margin-right: 0.5rem;
 `;
 
-export const SectionWrapper = styled.div`
+const SectionWrapper = styled.div`
   display: flex;
   align-items: center;
   margin: 1rem;

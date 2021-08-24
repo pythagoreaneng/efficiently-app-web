@@ -60,9 +60,11 @@ const UserProvider = ({ children }) => {
         }
 
         if (window.location.pathname === "/login") {
-          history.push("/");
+          history.push("/inbox");
         } else if (window.location.pathname === "/signup") {
-          history.push("/");
+          history.push("/inbox");
+        } else if (window.location.pathname === "/") {
+          history.push("/inbox");
         }
       } else {
         console.log("The user is not logged in");

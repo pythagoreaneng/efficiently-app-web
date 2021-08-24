@@ -44,6 +44,7 @@ export const TaskContextProvider = ({ children }) => {
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
+    console.log("search set");
   };
 
   var todayDate = moment().format("YYYY-MM-D");
@@ -116,10 +117,18 @@ export const TaskContextProvider = ({ children }) => {
 
   // hook to handle TaskInput value
   const [input, setInput] = useState("");
+  const [theme, setTheme] = useState("");
+
+  const handleTheme = (color) => {
+    setTheme(color);
+    console.log(color);
+  };
 
   return (
     <TaskContext.Provider
       value={{
+        theme,
+        handleTheme,
         tasks,
         setTasks,
         searchBarRef,

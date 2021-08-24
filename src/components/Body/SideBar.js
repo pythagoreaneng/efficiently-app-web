@@ -25,7 +25,7 @@ const SideBar = ({ children }) => {
 
   const SideBarContainer = styled.div`
     width: 20%;
-    background-color: #f7f7f7;
+    background-color: rgba(0, 0, 0, 0.05);
     padding: 1rem;
   `;
 
