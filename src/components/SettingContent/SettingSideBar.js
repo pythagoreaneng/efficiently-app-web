@@ -25,13 +25,8 @@ const SettingSideBar = () => {
           <RiInboxFill />
         </SectionIcon>
         <SectionName>
-          <NavLink
-            exact
-            to="/"
-            activeStyle={{ fontWeight: "bold" }}
-            ref={inboxRef}
-          >
-            Inbox
+          <NavLink to="/profile" activeStyle={{ fontWeight: "bold" }}>
+            Profile
           </NavLink>
         </SectionName>
       </SideSectionWrapper>
@@ -41,12 +36,8 @@ const SettingSideBar = () => {
         </SectionIcon>
 
         <SectionName>
-          <NavLink
-            to="/today"
-            activeStyle={{ fontWeight: "bold" }}
-            ref={todayRef}
-          >
-            Today
+          <NavLink to="/themes" activeStyle={{ fontWeight: "bold" }}>
+            Theme
           </NavLink>
         </SectionName>
       </SideSectionWrapper>
@@ -56,12 +47,8 @@ const SettingSideBar = () => {
         </SectionIcon>
 
         <SectionName>
-          <NavLink
-            to="/star"
-            activeStyle={{ fontWeight: "bold" }}
-            ref={starRef}
-          >
-            Star
+          <NavLink to="/security" activeStyle={{ fontWeight: "bold" }}>
+            Security
           </NavLink>
         </SectionName>
       </SideSectionWrapper>
@@ -70,40 +57,8 @@ const SettingSideBar = () => {
           <RiCalendarTodoFill />
         </SectionIcon>
         <SectionName>
-          <NavLink
-            to="/upcoming"
-            activeStyle={{ fontWeight: "bold" }}
-            ref={upcomingRef}
-          >
-            Upcoming
-          </NavLink>
-        </SectionName>
-      </SideSectionWrapper>
-      <SideSectionWrapper>
-        <SectionIcon>
-          <RiArchiveFill />
-        </SectionIcon>
-        <SectionName>
-          <NavLink
-            to="/archive"
-            activeStyle={{ fontWeight: "bold" }}
-            ref={archiveRef}
-          >
-            Archive
-          </NavLink>
-        </SectionName>
-      </SideSectionWrapper>
-      <SideSectionWrapper>
-        <SectionIcon>
-          <RiSearchLine />
-        </SectionIcon>
-        <SectionName>
-          <NavLink
-            to="/search"
-            activeStyle={{ fontWeight: "bold" }}
-            ref={searchRef}
-          >
-            Search
+          <NavLink to="/upgrade" activeStyle={{ fontWeight: "bold" }}>
+            Efficiently +
           </NavLink>
         </SectionName>
       </SideSectionWrapper>
