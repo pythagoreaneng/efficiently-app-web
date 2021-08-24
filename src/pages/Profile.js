@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import { UserProfilePic } from "../components/Body";
+import { UserCard } from "../components/Body";
 import { useAuth } from "../contexts/AuthContext";
 import { SettingLayout } from "../components/Layouts";
 import { LogoutButton } from "../pages/styles";
@@ -135,7 +135,7 @@ const Profile = () => {
           Profile settings
         </SettingHeaderLeftContainer>
         <SettingBodyContainer>
-          <UserProfilePic />
+          <UserCard />
           <EntryForm onSubmit={handleSubmitUpdate}>
             <EntryInput
               type="username"

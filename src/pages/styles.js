@@ -1,22 +1,5 @@
 import styled from "styled-components";
 
-export const TitleWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-export const AppNameWrapper = styled.div`
-  display: flex;
-  color: black;
-`;
-export const LogoWrapper = styled.div`
-  margin: 0 0.5rem;
-`;
-export const SearchContainer = styled.div`
-  width: 100%;
-  display: flex;
-`;
-
 export const SearchInputContainer = styled.input`
   width: 80%;
   height: 2.5rem;

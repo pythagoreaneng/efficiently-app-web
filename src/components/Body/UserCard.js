@@ -13,7 +13,7 @@ export const UserProfilePicWrapper = styled.div`
   align-items: center;
 `;
 
-const UserProfilePic = () => {
+const UserCard = () => {
   return (
     <UserProfilePicWrapper>
       <RiUserLine />
@@ -21,4 +21,4 @@ const UserProfilePic = () => {
   );
 };
 
-export default UserProfilePic;
+export default UserCard;

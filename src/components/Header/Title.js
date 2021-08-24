@@ -15,7 +15,7 @@ const NameWrapper = styled.div`
 
 const Title = () => {
   return (
-    <NavLink exact to="/">
+    <NavLink exact to="/inbox">
       <TitleWrapper>
         <img src={Logo} alt="Logo" />
         <NameWrapper>Efficiently App</NameWrapper>

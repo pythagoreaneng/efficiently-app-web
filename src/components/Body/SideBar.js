@@ -9,23 +9,13 @@ import {
   SideBottomContainer,
   SideBarContainer,
 } from "./styles";
-import UserProfilePic from "./UserProfilePic";
+import UserProfilePic from "./UserCard";
 import { useAuth } from "../../contexts/AuthContext";
 
 const SideBar = ({ children }) => {
   const { history, userDB } = useAuth();
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
-
-  const handleLogout = async () => {
-    setError("");
-    try {
-      await logout();
-      history.push("/login");
-    } catch {
-      setError("Failed to logout");
-    }
-  };
 
   userDB
     .doc("profile")
