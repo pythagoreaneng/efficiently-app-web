@@ -12,40 +12,10 @@ import { TaskContext } from "../../contexts/TaskContext";
 const SettingSideBar = () => {
   return (
     <>
-      <NavCard
-        icon={<RiInboxFill />}
-        link={
-          <NavLink to="/profile" activeStyle={{ fontWeight: "bold" }}>
-            Profile
-          </NavLink>
-        }
-      />
-
-      <NavCard
-        icon={<RiLightbulbFlashFill />}
-        link={
-          <NavLink to="/themes" activeStyle={{ fontWeight: "bold" }}>
-            Theme
-          </NavLink>
-        }
-      />
-
-      <NavCard
-        icon={<RiInboxFill />}
-        link={
-          <NavLink to="/security" activeStyle={{ fontWeight: "bold" }}>
-            Security
-          </NavLink>
-        }
-      />
-      <NavCard
-        icon={<RiInboxFill />}
-        link={
-          <NavLink to="/upgrade" activeStyle={{ fontWeight: "bold" }}>
-            Efficiently+
-          </NavLink>
-        }
-      />
+      <NavCard icon={<RiInboxFill />} type={"profile"} />
+      <NavCard icon={<RiLightbulbFlashFill />} type={"themes"} />
+      <NavCard icon={<RiLightbulbFlashFill />} type={"security"} />
+      <NavCard icon={<RiLightbulbFlashFill />} type={"upgrade"} />
     </>
   );
 };

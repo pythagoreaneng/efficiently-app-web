@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const SideSectionWrapper = styled.div`
@@ -23,11 +24,20 @@ export const SectionName = styled.div`
   padding: 1rem;
 `;
 
-const NavCard = ({ icon, link }) => {
+const NavCard = ({ icon, type }) => {
   return (
     <SideSectionWrapper>
       <SectionIcon>{icon}</SectionIcon>
-      <SectionName>{link}</SectionName>
+      <SectionName>
+        <NavLink
+          to={"/" + type}
+          activeStyle={{
+            fontWeight: "bold",
+          }}
+        >
+          {type}
+        </NavLink>
+      </SectionName>
     </SideSectionWrapper>
   );
 };
