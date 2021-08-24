@@ -1,13 +1,6 @@
 import React, { useContext } from "react";
-import {
-  RiInboxFill,
-  RiStarSFill,
-  RiCalendarTodoFill,
-  RiLightbulbFlashFill,
-} from "react-icons/ri";
+import { RiInboxFill, RiLightbulbFlashFill } from "react-icons/ri";
 import { NavCard } from "../Body";
-import { NavLink } from "react-router-dom";
-import { TaskContext } from "../../contexts/TaskContext";
 
 const SettingSideBar = () => {
   return (
