@@ -4,6 +4,8 @@ import { Search, Header, HamburgerMenu } from "../Header";
 import { Body, Content, SideBar } from "../Body";
 import { TaskSiderBar, TaskContent } from "../TaskContent";
 
+// Filter by component example: takes {children}(ie Today) here
+
 const TaskLayout = () => {
   return (
     <Container>
