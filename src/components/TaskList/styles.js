@@ -1,22 +1,5 @@
 import styled from "styled-components";
 
-export const TitleWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-export const AppNameWrapper = styled.div`
-  display: flex;
-  color: black;
-`;
-export const LogoWrapper = styled.div`
-  margin: 0 0.5rem;
-`;
-export const SearchContainer = styled.div`
-  width: 100%;
-  display: flex;
-`;
-
 export const SearchInputContainer = styled.input`
   width: 80%;
   height: 2.5rem;
@@ -31,12 +14,6 @@ export const SearchInputContainer = styled.input`
   }
 `;
 
-export const LoginStatusContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
 export const LogoutButton = styled.button`
   height: 5%;
   widgth: auto;
@@ -48,55 +25,6 @@ export const LogoutButton = styled.button`
     opacity: 1;
   }
 `;
-
-export const SideSectionWrapper = styled.div`
-  height: 2rem;
-  width: auto;
-  margin: 1rem;
-  display: flex;
-  align-items: center;
-`;
-
-export const SectionIcon = styled.div`
-  width: 10%;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 1rem;
-`;
-export const SectionName = styled.div`
-  display: flex;
-  width: 90%;
-  padding: 1rem;
-`;
-
-export const MainHeaderLeftContainer = styled.div`
-  height: 5%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  padding-left: 2rem;
-  background-color: blue;
-`;
-
-export const TaskListContainer = styled.div`
-  height: 85%;
-  width: 70%;
-  margin: 0 auto;
-  overflow-y: auto;
-`;
-
-export const TaskInputContainer = styled.form`
-  width: 100%;
-  height: 20%
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  bottom: 0;
-  padding: 1rem 2rem;
-`;
-
-// Task.js
 
 export const Checkbox = styled.input`
   margin: 1rem;

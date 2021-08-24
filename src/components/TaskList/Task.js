@@ -9,7 +9,7 @@ import {
   OptionContainer,
   TaskContainer,
   TaskHeaderLeftContainer,
-} from "../../pages/styles.js";
+} from "./styles";
 
 const Task = ({ task }) => {
   const { completeTask, removeTask, toggleStar, editTask } =

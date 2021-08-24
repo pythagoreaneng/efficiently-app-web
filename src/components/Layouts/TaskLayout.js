@@ -2,7 +2,9 @@ import React from "react";
 import { Container } from "../Common/styles";
 import { Search, Header, HamburgerMenu } from "../Header";
 import { Body, Content, SideBar } from "../Body";
-import { TaskSiderBar, TaskContent } from "../TaskContent";
+import { TaskSideBar, TaskContent } from "../Contents";
+
+// Filter by component example: takes {children}(ie Today) here
 
 const TaskLayout = () => {
   return (
@@ -13,7 +15,7 @@ const TaskLayout = () => {
       </Header>
       <Body>
         <SideBar>
-          <TaskSiderBar />
+          <TaskSideBar />
         </SideBar>
         <Content>
           <TaskContent />

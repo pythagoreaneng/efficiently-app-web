@@ -1,10 +1,9 @@
 import React, { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import { UserProfilePic } from "../components/Body";
+import { UserCard } from "../components/Body";
 import { useAuth } from "../contexts/AuthContext";
 import { SettingLayout } from "../components/Layouts";
-import { LogoutButton } from "../pages/styles";
 import { GoSignOut } from "react-icons/go";
 
 const EntryForm = styled.form`
@@ -73,6 +72,18 @@ const SettingBodyContainer = styled.div`
   align-items: center;
 `;
 
+const LogoutButton = styled.button`
+  height: 5%;
+  widgth: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.5;
+  &: hover {
+    opacity: 1;
+  }
+`;
+
 const Profile = () => {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
@@ -135,7 +146,7 @@ const Profile = () => {
           Profile settings
         </SettingHeaderLeftContainer>
         <SettingBodyContainer>
-          <UserProfilePic />
+          <UserCard />
           <EntryForm onSubmit={handleSubmitUpdate}>
             <EntryInput
               type="username"

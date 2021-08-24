@@ -1,21 +1,26 @@
 import React from "react";
-import { TitleWrapper, LogoWrapper, AppNameWrapper } from "../../pages/styles";
 import { NavLink } from "react-router-dom";
+import styled from "styled-components";
 import Logo from "../../assets/logo.svg";
+
+const TitleWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 1.5rem;
+`;
+
+const NameWrapper = styled.div`
+  margin: 0.5rem;
+`;
 
 const Title = () => {
   return (
-    <>
-      <NavLink exact to="/">
-        <TitleWrapper>
-          <LogoWrapper>
-            <img src={Logo} alt="Logo" />
-          </LogoWrapper>
-
-          <AppNameWrapper>Efficiently App</AppNameWrapper>
-        </TitleWrapper>
-      </NavLink>
-    </>
+    <NavLink exact to="/inbox">
+      <TitleWrapper>
+        <img src={Logo} alt="Logo" />
+        <NameWrapper>Efficiently App</NameWrapper>
+      </TitleWrapper>
+    </NavLink>
   );
 };
 

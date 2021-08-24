@@ -1,23 +1,21 @@
 import React from "react";
 import { Container } from "../Common/styles";
-import { Search, Header, HamburgerMenu } from "../Header";
+import { Header } from "../Header";
 import { Body, Content, SideBar } from "../Body";
-import { TaskSiderBar, TaskContent } from "../TaskContent";
-
-const SettingLayout = () => {
+import { TaskSiderBar, TaskContent } from "../Contents";
+import { SettingSideBar } from "../Contents";
+import { Title } from "../Header";
+const SettingLayout = ({ children }) => {
   return (
     <Container>
       <Header>
-        <HamburgerMenu />
-        <Search />
+        <Title />
       </Header>
       <Body>
         <SideBar>
-          <TaskSiderBar />
+          <SettingSideBar />
         </SideBar>
-        <Content>
-          <TaskContent />
-        </Content>
+        <Content>{children}</Content>
       </Body>
     </Container>
   );

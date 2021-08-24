@@ -1,31 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import {
-  SideSectionContainer,
-  SideBarWrapper,
-  UserInfoContainer,
-  UserProfilePicContainer,
-  UsernameWrapper,
-  SideBottomContainer,
-  SideBarContainer,
-} from "./styles";
-import UserProfilePic from "./UserProfilePic";
 import { useAuth } from "../../contexts/AuthContext";
+import styled from "styled-components";
+import UserCard from "./UserCard";
 
 const SideBar = ({ children }) => {
-  const { history, userDB } = useAuth();
+  const { userDB } = useAuth();
   const [error, setError] = useState("");
-  const { currentUser, logout } = useAuth();
-
-  const handleLogout = async () => {
-    setError("");
-    try {
-      await logout();
-      history.push("/login");
-    } catch {
-      setError("Failed to logout");
-    }
-  };
+  const { currentUser } = useAuth();
 
   userDB
     .doc("profile")
@@ -35,7 +16,6 @@ const SideBar = ({ children }) => {
         console.log("Document data:", doc.data().username);
         currentUser.updateProfile({ displayName: doc.data().username });
       } else {
-        // doc.data() will be undefined in this case
         console.log("No such document!");
       }
     })
@@ -43,24 +23,31 @@ const SideBar = ({ children }) => {
       console.log("Error getting document:", error);
     });
 
+  const SideBarContainer = styled.div`
+    width: 20%;
+    background-color: #f7f7f7;
+    padding: 1rem;
+  `;
+
+  const SideBottomContainer = styled.div`
+    position: absolute;
+    bottom: 0.5rem;
+  `;
+
+  const NavCardsContainer = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  `;
+
   return (
     <SideBarContainer>
-      <SideBarWrapper>
-        <SideSectionContainer>{children}</SideSectionContainer>
-
-        {error && <div>Error: {error}</div>}
-
-        <SideBottomContainer>
-          <Link to="/profile">
-            <UserInfoContainer>
-              <UserProfilePicContainer>
-                <UserProfilePic />
-              </UserProfilePicContainer>
-              <UsernameWrapper> @{currentUser.displayName}</UsernameWrapper>
-            </UserInfoContainer>
-          </Link>
-        </SideBottomContainer>
-      </SideBarWrapper>
+      <NavCardsContainer>{children}</NavCardsContainer>
+      {error && <div>Error: {error}</div>}
+      <SideBottomContainer>
+        <UserCard />
+      </SideBottomContainer>
     </SideBarContainer>
   );
 };

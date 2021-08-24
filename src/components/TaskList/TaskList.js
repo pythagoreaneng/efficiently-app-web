@@ -8,7 +8,7 @@ const TaskList = () => {
   let renderingTasks; // type of tasks to be rendered
 
   switch (window.location.pathname) {
-    case "/":
+    case "/inbox":
       const inboxTasks = tasks.filter((task) => !task.completed);
       renderingTasks = inboxTasks;
       break;
