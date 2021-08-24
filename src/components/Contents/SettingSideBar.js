@@ -1,14 +1,17 @@
-import React, { useContext } from "react";
-import { RiInboxFill, RiLightbulbFlashFill } from "react-icons/ri";
+import React from "react";
+import { CgProfile } from "react-icons/cg";
+import { BiBoltCircle } from "react-icons/bi";
+import { AiOutlineFormatPainter, AiOutlineLock } from "react-icons/ai";
+
 import { NavCard } from "../Body";
 
 const SettingSideBar = () => {
   return (
     <>
-      <NavCard icon={<RiInboxFill />} type={"profile"} />
-      <NavCard icon={<RiLightbulbFlashFill />} type={"themes"} />
-      <NavCard icon={<RiLightbulbFlashFill />} type={"security"} />
-      <NavCard icon={<RiLightbulbFlashFill />} type={"upgrade"} />
+      <NavCard icon={<CgProfile />} type={"profile"} />
+      <NavCard icon={<AiOutlineFormatPainter />} type={"themes"} />
+      <NavCard icon={<AiOutlineLock />} type={"security"} />
+      <NavCard icon={<BiBoltCircle />} type={"upgrade"} />
     </>
   );
 };
