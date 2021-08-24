@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { UserCard } from "../components/Body";
 import { useAuth } from "../contexts/AuthContext";
 import { SettingLayout } from "../components/Layouts";
-import { LogoutButton } from "../pages/styles";
 import { GoSignOut } from "react-icons/go";
 
 const EntryForm = styled.form`
@@ -71,6 +70,18 @@ const SettingBodyContainer = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+`;
+
+const LogoutButton = styled.button`
+  height: 5%;
+  widgth: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.5;
+  &: hover {
+    opacity: 1;
+  }
 `;
 
 const Profile = () => {
