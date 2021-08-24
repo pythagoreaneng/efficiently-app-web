@@ -3,9 +3,7 @@ import {
   RiInboxFill,
   RiStarSFill,
   RiCalendarTodoFill,
-  RiArchiveFill,
   RiLightbulbFlashFill,
-  RiSearchLine,
 } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
 import { TaskContext } from "../../contexts/TaskContext";
@@ -16,10 +14,8 @@ import {
 } from "../../pages/styles";
 
 const SettingSideBar = () => {
-  const { inboxRef, starRef, archiveRef, upcomingRef, todayRef, searchRef } =
-    useContext(TaskContext);
   return (
-    <div>
+    <>
       <SideSectionWrapper>
         <SectionIcon>
           <RiInboxFill />
@@ -62,7 +58,7 @@ const SettingSideBar = () => {
           </NavLink>
         </SectionName>
       </SideSectionWrapper>
-    </div>
+    </>
   );
 };
 
