@@ -35,10 +35,10 @@ const Settings = () => {
               <SectionName>
                 <NavLink
                   exact
-                  to="/themes"
+                  to="/costomize"
                   activeStyle={{ fontWeight: "bold" }}
                 >
-                  Themes
+                  Costomize
                 </NavLink>
               </SectionName>
             </SideSectionWrapper>

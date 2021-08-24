@@ -8,7 +8,7 @@ const SettingSideBar = () => {
   return (
     <>
       <NavCard icon={<CgProfile />} type={"profile"} />
-      <NavCard icon={<AiOutlineFormatPainter />} type={"themes"} />
+      <NavCard icon={<AiOutlineFormatPainter />} type={"customize"} />
       <NavCard icon={<AiOutlineLock />} type={"security"} />
       <NavCard icon={<BiBoltCircle />} type={"upgrade"} />
     </>
