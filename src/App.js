@@ -21,12 +21,13 @@ function App() {
       <UserProvider>
         <TaskContextProvider>
           <Switch>
-            <PrivateRoute exact path="/" component={Inbox} />
+            <PrivateRoute exact path="/inbox" component={Inbox} />
             <PrivateRoute path="/today" component={Inbox} />
             <PrivateRoute path="/star" component={Inbox} />
             <PrivateRoute path="/upcoming" component={Inbox} />
             <PrivateRoute path="/archive" component={Inbox} />
             <PrivateRoute path="/search" component={Inbox} />
+            <PrivateRoute path="/" component={Inbox} />
             <EntryContextProvider>
               <PrivateRoute path="/profile" component={Profile} />
               <PrivateRoute path="/security" component={Security} />

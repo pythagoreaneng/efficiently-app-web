@@ -2,43 +2,41 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-export const SideSectionWrapper = styled.div`
+export const SectionContainer = styled.div`
   height: 2rem;
-  width: auto;
+  width: 100%;
   margin: 1rem;
   display: flex;
   align-items: center;
 `;
-
-export const SectionIcon = styled.div`
-  width: 10%;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 1rem;
+export const IconWrapper = styled.div`
+  margin-right: 0.5rem;
 `;
 
-export const SectionName = styled.div`
+export const SectionWrapper = styled.div`
   display: flex;
-  width: 90%;
-  padding: 1rem;
+  align-items: center;
+  margin: 1rem;
+  width: 100%;
 `;
 
 const NavCard = ({ icon, type }) => {
   return (
-    <SideSectionWrapper>
-      <SectionIcon>{icon}</SectionIcon>
-      <SectionName>
-        <NavLink
-          to={"/" + type}
-          activeStyle={{
-            fontWeight: "bold",
-          }}
-        >
+    <SectionContainer>
+      <NavLink
+        to={"/" + type}
+        activeStyle={{
+          background: "#ffffff",
+          borderRadius: ".5rem",
+        }}
+      >
+        <SectionWrapper>
+          <IconWrapper>{icon}</IconWrapper>
+
           {type.charAt(0).toUpperCase() + type.slice(1)}
-        </NavLink>
-      </SectionName>
-    </SideSectionWrapper>
+        </SectionWrapper>
+      </NavLink>
+    </SectionContainer>
   );
 };
 

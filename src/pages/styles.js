@@ -49,20 +49,6 @@ export const LogoutButton = styled.button`
   }
 `;
 
-export const SideSectionWrapper = styled.div`
-  height: 2rem;
-  width: auto;
-  margin: 1rem;
-  display: flex;
-  align-items: center;
-`;
-
-export const SectionName = styled.div`
-  display: flex;
-  width: 90%;
-  padding: 1rem;
-`;
-
 export const MainHeaderLeftContainer = styled.div`
   height: 5%;
   width: 100%;
