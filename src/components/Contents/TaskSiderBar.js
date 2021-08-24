@@ -10,13 +10,13 @@ import { NavCard } from "../Body";
 
 const TaskSiderBar = () => {
   return (
-    <div>
+    <>
       <NavCard icon={<RiInboxFill />} type={"inbox"} />
       <NavCard icon={<RiCalendarTodoFill />} type={"today"} />
       <NavCard icon={<RiStarSFill />} type={"star"} />
       <NavCard icon={<RiArchiveFill />} type={"archive"} />
       <NavCard icon={<RiSearchLine />} type={"search"} />
-    </div>
+    </>
   );
 };
 

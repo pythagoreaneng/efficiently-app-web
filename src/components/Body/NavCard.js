@@ -8,6 +8,7 @@ export const SectionContainer = styled.div`
   margin: 1rem;
   display: flex;
   align-items: center;
+  justify-content: center;
 `;
 export const IconWrapper = styled.div`
   margin-right: 0.5rem;
@@ -18,6 +19,7 @@ export const SectionWrapper = styled.div`
   align-items: center;
   margin: 1rem;
   width: 100%;
+  margin: 0.7rem 3rem;
 `;
 
 const NavCard = ({ icon, type }) => {
@@ -28,6 +30,7 @@ const NavCard = ({ icon, type }) => {
         activeStyle={{
           background: "#ffffff",
           borderRadius: ".5rem",
+          opacity: 0.8,
         }}
       >
         <SectionWrapper>

@@ -1,8 +1,15 @@
 import React from "react";
 import { RiUserLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useAuth } from "../../contexts/AuthContext";
 
-export const UserProfilePicWrapper = styled.div`
+const UserCardContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const UserProfilePicWrapper = styled.div`
   height: 3rem;
   width: 3rem;
   background-color: #bbb;
@@ -13,11 +20,21 @@ export const UserProfilePicWrapper = styled.div`
   align-items: center;
 `;
 
+const UsernameWrapper = styled.div`
+  padding: 1.5rem;
+`;
+
 const UserCard = () => {
+  const { currentUser } = useAuth();
   return (
-    <UserProfilePicWrapper>
-      <RiUserLine />
-    </UserProfilePicWrapper>
+    <Link to="/profile">
+      <UserCardContainer>
+        <UserProfilePicWrapper>
+          <RiUserLine />
+        </UserProfilePicWrapper>
+        <UsernameWrapper>@{currentUser.displayName}</UsernameWrapper>
+      </UserCardContainer>
+    </Link>
   );
 };
 
