@@ -2,44 +2,75 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-export const SectionContainer = styled.div`
-  height: 2rem;
+const NavCardContainer = styled.div`
   width: 100%;
-  margin: 1rem;
+  margin: 0.2rem 0;
   display: flex;
-  align-items: center;
   justify-content: center;
-`;
-export const IconWrapper = styled.div`
-  margin-right: 0.5rem;
-`;
-
-export const SectionWrapper = styled.div`
-  display: flex;
   align-items: center;
-  margin: 1rem;
-  width: 100%;
-  margin: 0.7rem 3rem;
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 0.8rem;
+  }
 `;
 
-const NavCard = ({ icon, type }) => {
+const NavSelectorWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0.8rem;
+`;
+const NavWrapper = styled.div`
+  width: 100%;
+  display: flex;
+`;
+
+const IconWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.1rem;
+`;
+
+const NavNameWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const NavBadgeWrapper = styled.div``;
+
+const NavCard = ({ icon, type, count }) => {
   return (
-    <SectionContainer>
+    <NavCardContainer>
       <NavLink
         to={"/" + type}
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "start",
+          borderRadius: "0.8rem",
+        }}
         activeStyle={{
-          background: "#ffffff",
-          borderRadius: ".5rem",
-          opacity: 0.8,
+          backgroundColor: "rgba(0, 0, 0, 0.1)",
         }}
       >
-        <SectionWrapper>
-          <IconWrapper>{icon}</IconWrapper>
-
-          {type.charAt(0).toUpperCase() + type.slice(1)}
-        </SectionWrapper>
+        <NavSelectorWrapper>
+          <NavWrapper>
+            <IconWrapper>{icon}</IconWrapper>
+            <NavNameWrapper>
+              {type.charAt(0).toUpperCase() + type.slice(1)}
+            </NavNameWrapper>
+          </NavWrapper>
+          <NavBadgeWrapper>{count}</NavBadgeWrapper>
+        </NavSelectorWrapper>
       </NavLink>
-    </SectionContainer>
+    </NavCardContainer>
   );
 };
 

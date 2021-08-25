@@ -1,41 +1,63 @@
-import React, { useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { TaskContext } from "../../contexts/TaskContext";
 import { Task } from "../TaskList";
 
 const TaskList = () => {
-  const { tasks, todayDate, search } = useContext(TaskContext);
+  const {
+    tasks,
+    todayDate,
+    search,
+    setInboxCount,
+    setTodayCount,
+    setStarCount,
+    setArchiveCount,
+  } = useContext(TaskContext);
+
+  let inboxTasks = tasks.filter((task) => !task.completed);
+  let todayTasks = tasks.filter((task) => task.dueDate === todayDate);
+  let starTasks = tasks.filter((task) => task.star);
+  let upcomingTasks = tasks.filter((task) => task.scheduleDate > todayDate);
+  let archiveTasks = tasks.filter((task) => task.completed);
+  let searchedTasks = tasks.filter((task) =>
+    task.title.includes(search.toLowerCase())
+  );
+
+  // update counts
+  useEffect(() => {
+    setInboxCount(inboxTasks.length);
+    setTodayCount(todayTasks.length);
+    setStarCount(starTasks.length);
+    setArchiveCount(archiveTasks.length);
+  }, [
+    inboxTasks,
+    todayTasks,
+    starTasks,
+    archiveTasks,
+    setInboxCount,
+    setTodayCount,
+    setStarCount,
+    setArchiveCount,
+  ]);
 
   let renderingTasks; // type of tasks to be rendered
 
   switch (window.location.pathname) {
     case "/inbox":
-      const inboxTasks = tasks.filter((task) => !task.completed);
       renderingTasks = inboxTasks;
       break;
     case "/today":
-      const todayTasks = tasks.filter((task) => task.dueDate === todayDate);
       renderingTasks = todayTasks;
       break;
     case "/star":
-      const starTasks = tasks.filter((task) => task.star);
       renderingTasks = starTasks;
       break;
     case "/upcoming":
-      const upcomingTasks = tasks.filter(
-        (task) => task.scheduleDate > todayDate
-      );
       renderingTasks = upcomingTasks;
       break;
     case "/archive":
-      const archiveTasks = tasks.filter((task) => task.completed);
       renderingTasks = archiveTasks;
       break;
     default:
-      // anything else including seach
-      console.log(window.location.pathname);
-      const searchedTasks = tasks.filter((task) =>
-        task.title.includes(search.toLowerCase())
-      );
       renderingTasks = searchedTasks;
       break;
   }

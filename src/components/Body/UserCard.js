@@ -4,12 +4,17 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useAuth } from "../../contexts/AuthContext";
 
-const UserCardContainer = styled.div`
+const UserCardContainer = styled(Link)`
   display: flex;
-  align-items: center;
+  width: 100%;
+  justify-content: space-between;
 `;
 
-const UserProfilePicWrapper = styled.div`
+const PicContainer = styled.div`
+  width: 20%;
+`;
+
+const PicWrapper = styled.div`
   height: 3rem;
   width: 3rem;
   background-color: #bbb;
@@ -20,21 +25,29 @@ const UserProfilePicWrapper = styled.div`
   align-items: center;
 `;
 
-const UsernameWrapper = styled.div`
-  padding: 1.5rem;
+const UsernameContainer = styled.div`
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8em;
 `;
 
 const UserCard = () => {
   const { currentUser } = useAuth();
   return (
-    <Link to="/profile">
-      <UserCardContainer>
-        <UserProfilePicWrapper>
+    <UserCardContainer to={"/profile"}>
+      <PicContainer>
+        <PicWrapper>
           <RiUserLine />
-        </UserProfilePicWrapper>
-        <UsernameWrapper>@{currentUser.displayName}</UsernameWrapper>
-      </UserCardContainer>
-    </Link>
+        </PicWrapper>
+      </PicContainer>
+      <UsernameContainer>
+        {currentUser.displayName}
+        <span>@{currentUser.displayName}</span>
+      </UsernameContainer>
+    </UserCardContainer>
   );
 };
 

@@ -2,12 +2,15 @@ import React, { useState, useEffect, useRef } from "react";
 import moment from "moment";
 import { auth, firestore } from "../firebase";
 import { v4 as uuidv4 } from "uuid";
-import { useAuth } from "./AuthContext";
 
 export const TaskContext = React.createContext(null);
 
 export const TaskContextProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
+  const [inboxCount, setInboxCount] = useState();
+  const [todayCount, setTodayCount] = useState();
+  const [starCount, setStarCount] = useState();
+  const [archiveCount, setArchiveCount] = useState();
 
   // this should be handled more propery
   const taskDB = auth.currentUser
@@ -44,6 +47,7 @@ export const TaskContextProvider = ({ children }) => {
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
+    console.log("search set");
   };
 
   var todayDate = moment().format("YYYY-MM-D");
@@ -84,6 +88,18 @@ export const TaskContextProvider = ({ children }) => {
         console.error("Error removing document: ", error);
       });
   };
+  const editSchedule = (task, schedule) => {
+    console.log("editSchedule");
+    taskDB
+      .doc(task.id)
+      .update({ scheduleDate: schedule })
+      .then(() => {
+        console.log("Document successfully edited!");
+      })
+      .catch((error) => {
+        console.error("Error removing document: ", error);
+      });
+  };
 
   const toggleStar = (task) => {
     taskDB
@@ -116,10 +132,29 @@ export const TaskContextProvider = ({ children }) => {
 
   // hook to handle TaskInput value
   const [input, setInput] = useState("");
+  const [theme, setTheme] = useState("#C0C0C0");
+  const [dark, setDark] = useState(true);
+
+  const handleTheme = (color) => {
+    setTheme(color);
+  };
 
   return (
     <TaskContext.Provider
       value={{
+        dark,
+        setDark,
+        editSchedule,
+        inboxCount,
+        setInboxCount,
+        todayCount,
+        setTodayCount,
+        starCount,
+        setStarCount,
+        archiveCount,
+        setArchiveCount,
+        theme,
+        handleTheme,
         tasks,
         setTasks,
         searchBarRef,

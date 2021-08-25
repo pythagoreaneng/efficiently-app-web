@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-export const ContentContainer = styled.div`
-  width: 80%;
+const ContentContainer = styled.div`
+  width: 90%;
   height: 100%;
   position: relative;
 `;

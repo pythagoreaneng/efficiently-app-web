@@ -1,10 +1,10 @@
 import React, { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import { UserCard } from "../components/Body";
 import { useAuth } from "../contexts/AuthContext";
 import { SettingLayout } from "../components/Layouts";
 import { GoSignOut } from "react-icons/go";
+import { Container } from "../components/Common/styles";
 
 const EntryForm = styled.form`
   display: flex;
@@ -44,23 +44,6 @@ const EntryErrorMessage = styled.div`
   padding: 0 0.5rem;
   margin: 0.5rem 0;
   background-color: #ffcccb;
-`;
-
-const SettingContentContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-`;
-
-const SettingHeaderLeftContainer = styled.div`
-  display: flex;
-  height: 15%;
-  font-size: 2em;
-  justify-content: center;
-  align-items: center;
 `;
 
 const SettingBodyContainer = styled.div`
@@ -139,14 +122,10 @@ const Profile = () => {
   };
 
   return (
-    <SettingLayout>
-      <SettingContentContainer>
+    <Container>
+      <SettingLayout title={"Profile"} description={<></>}>
         {error && <EntryErrorMessage>{error}</EntryErrorMessage>}
-        <SettingHeaderLeftContainer>
-          Profile settings
-        </SettingHeaderLeftContainer>
         <SettingBodyContainer>
-          <UserCard />
           <EntryForm onSubmit={handleSubmitUpdate}>
             <EntryInput
               type="username"
@@ -189,8 +168,8 @@ const Profile = () => {
             <GoSignOut /> Logout
           </LogoutButton>
         </SettingBodyContainer>
-      </SettingContentContainer>
-    </SettingLayout>
+      </SettingLayout>
+    </Container>
   );
 };
 

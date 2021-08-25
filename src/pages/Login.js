@@ -11,10 +11,11 @@ import {
   EntryInputContainer,
 } from "../EntryComponent.js";
 import EntryComponent from "../EntryComponent";
+import { Container } from "../components/Common/styles";
 
 const Login = () => {
   const { login, history } = useAuth();
-  const { emailRef, passwordRef, error, setError, loading, setLoading } =
+  const { emailRef, passwordRef, setError, loading, setLoading } =
     useContext(EntryContext);
 
   // function to handle login request
@@ -74,11 +75,13 @@ const Login = () => {
   );
 
   return (
-    <EntryComponent
-      title="Login"
-      form={LoginForm}
-      bottomMessage={SignupMessage}
-    />
+    <Container>
+      <EntryComponent
+        title="Login"
+        form={LoginForm}
+        bottomMessage={SignupMessage}
+      />
+    </Container>
   );
 };
 

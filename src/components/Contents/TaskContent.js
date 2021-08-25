@@ -1,15 +1,29 @@
 import React from "react";
-import { TaskInputContainer, TaskListContainer } from "./styles";
 import { TaskList, TaskInput } from "../TaskList";
-import { TaskListContextProvider } from "../../contexts/TaskListContext";
+
+import styled from "styled-components";
+
+const TaskListContainer = styled.div`
+  height: 90%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const TaskInputContainer = styled.form`
+  height: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const TaskContent = () => {
   return (
     <>
       <TaskListContainer>
-        <TaskListContextProvider>
-          <TaskList />
-        </TaskListContextProvider>
+        <TaskList />
       </TaskListContainer>
       <TaskInputContainer>
         <TaskInput />

@@ -2,20 +2,59 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { RiCloseFill, RiStarSFill, RiStarSLine } from "react-icons/ri";
 import moment from "moment";
 import { TaskContext } from "../../contexts/TaskContext";
-import {
-  Checkbox,
-  DaysContainer,
-  EditInput,
-  OptionContainer,
-  TaskContainer,
-  TaskHeaderLeftContainer,
-} from "./styles";
+import styled from "styled-components";
+import DayPickerInput from "react-day-picker/DayPickerInput";
+import { DateUtils } from "react-day-picker";
+import "react-day-picker/lib/style.css";
+
+import MomentLocaleUtils, {
+  formatDate,
+  parseDate,
+} from "react-day-picker/moment";
+
+const TaskContainer = styled.div`
+  width: 60%;
+  padding: 1rem 0.3rem 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+`;
+const Checkbox = styled.input`
+  margin: 0 0.5rem;
+`;
+
+const TaskNameContainer = styled.div`
+  width: 70%;
+`;
+
+const OptionContainer = styled.button`
+  position: absolute;
+  right: 1rem;
+  display: flex;
+`;
+
+const EditInput = styled.input`
+  background-color: #efefef;
+  width: 100%;
+  &:focus {
+    outline: none;
+  }
+`;
+
+const DaysContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-size: 0.6em;
+`;
 
 const Task = ({ task }) => {
-  const { completeTask, removeTask, toggleStar, editTask } =
+  const { completeTask, removeTask, toggleStar, editTask, editSchedule } =
     useContext(TaskContext);
   const [isEdit, setIsEdit] = useState(false);
   const [edit, setEdit] = useState(task.title);
+  const [isEditSchedule, setIsEditSchedule] = useState(false);
+  const [schedule, setSchedule] = useState(task.scheduleDate);
+
   const handleChange = (e) => {
     setEdit(e.target.value);
   };
@@ -50,8 +89,27 @@ const Task = ({ task }) => {
       editTask(task, edit); // update the task globally.
     }
   };
+  const editScheduleKeyDown = (e) => {
+    // stops edit when enter is hit in edit input.
+    if (e.key === "Enter") {
+      if (edit === "" || /^\s*$/.test(edit)) {
+        // check input
+        console.log("Invalid edit");
+        return;
+      }
+      // if same don't run saveTasks()
+      if (edit === task.title) {
+        setIsEditSchedule(false);
+        return;
+      }
+      setSchedule(schedule); //change value of edit,
+      setIsEditSchedule(false); // set edit attribute to false,
+      editSchedule(task, schedule); // update the task globally.
+    }
+  };
 
   const outsideClick = () => {
+    console.log("outside click");
     if (edit === "") {
       // check if edit is empty
       removeTask(task.id);
@@ -64,13 +122,17 @@ const Task = ({ task }) => {
       return;
     }
     setEdit(edit); //change value of edit,
+    setSchedule(schedule);
     setIsEdit(false); // set edit attribute to false,
+    setIsEditSchedule(false);
     editTask(task, edit); // update the task.
+    editSchedule(task, schedule);
   };
 
   let untilScheduleDate = moment(task.scheduleDate).fromNow();
   let untilDueDate = moment(task.dueDate).fromNow();
 
+  const FORMAT = "MM/dd/yyyy";
   return (
     <TaskContainer key={task.id}>
       <Checkbox
@@ -78,7 +140,7 @@ const Task = ({ task }) => {
         type="Checkbox"
         onClick={() => completeTask(task)}
       />
-      <TaskHeaderLeftContainer onClick={handleOnClickEdit}>
+      <TaskNameContainer onClick={handleOnClickEdit}>
         {isEdit ? (
           <EditInput
             placeholder="Press enter to confirm edit"
@@ -89,10 +151,25 @@ const Task = ({ task }) => {
             ref={editRef}
           />
         ) : (
-          <div>{edit}</div>
+          <div
+            style={
+              task.completed
+                ? { textDecorationLine: "line-through" }
+                : { textDecorationLine: "none" }
+            }
+          >
+            {edit}
+          </div>
         )}
-      </TaskHeaderLeftContainer>
+      </TaskNameContainer>
       <DaysContainer>
+        <DayPickerInput
+          value={schedule}
+          placeholder={task.scheduleDate || "Not scheduled"}
+          formatDate={formatDate}
+          parseDate={parseDate}
+          onDayChange={(day) => console.log(day)}
+        />
         <p>{task.scheduleDate && <span>Scheduled {untilScheduleDate}</span>}</p>
         <p>{task.dueDate && <span>due {untilDueDate}</span>}</p>
       </DaysContainer>

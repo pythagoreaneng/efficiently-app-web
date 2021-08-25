@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.css";
 import { Login, Reset, Signup } from "./pages";
-import { Inbox, Security, Themes, Profile, Upgrade } from "./pages";
+import { Inbox, Security, Customize, Profile, Upgrade } from "./pages";
 import {
   BrowserRouter as Router,
   Switch,
@@ -31,7 +31,7 @@ function App() {
             <EntryContextProvider>
               <PrivateRoute path="/profile" component={Profile} />
               <PrivateRoute path="/security" component={Security} />
-              <PrivateRoute path="/themes" component={Themes} />
+              <PrivateRoute path="/customize" component={Customize} />
               <PrivateRoute path="/upgrade" component={Upgrade} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} />

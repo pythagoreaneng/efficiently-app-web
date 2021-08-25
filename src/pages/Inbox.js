@@ -1,8 +1,13 @@
 import React from "react";
+import { Container } from "../components/Common/styles";
 import { TaskLayout } from "../components/Layouts";
 
 const Inbox = () => {
-  return <TaskLayout />;
+  return (
+    <Container>
+      <TaskLayout />
+    </Container>
+  );
 };
 
 export default Inbox;

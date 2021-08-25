@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { auth, firestore } from "../firebase";
 
@@ -60,9 +60,11 @@ const UserProvider = ({ children }) => {
         }
 
         if (window.location.pathname === "/login") {
-          history.push("/");
+          history.push("/inbox");
         } else if (window.location.pathname === "/signup") {
-          history.push("/");
+          history.push("/inbox");
+        } else if (window.location.pathname === "/") {
+          history.push("/inbox");
         }
       } else {
         console.log("The user is not logged in");
@@ -73,7 +75,7 @@ const UserProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChange();
     return unsubscribe;
-  }, []);
+  }, []); // eslint-disable-line
 
   const value = {
     currentUser,

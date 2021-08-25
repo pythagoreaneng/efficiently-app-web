@@ -105,3 +105,22 @@ const addTask = (task) => {
   console.log("tasks:", tasks);
   return;
 };
+
+const inSearchBarKeyDown = (e) => {
+  console.log(e);
+
+  if (e.key === "Alt") {
+    if (window.location.pathname === "/search") {
+      inboxRef.current.click();
+    }
+    console.log("focus on search in inSearchBarKeyDown");
+    inputRef.current.focus();
+  } else if (e.key === "ArrowUp") {
+    console.log("arrow up(input down!)");
+    archiveRef.current.click();
+  } else if (e.key === "ArrowDown") {
+    console.log("Arrow down(inSearchBarKeyDown)");
+    inputRef.current.focus();
+    inboxRef.current.click();
+  }
+};
