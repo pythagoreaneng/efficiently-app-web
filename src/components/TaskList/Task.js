@@ -117,7 +117,15 @@ const Task = ({ task }) => {
             ref={editRef}
           />
         ) : (
-          <div>{edit}</div>
+          <div
+            style={
+              task.completed
+                ? { textDecorationLine: "line-through" }
+                : { textDecorationLine: "none" }
+            }
+          >
+            {edit}
+          </div>
         )}
       </TaskNameContainer>
       <DaysContainer>
