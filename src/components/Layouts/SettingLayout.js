@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Container } from "../Common/styles";
 import { Header } from "../Header";
-import { Body, Content, SideBar } from "../Body";
+import { Body, Content } from "../Body";
 import { SettingSideBar } from "../Contents";
 import { Title } from "../Header";
 import { TaskContext } from "../../contexts/TaskContext";
@@ -52,14 +52,13 @@ const UpgradeButton = styled.button`
 const SettingLayout = ({ title, description, children }) => {
   const { theme } = useContext(TaskContext);
   return (
-    <Container theme={theme}>
-      <Header>
+    <Container>
+      <Header theme={theme}>
         <Title />
       </Header>
       <Body>
-        <SideBar>
-          <SettingSideBar />
-        </SideBar>
+        <SettingSideBar />
+
         <Content>
           <SettingTitleContainer>{title}</SettingTitleContainer>
           <SettingDescriptionContainer>

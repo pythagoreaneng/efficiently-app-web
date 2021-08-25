@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { TaskContext } from "../../contexts/TaskContext";
 
 export const HeaderContainer = styled.div`
   height: 10%;
   width: 100wh;
-  background-color: rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
+  background-color: ${(props) => props.theme || "#911"};
 `;
 
-const Header = ({ children }) => {
-  return <HeaderContainer>{children}</HeaderContainer>;
+const Header = ({ theme, left, center, right }) => {
+  return (
+    <HeaderContainer theme={theme}>
+      {left}
+      {center}
+      {right}
+    </HeaderContainer>
+  );
 };
 
 export default Header;

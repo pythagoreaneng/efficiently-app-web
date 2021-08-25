@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Container } from "../components/Common/styles";
 import { SettingLayout } from "../components/Layouts";
 
 const SettingContentContainer = styled.div`
@@ -29,7 +30,11 @@ const SettingBodyContainer = styled.div`
 `;
 
 const Security = () => {
-  return <SettingLayout title={"Security"} description={""}></SettingLayout>;
+  return (
+    <Container>
+      <SettingLayout title={"Security"} description={""} />
+    </Container>
+  );
 };
 
 export default Security;

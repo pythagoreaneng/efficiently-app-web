@@ -1,6 +1,6 @@
 import React from "react";
 import { TaskList, TaskInput } from "../TaskList";
-import { TaskListContextProvider } from "../../contexts/TaskListContext";
+
 import styled from "styled-components";
 
 const TaskListContainer = styled.div`
@@ -12,24 +12,19 @@ const TaskListContainer = styled.div`
 `;
 
 const TaskInputContainer = styled.form`
+  height: 10%;
   width: 100%;
-  height: 20%
   display: flex;
   justify-content: center;
-  position: absolute;
-  bottom: 0;
-  padding: 1rem 2rem;
+  align-items: center;
 `;
 
 const TaskContent = () => {
   return (
     <>
-      <TaskListContextProvider>
-        <TaskListContainer>
-          <TaskList />
-        </TaskListContainer>
-      </TaskListContextProvider>
-
+      <TaskListContainer>
+        <TaskList />
+      </TaskListContainer>
       <TaskInputContainer>
         <TaskInput />
       </TaskInputContainer>

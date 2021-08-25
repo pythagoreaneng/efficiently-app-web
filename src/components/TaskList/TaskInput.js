@@ -31,6 +31,7 @@ const AddTaskButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  color: black;
 `;
 
 // input component to add tasks
@@ -47,6 +48,7 @@ const TaskInput = ({ onSubmit }) => {
     handleSubmit,
     input,
     setInput,
+    theme,
   } = useContext(TaskContext);
 
   // handler for this hook
@@ -135,7 +137,7 @@ const TaskInput = ({ onSubmit }) => {
           onClick={handleTaskInputClick}
         />
         <AddTaskButton onClick={handleSubmit} ref={submitRef}>
-          <RiAddCircleFill size={50} color={"#44BCFF"} />
+          <RiAddCircleFill size={40} color={theme} />
         </AddTaskButton>
       </AddTaskContainer>
     </>

@@ -6,7 +6,7 @@ import { HeaderContainer, BodyContainer, ContentContainer } from "./styles";
 const Settings = () => {
   const { currentUser } = useAuth();
   return (
-    <>
+    <Container>
       <HeaderContainer>
         <Title />
       </HeaderContainer>
@@ -78,7 +78,7 @@ const Settings = () => {
         </SideBarContainer> */}
         <ContentContainer></ContentContainer>
       </BodyContainer>
-    </>
+    </Container>
   );
 };
 

@@ -11,6 +11,7 @@ import {
   EntryInputContainer,
 } from "../EntryComponent.js";
 import EntryComponent from "../EntryComponent";
+import { Container } from "../components/Common/styles";
 
 const Login = () => {
   const { login, history } = useAuth();
@@ -74,11 +75,13 @@ const Login = () => {
   );
 
   return (
-    <EntryComponent
-      title="Login"
-      form={LoginForm}
-      bottomMessage={SignupMessage}
-    />
+    <Container>
+      <EntryComponent
+        title="Login"
+        form={LoginForm}
+        bottomMessage={SignupMessage}
+      />
+    </Container>
   );
 };
 
