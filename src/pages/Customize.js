@@ -5,9 +5,6 @@ import { SettingLayout } from "../components/Layouts";
 import { TaskContext } from "../contexts/TaskContext";
 
 const DotsContainer = styled.div`
-  width: 60%;
-  height: 50%;
-  margin-top: 4rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -18,7 +15,12 @@ const DotsContainer = styled.div`
 const Customize = () => {
   const { handleTheme } = useContext(TaskContext);
   return (
-    <SettingLayout title={"Customize"}>
+    <SettingLayout
+      title={"Customize"}
+      description={
+        "Personalize to make planning easy and manage time for people who mean most to you."
+      }
+    >
       <DotsContainer>
         <Dot color={"#FFFFFF"} onClick={() => handleTheme("#FFFFFF")}></Dot>
         <Dot color={"#44BCFF"} onClick={() => handleTheme("#44BCFF")}></Dot>

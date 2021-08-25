@@ -139,14 +139,10 @@ const Profile = () => {
   };
 
   return (
-    <SettingLayout>
+    <SettingLayout title={"Profile"} description={<UserCard />}>
       <SettingContentContainer>
         {error && <EntryErrorMessage>{error}</EntryErrorMessage>}
-        <SettingHeaderLeftContainer>
-          Profile settings
-        </SettingHeaderLeftContainer>
         <SettingBodyContainer>
-          <UserCard />
           <EntryForm onSubmit={handleSubmitUpdate}>
             <EntryInput
               type="username"
