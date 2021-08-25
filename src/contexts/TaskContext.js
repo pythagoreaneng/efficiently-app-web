@@ -124,10 +124,10 @@ export const TaskContextProvider = ({ children }) => {
     console.log(color);
   };
 
-  const [inboxCount, setInboxCount] = useState(0);
-  const [todayCount, setTodayCount] = useState(0);
-  const [starCount, setStarCount] = useState(0);
-  const [archiveCount, setArchiveCount] = useState(0);
+  const [inboxCount, setInboxCount] = useState();
+  const [todayCount, setTodayCount] = useState();
+  const [starCount, setStarCount] = useState();
+  const [archiveCount, setArchiveCount] = useState();
 
   return (
     <TaskContext.Provider
