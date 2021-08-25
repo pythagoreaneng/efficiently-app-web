@@ -10,7 +10,8 @@ export const HeaderContainer = styled.div`
   background-color: ${(props) => props.theme || "#911"};
 `;
 
-const Header = ({ theme, left, center, right }) => {
+const Header = ({ left, center, right }) => {
+  const { theme } = useContext(TaskContext);
   return (
     <HeaderContainer theme={theme}>
       {left}

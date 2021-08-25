@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Container } from "../Common/styles";
 import { Header } from "../Header";
 import { Body, Content } from "../Body";
-import { SettingSideBar } from "../Contents";
+import { SettingSideBar, SettingContent } from "../Contents";
 import { Title } from "../Header";
 import { TaskContext } from "../../contexts/TaskContext";
 import styled from "styled-components";
@@ -50,28 +50,22 @@ const UpgradeButton = styled.button`
   align-items: center;
 `;
 const SettingLayout = ({ title, description, children }) => {
-  const { theme } = useContext(TaskContext);
   return (
     <Container>
-      <Header theme={theme}>
-        <Title />
-      </Header>
-      <Body>
-        <SettingSideBar />
-
-        <Content>
-          <SettingTitleContainer>{title}</SettingTitleContainer>
-          <SettingDescriptionContainer>
-            {description}
-          </SettingDescriptionContainer>
-          <SettingChildrenContainer>{children}</SettingChildrenContainer>
-          <SettingBottomContainer>
-            {/* <UpgradeButton>
-              <Link to="/upgrade">Upgrade</Link>
-            </UpgradeButton> */}
-          </SettingBottomContainer>
-        </Content>
-      </Body>
+      <Header left={<Title />} center={<></>} right={<></>} />
+      <Body
+        sidebar={<SettingSideBar />}
+        content={
+          <>
+            <SettingTitleContainer>{title}</SettingTitleContainer>
+            <SettingDescriptionContainer>
+              {description}
+            </SettingDescriptionContainer>
+            <SettingChildrenContainer>{children}</SettingChildrenContainer>
+            <SettingBottomContainer></SettingBottomContainer>
+          </>
+        }
+      />
     </Container>
   );
 };
