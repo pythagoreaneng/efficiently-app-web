@@ -29,16 +29,7 @@ const SettingBodyContainer = styled.div`
 `;
 
 const Security = () => {
-  return (
-    <SettingLayout>
-      <SettingContentContainer>
-        <SettingHeaderLeftContainer>
-          Security settings
-        </SettingHeaderLeftContainer>
-        <SettingBodyContainer>Coming Soon</SettingBodyContainer>
-      </SettingContentContainer>
-    </SettingLayout>
-  );
+  return <SettingLayout title={"Security"} description={""}></SettingLayout>;
 };
 
 export default Security;

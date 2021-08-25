@@ -30,14 +30,10 @@ const SettingBodyContainer = styled.div`
 
 const Upgrade = () => {
   return (
-    <SettingLayout>
-      <SettingContentContainer>
-        <SettingHeaderLeftContainer>
-          Upgrade Your Efficiency with Efficiently+
-        </SettingHeaderLeftContainer>
-        <SettingBodyContainer>Coming Soon</SettingBodyContainer>
-      </SettingContentContainer>
-    </SettingLayout>
+    <SettingLayout
+      title={"Efficiently+"}
+      description={"Upgrade your efficiency"}
+    ></SettingLayout>
   );
 };
 
