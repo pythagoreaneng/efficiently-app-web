@@ -7,6 +7,7 @@ import { useAuth } from "../../contexts/AuthContext";
 const UserCardContainer = styled(Link)`
   display: flex;
   width: 100%;
+  justify-content: space-between;
 `;
 
 const PicContainer = styled.div`
@@ -24,11 +25,12 @@ const PicWrapper = styled.div`
   align-items: center;
 `;
 
-const UsernameWrapper = styled.div`
-  width: 80%;
+const UsernameContainer = styled.div`
+  width: 70%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   font-size: 0.8em;
 `;
 
@@ -41,9 +43,10 @@ const UserCard = () => {
           <RiUserLine />
         </PicWrapper>
       </PicContainer>
-      <UsernameWrapper>
+      <UsernameContainer>
+        {currentUser.displayName}
         <span>@{currentUser.displayName}</span>
-      </UsernameWrapper>
+      </UsernameContainer>
     </UserCardContainer>
   );
 };
