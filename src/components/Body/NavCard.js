@@ -37,7 +37,7 @@ const NavNameWrapper = styled.div`
 
 const NavBadgeWrapper = styled.div``;
 
-const NavCard = ({ icon, type }) => {
+const NavCard = ({ icon, type, count }) => {
   return (
     <NavCardContainer>
       <NavLink
@@ -56,7 +56,7 @@ const NavCard = ({ icon, type }) => {
               {type.charAt(0).toUpperCase() + type.slice(1)}
             </NavNameWrapper>
           </NavWrapper>
-          <NavBadgeWrapper>0</NavBadgeWrapper>
+          <NavBadgeWrapper>{count}</NavBadgeWrapper>
         </NavSelectorWrapper>
       </NavLink>
     </NavCardContainer>

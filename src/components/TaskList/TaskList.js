@@ -3,13 +3,14 @@ import { TaskContext } from "../../contexts/TaskContext";
 import { Task } from "../TaskList";
 
 const TaskList = () => {
-  const { tasks, todayDate, search } = useContext(TaskContext);
+  const { tasks, todayDate, search, setInboxCount } = useContext(TaskContext);
 
   let renderingTasks; // type of tasks to be rendered
 
   switch (window.location.pathname) {
     case "/inbox":
       const inboxTasks = tasks.filter((task) => !task.completed);
+      setInboxCount(inboxTasks.length);
       renderingTasks = inboxTasks;
       break;
     case "/today":
