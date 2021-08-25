@@ -3,6 +3,7 @@ import { RiCloseFill, RiStarSFill, RiStarSLine } from "react-icons/ri";
 import moment from "moment";
 import { TaskContext } from "../../contexts/TaskContext";
 import styled from "styled-components";
+import DayPicker from "react-day-picker";
 
 const TaskContainer = styled.div`
   width: 60%;
@@ -129,6 +130,7 @@ const Task = ({ task }) => {
         )}
       </TaskNameContainer>
       <DaysContainer>
+        <DayPicker />
         <p>{task.scheduleDate && <span>Scheduled {untilScheduleDate}</span>}</p>
         <p>{task.dueDate && <span>due {untilDueDate}</span>}</p>
       </DaysContainer>

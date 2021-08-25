@@ -4,7 +4,7 @@ import { TaskListContextProvider } from "../../contexts/TaskListContext";
 import styled from "styled-components";
 
 const TaskListContainer = styled.div`
-  height: 85%;
+  height: 90%;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
