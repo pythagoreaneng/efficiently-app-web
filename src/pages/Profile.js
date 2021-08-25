@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import { UserCard } from "../components/Body";
 import { useAuth } from "../contexts/AuthContext";
 import { SettingLayout } from "../components/Layouts";
 import { GoSignOut } from "react-icons/go";
@@ -45,23 +44,6 @@ const EntryErrorMessage = styled.div`
   padding: 0 0.5rem;
   margin: 0.5rem 0;
   background-color: #ffcccb;
-`;
-
-const SettingContentContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-`;
-
-const SettingHeaderLeftContainer = styled.div`
-  display: flex;
-  height: 15%;
-  font-size: 2em;
-  justify-content: center;
-  align-items: center;
 `;
 
 const SettingBodyContainer = styled.div`
@@ -142,52 +124,50 @@ const Profile = () => {
   return (
     <Container>
       <SettingLayout title={"Profile"} description={<></>}>
-        <SettingContentContainer>
-          {error && <EntryErrorMessage>{error}</EntryErrorMessage>}
-          <SettingBodyContainer>
-            <EntryForm onSubmit={handleSubmitUpdate}>
-              <EntryInput
-                type="username"
-                id="username"
-                name="username"
-                placeholder="Username"
-                ref={usernameRef}
-                defaultValue={currentUser.displayName}
-              />
-              <EntryInput
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Email"
-                spellcheck="false"
-                ref={emailRef}
-                required
-                defaultValue={currentUser.email}
-              />
-              <EntryInput
-                type="password"
-                id="pwd"
-                name="pwd"
-                placeholder="Password"
-                ref={passwordRef}
-              />
-              <EntryInput
-                type="password"
-                id="pwdcf"
-                name="pwdcf"
-                placeholder="Confirm Password"
-                ref={passwordConfirmRef}
-              />
+        {error && <EntryErrorMessage>{error}</EntryErrorMessage>}
+        <SettingBodyContainer>
+          <EntryForm onSubmit={handleSubmitUpdate}>
+            <EntryInput
+              type="username"
+              id="username"
+              name="username"
+              placeholder="Username"
+              ref={usernameRef}
+              defaultValue={currentUser.displayName}
+            />
+            <EntryInput
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email"
+              spellcheck="false"
+              ref={emailRef}
+              required
+              defaultValue={currentUser.email}
+            />
+            <EntryInput
+              type="password"
+              id="pwd"
+              name="pwd"
+              placeholder="Password"
+              ref={passwordRef}
+            />
+            <EntryInput
+              type="password"
+              id="pwdcf"
+              name="pwdcf"
+              placeholder="Confirm Password"
+              ref={passwordConfirmRef}
+            />
 
-              <LoginConfirmButton disabled={loading} type="submit">
-                Update
-              </LoginConfirmButton>
-            </EntryForm>
-            <LogoutButton onClick={handleLogout}>
-              <GoSignOut /> Logout
-            </LogoutButton>
-          </SettingBodyContainer>
-        </SettingContentContainer>
+            <LoginConfirmButton disabled={loading} type="submit">
+              Update
+            </LoginConfirmButton>
+          </EntryForm>
+          <LogoutButton onClick={handleLogout}>
+            <GoSignOut /> Logout
+          </LogoutButton>
+        </SettingBodyContainer>
       </SettingLayout>
     </Container>
   );

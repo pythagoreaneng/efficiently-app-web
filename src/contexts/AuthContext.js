@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { auth, firestore } from "../firebase";
 
@@ -75,7 +75,7 @@ const UserProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChange();
     return unsubscribe;
-  }, []);
+  }, []); // eslint-disable-line
 
   const value = {
     currentUser,

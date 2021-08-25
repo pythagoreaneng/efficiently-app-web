@@ -61,7 +61,7 @@ const TaskInput = ({ onSubmit }) => {
     <>
       <AddTaskContainer onSubmit={handleSubmit}>
         <WriteTaskInput
-          placeholder="Start from here(Press ↑↓ to navigate)"
+          placeholder="Start from here"
           value={input}
           onKeyDown={inInputKeyDown}
           onChange={handleChange}

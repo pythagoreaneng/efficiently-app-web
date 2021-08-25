@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import moment from "moment";
 import { auth, firestore } from "../firebase";
 import { v4 as uuidv4 } from "uuid";
-import { useAuth } from "./AuthContext";
 
 export const TaskContext = React.createContext(null);
 
@@ -12,7 +11,6 @@ export const TaskContextProvider = ({ children }) => {
   const [todayCount, setTodayCount] = useState();
   const [starCount, setStarCount] = useState();
   const [archiveCount, setArchiveCount] = useState();
-  const { history } = useAuth();
 
   // this should be handled more propery
   const taskDB = auth.currentUser

@@ -1,12 +1,8 @@
-import React, { useContext } from "react";
-import { Container } from "../Common/styles";
-import { Header } from "../Header";
-import { Body, Content } from "../Body";
-import { SettingSideBar, SettingContent } from "../Contents";
-import { Title } from "../Header";
-import { TaskContext } from "../../contexts/TaskContext";
+import React from "react";
+import { Header, Title } from "../Header";
+import { Body } from "../Body";
+import { SettingSideBar } from "../Contents";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 const SettingTitleContainer = styled.div`
   width: 100%;
@@ -39,16 +35,7 @@ const SettingBottomContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const UpgradeButton = styled.button`
-  height: 2rem;
-  background-color: #44bcff;
-  border-radius: 0.8rem;
-  padding: 0.5rem 0.8rem;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+
 const SettingLayout = ({ title, description, children }) => {
   return (
     <>

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { TaskContext } from "../../contexts/TaskContext";
 import { Task } from "../TaskList";
 
@@ -13,23 +13,31 @@ const TaskList = () => {
     setArchiveCount,
   } = useContext(TaskContext);
 
-  const inboxTasks = tasks.filter((task) => !task.completed);
-  setInboxCount(inboxTasks.length);
-
-  const todayTasks = tasks.filter((task) => task.dueDate === todayDate);
-  setTodayCount(todayTasks.length);
-
-  const starTasks = tasks.filter((task) => task.star);
-  setStarCount(starTasks.length);
-
-  const upcomingTasks = tasks.filter((task) => task.scheduleDate > todayDate);
-
-  const archiveTasks = tasks.filter((task) => task.completed);
-  setArchiveCount(archiveTasks.length);
-
-  const searchedTasks = tasks.filter((task) =>
+  let inboxTasks = tasks.filter((task) => !task.completed);
+  let todayTasks = tasks.filter((task) => task.dueDate === todayDate);
+  let starTasks = tasks.filter((task) => task.star);
+  let upcomingTasks = tasks.filter((task) => task.scheduleDate > todayDate);
+  let archiveTasks = tasks.filter((task) => task.completed);
+  let searchedTasks = tasks.filter((task) =>
     task.title.includes(search.toLowerCase())
   );
+
+  // update counts
+  useEffect(() => {
+    setInboxCount(inboxTasks.length);
+    setTodayCount(todayTasks.length);
+    setStarCount(starTasks.length);
+    setArchiveCount(archiveTasks.length);
+  }, [
+    inboxTasks,
+    todayTasks,
+    starTasks,
+    archiveTasks,
+    setInboxCount,
+    setTodayCount,
+    setStarCount,
+    setArchiveCount,
+  ]);
 
   let renderingTasks; // type of tasks to be rendered
 
@@ -50,8 +58,6 @@ const TaskList = () => {
       renderingTasks = archiveTasks;
       break;
     default:
-      // anything else including seach
-
       renderingTasks = searchedTasks;
       break;
   }

@@ -53,6 +53,7 @@ const Body = ({ sidebar, content }) => {
     })
     .catch((error) => {
       console.log("Error getting document:", error);
+      setError(error);
     });
   return (
     <BodyContainer>
