@@ -2,14 +2,42 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { RiCloseFill, RiStarSFill, RiStarSLine } from "react-icons/ri";
 import moment from "moment";
 import { TaskContext } from "../../contexts/TaskContext";
-import {
-  Checkbox,
-  DaysContainer,
-  EditInput,
-  OptionContainer,
-  TaskContainer,
-  TaskHeaderLeftContainer,
-} from "./styles";
+import styled from "styled-components";
+
+const TaskContainer = styled.div`
+  width: 60%;
+  padding: 1rem 0.3rem 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+`;
+const Checkbox = styled.input`
+  margin: 0 0.5rem;
+`;
+
+const TaskNameContainer = styled.div`
+  width: 70%;
+`;
+
+const OptionContainer = styled.button`
+  position: absolute;
+  right: 1rem;
+  display: flex;
+`;
+
+const EditInput = styled.input`
+  background-color: #efefef;
+  width: 100%;
+  &:focus {
+    outline: none;
+  }
+`;
+
+const DaysContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-size: 0.6em;
+`;
 
 const Task = ({ task }) => {
   const { completeTask, removeTask, toggleStar, editTask } =
@@ -78,7 +106,7 @@ const Task = ({ task }) => {
         type="Checkbox"
         onClick={() => completeTask(task)}
       />
-      <TaskHeaderLeftContainer onClick={handleOnClickEdit}>
+      <TaskNameContainer onClick={handleOnClickEdit}>
         {isEdit ? (
           <EditInput
             placeholder="Press enter to confirm edit"
@@ -91,7 +119,7 @@ const Task = ({ task }) => {
         ) : (
           <div>{edit}</div>
         )}
-      </TaskHeaderLeftContainer>
+      </TaskNameContainer>
       <DaysContainer>
         <p>{task.scheduleDate && <span>Scheduled {untilScheduleDate}</span>}</p>
         <p>{task.dueDate && <span>due {untilDueDate}</span>}</p>

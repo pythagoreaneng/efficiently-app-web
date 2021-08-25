@@ -8,6 +8,13 @@ const NavCardContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    background: #fff;
+  }
 `;
 
 const NavSelectorWrapper = styled.div`
@@ -42,7 +49,11 @@ const NavCard = ({ icon, type, count }) => {
     <NavCardContainer>
       <NavLink
         to={"/" + type}
-        style={{ width: "100%", display: "flex", justifyContent: "start" }}
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "start",
+        }}
         activeStyle={{
           background: "#ffffff",
           borderRadius: ".2rem",
