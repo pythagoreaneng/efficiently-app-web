@@ -141,7 +141,7 @@ const Profile = () => {
 
   return (
     <Container>
-      <SettingLayout title={"Profile"} description={<UserCard />}>
+      <SettingLayout title={"Profile"} description={<></>}>
         <SettingContentContainer>
           {error && <EntryErrorMessage>{error}</EntryErrorMessage>}
           <SettingBodyContainer>

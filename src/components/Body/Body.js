@@ -9,6 +9,7 @@ const BodyContainer = styled.div`
 `;
 
 const SideBarContainer = styled.div`
+  height: 100%;
   width: 15%;
   background-color: rgba(0, 0, 0, 0.05);
   padding: 1rem;
@@ -23,12 +24,14 @@ const SideBottomContainer = styled.div`
 `;
 
 const NavCardsContainer = styled.div`
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
 `;
 
 const ContentContainer = styled.div`
+  height: 100%;
   width: 85%;
 `;
 

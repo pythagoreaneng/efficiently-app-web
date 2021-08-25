@@ -1,10 +1,28 @@
 import React, { useContext } from "react";
 import { Search, Header, HamburgerMenu } from "../Header";
 import { Body } from "../Body";
-import { TaskSideBar, TaskContent } from "../Contents";
+import { TaskSideBar } from "../Contents";
 import { TaskContext } from "../../contexts/TaskContext";
+import { TaskList, TaskInput } from "../TaskList";
+import styled from "styled-components";
 
 // Filter by component example: takes {children}(ie Today) here
+
+const TaskListContainer = styled.div`
+  height: 90%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const TaskInputContainer = styled.form`
+  height: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const TaskLayout = () => {
   const { theme } = useContext(TaskContext);
@@ -16,7 +34,19 @@ const TaskLayout = () => {
         right={<></>}
         theme={theme}
       />
-      <Body sidebar={<TaskSideBar />} content={<TaskContent />} />
+      <Body
+        sidebar={<TaskSideBar />}
+        content={
+          <>
+            <TaskListContainer>
+              <TaskList />
+            </TaskListContainer>
+            <TaskInputContainer>
+              <TaskInput />
+            </TaskInputContainer>
+          </>
+        }
+      />
     </>
   );
 };

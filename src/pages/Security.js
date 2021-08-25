@@ -32,7 +32,9 @@ const SettingBodyContainer = styled.div`
 const Security = () => {
   return (
     <Container>
-      <SettingLayout title={"Security"} description={""} />
+      <SettingLayout title={"Security"} description={""}>
+        Security settting
+      </SettingLayout>
     </Container>
   );
 };

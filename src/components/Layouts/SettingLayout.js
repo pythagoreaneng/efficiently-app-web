@@ -51,7 +51,7 @@ const UpgradeButton = styled.button`
 `;
 const SettingLayout = ({ title, description, children }) => {
   return (
-    <Container>
+    <>
       <Header left={<Title />} center={<></>} right={<></>} />
       <Body
         sidebar={<SettingSideBar />}
@@ -66,7 +66,7 @@ const SettingLayout = ({ title, description, children }) => {
           </>
         }
       />
-    </Container>
+    </>
   );
 };
 

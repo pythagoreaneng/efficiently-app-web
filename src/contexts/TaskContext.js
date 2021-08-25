@@ -128,11 +128,10 @@ export const TaskContextProvider = ({ children }) => {
 
   // hook to handle TaskInput value
   const [input, setInput] = useState("");
-  const [theme, setTheme] = useState("");
+  const [theme, setTheme] = useState("#C0C0C0");
 
   const handleTheme = (color) => {
     setTheme(color);
-    console.log(color);
   };
 
   const [inboxCount, setInboxCount] = useState();

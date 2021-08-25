@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Container } from "../components/Common/styles";
 import { SettingLayout } from "../components/Layouts";
 
 const SettingContentContainer = styled.div`
@@ -30,10 +31,12 @@ const SettingBodyContainer = styled.div`
 
 const Upgrade = () => {
   return (
-    <SettingLayout
-      title={"Efficiently+"}
-      description={"Upgrade your efficiency"}
-    ></SettingLayout>
+    <Container>
+      <SettingLayout
+        title={"Efficiently+"}
+        description={"Upgrade your efficiency"}
+      ></SettingLayout>
+    </Container>
   );
 };
 
