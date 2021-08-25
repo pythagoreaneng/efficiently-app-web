@@ -13,7 +13,7 @@ const NavCardContainer = styled.div`
   &:visited,
   &:link,
   &:active {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.1);
     border-radius: 0.8rem;
   }
 `;
@@ -23,7 +23,7 @@ const NavSelectorWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 0.3rem;
+  margin: 0 0.8rem;
 `;
 const NavWrapper = styled.div`
   width: 100%;
@@ -57,7 +57,7 @@ const NavCard = ({ icon, type, count }) => {
           borderRadius: "0.8rem",
         }}
         activeStyle={{
-          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          backgroundColor: "rgba(0, 0, 0, 0.1)",
         }}
       >
         <NavSelectorWrapper>
