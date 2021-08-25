@@ -19,7 +19,7 @@ const SearchInputContainer = styled.input`
 `;
 
 const Search = () => {
-  const { searchBarRef, handleSearch, search } = useContext(TaskContext);
+  const { handleSearch, search } = useContext(TaskContext);
   const { history } = useAuth();
 
   const handleSearchClick = () => {
@@ -33,7 +33,6 @@ const Search = () => {
         placeholder="Search(Press alt or  ⌥)"
         onChange={handleSearch}
         value={search}
-        ref={searchBarRef}
         onClick={handleSearchClick}
       />
     </HeaderCenterContainer>
