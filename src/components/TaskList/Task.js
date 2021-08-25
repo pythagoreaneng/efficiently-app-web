@@ -3,7 +3,8 @@ import { RiCloseFill, RiStarSFill, RiStarSLine } from "react-icons/ri";
 import moment from "moment";
 import { TaskContext } from "../../contexts/TaskContext";
 import styled from "styled-components";
-import DayPicker from "react-day-picker";
+import DayPickerInput from "react-day-picker/DayPickerInput";
+import "react-day-picker/lib/style.css";
 
 const TaskContainer = styled.div`
   width: 60%;
@@ -41,10 +42,12 @@ const DaysContainer = styled.div`
 `;
 
 const Task = ({ task }) => {
-  const { completeTask, removeTask, toggleStar, editTask } =
+  const { completeTask, removeTask, toggleStar, editTask, editSchedule } =
     useContext(TaskContext);
   const [isEdit, setIsEdit] = useState(false);
+  const [isEditSchedule, setIsEditSchedule] = useState(false);
   const [edit, setEdit] = useState(task.title);
+  const [schedule, setSchedule] = useState();
   const handleChange = (e) => {
     setEdit(e.target.value);
   };
@@ -77,6 +80,24 @@ const Task = ({ task }) => {
       setEdit(edit); //change value of edit,
       setIsEdit(false); // set edit attribute to false,
       editTask(task, edit); // update the task globally.
+    }
+  };
+  const editScheduleKeyDown = (e) => {
+    // stops edit when enter is hit in edit input.
+    if (e.key === "Enter") {
+      if (edit === "" || /^\s*$/.test(edit)) {
+        // check input
+        console.log("Invalid edit");
+        return;
+      }
+      // if same don't run saveTasks()
+      if (edit === task.title) {
+        setIsEditSchedule(false);
+        return;
+      }
+      setSchedule(edit); //change value of edit,
+      setIsEditSchedule(false); // set edit attribute to false,
+      editSchedule(task, edit); // update the task globally.
     }
   };
 
@@ -130,7 +151,7 @@ const Task = ({ task }) => {
         )}
       </TaskNameContainer>
       <DaysContainer>
-        <DayPicker />
+        <DayPickerInput onDayChange={(day) => editScheduleKeyDown(day)} />
         <p>{task.scheduleDate && <span>Scheduled {untilScheduleDate}</span>}</p>
         <p>{task.dueDate && <span>due {untilDueDate}</span>}</p>
       </DaysContainer>

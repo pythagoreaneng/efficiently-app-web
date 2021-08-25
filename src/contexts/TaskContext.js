@@ -85,6 +85,17 @@ export const TaskContextProvider = ({ children }) => {
         console.error("Error removing document: ", error);
       });
   };
+  const editSchedule = (task, edit) => {
+    taskDB
+      .doc(task.id)
+      .update({ title: edit })
+      .then(() => {
+        console.log("Document successfully edited!");
+      })
+      .catch((error) => {
+        console.error("Error removing document: ", error);
+      });
+  };
 
   const toggleStar = (task) => {
     taskDB
@@ -132,6 +143,7 @@ export const TaskContextProvider = ({ children }) => {
   return (
     <TaskContext.Provider
       value={{
+        editSchedule,
         inboxCount,
         setInboxCount,
         todayCount,
