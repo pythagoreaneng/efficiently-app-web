@@ -7,11 +7,14 @@ const SideBarContainer = styled.div`
   width: 15%;
   background-color: rgba(0, 0, 0, 0.05);
   padding: 1rem;
+  display: flex;
+  justify-content: center;
 `;
 
 const SideBottomContainer = styled.div`
   position: absolute;
   bottom: 0.5rem;
+  width: 12%;
 `;
 
 const NavCardsContainer = styled.div`

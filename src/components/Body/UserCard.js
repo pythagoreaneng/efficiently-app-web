@@ -4,12 +4,16 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useAuth } from "../../contexts/AuthContext";
 
-const UserCardContainer = styled.div`
+const UserCardContainer = styled(Link)`
   display: flex;
-  align-items: center;
+  width: 100%;
 `;
 
-const UserProfilePicWrapper = styled.div`
+const PicContainer = styled.div`
+  width: 20%;
+`;
+
+const PicWrapper = styled.div`
   height: 3rem;
   width: 3rem;
   background-color: #bbb;
@@ -21,20 +25,26 @@ const UserProfilePicWrapper = styled.div`
 `;
 
 const UsernameWrapper = styled.div`
-  padding: 1.5rem;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-size: 0.8em;
 `;
 
 const UserCard = () => {
   const { currentUser } = useAuth();
   return (
-    <Link to="/profile">
-      <UserCardContainer>
-        <UserProfilePicWrapper>
+    <UserCardContainer to={"/profile"}>
+      <PicContainer>
+        <PicWrapper>
           <RiUserLine />
-        </UserProfilePicWrapper>
-        <UsernameWrapper>@{currentUser.displayName}</UsernameWrapper>
-      </UserCardContainer>
-    </Link>
+        </PicWrapper>
+      </PicContainer>
+      <UsernameWrapper>
+        <span>@{currentUser.displayName}</span>
+      </UsernameWrapper>
+    </UserCardContainer>
   );
 };
 
