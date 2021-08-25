@@ -11,18 +11,43 @@ import { TaskContext } from "../../contexts/TaskContext";
 import { NavCard } from "../Body";
 
 const TaskSiderBar = () => {
-  const { inboxCount, todayCount, starCount, archiveCount, searchRef } =
-    useContext(TaskContext);
+  const {
+    inboxCount,
+    todayCount,
+    starCount,
+    archiveCount,
+    inboxRef,
+    todayRef,
+    starRef,
+    archiveRef,
+    searchRef,
+  } = useContext(TaskContext);
   return (
     <>
-      <NavCard icon={<RiInboxFill />} type={"inbox"} count={inboxCount} />
+      <NavCard
+        icon={<RiInboxFill />}
+        type={"inbox"}
+        count={inboxCount}
+        ref={inboxRef}
+      />
       <NavCard
         icon={<RiCalendarTodoFill />}
         type={"today"}
         count={todayCount}
+        ref={todayRef}
       />
-      <NavCard icon={<RiStarSFill />} type={"star"} count={starCount} />
-      <NavCard icon={<RiArchiveFill />} type={"archive"} count={archiveCount} />
+      <NavCard
+        icon={<RiStarSFill />}
+        type={"star"}
+        count={starCount}
+        ref={starRef}
+      />
+      <NavCard
+        icon={<RiArchiveFill />}
+        type={"archive"}
+        count={archiveCount}
+        ref={archiveRef}
+      />
       <NavCard icon={<RiSearchLine />} type={"search"} ref={searchRef} />
     </>
   );

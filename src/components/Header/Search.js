@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
+import { useAuth } from "../../contexts/AuthContext";
 import { TaskContext } from "../../contexts/TaskContext";
 import { HeaderCenterContainer } from "./styles";
 
@@ -19,8 +20,11 @@ const SearchInputContainer = styled.input`
 
 const Search = () => {
   const { searchBarRef, handleSearch, search } = useContext(TaskContext);
+  const { history } = useAuth();
 
-  const handleSearchBarClick = () => {};
+  const handleSearchClick = () => {
+    history.push("/search");
+  };
 
   return (
     <HeaderCenterContainer>
@@ -30,7 +34,7 @@ const Search = () => {
         onChange={handleSearch}
         value={search}
         ref={searchBarRef}
-        onClick={handleSearchBarClick}
+        onClick={handleSearchClick}
       />
     </HeaderCenterContainer>
   );

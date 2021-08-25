@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useContext } from "react";
 import { RiAddCircleFill } from "react-icons/ri";
 import styled from "styled-components";
+import { useAuth } from "../../contexts/AuthContext";
 import { TaskContext } from "../../contexts/TaskContext";
 
 const AddTaskContainer = styled.div`
@@ -51,6 +52,8 @@ const TaskInput = ({ onSubmit }) => {
     theme,
   } = useContext(TaskContext);
 
+  const { history } = useAuth();
+
   // handler for this hook
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -68,11 +71,9 @@ const TaskInput = ({ onSubmit }) => {
     }
   }, [searchBarRef, inputRef]); // eslint-disable-line
 
-  const submitRef = useRef(null);
-
   // handler to go to inbox when user click TaskInput box
   const handleTaskInputClick = () => {
-    inboxRef.current.click();
+    history.push("/inbox");
   };
 
   // Key Downs available in TaskInput
@@ -136,7 +137,7 @@ const TaskInput = ({ onSubmit }) => {
           onChange={handleChange}
           onClick={handleTaskInputClick}
         />
-        <AddTaskButton onClick={handleSubmit} ref={submitRef}>
+        <AddTaskButton onClick={handleSubmit}>
           <RiAddCircleFill size={40} color={theme} />
         </AddTaskButton>
       </AddTaskContainer>

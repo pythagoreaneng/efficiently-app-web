@@ -8,6 +8,10 @@ export const TaskContext = React.createContext(null);
 
 export const TaskContextProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
+  const [inboxCount, setInboxCount] = useState();
+  const [todayCount, setTodayCount] = useState();
+  const [starCount, setStarCount] = useState();
+  const [archiveCount, setArchiveCount] = useState();
 
   // this should be handled more propery
   const taskDB = auth.currentUser
@@ -133,11 +137,6 @@ export const TaskContextProvider = ({ children }) => {
   const handleTheme = (color) => {
     setTheme(color);
   };
-
-  const [inboxCount, setInboxCount] = useState();
-  const [todayCount, setTodayCount] = useState();
-  const [starCount, setStarCount] = useState();
-  const [archiveCount, setArchiveCount] = useState();
 
   return (
     <TaskContext.Provider
