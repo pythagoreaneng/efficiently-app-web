@@ -25,7 +25,7 @@ const TaskInputContainer = styled.form`
 `;
 
 const TaskLayout = () => {
-  const { theme } = useContext(TaskContext);
+  const { theme, dark } = useContext(TaskContext);
   return (
     <>
       <Header
@@ -33,8 +33,10 @@ const TaskLayout = () => {
         center={<Search />}
         right={<></>}
         theme={theme}
+        dark={dark}
       />
       <Body
+        dark={dark}
         sidebar={<TaskSideBar />}
         content={
           <>

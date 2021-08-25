@@ -88,10 +88,11 @@ export const TaskContextProvider = ({ children }) => {
         console.error("Error removing document: ", error);
       });
   };
-  const editSchedule = (task, edit) => {
+  const editSchedule = (task, schedule) => {
+    console.log("editSchedule");
     taskDB
       .doc(task.id)
-      .update({ title: edit })
+      .update({ scheduleDate: schedule })
       .then(() => {
         console.log("Document successfully edited!");
       })
@@ -132,6 +133,7 @@ export const TaskContextProvider = ({ children }) => {
   // hook to handle TaskInput value
   const [input, setInput] = useState("");
   const [theme, setTheme] = useState("#C0C0C0");
+  const [dark, setDark] = useState(true);
 
   const handleTheme = (color) => {
     setTheme(color);
@@ -140,6 +142,8 @@ export const TaskContextProvider = ({ children }) => {
   return (
     <TaskContext.Provider
       value={{
+        dark,
+        setDark,
         editSchedule,
         inboxCount,
         setInboxCount,

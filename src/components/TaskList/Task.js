@@ -4,7 +4,13 @@ import moment from "moment";
 import { TaskContext } from "../../contexts/TaskContext";
 import styled from "styled-components";
 import DayPickerInput from "react-day-picker/DayPickerInput";
+import { DateUtils } from "react-day-picker";
 import "react-day-picker/lib/style.css";
+
+import MomentLocaleUtils, {
+  formatDate,
+  parseDate,
+} from "react-day-picker/moment";
 
 const TaskContainer = styled.div`
   width: 60%;
@@ -45,9 +51,10 @@ const Task = ({ task }) => {
   const { completeTask, removeTask, toggleStar, editTask, editSchedule } =
     useContext(TaskContext);
   const [isEdit, setIsEdit] = useState(false);
-  const [isEditSchedule, setIsEditSchedule] = useState(false);
   const [edit, setEdit] = useState(task.title);
-  const [schedule, setSchedule] = useState();
+  const [isEditSchedule, setIsEditSchedule] = useState(false);
+  const [schedule, setSchedule] = useState(task.scheduleDate);
+
   const handleChange = (e) => {
     setEdit(e.target.value);
   };
@@ -95,13 +102,14 @@ const Task = ({ task }) => {
         setIsEditSchedule(false);
         return;
       }
-      setSchedule(edit); //change value of edit,
+      setSchedule(schedule); //change value of edit,
       setIsEditSchedule(false); // set edit attribute to false,
-      editSchedule(task, edit); // update the task globally.
+      editSchedule(task, schedule); // update the task globally.
     }
   };
 
   const outsideClick = () => {
+    console.log("outside click");
     if (edit === "") {
       // check if edit is empty
       removeTask(task.id);
@@ -114,13 +122,17 @@ const Task = ({ task }) => {
       return;
     }
     setEdit(edit); //change value of edit,
+    setSchedule(schedule);
     setIsEdit(false); // set edit attribute to false,
+    setIsEditSchedule(false);
     editTask(task, edit); // update the task.
+    editSchedule(task, schedule);
   };
 
   let untilScheduleDate = moment(task.scheduleDate).fromNow();
   let untilDueDate = moment(task.dueDate).fromNow();
 
+  const FORMAT = "MM/dd/yyyy";
   return (
     <TaskContainer key={task.id}>
       <Checkbox
@@ -151,7 +163,13 @@ const Task = ({ task }) => {
         )}
       </TaskNameContainer>
       <DaysContainer>
-        <DayPickerInput onDayChange={(day) => editScheduleKeyDown(day)} />
+        <DayPickerInput
+          value={schedule}
+          placeholder={task.scheduleDate || "Not scheduled"}
+          formatDate={formatDate}
+          parseDate={parseDate}
+          onDayChange={(day) => console.log(day)}
+        />
         <p>{task.scheduleDate && <span>Scheduled {untilScheduleDate}</span>}</p>
         <p>{task.dueDate && <span>due {untilDueDate}</span>}</p>
       </DaysContainer>

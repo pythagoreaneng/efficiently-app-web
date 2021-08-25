@@ -1,17 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import styled from "styled-components";
 import UserCard from "./UserCard";
+import { TaskContext } from "../../contexts/TaskContext";
 
 const BodyContainer = styled.div`
   display: flex;
   height: 90%;
+  background-color: ${(props) => (props.dark ? "#22272D" : "#fff")};
+  color: ${(props) => (props.dark ? "#fff" : "#111")};
 `;
 
 const SideBarContainer = styled.div`
   height: 100%;
   width: 15%;
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(0, 0, 0, 0.1);
   padding: 1rem;
   display: flex;
   justify-content: center;
@@ -39,6 +42,7 @@ const Body = ({ sidebar, content }) => {
   const { userDB } = useAuth();
   const [error, setError] = useState("");
   const { currentUser } = useAuth();
+  const { dark } = useContext(TaskContext);
 
   userDB
     .doc("profile")
@@ -56,7 +60,7 @@ const Body = ({ sidebar, content }) => {
       setError(error);
     });
   return (
-    <BodyContainer>
+    <BodyContainer dark={dark}>
       <SideBarContainer>
         {error && <div>Error: {error}</div>}
         <NavCardsContainer>{sidebar}</NavCardsContainer>
