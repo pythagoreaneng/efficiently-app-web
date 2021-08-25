@@ -10,12 +10,12 @@ import { Link } from "react-router-dom";
 
 const SettingTitleContainer = styled.div`
   width: 100%;
-  height: 20%;
+  height: 10%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: 400;
-  font-size: 3em;
+  font-weight: 500;
+  font-size: 2em;
 `;
 const SettingDescriptionContainer = styled.div`
   width: 100%;
@@ -28,7 +28,7 @@ const SettingDescriptionContainer = styled.div`
 `;
 const SettingChildrenContainer = styled.div`
   width: 100%;
-  height: 60%;
+  height: 70%;
   display: flex;
   justify-content: center;
 `;

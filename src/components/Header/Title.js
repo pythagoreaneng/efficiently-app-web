@@ -11,6 +11,8 @@ const TitleWrapper = styled.div`
 
 const NameWrapper = styled.div`
   margin: 0.5rem;
+  font-weight: 600;
+  font-size: 1.3em;
 `;
 
 const Title = () => {
@@ -18,7 +20,7 @@ const Title = () => {
     <NavLink exact to="/inbox">
       <TitleWrapper>
         <img src={Logo} alt="Logo" />
-        <NameWrapper>Efficiently App</NameWrapper>
+        <NameWrapper>Efficiently</NameWrapper>
       </TitleWrapper>
     </NavLink>
   );
