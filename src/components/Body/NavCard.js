@@ -2,44 +2,64 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-const SectionContainer = styled.div`
-  height: 2rem;
+const NavCardContainer = styled.div`
   width: 100%;
-  margin: 1rem;
+  margin: 0.2rem 0;
   display: flex;
-  align-items: center;
   justify-content: center;
-`;
-const IconWrapper = styled.div`
-  margin-right: 0.5rem;
+  align-items: center;
 `;
 
-const SectionWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin: 1rem;
+const NavSelectorWrapper = styled.div`
   width: 100%;
-  margin: 0.7rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0.2rem;
 `;
+const NavWrapper = styled.div`
+  width: 100%;
+  display: flex;
+`;
+
+const IconWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.1rem;
+`;
+
+const NavNameWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const NavBadgeWrapper = styled.div``;
 
 const NavCard = ({ icon, type }) => {
   return (
-    <SectionContainer>
+    <NavCardContainer>
       <NavLink
         to={"/" + type}
+        style={{ width: "100%", display: "flex", justifyContent: "start" }}
         activeStyle={{
           background: "#ffffff",
-          borderRadius: ".5rem",
+          borderRadius: ".2rem",
           opacity: 0.8,
         }}
       >
-        <SectionWrapper>
-          <IconWrapper>{icon}</IconWrapper>
-
-          {type.charAt(0).toUpperCase() + type.slice(1)}
-        </SectionWrapper>
+        <NavSelectorWrapper>
+          <NavWrapper>
+            <IconWrapper>{icon}</IconWrapper>
+            <NavNameWrapper>
+              {type.charAt(0).toUpperCase() + type.slice(1)}
+            </NavNameWrapper>
+          </NavWrapper>
+          <NavBadgeWrapper>0</NavBadgeWrapper>
+        </NavSelectorWrapper>
       </NavLink>
-    </SectionContainer>
+    </NavCardContainer>
   );
 };
 

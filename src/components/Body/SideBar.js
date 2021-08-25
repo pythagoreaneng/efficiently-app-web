@@ -24,7 +24,7 @@ const SideBar = ({ children }) => {
     });
 
   const SideBarContainer = styled.div`
-    width: 20%;
+    width: 15%;
     background-color: rgba(0, 0, 0, 0.05);
     padding: 1rem;
   `;
@@ -38,7 +38,6 @@ const SideBar = ({ children }) => {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
   `;
 
   return (
