@@ -12,12 +12,15 @@ const BodyContainer = styled.div`
 `;
 
 const SideBarContainer = styled.div`
+  ${(props) => (props.navOpen ? console.log("Open") : console.log("Closed"))}
   height: 100%;
   width: 15%;
   background-color: rgba(0, 0, 0, 0.1);
   padding: 1rem;
   display: flex;
   justify-content: center;
+  transition: all linear 0.2s;
+  transform: ${(props) => props.navOpen && "translateX(-100%)"};
 `;
 
 const SideBottomContainer = styled.div`
@@ -42,7 +45,7 @@ const Body = ({ sidebar, content }) => {
   const { userDB } = useAuth();
   const [error, setError] = useState("");
   const { currentUser } = useAuth();
-  const { dark } = useContext(TaskContext);
+  const { dark, navOpen } = useContext(TaskContext);
 
   userDB
     .doc("profile")
@@ -61,7 +64,7 @@ const Body = ({ sidebar, content }) => {
     });
   return (
     <BodyContainer dark={dark}>
-      <SideBarContainer>
+      <SideBarContainer navOpen={navOpen}>
         {error && <div>Error: {error}</div>}
         <NavCardsContainer>{sidebar}</NavCardsContainer>
         <SideBottomContainer>
