@@ -7,41 +7,47 @@ import { TaskContext } from "../../contexts/TaskContext";
 const BodyContainer = styled.div`
   display: flex;
   height: 90%;
+  width: 100%;
   background-color: ${(props) => (props.dark ? "#22272D" : "#fff")};
   color: ${(props) => (props.dark ? "#fff" : "#111")};
 `;
 
 const SideBarContainer = styled.div`
-  ${(props) => (props.navOpen ? console.log("Open") : console.log("Closed"))}
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  width: ${(props) => (props.navOpen ? "15%" : "0")};
+  width: ${(props) => (props.navOpen ? "20%" : "0%")};
   background-color: rgba(0, 0, 0, 0.1);
   transition: all linear 0.2s;
-  transform: ${(props) => !props.navOpen && "translateX(-100%)"};
-  visibility: ${(props) => !props.navOpen && "hidden"}; ;
 `;
 
 const ContentContainer = styled.div`=
   height: 100%;
-  width: ${(props) => (props.navOpen ? "85%" : "100%")};
-`;
-
-const NavCardsContainer = styled.div`
-  height: 100%;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
 `;
 
 // const SideBottomContainer = styled.div`
 //   position: absolute;
 //   bottom: 0.5rem;
 //   width: 10%;
-// `;
+// `; transform: ${(props) => props.navOpen || "translateX(-200%)"};
+
+const NavCardsContainer = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: ${(props) => (props.navOpen ? "100%" : "0%")};
+  display: ${(props) => !props.navOpen && "none"};
+`;
+const UserCardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: ${(props) => (props.navOpen ? "100%" : "0%")};
+  display: ${(props) => !props.navOpen && "none"};
+`;
 
 const Body = ({ sidebar, content }) => {
   const { userDB } = useAuth();
@@ -68,10 +74,13 @@ const Body = ({ sidebar, content }) => {
     <BodyContainer dark={dark}>
       <SideBarContainer navOpen={navOpen}>
         {error && <div>Error: {error}</div>}
-        <NavCardsContainer>{sidebar}</NavCardsContainer>
-        <UserCard />
+
+        <NavCardsContainer navOpen={navOpen}>{sidebar}</NavCardsContainer>
+        <UserCardContainer navOpen={navOpen}>
+          <UserCard />
+        </UserCardContainer>
       </SideBarContainer>
-      <ContentContainer>{content}</ContentContainer>
+      <ContentContainer navOpen={navOpen}>{content}</ContentContainer>
     </BodyContainer>
   );
 };

@@ -134,7 +134,35 @@ export const TaskContextProvider = ({ children }) => {
   const [input, setInput] = useState("");
   const [theme, setTheme] = useState("#C0C0C0");
   const [dark, setDark] = useState(false);
-  const [navOpen, setNavOpen] = useState(true);
+
+  const initial = localStorage.getItem("navOpen")
+    ? localStorage.getItem("navOpen")
+    : true;
+
+  console.log("initial", initial);
+  const [navOpen, setNavOpen] = useState(initial);
+
+  const saveNavOpen = () => {
+    localStorage.setItem("navOpen", navOpen);
+    console.log("saveNavOpen()");
+  };
+
+  const getNavOpen = () => {
+    console.log("getnavOpen()");
+    if (localStorage.getItem("navOpen") === null) {
+      localStorage.setItem("navOpen", true);
+    } else {
+      // setNavOpen(localStorage.getItem("navOpen"));
+    }
+  };
+
+  useEffect(() => {
+    getNavOpen();
+  }, []);
+
+  useEffect(() => {
+    saveNavOpen();
+  }, [navOpen]);
 
   const handleTheme = (color) => {
     setTheme(color);

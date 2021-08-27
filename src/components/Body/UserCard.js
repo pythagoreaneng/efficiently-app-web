@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { useAuth } from "../../contexts/AuthContext";
 
 const UserCardContainer = styled(Link)`
+  padding: 1rem;
   display: flex;
   width: 100%;
   justify-content: space-between;
