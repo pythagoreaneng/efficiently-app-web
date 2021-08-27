@@ -55,6 +55,7 @@ const NavCard = ({ icon, type, count }) => {
           display: "flex",
           justifyContent: "start",
           borderRadius: "0.8rem",
+          padding: "0.25rem",
         }}
         activeStyle={{
           backgroundColor: "rgba(0, 0, 0, 0.1)",

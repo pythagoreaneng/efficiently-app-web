@@ -13,20 +13,20 @@ const BodyContainer = styled.div`
 
 const SideBarContainer = styled.div`
   ${(props) => (props.navOpen ? console.log("Open") : console.log("Closed"))}
-  height: 100%;
-  width: 15%;
-  background-color: rgba(0, 0, 0, 0.1);
-  padding: 1rem;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: ${(props) => (props.navOpen ? "15%" : "0")};
+  background-color: rgba(0, 0, 0, 0.1);
   transition: all linear 0.2s;
-  transform: ${(props) => props.navOpen && "translateX(-100%)"};
+  transform: ${(props) => !props.navOpen && "translateX(-100%)"};
+  visibility: ${(props) => !props.navOpen && "hidden"}; ;
 `;
 
-const SideBottomContainer = styled.div`
-  position: absolute;
-  bottom: 0.5rem;
-  width: 12%;
+const ContentContainer = styled.div`=
+  height: 100%;
+  width: ${(props) => (props.navOpen ? "85%" : "100%")};
 `;
 
 const NavCardsContainer = styled.div`
@@ -34,12 +34,14 @@ const NavCardsContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  padding: 1rem;
 `;
 
-const ContentContainer = styled.div`
-  height: 100%;
-  width: 85%;
-`;
+// const SideBottomContainer = styled.div`
+//   position: absolute;
+//   bottom: 0.5rem;
+//   width: 10%;
+// `;
 
 const Body = ({ sidebar, content }) => {
   const { userDB } = useAuth();
@@ -67,9 +69,7 @@ const Body = ({ sidebar, content }) => {
       <SideBarContainer navOpen={navOpen}>
         {error && <div>Error: {error}</div>}
         <NavCardsContainer>{sidebar}</NavCardsContainer>
-        <SideBottomContainer>
-          <UserCard />
-        </SideBottomContainer>
+        <UserCard />
       </SideBarContainer>
       <ContentContainer>{content}</ContentContainer>
     </BodyContainer>
