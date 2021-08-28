@@ -131,9 +131,11 @@ export const TaskContextProvider = ({ children }) => {
   };
 
   // hook to handle TaskInput value
+  const initialNavState = window.innerWidth <= 760 ? false : true;
   const [input, setInput] = useState("");
   const [theme, setTheme] = useState("#C0C0C0");
-  const [dark, setDark] = useState(true);
+  const [dark, setDark] = useState(false);
+  const [navOpen, setNavOpen] = useState(initialNavState);
 
   const handleTheme = (color) => {
     setTheme(color);
@@ -177,6 +179,8 @@ export const TaskContextProvider = ({ children }) => {
         handleSubmit,
         input,
         setInput,
+        navOpen,
+        setNavOpen,
       }}
     >
       {children}

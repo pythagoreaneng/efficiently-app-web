@@ -24,8 +24,18 @@ const TaskInputContainer = styled.form`
   align-items: center;
 `;
 
+const ContentOverlay = styled.form`
+  height: 100%;
+  width: 100%;
+  @media (max-width: 768px) {
+    height: 90%;
+    position: fixed;
+    filter: ${(props) => props.navOpen && "blur(2px)"};
+  }
+`;
+
 const TaskLayout = () => {
-  const { theme, dark } = useContext(TaskContext);
+  const { theme, dark, navOpen } = useContext(TaskContext);
   return (
     <>
       <Header
@@ -35,17 +45,20 @@ const TaskLayout = () => {
         theme={theme}
         dark={dark}
       />
+
       <Body
         dark={dark}
         sidebar={<TaskSideBar />}
         content={
           <>
-            <TaskListContainer>
-              <TaskList />
-            </TaskListContainer>
-            <TaskInputContainer>
-              <TaskInput />
-            </TaskInputContainer>
+            <ContentOverlay navOpen={navOpen}>
+              <TaskListContainer>
+                <TaskList />
+              </TaskListContainer>
+              <TaskInputContainer>
+                <TaskInput />
+              </TaskInputContainer>
+            </ContentOverlay>
           </>
         }
       />

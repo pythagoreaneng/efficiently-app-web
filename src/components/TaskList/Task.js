@@ -18,6 +18,9 @@ const TaskContainer = styled.div`
   display: flex;
   align-items: center;
   position: relative;
+  @media (max-width: 768px) {
+    width: 80%;
+  }
 `;
 const Checkbox = styled.input`
   margin: 0 0.5rem;
@@ -25,6 +28,9 @@ const Checkbox = styled.input`
 
 const TaskNameContainer = styled.div`
   width: 70%;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const OptionContainer = styled.button`

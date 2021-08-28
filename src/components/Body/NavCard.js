@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { TaskContext } from "../../contexts/TaskContext";
 
 const NavCardContainer = styled.div`
   width: 100%;
@@ -46,8 +47,15 @@ const NavNameWrapper = styled.div`
 const NavBadgeWrapper = styled.div``;
 
 const NavCard = ({ icon, type, count }) => {
+  const { navOpen, setNavOpen } = useContext(TaskContext);
   return (
-    <NavCardContainer>
+    <NavCardContainer
+      onClick={() => {
+        if (window.innerWidth <= 845) {
+          setNavOpen(!navOpen);
+        }
+      }}
+    >
       <NavLink
         to={"/" + type}
         style={{
@@ -55,6 +63,7 @@ const NavCard = ({ icon, type, count }) => {
           display: "flex",
           justifyContent: "start",
           borderRadius: "0.8rem",
+          padding: "0.25rem",
         }}
         activeStyle={{
           backgroundColor: "rgba(0, 0, 0, 0.1)",
