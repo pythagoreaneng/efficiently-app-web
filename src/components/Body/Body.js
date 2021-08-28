@@ -54,6 +54,12 @@ const Body = ({ sidebar, content }) => {
   const { currentUser } = useAuth();
   const { dark, navOpen, setNavOpen } = useContext(TaskContext);
 
+  const navOutsideClickMobile = () => {
+    if (window.innerWidth <= 845 && navOpen) {
+      setNavOpen(!navOpen);
+    }
+  };
+
   userDB
     .doc("profile")
     .get()
@@ -79,7 +85,9 @@ const Body = ({ sidebar, content }) => {
           <UserCard />
         </UserCardContainer>
       </SideBarContainer>
-      <ContentContainer navOpen={navOpen}>{content}</ContentContainer>
+      <ContentContainer navOpen={navOpen} onClick={navOutsideClickMobile}>
+        {content}
+      </ContentContainer>
     </BodyContainer>
   );
 };
