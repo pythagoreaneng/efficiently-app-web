@@ -5,15 +5,13 @@ import styled from "styled-components";
 import { useAuth } from "../../contexts/AuthContext";
 
 const UserCardContainer = styled(Link)`
-  padding: 1rem;
+  padding: 1rem 1rem 0 0;
   display: flex;
   width: 100%;
   justify-content: space-between;
 `;
 
-const PicContainer = styled.div`
-  width: 20%;
-`;
+const PicContainer = styled.div``;
 
 const PicWrapper = styled.div`
   height: 3rem;
@@ -27,12 +25,13 @@ const PicWrapper = styled.div`
 `;
 
 const UsernameContainer = styled.div`
-  width: 70%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: left;
   font-size: 0.8em;
+  margin-left: 0.5rem;
 `;
 
 const UserCard = () => {
