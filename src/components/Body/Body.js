@@ -20,19 +20,18 @@ const SideBarContainer = styled.div`
   width: ${(props) => (props.navOpen ? "20%" : "0%")};
   background-color: rgba(0, 0, 0, 0.1);
   transition: all linear 0.2s;
+  @media (max-width: 768px) {
+    width: ${(props) => (props.navOpen ? "75%" : "0%")};
+  }
 `;
 
 const ContentContainer = styled.div`=
   height: 100%;
   width: 100%;
+  @media (max-width: 768px) {
+    width: ${(props) => (props.navOpen ? "25%" : "100%")};
+  }   
 `;
-
-// const SideBottomContainer = styled.div`
-//   position: absolute;
-//   bottom: 0.5rem;
-//   width: 10%;
-// `; transform: ${(props) => props.navOpen || "translateX(-200%)"};
-
 const NavCardsContainer = styled.div`
   height: 100%;
   display: flex;
