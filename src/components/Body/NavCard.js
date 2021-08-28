@@ -49,7 +49,13 @@ const NavBadgeWrapper = styled.div``;
 const NavCard = ({ icon, type, count }) => {
   const { navOpen, setNavOpen } = useContext(TaskContext);
   return (
-    <NavCardContainer onClick={() => setNavOpen(!navOpen)}>
+    <NavCardContainer
+      onClick={() => {
+        if (window.innerWidth <= 845) {
+          setNavOpen(!navOpen);
+        }
+      }}
+    >
       <NavLink
         to={"/" + type}
         style={{

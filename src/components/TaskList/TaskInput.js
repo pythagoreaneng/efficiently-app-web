@@ -28,7 +28,7 @@ const WriteTaskInput = styled.input`
 const AddTaskButton = styled.button`
   height: auto;
   width: 3rem;
-  margin-left: 1rem;
+  margin: 0 1rem 0 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -69,7 +69,7 @@ const TaskInput = ({ onSubmit }) => {
           ref={inputRef}
         />
         <AddTaskButton onClick={handleSubmit}>
-          <RiAddCircleFill size={40} color={theme} />
+          <RiAddCircleFill size={50} color={theme} />
         </AddTaskButton>
       </AddTaskContainer>
     </>
