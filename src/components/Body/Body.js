@@ -52,7 +52,7 @@ const Body = ({ sidebar, content }) => {
   const { userDB } = useAuth();
   const [error, setError] = useState("");
   const { currentUser } = useAuth();
-  const { dark, navOpen } = useContext(TaskContext);
+  const { dark, navOpen, setNavOpen } = useContext(TaskContext);
 
   userDB
     .doc("profile")
