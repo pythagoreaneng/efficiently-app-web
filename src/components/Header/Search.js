@@ -1,3 +1,4 @@
+import { set } from "date-fns";
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { useAuth } from "../../contexts/AuthContext";
@@ -19,10 +20,13 @@ const SearchInputContainer = styled.input`
 `;
 
 const Search = () => {
-  const { handleSearch, search } = useContext(TaskContext);
+  const { handleSearch, search, navOpen, setNavOpen } = useContext(TaskContext);
   const { history } = useAuth();
 
   const handleSearchClick = () => {
+    if (window.innerWidth <= 845 && navOpen) {
+      setNavOpen(!navOpen);
+    }
     history.push("/search");
   };
 

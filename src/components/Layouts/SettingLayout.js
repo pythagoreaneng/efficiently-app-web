@@ -1,8 +1,9 @@
-import React from "react";
-import { Header, Title } from "../Header";
+import React, { useContext } from "react";
+import { Header, Title, HamburgerMenu } from "../Header";
 import { Body } from "../Body";
 import { SettingSideBar } from "../Contents";
 import styled from "styled-components";
+import { TaskContext } from "../../contexts/TaskContext";
 
 const SettingTitleContainer = styled.div`
   width: 100%;
@@ -35,21 +36,33 @@ const SettingBottomContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
+const ContentOverlay = styled.form`
+  height: 100%;
+  width: 100%;
+  @media (max-width: 768px) {
+    height: 90%;
+    position: fixed;
+    filter: ${(props) => props.navOpen && "blur(10px)"};
+  }
+`;
 
 const SettingLayout = ({ title, description, children }) => {
+  const { navOpen, setNavOpen } = useContext(TaskContext);
   return (
     <>
-      <Header left={<Title />} center={<></>} right={<></>} />
+      <Header left={<HamburgerMenu />} center={<></>} right={<Title />} />
       <Body
         sidebar={<SettingSideBar />}
         content={
           <>
-            <SettingTitleContainer>{title}</SettingTitleContainer>
-            <SettingDescriptionContainer>
-              {description}
-            </SettingDescriptionContainer>
-            <SettingChildrenContainer>{children}</SettingChildrenContainer>
-            <SettingBottomContainer></SettingBottomContainer>
+            <ContentOverlay navOpen={navOpen}>
+              <SettingTitleContainer>{title}</SettingTitleContainer>
+              <SettingDescriptionContainer>
+                {description}
+              </SettingDescriptionContainer>
+              <SettingChildrenContainer>{children}</SettingChildrenContainer>
+              <SettingBottomContainer></SettingBottomContainer>
+            </ContentOverlay>
           </>
         }
       />

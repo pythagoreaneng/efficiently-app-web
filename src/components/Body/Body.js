@@ -81,7 +81,14 @@ const Body = ({ sidebar, content }) => {
         {error && <div>Error: {error}</div>}
 
         <NavCardsContainer navOpen={navOpen}>{sidebar}</NavCardsContainer>
-        <UserCardContainer navOpen={navOpen}>
+        <UserCardContainer
+          navOpen={navOpen}
+          onClick={() => {
+            if (window.innerWidth <= 845 && navOpen) {
+              setNavOpen(!navOpen);
+            }
+          }}
+        >
           <UserCard />
         </UserCardContainer>
       </SideBarContainer>
