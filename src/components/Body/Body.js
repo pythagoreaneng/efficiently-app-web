@@ -57,7 +57,6 @@ const Body = ({ sidebar, content }) => {
   const navOutsideClickMobile = () => {
     if (window.innerWidth <= 845 && navOpen) {
       setNavOpen(false);
-      console.log("dehkoddah");
     }
   };
 
