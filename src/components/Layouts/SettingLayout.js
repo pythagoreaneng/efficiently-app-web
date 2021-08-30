@@ -36,10 +36,10 @@ const SettingBottomContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const ContentOverlay = styled.form`
+const ContentOverlay = styled.div`
   height: 100%;
   width: 100%;
-  @media (max-width: 768px) {
+  @media (max-width: 845px) {
     height: 90%;
     position: fixed;
     filter: ${(props) => props.navOpen && "blur(10px)"};

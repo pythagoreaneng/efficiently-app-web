@@ -20,7 +20,7 @@ const SideBarContainer = styled.div`
   width: ${(props) => (props.navOpen ? "20%" : "0%")};
   background-color: rgba(0, 0, 0, 0.1);
   transition: all linear 0.2s;
-  @media (max-width: 768px) {
+  @media (max-width: 845px) {
     width: ${(props) => (props.navOpen ? "75%" : "0%")};
   }
 `;
@@ -28,7 +28,7 @@ const SideBarContainer = styled.div`
 const ContentContainer = styled.div`=
   height: 100%;
   width: 100%;
-  @media (max-width: 768px) {
+  @media (max-width: 845px) {
     width: ${(props) => (props.navOpen ? "25%" : "100%")};
   }   
 `;
@@ -56,7 +56,8 @@ const Body = ({ sidebar, content }) => {
 
   const navOutsideClickMobile = () => {
     if (window.innerWidth <= 845 && navOpen) {
-      setNavOpen(!navOpen);
+      setNavOpen(false);
+      console.log("dehkoddah");
     }
   };
 
