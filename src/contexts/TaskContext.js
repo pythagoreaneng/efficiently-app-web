@@ -129,6 +129,18 @@ export const TaskContextProvider = ({ children }) => {
     // clear input
     setInput("");
   };
+  // not functioning
+  const removeUserTasks = () => {
+    taskDB
+      .doc("*")
+      .delete()
+      .then(() => {
+        console.log("Document successfully deleted!");
+      })
+      .catch((error) => {
+        console.error("Error removing document: ", error);
+      });
+  };
 
   // hook to handle TaskInput value
   const initialNavState = window.innerWidth <= 760 ? false : true;
@@ -174,6 +186,7 @@ export const TaskContextProvider = ({ children }) => {
         todayDate,
         completeTask,
         removeTask,
+
         editTask,
         toggleStar,
         handleSubmit,
@@ -181,6 +194,7 @@ export const TaskContextProvider = ({ children }) => {
         setInput,
         navOpen,
         setNavOpen,
+        removeUserTasks,
       }}
     >
       {children}
