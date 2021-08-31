@@ -46,6 +46,17 @@ const UserProvider = ({ children }) => {
     userDB.doc("profile").set({ username: username });
   };
 
+  const deleteUser = () => {
+    currentUser
+      .delete()
+      .then(() => {
+        console.log("User is deleted");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const onAuthStateChange = () => {
     return auth.onAuthStateChanged(async (user) => {
       setCurrentUser(user);
@@ -89,6 +100,7 @@ const UserProvider = ({ children }) => {
     history,
     updateUsername,
     userDB,
+    deleteUser,
   };
 
   return (
