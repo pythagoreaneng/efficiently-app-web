@@ -68,6 +68,7 @@ const UserProvider = ({ children }) => {
         }
       } else {
         console.log("The user is not logged in");
+        history.push("/login");
       }
     });
   };
