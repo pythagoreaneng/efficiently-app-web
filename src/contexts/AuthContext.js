@@ -46,6 +46,17 @@ const UserProvider = ({ children }) => {
     userDB.doc("profile").set({ username: username });
   };
 
+  const deleteUser = () => {
+    currentUser
+      .delete()
+      .then(() => {
+        console.log("User is deleted");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const onAuthStateChange = () => {
     return auth.onAuthStateChanged(async (user) => {
       setCurrentUser(user);
@@ -68,6 +79,7 @@ const UserProvider = ({ children }) => {
         }
       } else {
         console.log("The user is not logged in");
+        history.push("/login");
       }
     });
   };
@@ -88,6 +100,7 @@ const UserProvider = ({ children }) => {
     history,
     updateUsername,
     userDB,
+    deleteUser,
   };
 
   return (
