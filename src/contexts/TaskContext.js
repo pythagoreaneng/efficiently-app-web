@@ -97,7 +97,7 @@ export const TaskContextProvider = ({ children }) => {
         console.log("Document successfully edited!");
       })
       .catch((error) => {
-        console.error("Error removing document: ", error);
+        console.error("Error editing document: ", error);
       });
   };
 

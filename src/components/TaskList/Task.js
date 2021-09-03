@@ -4,13 +4,7 @@ import moment from "moment";
 import { TaskContext } from "../../contexts/TaskContext";
 import styled from "styled-components";
 import DayPickerInput from "react-day-picker/DayPickerInput";
-import { DateUtils } from "react-day-picker";
 import "react-day-picker/lib/style.css";
-
-import MomentLocaleUtils, {
-  formatDate,
-  parseDate,
-} from "react-day-picker/moment";
 
 const TaskContainer = styled.div`
   width: 60%;
@@ -138,7 +132,9 @@ const Task = ({ task }) => {
   let untilScheduleDate = moment(task.scheduleDate).fromNow();
   let untilDueDate = moment(task.dueDate).fromNow();
 
-  const FORMAT = "MM/dd/yyyy";
+  const handleOnDayChange = (date) => {
+    editSchedule(task, date.toLocaleDateString());
+  };
   return (
     <TaskContainer key={task.id}>
       <Checkbox
@@ -172,9 +168,8 @@ const Task = ({ task }) => {
         <DayPickerInput
           value={schedule}
           placeholder={task.scheduleDate || "Not scheduled"}
-          formatDate={formatDate}
-          parseDate={parseDate}
-          onDayChange={(day) => console.log(day)}
+          format="DD/MM/yy"
+          onDayChange={(date) => handleOnDayChange(date)}
         />
         <p>{task.scheduleDate && <span>Scheduled {untilScheduleDate}</span>}</p>
         <p>{task.dueDate && <span>due {untilDueDate}</span>}</p>
