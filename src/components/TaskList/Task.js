@@ -42,6 +42,8 @@ const EditInput = styled.input`
 `;
 
 const DaysContainer = styled.div`
+  position: absolute;
+  right: 1.5rem;
   display: flex;
   flex-direction: column;
   font-size: 0.6em;
@@ -132,9 +134,23 @@ const Task = ({ task }) => {
   let untilScheduleDate = moment(task.scheduleDate).fromNow();
   let untilDueDate = moment(task.dueDate).fromNow();
 
+  function formatDate(date) {
+    var d = new Date(date),
+      month = "" + (d.getMonth() + 1),
+      day = "" + d.getDate(),
+      year = d.getFullYear();
+
+    if (month.length < 2) month = "0" + month;
+    if (day.length < 2) day = "0" + day;
+
+    return [year, month, day].join("-");
+  }
+
   const handleOnDayChange = (date) => {
-    editSchedule(task, date.toLocaleDateString());
+    console.log(formatDate(date));
+    editSchedule(task, formatDate(date.toLocaleDateString()));
   };
+  const FORMAT = "MM/dd/yyyy";
   return (
     <TaskContainer key={task.id}>
       <Checkbox
@@ -168,11 +184,10 @@ const Task = ({ task }) => {
         <DayPickerInput
           value={schedule}
           placeholder={task.scheduleDate || "Not scheduled"}
-          format="DD/MM/yy"
           onDayChange={(date) => handleOnDayChange(date)}
+          format={FORMAT}
         />
-        <p>{task.scheduleDate && <span>Scheduled {untilScheduleDate}</span>}</p>
-        <p>{task.dueDate && <span>due {untilDueDate}</span>}</p>
+        <p>{task.scheduleDate && <span>({untilScheduleDate})</span>}</p>
       </DaysContainer>
 
       <OptionContainer>
