@@ -22,7 +22,7 @@ const DotsContainer = styled.div`
 `;
 
 const Customize = () => {
-  const { handleTheme, dark, setDark } = useContext(TaskContext);
+  const { handleTheme } = useContext(TaskContext);
   return (
     <Container>
       <SettingLayout
@@ -32,13 +32,6 @@ const Customize = () => {
         }
       >
         <OptionsContainer>
-          <ToggleButton
-            value={dark}
-            onToggle={(value) => {
-              setDark((cur) => setDark(!cur));
-            }}
-          />
-
           <DotsContainer>
             <Dot color={"#44BCFF"} onClick={() => handleTheme("#44BCFF")} />
             <Dot color={"#BBF4D5"} onClick={() => handleTheme("#BBF4D5")} />

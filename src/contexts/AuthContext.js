@@ -50,10 +50,10 @@ const UserProvider = ({ children }) => {
     currentUser
       .delete()
       .then(() => {
-        console.log("User is deleted");
+        alert("Deletion completed. Thank you for trying Efficiently.app.");
       })
       .catch((error) => {
-        console.log(error);
+        alert("Please log in and try again.");
       });
   };
 

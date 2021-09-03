@@ -7,11 +7,10 @@ import { TaskContext } from "../../contexts/TaskContext";
 const TitleWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin: 1.5rem;
 `;
 
 const NameWrapper = styled.div`
-  margin: 0.5rem;
+  padding: 0.5rem;
   font-weight: 600;
   font-size: 1.3em;
 `;
