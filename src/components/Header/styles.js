@@ -4,7 +4,7 @@ export const HeaderLeftContainer = styled.div`
   display: flex;
   flex-direction: row;
   font-size: 1.5em;
-  margin-left: 1rem;
+  margin: 1rem;
 `;
 
 export const HeaderCenterContainer = styled.div`

@@ -6,6 +6,12 @@ import styled from "styled-components";
 import { TaskContext } from "../../contexts/TaskContext";
 import ToggleButton from "react-toggle-button";
 
+const SettingMenuIconContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const SettingTitleContainer = styled.div`
   width: 100%;
   height: 10%;
@@ -54,10 +60,10 @@ const SettingLayout = ({ title, description, children }) => {
     <>
       <Header
         left={
-          <>
+          <SettingMenuIconContainer>
             <HamburgerMenu />
             <Title />
-          </>
+          </SettingMenuIconContainer>
         }
         right={
           <ToggleButton
