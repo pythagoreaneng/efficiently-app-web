@@ -8,6 +8,8 @@ export const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
   background-color: ${(props) => props.theme || "#911"};
+  justify-content: space-between;
+  padding: 0 1rem;
 `;
 
 const Header = ({ left, center, right }) => {
