@@ -1,5 +1,5 @@
 import { setDay } from "date-fns";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   RiInboxFill,
   RiStarSFill,
@@ -7,6 +7,7 @@ import {
   RiArchiveFill,
   RiSearchLine,
   RiSunFill,
+  RiMoonFill,
 } from "react-icons/ri";
 import { TaskContext } from "../../contexts/TaskContext";
 
@@ -16,11 +17,26 @@ const TaskSiderBar = () => {
   const { inboxCount, todayCount, starCount, upcomingCount, archiveCount } =
     useContext(TaskContext);
   // todo: move to taskContext
-  const [dayTime, setDayTime] = useState();
+  var today = new Date();
+  var time = today.getHours();
+
+  // this should be dayTime, setDayTime and move up to TaskContext
+  var isDay;
+  if (time > 4 && time < 19) {
+    isDay = true;
+  } else {
+    isDay = false;
+  }
+
   return (
     <>
       <NavCard icon={<RiInboxFill />} type={"inbox"} count={inboxCount} />
-      <NavCard icon={<RiSunFill />} type={"today"} count={todayCount} />
+      {isDay ? (
+        <NavCard icon={<RiSunFill />} type={"today"} count={todayCount} />
+      ) : (
+        <NavCard icon={<RiMoonFill />} type={"today"} count={todayCount} />
+      )}
+
       <NavCard icon={<RiStarSFill />} type={"star"} count={starCount} />
       <NavCard
         icon={<RiCalendarTodoFill />}
