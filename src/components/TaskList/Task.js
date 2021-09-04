@@ -150,6 +150,7 @@ const Task = ({ task }) => {
     console.log(formatDate(date));
     editSchedule(task, formatDate(date.toLocaleDateString()));
   };
+
   const FORMAT = "MM/dd/yyyy";
   return (
     <TaskContainer key={task.id}>

@@ -12,9 +12,24 @@ const TaskList = () => {
     setStarCount,
     setArchiveCount,
   } = useContext(TaskContext);
+  var todaysDate = new Date();
+
+  function formatDate(date) {
+    var d = new Date(date),
+      month = "" + (d.getMonth() + 1),
+      day = "" + d.getDate(),
+      year = d.getFullYear();
+
+    if (month.length < 2) month = "0" + month;
+    if (day.length < 2) day = "0" + day;
+
+    return [year, month, day].join("-");
+  }
 
   let inboxTasks = tasks.filter((task) => !task.completed);
-  let todayTasks = tasks.filter((task) => task.dueDate === todayDate);
+  let todayTasks = tasks.filter(
+    (task) => task.scheduleDate === formatDate(todaysDate)
+  );
   let starTasks = tasks.filter((task) => task.star);
   let upcomingTasks = tasks.filter((task) => task.scheduleDate > todayDate);
   let archiveTasks = tasks.filter((task) => task.completed);
