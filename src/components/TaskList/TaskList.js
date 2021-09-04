@@ -10,6 +10,7 @@ const TaskList = () => {
     setInboxCount,
     setTodayCount,
     setStarCount,
+    setUpcomingCount,
     setArchiveCount,
   } = useContext(TaskContext);
   var todaysDate = new Date();
@@ -31,7 +32,9 @@ const TaskList = () => {
     (task) => task.scheduleDate === formatDate(todaysDate)
   );
   let starTasks = tasks.filter((task) => task.star);
-  let upcomingTasks = tasks.filter((task) => task.scheduleDate > todayDate);
+  let upcomingTasks = tasks.filter(
+    (task) => task.scheduleDate > formatDate(todaysDate)
+  );
   let archiveTasks = tasks.filter((task) => task.completed);
   let searchedTasks = tasks.filter((task) =>
     task.title.includes(search.toLowerCase())
@@ -42,6 +45,8 @@ const TaskList = () => {
     setInboxCount(inboxTasks.length);
     setTodayCount(todayTasks.length);
     setStarCount(starTasks.length);
+    setTodayCount(todayTasks.length);
+    setUpcomingCount(upcomingTasks.length);
     setArchiveCount(archiveTasks.length);
   }, [
     inboxTasks,

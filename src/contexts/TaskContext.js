@@ -10,6 +10,7 @@ export const TaskContextProvider = ({ children }) => {
   const [inboxCount, setInboxCount] = useState();
   const [todayCount, setTodayCount] = useState();
   const [starCount, setStarCount] = useState();
+  const [upcomingCount, setUpcomingCount] = useState();
   const [archiveCount, setArchiveCount] = useState();
 
   // this should be handled more propery
@@ -165,6 +166,8 @@ export const TaskContextProvider = ({ children }) => {
         setTodayCount,
         starCount,
         setStarCount,
+        upcomingCount,
+        setUpcomingCount,
         archiveCount,
         setArchiveCount,
         theme,
