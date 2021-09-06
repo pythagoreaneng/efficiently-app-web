@@ -5,6 +5,7 @@ import { SettingSideBar } from "../Contents";
 import styled from "styled-components";
 import { TaskContext } from "../../contexts/TaskContext";
 import ToggleButton from "react-toggle-button";
+import { RiSunFill, RiMoonFill } from "react-icons/ri";
 
 const SettingMenuIconContainer = styled.div`
   display: flex;
@@ -54,7 +55,8 @@ const ContentOverlay = styled.div`
 `;
 
 const SettingLayout = ({ title, description, children }) => {
-  const { navOpen, setNavOpen, dark, setDark } = useContext(TaskContext);
+  const { navOpen, setNavOpen, dark, setDark, toggleDarkMode } =
+    useContext(TaskContext);
 
   return (
     <>
@@ -68,8 +70,25 @@ const SettingLayout = ({ title, description, children }) => {
         right={
           <ToggleButton
             value={dark}
+            inactiveLabel={<RiSunFill color="#000" />}
+            activeLabel={<RiMoonFill />}
+            colors={{
+              activeThumb: {
+                base: "#42BCFF",
+              },
+              inactiveThumb: {
+                base: "#E5E5E5",
+              },
+              active: {
+                base: "#1E2328",
+              },
+              inactive: {
+                base: "#FFF",
+              },
+            }}
             onToggle={(value) => {
               setDark((cur) => setDark(!cur));
+              toggleDarkMode();
             }}
           />
         }

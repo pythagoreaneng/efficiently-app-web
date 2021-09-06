@@ -29,9 +29,7 @@ export const TaskContextProvider = ({ children }) => {
     });
   };
 
-  useEffect(() => {
-    getTasks();
-  }, []); // eslint-disable-line
+  // eslint-disable-line
 
   const searchBarRef = useRef(null);
   const inboxRef = useRef(null);
@@ -116,6 +114,7 @@ export const TaskContextProvider = ({ children }) => {
   // handler for submitting input
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (input === "") return;
     const taskId = uuidv4(); // generate string id every time task is generated and assign to it
     taskDB.doc(taskId).set({
       id: taskId, // task gets assigned the id
@@ -153,6 +152,37 @@ export const TaskContextProvider = ({ children }) => {
   const handleTheme = (color) => {
     setTheme(color);
   };
+
+  const preferencesDB = auth.currentUser
+    ? firestore.collection(`users/${auth.currentUser.uid}/preferences`)
+    : firestore.collection(`catch`);
+
+  const toggleDarkMode = () => {
+    preferencesDB
+      .doc("darkMode")
+      .update({ darkMode: !dark })
+      .then(() => {
+        console.log("Document successfully toggled dark mode");
+      })
+      .catch((error) => {
+        console.error("Error removing document: ", error);
+      });
+  };
+
+  const getPreferences = () => {
+    preferencesDB.onSnapshot((querySnapshot) => {
+      const items = [];
+      querySnapshot.forEach((doc) => {
+        items.push(doc.data());
+      });
+      setDark(items[0].darkMode);
+    });
+  };
+
+  useEffect(() => {
+    getTasks();
+    getPreferences();
+  }, []);
 
   return (
     <TaskContext.Provider
@@ -192,6 +222,7 @@ export const TaskContextProvider = ({ children }) => {
 
         editTask,
         toggleStar,
+        toggleDarkMode,
         handleSubmit,
         input,
         setInput,
