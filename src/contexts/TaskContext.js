@@ -116,6 +116,7 @@ export const TaskContextProvider = ({ children }) => {
   // handler for submitting input
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (input === "") return;
     const taskId = uuidv4(); // generate string id every time task is generated and assign to it
     taskDB.doc(taskId).set({
       id: taskId, // task gets assigned the id
