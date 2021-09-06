@@ -55,7 +55,8 @@ const ContentOverlay = styled.div`
 `;
 
 const SettingLayout = ({ title, description, children }) => {
-  const { navOpen, setNavOpen, dark, setDark } = useContext(TaskContext);
+  const { navOpen, setNavOpen, dark, setDark, toggleDarkMode } =
+    useContext(TaskContext);
 
   return (
     <>
@@ -87,6 +88,7 @@ const SettingLayout = ({ title, description, children }) => {
             }}
             onToggle={(value) => {
               setDark((cur) => setDark(!cur));
+              toggleDarkMode();
             }}
           />
         }
