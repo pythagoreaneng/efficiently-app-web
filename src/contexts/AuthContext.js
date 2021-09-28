@@ -66,7 +66,6 @@ const UserProvider = ({ children }) => {
       setCurrentUser(user);
       setLoading(false);
       if (user) {
-        console.log("The user is logged in");
         try {
           await setCurrentUser(user);
           user.updateProfile({ displayName: user.displayName });
@@ -82,7 +81,6 @@ const UserProvider = ({ children }) => {
           history.push("/inbox");
         }
       } else {
-        console.log("The user is not logged in");
         history.push("/login");
       }
     });
