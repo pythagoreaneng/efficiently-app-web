@@ -14,10 +14,6 @@ export const TaskContextProvider = ({ children }) => {
   const [starCount, setStarCount] = useState();
   const [upcomingCount, setUpcomingCount] = useState();
   const [archiveCount, setArchiveCount] = useState();
-  const [input, setInput] = useState("");
-  const [theme, setTheme] = useState(initialTheme);
-  const [dark, setDark] = useState(false);
-  const [navOpen, setNavOpen] = useState(initialNavState);
 
   const { userDB } = useAuth();
   const taskDB = auth.currentUser
@@ -164,6 +160,11 @@ export const TaskContextProvider = ({ children }) => {
     .catch((error) => {
       console.log("Error getting document:", error);
     });
+
+  const [theme, setTheme] = useState(initialTheme);
+  const [input, setInput] = useState("");
+  const [dark, setDark] = useState(false);
+  const [navOpen, setNavOpen] = useState(initialNavState);
 
   const handleTheme = (color) => {
     setTheme(color);
