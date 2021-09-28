@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import moment from "moment";
 import { auth, firestore } from "../firebase";
 import { v4 as uuidv4 } from "uuid";
+import { useAuth } from "./AuthContext";
 
 export const TaskContext = React.createContext(null);
 
@@ -14,6 +15,8 @@ export const TaskContextProvider = ({ children }) => {
   const [archiveCount, setArchiveCount] = useState();
 
   // this should be handled more propery
+  const { userDB } = useAuth();
+
   const taskDB = auth.currentUser
     ? firestore.collection(`users/${auth.currentUser.uid}/userTasks`)
     : firestore.collection(`catch`);
@@ -145,13 +148,29 @@ export const TaskContextProvider = ({ children }) => {
 
   // hook to handle TaskInput value
   const initialNavState = window.innerWidth <= 760 ? false : true;
+  const initialTheme = userDB
+    .doc("theme")
+    .get()
+    .then((doc) => {
+      if (doc.exists) {
+        setTheme(doc.data().theme);
+      } else {
+        console.log("err");
+      }
+    })
+    .catch((error) => {
+      console.log("Error getting document:", error);
+    });
+
   const [input, setInput] = useState("");
-  const [theme, setTheme] = useState("#C0C0C0");
+  const [theme, setTheme] = useState(initialTheme);
   const [dark, setDark] = useState(false);
   const [navOpen, setNavOpen] = useState(initialNavState);
+  const { updateTheme } = useAuth();
 
   const handleTheme = (color) => {
     setTheme(color);
+    updateTheme(color);
   };
 
   return (
@@ -189,7 +208,6 @@ export const TaskContextProvider = ({ children }) => {
         todayDate,
         completeTask,
         removeTask,
-
         editTask,
         toggleStar,
         handleSubmit,
