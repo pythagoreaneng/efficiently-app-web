@@ -7,19 +7,24 @@ import { useAuth } from "./AuthContext";
 export const TaskContext = React.createContext(null);
 
 export const TaskContextProvider = ({ children }) => {
+  const { updateTheme } = useAuth();
   const [tasks, setTasks] = useState([]);
   const [inboxCount, setInboxCount] = useState();
   const [todayCount, setTodayCount] = useState();
   const [starCount, setStarCount] = useState();
   const [upcomingCount, setUpcomingCount] = useState();
   const [archiveCount, setArchiveCount] = useState();
+  const [input, setInput] = useState("");
+  const [theme, setTheme] = useState(initialTheme);
+  const [dark, setDark] = useState(false);
+  const [navOpen, setNavOpen] = useState(initialNavState);
 
-  // this should be handled more propery
   const { userDB } = useAuth();
-
   const taskDB = auth.currentUser
     ? firestore.collection(`users/${auth.currentUser.uid}/userTasks`)
     : firestore.collection(`catch`);
+
+  var todayDate = moment().format("YYYY-MM-D");
 
   // intial loading of locally saved tasks
   const getTasks = () => {
@@ -53,8 +58,6 @@ export const TaskContextProvider = ({ children }) => {
     setSearch(e.target.value);
     console.log("search set");
   };
-
-  var todayDate = moment().format("YYYY-MM-D");
 
   const completeTask = (task) => {
     taskDB
@@ -161,12 +164,6 @@ export const TaskContextProvider = ({ children }) => {
     .catch((error) => {
       console.log("Error getting document:", error);
     });
-
-  const [input, setInput] = useState("");
-  const [theme, setTheme] = useState(initialTheme);
-  const [dark, setDark] = useState(false);
-  const [navOpen, setNavOpen] = useState(initialNavState);
-  const { updateTheme } = useAuth();
 
   const handleTheme = (color) => {
     setTheme(color);
