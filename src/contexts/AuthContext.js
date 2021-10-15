@@ -46,6 +46,10 @@ const UserProvider = ({ children }) => {
     userDB.doc("profile").set({ username: username });
   };
 
+  const updateTheme = (theme) => {
+    userDB.doc("theme").set({ theme: theme });
+  };
+
   const deleteUser = () => {
     currentUser
       .delete()
@@ -62,7 +66,6 @@ const UserProvider = ({ children }) => {
       setCurrentUser(user);
       setLoading(false);
       if (user) {
-        console.log("The user is logged in");
         try {
           await setCurrentUser(user);
           user.updateProfile({ displayName: user.displayName });
@@ -78,7 +81,6 @@ const UserProvider = ({ children }) => {
           history.push("/inbox");
         }
       } else {
-        console.log("The user is not logged in");
         history.push("/login");
       }
     });
@@ -99,6 +101,7 @@ const UserProvider = ({ children }) => {
     updatePassword,
     history,
     updateUsername,
+    updateTheme,
     userDB,
     deleteUser,
   };

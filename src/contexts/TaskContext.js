@@ -2,10 +2,12 @@ import React, { useState, useEffect, useRef } from "react";
 import moment from "moment";
 import { auth, firestore } from "../firebase";
 import { v4 as uuidv4 } from "uuid";
+import { useAuth } from "./AuthContext";
 
 export const TaskContext = React.createContext(null);
 
 export const TaskContextProvider = ({ children }) => {
+  const { updateTheme } = useAuth();
   const [tasks, setTasks] = useState([]);
   const [inboxCount, setInboxCount] = useState();
   const [todayCount, setTodayCount] = useState();
@@ -13,10 +15,12 @@ export const TaskContextProvider = ({ children }) => {
   const [upcomingCount, setUpcomingCount] = useState();
   const [archiveCount, setArchiveCount] = useState();
 
-  // this should be handled more propery
+  const { userDB } = useAuth();
   const taskDB = auth.currentUser
     ? firestore.collection(`users/${auth.currentUser.uid}/userTasks`)
     : firestore.collection(`catch`);
+
+  var todayDate = moment().format("YYYY-MM-D");
 
   // intial loading of locally saved tasks
   const getTasks = () => {
@@ -48,8 +52,6 @@ export const TaskContextProvider = ({ children }) => {
     setSearch(e.target.value);
     console.log("search set");
   };
-
-  var todayDate = moment().format("YYYY-MM-D");
 
   const completeTask = (task) => {
     taskDB
@@ -144,13 +146,28 @@ export const TaskContextProvider = ({ children }) => {
 
   // hook to handle TaskInput value
   const initialNavState = window.innerWidth <= 760 ? false : true;
+  const initialTheme = userDB
+    .doc("theme")
+    .get()
+    .then((doc) => {
+      if (doc.exists) {
+        setTheme(doc.data().theme);
+      } else {
+        console.log("err");
+      }
+    })
+    .catch((error) => {
+      console.log("Error getting document:", error);
+    });
+
+  const [theme, setTheme] = useState(initialTheme);
   const [input, setInput] = useState("");
-  const [theme, setTheme] = useState("#C0C0C0");
   const [dark, setDark] = useState(false);
   const [navOpen, setNavOpen] = useState(initialNavState);
 
   const handleTheme = (color) => {
     setTheme(color);
+    updateTheme(color);
   };
 
   const preferencesDB = auth.currentUser
@@ -219,7 +236,6 @@ export const TaskContextProvider = ({ children }) => {
         todayDate,
         completeTask,
         removeTask,
-
         editTask,
         toggleStar,
         toggleDarkMode,

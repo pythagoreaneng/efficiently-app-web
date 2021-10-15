@@ -65,7 +65,6 @@ const Body = ({ sidebar, content }) => {
     .get()
     .then((doc) => {
       if (doc.exists) {
-        console.log("Document data:", doc.data().username);
         currentUser.updateProfile({ displayName: doc.data().username });
       } else {
         console.log("No such document!");
