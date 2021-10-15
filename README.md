@@ -5,5 +5,7 @@
 [Preview(Dev ver)](https://efficiently-app-dev.netlify.app/)
 
 Test account:
-username: test
+username: test<br>
 password: testtest
+
+Feel free to try!
