@@ -2,4 +2,8 @@
 
 ## Development in Progress
 
-[Preview(Dev ver)](http://doefficiently.netlify.app)
+[Preview(Dev ver)](https://efficiently-app-dev.netlify.app/)
+
+Test account:
+username: test
+password: testtest
