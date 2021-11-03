@@ -44,12 +44,10 @@ const Reset = () => {
           ref={emailRef}
           required
         />
-      </EntryInputContainer>
-      <EntryButtonContainer>
         <LoginConfirmButton disabled={loading} type="submit">
           Reset
         </LoginConfirmButton>
-      </EntryButtonContainer>
+      </EntryInputContainer>
     </EntryForm>
   );
 

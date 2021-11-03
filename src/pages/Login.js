@@ -54,15 +54,11 @@ const Login = () => {
           ref={passwordRef}
           required
         />
-      </EntryInputContainer>
-      <EntryButtonContainer>
         <LoginConfirmButton disabled={loading} type="submit">
           Login
         </LoginConfirmButton>
-        <EntryForgotMessage>
-          <EntryBottomLink to="/reset">Forgot password</EntryBottomLink>
-        </EntryForgotMessage>
-      </EntryButtonContainer>
+        <EntryBottomLink to="/reset">Forgot password</EntryBottomLink>
+      </EntryInputContainer>
     </EntryForm>
   );
 

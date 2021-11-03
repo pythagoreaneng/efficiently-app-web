@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { EntryContext } from "./contexts/EntryContext";
 import styled from "styled-components";
+import headerLogo from "../src/assets/headerLogo.png";
 
 const EntryBackground = styled.div`
   width: 100vw;
@@ -9,81 +10,56 @@ const EntryBackground = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+  align-items: center;
+  background-color: #fafafa;
 `;
 
-export const EntryColumnContainer = styled.div`
-  width: auto;
-  height: 100%;
+export const EntryPanel = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const EntryPanelContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  //justify-content: center;
-  position: relative;
-  align-items: center;
-  height: 25%;
-  width: 100%;
-  min-height: 25rem;
-  min-width: 19rem;
+  padding: 1.5rem;
+  min-height: 30rem;
+  min-width: 25rem;
   background: rgba(255, 255, 255, 1);
-  box-shadow: 0 0 0.1rem -2px black;
+  box-shadow: 0 0 0.1rem 0.1px gray;
   border-radius: 0.5rem;
-  text-align: center;
+`;
+export const EntryLogo = styled.div`
+  margin-bottom: 1rem;
+`;
+export const EntryHeader = styled.div`
+  font-size: 1.5rem;
+  font-weight: 600;
 `;
 
-export const EntryHeaderLeftContainer = styled.div`
-  height: 30%;
-  font-size: 1.7em;
+export const EntryContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
 `;
+export const EntryContentContainer = styled.div``;
 
-export const EntryContentContainer = styled.div`
-  height: 70%;
-  width: 60%;
-  font-size: 1em;
+export const EntryFormContainer = styled.form`
+  display: flex;
+  flex-direction: column;
 `;
 
 export const EntryForm = styled.form`
-  height: 100%;
-  width: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 `;
 
 export const EntryInputContainer = styled.div`
-  height: 50%;
-  width: 100%;
-  white-space: no-wrap;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
 `;
 
 export const EntryButtonContainer = styled.div`
-  height: 50%;
-  width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  margin-top: 5rem;
 `;
 
 export const EntryInput = styled.input`
-  text-align: center;
-  padding: 0.7rem 1rem;
+  padding: 0.7rem 0em;
   margin: 0.7rem 0;
   font-size: 0.8em;
   border-bottom: 0.01rem groove;
@@ -95,10 +71,12 @@ export const EntryInput = styled.input`
 
 export const LoginConfirmButton = styled.button`
   padding: 0.6rem 2rem;
+  margin-top: 3rem;
   font-size: 0.8em;
-  border-radius: 0.5rem;
-  background-color: #000;
-  color: #fff;
+  font-weight: 600;
+  border-radius: 0.25rem;
+  background-color: #44bcff;
+  color: #ffff;
   opacity: 1;
   &:hover {
     opacity: 0.8;
@@ -113,7 +91,9 @@ export const EntryBottomContainer = styled.div`
 `;
 
 export const EntryBottomLink = styled(Link)`
-  text-decoration: underline;
+  color: #7e7e7e;
+  margin-top: 1rem;
+  font-size: 0.75rem;
   &:hover {
     opacity: 0.5;
   }
@@ -126,14 +106,6 @@ export const EntryErrorMessage = styled.div`
   padding: 0 0.5rem;
   margin: 0.5rem 0;
   background-color: #ffcccb;
-`;
-
-export const EntryForgotMessage = styled.div`
-  position: absolute;
-  bottom: 0.5rem;
-  font-size: 0.8em;
-  padding: 0 0.5rem;
-  margin: 0.5rem 0;
 `;
 
 export const SuccessMessage = styled.div`
@@ -151,15 +123,20 @@ const EntryComponent = ({ title, form, bottomMessage }) => {
   const { error, successMessage } = useContext(EntryContext);
   return (
     <EntryBackground>
-      <EntryColumnContainer>
-        <EntryPanelContainer>
+      <EntryContainer>
+        <EntryPanel>
+          <EntryLogo>
+            <a href="https://efficiently.app/">
+              <img src={headerLogo} alt="Efficiently" width="150px" />
+            </a>
+          </EntryLogo>
           {successMessage && <SuccessMessage>{successMessage}</SuccessMessage>}
           {error && <EntryErrorMessage>{error}</EntryErrorMessage>}
-          <EntryHeaderLeftContainer>{title}</EntryHeaderLeftContainer>
-          <EntryContentContainer>{form}</EntryContentContainer>
-        </EntryPanelContainer>
+          <EntryHeader>{title}</EntryHeader>
+          <EntryFormContainer>{form}</EntryFormContainer>
+        </EntryPanel>
         <EntryBottomContainer>{bottomMessage}</EntryBottomContainer>
-      </EntryColumnContainer>
+      </EntryContainer>
     </EntryBackground>
   );
 };
