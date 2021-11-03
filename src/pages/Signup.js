@@ -64,13 +64,10 @@ const Signup = () => {
           ref={passwordRef}
           required
         />
-      </EntryInputContainer>
-
-      <EntryButtonContainer>
         <LoginConfirmButton disabled={loading} type="submit">
           Join
         </LoginConfirmButton>
-      </EntryButtonContainer>
+      </EntryInputContainer>
     </EntryForm>
   );
 
