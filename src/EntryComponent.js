@@ -133,7 +133,7 @@ const EntryComponent = ({ title, form, bottomMessage }) => {
           {successMessage && <SuccessMessage>{successMessage}</SuccessMessage>}
           {error && <EntryErrorMessage>{error}</EntryErrorMessage>}
           <EntryHeader>{title}</EntryHeader>
-          <EntryFormContainer>{form}</EntryFormContainer>
+          <EntryContentContainer>{form}</EntryContentContainer>
         </EntryPanel>
         <EntryBottomContainer>{bottomMessage}</EntryBottomContainer>
       </EntryContainer>
